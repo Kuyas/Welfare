@@ -9,29 +9,29 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choose your Language"
+            android:text="@string/language"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginTop="100dp"/>
 
         <Button
-            android:id="@+id/englishButton"
+            android:id="@+id/english_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
             android:padding="5dp"
-            android:text="English"/>
+            android:text="@string/language_english"/>
 
         <Button
-            android:id="@+id/malayalamButton"
+            android:id="@+id/malayalam_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
             android:padding="5dp"
-            android:text="Malayalam"/>
+            android:text="@string/language_malayalam"/>
     </LinearLayout>
 
