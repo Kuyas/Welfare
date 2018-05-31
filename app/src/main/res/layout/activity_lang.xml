@@ -9,7 +9,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/language"
+            android:text="@string/activity_lang_textview_language_choice"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginTop="100dp"/>
@@ -22,7 +22,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
             android:padding="5dp"
-            android:text="@string/language_english"/>
+            android:text="@string/activity_lang_button_language_english"/>
 
         <Button
             android:id="@+id/malayalam_button"
@@ -32,6 +32,6 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
             android:padding="5dp"
-            android:text="@string/language_malayalam"/>
+            android:text="@string/activity_lang_button_language_malayalam"/>
     </LinearLayout>
 

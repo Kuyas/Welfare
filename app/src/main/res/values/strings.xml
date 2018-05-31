@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Welfare</string>
     <string name="activity_main_heading">Traders Welfare Board, Kerala</string>
-    <string name="edit_profile">Edit Profile</string>
+    <string name="activity_main_button_edit_profile">Edit Profile</string>
     <string name="activity_main_button_class_change">Apply for Class Change</string>
     <string name="activity_main_button_application_status">Application Status</string>
     <string name="activity_main_button_pension_status">Pension Status</string>
