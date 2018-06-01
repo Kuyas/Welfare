@@ -11,4 +11,6 @@
     <string name="activity_lang_textview_language_choice">Choose your Language</string>
     <string name="activity_lang_button_language_english">English</string>
     <string name="activity_lang_button_language_malayalam">Malayalam</string>
+
+
 </resources>
