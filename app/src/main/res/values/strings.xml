@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Welfare</string>
+
     <string name="activity_main_heading">Traders Welfare Board, Kerala</string>
     <string name="activity_main_button_edit_profile">Edit Profile</string>
     <string name="activity_main_button_class_change">Apply for Class Change</string>
@@ -7,6 +8,30 @@
     <string name="activity_main_button_pension_status">Pension Status</string>
     <string name="activity_main_button_renew_membership">Renewal of Membership</string>
     <string name="activity_main_button_claim_status">Claim Status</string>
+
+    <string name="language_choice">Choose your Language</string>
+    <string name="language_english">English</string>
+    <string name="language_malayalam">Malayalam</string>
+
+    <string name="login_login">Login</string>
+    <string name="login_or">OR</string>
+    <string name="login_signup">Signup</string>
+    <string name="login_name_field">Name</string>
+    <string name="login_name_field_hint">Name: less than 100 characters</string>
+    <string name="login_password_field">Password</string>
+    <!--//TODO: en dash em dash-->
+    <string name="login_password_field_hint">Password: less than 8-15 charcters</string>
+    <string name="login_submit">Submit</string>
+
+    <string name="signup_signup">Signup</string>
+    <string name="signup_name_field">Name</string>
+    <string name="signup_name_field_hint">less than 100 characters</string>
+    <string name="signup_password_field">Password</string>
+    <!--//TODO: en dash em dash-->
+    <string name="signup_password_field_hint">Password: between than 8-15 charcters</string>
+    <string name="signup_otp_field">OTP</string>
+    <string name="signup_otp_field_hint">6 digit OTP</string>
+    <string name="signup_submit">Submit</string>
 
     <string name="activity_lang_textview_language_choice">Choose your Language</string>
     <string name="activity_lang_button_language_english">English</string>
