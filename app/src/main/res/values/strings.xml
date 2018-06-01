@@ -36,4 +36,16 @@
     <string name="activity_lang_textview_language_choice">Choose your Language</string>
     <string name="activity_lang_button_language_english">English</string>
     <string name="activity_lang_button_language_malayalam">Malayalam</string>
+
+    <string name="activity_personal_heading">Personal Details</string>
+    <string name="activity_personal_name">Name</string>
+    <string name="activity_personal_name_hint">Name: less than hundred characters</string>
+    <string name="activity_personal_dob">Date of Birth</string>
+    <string name="activity_personal_gender">Gender</string>
+    <string name="activity_personal_address">Address</string>
+    <string name="activity_personal_address_hint">Address</string>
+    <string name="activity_personal_place">Place</string>
+    <string name="activity_personal_place_hint">Place</string>
+    <string name="activity_personal_district">District</string>
+    <string name="activity_personal_district_hint">District</string>
 </resources>
