@@ -2,12 +2,12 @@
     <string name="app_name">Welfare</string>
 
     <string name="activity_main_heading">Traders Welfare Board, Kerala</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="class_change">Apply for Class Change</string>
-    <string name="application_status">Application Status</string>
-    <string name="pension_status">Pension Status</string>
-    <string name="renew_membership">Renewal of Membership</string>
-    <string name="claim_status">Claim Status</string>
+    <string name="activity_main_button_edit_profile">Edit Profile</string>
+    <string name="activity_main_button_class_change">Apply for Class Change</string>
+    <string name="activity_main_button_application_status">Application Status</string>
+    <string name="activity_main_button_pension_status">Pension Status</string>
+    <string name="activity_main_button_renew_membership">Renewal of Membership</string>
+    <string name="activity_main_button_claim_status">Claim Status</string>
 
     <string name="language_choice">Choose your Language</string>
     <string name="language_english">English</string>
@@ -22,4 +22,8 @@
     <!--//TODO: en dash em dash-->
     <string name="login_password_field_hint">Password: less than 8-15 charcters</string>
     <string name="login_submit">Submit</string>
+
+    <string name="activity_lang_textview_language_choice">Choose your Language</string>
+    <string name="activity_lang_button_language_english">English</string>
+    <string name="activity_lang_button_language_malayalam">Malayalam</string>
 </resources>
