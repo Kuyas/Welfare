@@ -48,4 +48,22 @@
     <string name="activity_personal_place_hint">Place</string>
     <string name="activity_personal_district">District</string>
     <string name="activity_personal_district_hint">District</string>
+
+    <string name="activity_trading_details_heading">Trading Details</string>
+    <string name="activity_trading_details_name">Name of Trading Firm</string>
+    <string name="activity_trading_details_name_hint">Name of Trading Firm</string>
+    <string name="activity_trading_details_address">Address of Trading Firm</string>
+    <!--<string name="activity_trading_details_address_hint">Address of Trading Firm</string>-->
+    <string name="activity_trading_details_subheading">Main Trading Place</string>
+    <string name="activity_trading_details_address_branch">Branch</string>
+    <string name="activity_trading_details_address_godown">Godown</string>
+    <string name="activity_trading_details_address_factory">Factory</string>
+    <string name="activity_trading_details_address_others">Others</string>
+    <string name="activity_trading_details_address_hint">Address</string>
+    <string name="activity_trading_details_ownership">Nature of Ownership</string>
+    <string name="activity_trading_details_capital">Capital Contribution</string>
+    <string name="activity_trading_details_gstn">GSTN and Date</string>
+    <string name="activity_trading_details_license_number">License Number</string>
+    <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
+    <string name="activity_trading_details_auth_name">Name of Authority</string>
 </resources>
