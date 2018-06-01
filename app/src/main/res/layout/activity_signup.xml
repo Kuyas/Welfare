@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:gravity="start"
+        android:textStyle="bold"
+        android:text="@string/signup_signup" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/signup_name_field" />
+    <EditText
+        android:textAlignment="center"
+        android:maxLength="100"
+        android:inputType="text"
+        android:hint="@string/signup_name_field_hint"
+        android:id="@+id/linearlayout_signup_name"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="60dp" />
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/signup_password_field" />
+    <EditText
+        android:textAlignment="center"
+        android:maxLength="100"
+        android:inputType="textPassword"
+        android:hint="@string/signup_password_field_hint"
+        android:id="@+id/linearlayout_signup_password"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:layout_height="60dp" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:text="@string/signup_otp_field" />
+    <EditText
+        android:id="@+id/linearlayout_signup_otp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:hint="@string/signup_otp_field_hint"
+        android:inputType="numberPassword"
+        android:maxLength="100"
+        android:textAlignment="center" />
+    <Button
+        android:text="@string/signup_submit"
+        android:id="@+id/linearlayout_signup_submit"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="120dp"
+        android:layout_height="60dp" />
+</LinearLayout>
