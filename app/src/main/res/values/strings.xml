@@ -72,7 +72,6 @@
     <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
     <string name="activity_trading_details_auth_name">Name of Authority</string>
 
-
     <string name="activity_bank_details_title">Bank details:</string>
     <string name="activity_bank_details_bankname">Bank name:</string>
     <string name="activity_bank_details_account">Account number:</string>
