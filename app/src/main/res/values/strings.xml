@@ -39,7 +39,7 @@
 
     <string name="activity_personal_heading">Personal Details</string>
     <string name="activity_personal_name">Name</string>
-    <string name="activity_personal_name_hint">Name: less than hundred characters</string>
+    <string name="activity_personal_name_hint">Name</string>
     <string name="activity_personal_dob">Date of Birth</string>
     <string name="activity_personal_gender">Gender</string>
     <string name="activity_personal_address">Address</string>
@@ -73,5 +73,18 @@
     <string name="activity_trading_details_auth_name">Name of Authority</string>
 
 
+    <string name="activity_bank_details_title">Bank details:</string>
+    <string name="activity_bank_details_bankname">Bank name:</string>
+    <string name="activity_bank_details_account">Account number:</string>
+    <string name="activity_bank_details_owner">Name of a/c holder:</string>
+    <string name="activity_bank_details_branch">Branch:</string>
+    <string name="activity_bank_details_ifsc">IFSC code:</string>
+    <string name="activity_bank_details_save">Save</string>
+    <string name="activity_bank_details_change">Change</string>
 
+    <string name="activity_renew_membership_title">Renew membership</string>
+    <string name="activity_renew_membership_annual">Annual fees</string>
+    <string name="activity_renew_membership_class">Class fees</string>
+    <string name="activity_renew_membership_total">Total</string>
+    <string name="activity_renew_membership_pay">Pay using netbanking</string>
 </resources>
