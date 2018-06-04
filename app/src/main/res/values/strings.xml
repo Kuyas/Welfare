@@ -48,6 +48,11 @@
     <string name="activity_personal_place_hint">Place</string>
     <string name="activity_personal_district">District</string>
     <string name="activity_personal_district_hint">District</string>
+    <string-array name="activity_personal_spinner_gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
 
     <string name="activity_trading_details_heading">Trading Details</string>
     <string name="activity_trading_details_name">Name of Trading Firm</string>
@@ -66,4 +71,7 @@
     <string name="activity_trading_details_license_number">License Number</string>
     <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
     <string name="activity_trading_details_auth_name">Name of Authority</string>
+
+
+
 </resources>
