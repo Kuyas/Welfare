@@ -66,4 +66,19 @@
     <string name="activity_trading_details_license_number">License Number</string>
     <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
     <string name="activity_trading_details_auth_name">Name of Authority</string>
+
+    <string name="activity_bank_details_title">Bank details:</string>
+    <string name="activity_bank_details_bankname">Bank name:</string>
+    <string name="activity_bank_details_account">Account number:</string>
+    <string name="activity_bank_details_owner">Name of a/c holder:</string>
+    <string name="activity_bank_details_branch">Branch:</string>
+    <string name="activity_bank_details_ifsc">IFSC code:</string>
+    <string name="activity_bank_details_save">Save</string>
+    <string name="activity_bank_details_change">Change</string>
+
+    <string name="activity_renew_membership_title">Renew membership</string>
+    <string name="activity_renew_membership_annual">Annual fees</string>
+    <string name="activity_renew_membership_class">Class fees</string>
+    <string name="activity_renew_membership_total">Total</string>
+    <string name="activity_renew_membership_pay">Pay using netbanking</string>
 </resources>
