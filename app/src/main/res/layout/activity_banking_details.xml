@@ -1,108 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_bank_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:layout_margin="12dp">
+    android:orientation="vertical">
+
+    <include layout="@layout/app_bar_main"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <TextView
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp">
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_bank_details_textinput_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/activity_bank_details_edittext_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_bank_details_bankname"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:maxLength="100"
+                android:textColor="#FFFFFFFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_bank_details_textinput_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--TODO find proper validation and max length-->
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/activity_bank_details_edittext_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_bank_details_account"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="#FFFFFFFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_bank_details_textinput_owner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/activity_bank_details_edittext_owner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_bank_details_owner"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:maxLength="100"
+                android:textColor="#FFFFFFFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_bank_details_textinput_branch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/activity_bank_details_edittext_branch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_bank_details_branch"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:maxLength="100"
+                android:textColor="#FFFFFFFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/activity_bank_details_textinput_ifsc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/activity_bank_details_edittext_ifsc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_bank_details_ifsc"
+                android:inputType="text"
+                android:textAllCaps="true"
+                android:maxLength="100"
+                android:textColor="#FFFFFFFF" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activity_bank_details_title" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_bank_details_bankname"/>
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_bank_details_account"/>
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_bank_details_owner"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_bank_details_branch"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_bank_details_ifsc"/>
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+            android:text="@string/login_submit"
+            android:layout_margin="12dp"/>
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login_submit"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="12dp"/>
-
-</RelativeLayout>
+</LinearLayout>
