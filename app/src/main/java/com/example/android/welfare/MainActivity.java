@@ -26,6 +26,16 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle(getString(R.string.activity_main_heading));
         setSupportActionBar(toolbar);
 
+
+        Button test_btn = findViewById(R.id.button_main_edit_profile);
+        test_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userDetailsIntent = new Intent(MainActivity.this, UserDetailsActivity.class);
+                startActivity(userDetailsIntent);
+            }
+        });
+
     }
 
 
