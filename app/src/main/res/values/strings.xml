@@ -23,15 +23,11 @@
     <string name="login_password_field_hint">Password: less than 8-15 charcters</string>
     <string name="login_submit">Submit</string>
 
-    <string name="signup_signup">Signup</string>
-    <string name="signup_name_field">Name</string>
-    <string name="signup_name_field_hint">less than 100 characters</string>
-    <string name="signup_password_field">Password</string>
-    <!--//TODO: en dash em dash-->
-    <string name="signup_password_field_hint">Password: between than 8-15 charcters</string>
-    <string name="signup_otp_field">OTP</string>
-    <string name="signup_otp_field_hint">6 digit OTP</string>
-    <string name="signup_submit">Submit</string>
+    <string name="activity_signup_title">Signup</string>
+    <string name="activity_signup_name_field">Name</string>
+    <string name="activity_signup_password_field">Password</string>
+    <string name="activity_signup_otp_field">OTP</string>
+    <string name="activity_signup_submit">Submit</string>
 
     <string name="activity_lang_textview_language_choice">Choose your Language</string>
     <string name="activity_lang_button_language_english">English</string>
