@@ -19,16 +19,14 @@
     <string name="login_name_field">Name</string>
     <string name="login_name_field_hint">Name: less than 100 characters</string>
     <string name="login_password_field">Password</string>
-    <!--//TODO: en dash em dash-->
-    <string name="login_password_field_hint">Password: less than 8-15 charcters</string>
+    <string name="login_password_field_hint">Password: less than 8–15 charcters</string>
     <string name="login_submit">Submit</string>
 
     <string name="signup_signup">Signup</string>
     <string name="signup_name_field">Name</string>
     <string name="signup_name_field_hint">less than 100 characters</string>
     <string name="signup_password_field">Password</string>
-    <!--//TODO: en dash em dash-->
-    <string name="signup_password_field_hint">Password: between than 8-15 charcters</string>
+    <string name="signup_password_field_hint">Password: between than 8–15 charcters</string>
     <string name="signup_otp_field">OTP</string>
     <string name="signup_otp_field_hint">6 digit OTP</string>
     <string name="signup_submit">Submit</string>
@@ -86,4 +84,41 @@
     <string name="activity_renew_membership_class">Class fees</string>
     <string name="activity_renew_membership_total">Total</string>
     <string name="activity_renew_membership_pay">Pay using netbanking</string>
+
+
+    <string name="activity_other_details_location">Location</string>
+    <string name="activity_other_details_rupees">Rs.</string>
+
+    <string name="activity_other_details_heading">Other Details</string>
+    <string name="activity_other_details_own_building">If firm operates in own building:</string>
+    <string name="activity_other_details_market_value">Expected Market Value</string>
+    <string name="activity_other_details_own_building_main_branch">Main Branch</string>
+    <string name="activity_other_details_own_building_branch">Branch</string>
+    <string name="activity_other_details_own_building_godown">Godown</string>
+    <string name="activity_other_details_own_building_factory">Factory</string>
+    <string name="activity_other_details_own_building_others">Others</string>
+
+    <string name="activity_other_details_rented_building">If firm operates in rented building:</string>
+    <string name="activity_other_details_rent_amount">Annual Rent Amount</string>
+    <string name="activity_other_details_rented_building_main_branch">Main Branch</string>
+    <string name="activity_other_details_rented_building_branch">Branch</string>
+    <string name="activity_other_details_rented_building_godown">Godown</string>
+    <string name="activity_other_details_rented_building_factory">Factory</string>
+    <string name="activity_other_details_rented_building_other">Other</string>
+
+    <string name="activity_other_details_other_terms">Other Terms &amp; Condtitions if any</string>
+    <string name="activity_other_details_other_terms_main_branch">Main Branch</string>
+    <string name="activity_other_details_other_terms_branch">Branch</string>
+    <string name="activity_other_details_other_terms_godown">Godown</string>
+    <string name="activity_other_details_other_terms_factory">Factory</string>
+
+    <string name="activity_other_details_organization">If member of any traders organization, specify the name of the organization:</string>
+    <string name="activity_other_details_organization_hint">Organisation Name</string>
+    <string name="activity_other_details_family_details">Family Details:</string>
+    <string name="activity_other_details_family_name">Name</string>
+    <string name="activity_other_details_age">Age</string>
+    <string name="activity_other_details_gender">Gender</string>
+    <string name="activity_other_details_occupation">Occupation</string>
+    <string name="activity_other_details_relationship">Relationship</string>
+
 </resources>
