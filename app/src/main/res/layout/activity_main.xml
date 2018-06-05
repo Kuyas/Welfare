@@ -11,121 +11,124 @@
     <include
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <!--<TextView-->
-        <!--android:id="@+id/activity_main_heading"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="@dimen/activity_main_heading_width"-->
-        <!--android:text="@string/activity_main_heading"-->
-        <!--android:textSize="28sp"-->
-        <!--android:textColor="#FF123456"-->
-        <!--android:textAlignment="center"/> &ndash;&gt;-->
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="60dp" />
-
-    <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/activity_main_button_size"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_user_details_tabs_height">
 
         <Button
             android:id="@+id/button_main_edit_profile"
             android:layout_width="@dimen/activity_main_button_size"
             android:layout_height="@dimen/activity_main_button_size"
-            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/activity_main_button_margin_left"
+            android:layout_marginEnd="@dimen/activity_main_button_margin_right"
             android:text="@string/activity_main_button_edit_profile"
             android:textSize="@dimen/activity_main_text_size" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/activity_main_button_size"
-            android:gravity="end">
-
-            <Button
-                android:id="@+id/button_main_class_change"
-                android:layout_width="@dimen/activity_main_button_size"
-                android:layout_height="@dimen/activity_main_button_size"
-                android:layout_gravity="end"
-                android:text="@string/activity_main_button_class_change"
-                android:textSize="@dimen/activity_main_text_size"/>
-
-        </LinearLayout>
+        <Button
+        android:id="@+id/button_main_class_change"
+        android:layout_width="@dimen/activity_main_button_size"
+        android:layout_height="@dimen/activity_main_button_size"
+        android:layout_gravity="end"
+        android:text="@string/activity_main_button_class_change"
+        android:textSize="@dimen/activity_main_text_size"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp" />
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/activity_main_button_size"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_user_details_tabs_height">
 
         <Button
             android:id="@+id/button_main_application_status"
             android:layout_width="@dimen/activity_main_button_size"
             android:layout_height="@dimen/activity_main_button_size"
-            android:layout_gravity="start"
-            android:text="@string/activity_main_button_application_status"
-            android:textSize="@dimen/activity_main_text_size"/>
+            android:layout_marginStart="@dimen/activity_main_button_margin_left"
+            android:layout_marginEnd="@dimen/activity_main_button_margin_right"
+            android:text="@string/activity_main_button_edit_profile"
+            android:textSize="@dimen/activity_main_text_size" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <Button
+            android:id="@+id/button_main_pension_status"
+            android:layout_width="@dimen/activity_main_button_size"
             android:layout_height="@dimen/activity_main_button_size"
-            android:gravity="end">
-
-            <Button
-                android:id="@+id/button_main_pension_status"
-                android:layout_width="@dimen/activity_main_button_size"
-                android:layout_height="@dimen/activity_main_button_size"
-                android:layout_gravity="end"
-                android:text="@string/activity_main_button_pension_status"
-                android:textSize="@dimen/activity_main_text_size"/>
-
-        </LinearLayout>
+            android:layout_gravity="end"
+            android:text="@string/activity_main_button_class_change"
+            android:textSize="@dimen/activity_main_text_size"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp" />
 
     <LinearLayout
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/activity_main_button_size"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/activity_user_details_tabs_height">
 
         <Button
             android:id="@+id/button_main_renew_membership"
             android:layout_width="@dimen/activity_main_button_size"
             android:layout_height="@dimen/activity_main_button_size"
-            android:layout_gravity="start"
-            android:text="@string/activity_main_button_renew_membership"
+            android:layout_marginStart="@dimen/activity_main_button_margin_left"
+            android:layout_marginEnd="@dimen/activity_main_button_margin_right"
+            android:text="@string/activity_main_button_edit_profile"
+            android:textSize="@dimen/activity_main_text_size" />
+
+        <Button
+            android:id="@+id/button_main_claim_status"
+            android:layout_width="@dimen/activity_main_button_size"
+            android:layout_height="@dimen/activity_main_button_size"
+            android:layout_gravity="end"
+            android:text="@string/activity_main_button_class_change"
             android:textSize="@dimen/activity_main_text_size"/>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/activity_main_button_size"
-            android:gravity="end">
-
-            <Button
-                android:id="@+id/button_main_claim_status"
-                android:layout_width="@dimen/activity_main_button_size"
-                android:layout_height="@dimen/activity_main_button_size"
-                android:layout_gravity="end"
-                android:text="@string/activity_main_button_claim_status"
-                android:textSize="@dimen/activity_main_text_size"/>
-
-        </LinearLayout>
-
     </LinearLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_registration_number_text_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_registration_editText_number"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:hint="Enter String"
+            android:inputType="number"
+            android:maxLength="10"
+            android:text=""
+            android:textColor="#FFFFFFFF" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_registration_number_text_input_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_registration_editText_number2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter String 2"
+            android:inputType="number"
+            android:maxLength="10"
+            android:textColor="#FFFFFFFF" />
+
+    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>
 

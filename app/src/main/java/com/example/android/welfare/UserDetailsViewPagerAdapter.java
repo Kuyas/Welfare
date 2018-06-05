@@ -27,13 +27,16 @@ public class UserDetailsViewPagerAdapter extends FragmentPagerAdapter {
         else if (position == 3) {
             fragment = new PaymentDetailsFragment();
         }
+        else if (position == 4) {
+            fragment = new BankingDetailsFragment();
+        }
 
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -50,6 +53,9 @@ public class UserDetailsViewPagerAdapter extends FragmentPagerAdapter {
         }
         else if (position == 3) {
             title = "Payment Details";
+        }
+        else if (position == 4) {
+            title = "Banking Details";
         }
 
         return title;
