@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:stretchColumns="1"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:padding="10dp">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -22,16 +35,16 @@
         android:orientation="horizontal"
         android:layout_weight="1"
         android:textAlignment="center">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_personal_name"
-            android:textSize="20sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:textAlignment="center"
-            android:layout_weight="1"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/activity_personal_name"-->
+            <!--android:textSize="20sp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
         <EditText
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -50,29 +63,31 @@
         android:orientation="horizontal"
         android:layout_weight="1"
         android:textAlignment="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_personal_dob"
-            android:textSize="20sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:textAlignment="center"
-            android:layout_weight="1"/>
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/activity_personal_dob"-->
+            <!--android:textSize="20sp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
 
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="Hello"/>
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="3"-->
+            <!--android:text="Hello"/>-->
 
         <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Set Date"/>
+            android:text="@string/activity_personal_dob"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
         <!--TO DO DATE PICKER -->
     </LinearLayout>
 
@@ -82,16 +97,16 @@
         android:orientation="horizontal"
         android:layout_weight="1"
         android:textAlignment="center">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_personal_gender"
-            android:textSize="20sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:textAlignment="center"
-            android:layout_weight="1"/>
+        <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/activity_personal_gender"-->
+            <!--android:textSize="20sp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
         <Spinner
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -105,23 +120,23 @@
         android:orientation="horizontal"
         android:layout_weight="1"
         android:textAlignment="center">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_personal_address"
-            android:textSize="20sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:textAlignment="center"
-            android:layout_weight="1"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/activity_personal_address"-->
+            <!--android:textSize="20sp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
         <EditText
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/activity_personal_address_hint"
+            android:hint="@string/activity_personal_address"
             android:textSize="20sp"
             android:layout_weight="1"/>
     </LinearLayout>
@@ -132,16 +147,16 @@
         android:orientation="horizontal"
         android:layout_weight="1"
         android:textAlignment="center">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_personal_place"
-            android:textSize="20sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:textAlignment="center"
-            android:layout_weight="1"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/activity_personal_place"-->
+            <!--android:textSize="20sp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
         <EditText
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -159,16 +174,16 @@
         android:orientation="horizontal"
         android:layout_weight="1"
         android:textAlignment="center">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_personal_district"
-            android:textSize="20sp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:textAlignment="center"
-            android:layout_weight="1"/>
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/activity_personal_district"-->
+            <!--android:textSize="20sp"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingTop="10dp"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
         <EditText
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
@@ -193,3 +208,4 @@
     </LinearLayout>
 </LinearLayout>
 </ScrollView>
+</LinearLayout>

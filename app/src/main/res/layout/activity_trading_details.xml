@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:stretchColumns="1"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:padding="10dp">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,16 +40,16 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_name"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_name"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -38,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/activity_trading_details_name_hint"
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -49,16 +68,16 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_address"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_address"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -66,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/activity_trading_details_address_hint"
-                android:textSize="25sp"
+                android:textSize="15sp"
                 android:layout_weight="1"/>
         </LinearLayout>
         <TextView
@@ -81,24 +100,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_address_branch"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_address_branch"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:hint="@string/activity_trading_details_address_hint"
+                android:textSize="15sp"
+                android:hint="@string/activity_trading_details_address_branch"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -108,24 +127,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_address_godown"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_address_godown"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:hint="@string/activity_trading_details_address_hint"
+                android:textSize="15sp"
+                android:hint="@string/activity_trading_details_address_godown"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -135,24 +154,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_address_factory"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_address_factory"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:hint="@string/activity_trading_details_address_hint"
+                android:textSize="15sp"
+                android:hint="@string/activity_trading_details_address_factory"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -162,24 +181,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_address_others"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_address_others"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/activity_trading_details_address_hint"
-                android:textSize="25sp"
+                android:hint="@string/activity_trading_details_address_others"
+                android:textSize="15sp"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -189,20 +208,21 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_ownership"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_ownership"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <Spinner
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></Spinner>
+                android:layout_weight="1">Nature of Ownership
+            </Spinner>
         </LinearLayout>
 
 
@@ -212,23 +232,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_capital"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_capital"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="15sp"
+                android:hint="@string/activity_trading_details_capital"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -238,23 +259,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_gstn"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_gstn"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:hint="@string/activity_trading_details_gstn"
+                android:textSize="15sp"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -264,23 +286,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_license_number"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_license_number"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:hint="@string/activity_trading_details_license_number"
+                android:textSize="15sp"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -290,23 +313,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_licensing_authority"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_licensing_authority"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="15sp"
+                android:hint="@string/activity_trading_details_licensing_authority"
                 android:layout_weight="1"/>
         </LinearLayout>
 
@@ -316,23 +340,24 @@
             android:orientation="horizontal"
             android:layout_weight="1"
             android:textAlignment="center">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_auth_name"
-                android:textSize="25sp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp"
-                android:textAlignment="center"
-                android:layout_weight="1"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/activity_trading_details_auth_name"-->
+                <!--android:textSize="15sp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingTop="10dp"-->
+                <!--android:textAlignment="center"-->
+                <!--android:layout_weight="1"/>-->
             <EditText
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:hint="@string/activity_trading_details_auth_name"
+                android:textSize="15sp"
                 android:layout_weight="1"/>
         </LinearLayout>
         <LinearLayout
@@ -347,7 +372,16 @@
                 android:gravity="center"
                 android:text="NEXT"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
 
     </LinearLayout>
 </ScrollView>
+</LinearLayout>
