@@ -19,16 +19,19 @@ public class UserDetailsViewPagerAdapter extends FragmentPagerAdapter {
             fragment = new PersonalDetailsFragment();
         }
         else if (position == 1) {
-            fragment = new TradingDetailsFragment();
+            fragment = new FamilyDetailsFragment();
         }
         else if (position == 2) {
-            fragment = new OtherDetailsFragment();
+            fragment = new TradingDetailsFragment();
         }
         else if (position == 3) {
-            fragment = new PaymentDetailsFragment();
+            fragment = new OtherDetailsFragment();
         }
         else if (position == 4) {
             fragment = new BankingDetailsFragment();
+        }
+        else if (position == 5) {
+            fragment = new PaymentDetailsFragment();
         }
 
         return fragment;
@@ -36,7 +39,7 @@ public class UserDetailsViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -46,16 +49,19 @@ public class UserDetailsViewPagerAdapter extends FragmentPagerAdapter {
             title = "Personal Details";
         }
         else if (position == 1) {
-            title = "Trading Details";
+            title = "Family Details";
         }
         else if (position == 2) {
-            title = "Other Details";
+            title = "Trading Details";
         }
         else if (position == 3) {
-            title = "Payment Details";
+            title = "Other Details";
         }
         else if (position == 4) {
             title = "Banking Details";
+        }
+        else if (position == 5) {
+            title = "Payment Details";
         }
 
         return title;

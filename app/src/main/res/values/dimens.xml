@@ -14,9 +14,11 @@
     <dimen name="user_details_text_size">22sp</dimen>
     <dimen name="user_details_left_padding">10dp</dimen>
 
-    <dimen name="activity_other_details_column_location_width">140dp</dimen>
-    <dimen name="activity_other_details_column_market_width">240dp</dimen>
     <dimen name="activity_other_details_subheading_text_size">25sp</dimen>
+    <dimen name="activity_payment_details_field_text_size">25sp</dimen>
 
+
+    <!-- TODO: add scrollview and weights to all layouts -->
+    <!-- TODO: use inputType as capCharacters for textInput in all layouts -->
 
 </resources>

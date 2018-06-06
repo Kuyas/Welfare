@@ -85,6 +85,7 @@
 
     <string name="activity_other_details_location">Location</string>
     <string name="activity_other_details_rupees">Rs.</string>
+    <string name="user_details_button_next">NEXT</string>
 
     <string name="activity_other_details_heading">Other Details</string>
     <string name="activity_other_details_own_building">If firm operates in own building:</string>
@@ -117,5 +118,13 @@
     <string name="activity_other_details_gender">Gender</string>
     <string name="activity_other_details_occupation">Occupation</string>
     <string name="activity_other_details_relationship">Relationship</string>
+
+    <string name="activity_payment_details_heading">Payment Details</string>
+    <string name="activity_payment_details_reg_fee">Registration Fee</string>
+    <string name="activity_payment_details_annual_fee">Annual Fee</string>
+    <string name="activity_payment_details_class">Class</string>
+    <string name="activity_payment_details_payment_gateway">Payment Gateway</string>
+
+    <string name="user_details_submit">SUBMIT</string>
 
 </resources>

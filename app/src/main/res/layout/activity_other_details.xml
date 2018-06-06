@@ -43,10 +43,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:weightSum="@integer/user_details_weight_sum"
                 android:paddingStart="@dimen/user_details_left_padding">
 
                 <LinearLayout
-                    android:layout_width="@dimen/activity_other_details_column_location_width"
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_location_weight"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginTop="8dp">
@@ -107,7 +109,8 @@
                     android:layout_marginEnd="12dp"/>
 
                 <LinearLayout
-                    android:layout_width="@dimen/activity_other_details_column_market_width"
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_market_value_weight"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginTop="8dp">
@@ -230,10 +233,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:weightSum="@integer/user_details_weight_sum"
                 android:paddingStart="@dimen/user_details_left_padding">
 
                 <LinearLayout
-                    android:layout_width="@dimen/activity_other_details_column_location_width"
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_location_weight"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginTop="8dp">
@@ -294,7 +299,8 @@
                     android:layout_marginEnd="12dp"/>
 
                 <LinearLayout
-                    android:layout_width="@dimen/activity_other_details_column_market_width"
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_market_value_weight"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:layout_marginTop="8dp">
@@ -302,7 +308,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/activity_other_details_market_value"
+                        android:text="@string/activity_other_details_rent_amount"
                         android:textSize="@dimen/user_details_text_size"
                         android:textColor="@color/colorOtherDetailsColumnHeading"
                         android:layout_gravity="center_horizontal"/>
@@ -396,7 +402,7 @@
 
 <!-- sub point 3 -->
 
-
+<!--TODO: add the 'terms & conditions' feature -->
 
 <!-- sub point 4 -->
 
@@ -420,14 +426,30 @@
                 android:id="@+id/edit_text_organisation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="numberDecimal"
+                android:inputType="text"
                 android:hint="@string/activity_other_details_organization_hint"
                 android:textColor="@color/colorEditText" />
 
         </android.support.design.widget.TextInputLayout>
 
-        <View
-            style="@style/HorizontalDividerLineThick" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="@dimen/user_details_text_size"
+                android:text="@string/user_details_button_next"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

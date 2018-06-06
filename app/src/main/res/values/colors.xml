@@ -7,6 +7,7 @@
     <color name="colorOtherDetailsColumnHeading">#0000FF</color>
     <color name="colorEditText">#000000</color>
     <color name="colorBlack">#000000</color>
+    <color name="colorDatabaseValues">#FF0000</color>
 
     <color name="colorDividerLineThick">#222222</color>
     <color name="colorDividerLineThin">#AAAAAA</color>
