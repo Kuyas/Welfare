@@ -80,4 +80,6 @@
     <string name="activity_renew_membership_class">Class fees</string>
     <string name="activity_renew_membership_total">Total</string>
     <string name="activity_renew_membership_pay">Pay using netbanking</string>
+
+    <string name="sendotp_key">219212Ahay2KSML5b17f2fe</string>
 </resources>

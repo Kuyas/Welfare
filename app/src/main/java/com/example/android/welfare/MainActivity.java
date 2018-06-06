@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     setLocale("en");
 
-                    flagEditor.putBoolean("flag", true);
+                    flagEditor.putBoolean("language", true);
+                    flagEditor.apply();
 
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
@@ -51,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     setLocale("ml");
 
-                    flagEditor.putBoolean("flag", true);
+                    flagEditor.putBoolean("language", true);
+                    flagEditor.apply();
 
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
@@ -72,6 +74,15 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent userDetailsIntent = new Intent(MainActivity.this, UserDetailsActivity.class);
                     startActivity(userDetailsIntent);
+                }
+            });
+
+            Button renew = findViewById(R.id.button_main_renew_membership);
+            test_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent renewIntent = new Intent(MainActivity.this, RenewMembershipActivity.class);
+                    startActivity(renewIntent);
                 }
             });
         }

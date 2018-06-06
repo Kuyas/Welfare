@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="sendotp.key"
+            android:value="@string/sendotp_key" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +27,13 @@
 
         <activity
             android:name=".LoginActivity"
-            android:label="@string/activity_login_title">
-        </activity>
+            android:label="@string/activity_login_title" />
+        <activity
+            android:name=".SignupActivity"
+            android:label="@string/activity_signup_title"/>
+        <activity
+            android:name=".RenewMembershipActivity"
+            android:label="@string/activity_renew_membership_title"/>
     </application>
 
 </manifest>
