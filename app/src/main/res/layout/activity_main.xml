@@ -54,7 +54,7 @@
             android:layout_height="@dimen/activity_main_button_size"
             android:layout_marginStart="@dimen/activity_main_button_margin_left"
             android:layout_marginEnd="@dimen/activity_main_button_margin_right"
-            android:text="@string/activity_main_button_edit_profile"
+            android:text="@string/activity_main_button_application_status"
             android:textSize="@dimen/activity_main_text_size" />
 
         <Button
@@ -62,7 +62,7 @@
             android:layout_width="@dimen/activity_main_button_size"
             android:layout_height="@dimen/activity_main_button_size"
             android:layout_gravity="end"
-            android:text="@string/activity_main_button_class_change"
+            android:text="@string/activity_main_button_pension_status"
             android:textSize="@dimen/activity_main_text_size"/>
 
     </LinearLayout>
@@ -81,7 +81,7 @@
             android:layout_height="@dimen/activity_main_button_size"
             android:layout_marginStart="@dimen/activity_main_button_margin_left"
             android:layout_marginEnd="@dimen/activity_main_button_margin_right"
-            android:text="@string/activity_main_button_edit_profile"
+            android:text="@string/activity_main_button_renew_membership"
             android:textSize="@dimen/activity_main_text_size" />
 
         <Button
@@ -89,7 +89,7 @@
             android:layout_width="@dimen/activity_main_button_size"
             android:layout_height="@dimen/activity_main_button_size"
             android:layout_gravity="end"
-            android:text="@string/activity_main_button_class_change"
+            android:text="@string/activity_main_button_claim_status"
             android:textSize="@dimen/activity_main_text_size"/>
 
     </LinearLayout>
