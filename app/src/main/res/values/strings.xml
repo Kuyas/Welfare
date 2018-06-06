@@ -13,15 +13,13 @@
     <string name="language_english">English</string>
     <string name="language_malayalam">Malayalam</string>
 
-    <string name="login_login">Login</string>
-    <string name="login_or">OR</string>
-    <string name="login_signup">Signup</string>
-    <string name="login_name_field">Name</string>
-    <string name="login_name_field_hint">Name: less than 100 characters</string>
-    <string name="login_password_field">Password</string>
-    <!--//TODO: en dash em dash-->
-    <string name="login_password_field_hint">Password: less than 8-15 charcters</string>
-    <string name="login_submit">Submit</string>
+    <string name="activity_login_title">Login or Signup</string>
+    <string name="activity_login_or">OR</string>
+    <string name="activity_login_signup">Signup</string>
+    <string name="activity_login_login">Login</string>
+    <string name="activity_login_name">Name</string>
+    <string name="activity_login_password">Password</string>
+    <string name="activity_login_submit">Submit</string>
 
     <string name="activity_signup_title">Signup</string>
     <string name="activity_signup_name_field">Name</string>

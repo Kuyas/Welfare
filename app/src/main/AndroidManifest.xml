@@ -16,11 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity android:name=".UserDetailsActivity"
+        <activity
+            android:name=".UserDetailsActivity"
             android:parentActivityName=".MainActivity" />
-        <!--TODO: change the activity name above -->
-        
+        <!-- TODO: change the activity name above -->
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/activity_login_title">
+        </activity>
     </application>
 
 </manifest>

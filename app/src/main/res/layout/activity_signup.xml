@@ -75,7 +75,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_submit"
+            android:text="@string/activity_login_login"
             android:layout_margin="12dp"/>
     </LinearLayout>
 
