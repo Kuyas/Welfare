@@ -104,6 +104,9 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
                 Snackbar snackbar = Snackbar.make(linearLayout, "You have successfully logged out", Snackbar.LENGTH_LONG);
                 snackbar.show();
+
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
                 //TODO: implement Logout functionality
                 break;
             }
