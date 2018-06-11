@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/app_bar_main"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,9 +105,10 @@
         </android.support.design.widget.TextInputLayout>
 
         <Button
+            android:id="@+id/banking_details_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_submit"
+            android:text="@string/user_details_button_next"
             android:layout_margin="12dp"/>
     </LinearLayout>
 

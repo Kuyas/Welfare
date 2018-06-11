@@ -20,6 +20,10 @@
         <activity android:name=".UserDetailsActivity"
             android:parentActivityName=".MainActivity" />
         <!--TODO: change the activity name above -->
+
+        <activity android:name=".RenewMembershipActivity"
+            android:parentActivityName=".MainActivity" />
+
         
     </application>
 

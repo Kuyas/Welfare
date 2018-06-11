@@ -20,5 +20,7 @@
 
     <!-- TODO: add scrollview and weights to all layouts -->
     <!-- TODO: use inputType as capCharacters for textInput in all layouts -->
+    <!-- TODO: use savedInstanceState for all java classes -->
+    <!-- TODO: handle all the exceptions -->
 
 </resources>

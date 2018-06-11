@@ -9,7 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/layout_activity_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".MainActivity">
 
@@ -81,7 +81,7 @@
             android:layout_marginTop="@dimen/activity_user_details_tabs_height">
 
             <Button
-                android:id="@+id/button_main_renew_membership"
+                android:id="@+id/button_main_claim_status"
                 android:layout_width="@dimen/activity_main_button_size"
                 android:layout_height="@dimen/activity_main_button_size"
                 android:layout_marginStart="@dimen/activity_main_button_margin_left"
@@ -90,7 +90,7 @@
                 android:textSize="@dimen/activity_main_text_size" />
 
             <Button
-                android:id="@+id/button_main_claim_status"
+                android:id="@+id/button_main_renew_membership"
                 android:layout_width="@dimen/activity_main_button_size"
                 android:layout_height="@dimen/activity_main_button_size"
                 android:layout_gravity="end"

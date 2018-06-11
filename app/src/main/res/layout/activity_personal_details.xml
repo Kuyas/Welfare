@@ -8,10 +8,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
 <ScrollView
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -257,6 +254,7 @@
         android:layout_weight="1"
         android:layout_height="match_parent">
         <Button
+            android:id="@+id/personal_details_next"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
