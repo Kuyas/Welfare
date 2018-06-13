@@ -89,6 +89,12 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_signup_button_send_otp"
+            android:text="@string/activity_signup_button_send_otp"
+            android:layout_margin="12dp"/>
 
         <Button
             android:layout_width="wrap_content"

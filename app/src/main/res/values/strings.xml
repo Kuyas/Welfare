@@ -27,6 +27,7 @@
     <string name="activity_signup_password_field">Password</string>
     <string name="activity_signup_retype_password_field">Retype Password</string>
     <string name="activity_signup_otp_field">OTP</string>
+    <string name="activity_signup_button_send_otp">Send OTP</string>
     <string name="activity_signup_submit">Submit</string>
 
     <string name="activity_lang_textview_language_choice">Choose your Language</string>
