@@ -22,7 +22,7 @@
             android:inputType="text"
             android:textAllCaps="true"
             android:maxLength="100"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="#000000" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -37,16 +37,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/activity_login_password"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textAllCaps="true"
             android:maxLength="100"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="#000000" />
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:text="@string/activity_login_login"
-        android:id="@+id/acitvity_login_button_login"
+        android:id="@+id/acitvity_login_button_signin"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:layout_width="120dp"
