@@ -31,7 +31,7 @@
                 android:inputType="text"
                 android:textAllCaps="true"
                 android:maxLength="100"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -49,7 +49,7 @@
                 android:inputType="text"
                 android:textAllCaps="true"
                 android:maxLength="16"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -67,7 +67,7 @@
                 android:inputType="text"
                 android:textAllCaps="true"
                 android:maxLength="16"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -85,7 +85,7 @@
                 android:inputType="number"
                 android:textAllCaps="true"
                 android:maxLength="6"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 

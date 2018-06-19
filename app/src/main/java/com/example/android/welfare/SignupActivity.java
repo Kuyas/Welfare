@@ -11,8 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.msg91.sendotp.library.SendOtpVerification;
-
 public class SignupActivity extends AppCompatActivity {
     private final int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private OtpVerfication otpVerfication;

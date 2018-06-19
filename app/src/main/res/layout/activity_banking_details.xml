@@ -26,10 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/activity_bank_details_bankname"
-                android:inputType="text"
-                android:textAllCaps="true"
+                android:inputType="textCapCharacters"
                 android:maxLength="100"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -46,7 +45,7 @@
                 android:hint="@string/activity_bank_details_account"
                 android:inputType="number"
                 android:maxLength="11"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -61,10 +60,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/activity_bank_details_owner"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:textAllCaps="true"
                 android:maxLength="100"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -79,10 +78,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/activity_bank_details_branch"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:textAllCaps="true"
                 android:maxLength="100"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -97,14 +96,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/activity_bank_details_ifsc"
-                android:inputType="text"
+                android:inputType="textCapCharacters"
                 android:textAllCaps="true"
                 android:maxLength="100"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
 
         <Button
+            android:id="@+id/activity_bank_details_button_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/activity_bank_details_save"

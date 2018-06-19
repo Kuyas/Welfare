@@ -36,6 +36,9 @@
         <activity
             android:name=".RenewMembershipActivity"
             android:label="@string/activity_renew_membership_title"/>
+        <activity
+            android:name=".BankingDetailsActivity"
+            android:label="Banking Details"/>
 
     </application>
 

@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/activity_personal_name_hint"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -164,7 +164,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/activity_personal_address_hint"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="@color/inputTextColor" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -205,7 +205,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/activity_personal_place_hint"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
@@ -246,7 +246,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/activity_personal_district_hint"
-                android:textColor="#FFFFFFFF" />
+                android:textColor="@color/inputTextColor" />
 
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>

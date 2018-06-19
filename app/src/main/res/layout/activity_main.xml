@@ -109,7 +109,7 @@
             android:inputType="number"
             android:maxLength="10"
             android:text=""
-            android:textColor="#FFFFFFFF" />
+            android:textColor="@color/inputTextColor" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -126,7 +126,7 @@
             android:hint="Enter String 2"
             android:inputType="number"
             android:maxLength="10"
-            android:textColor="#FFFFFFFF" />
+            android:textColor="@color/inputTextColor" />
 
     </android.support.design.widget.TextInputLayout>
 
