@@ -39,6 +39,9 @@
         <activity
             android:name=".BankingDetailsActivity"
             android:label="Banking Details"/>
+        <activity
+            android:name=".ClassChangeActivity"
+            android:label="@string/activity_class_change" />
 
     </application>
 

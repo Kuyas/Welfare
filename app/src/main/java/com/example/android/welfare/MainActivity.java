@@ -78,13 +78,24 @@ public class MainActivity extends AppCompatActivity {
             });
 
             Button renew = findViewById(R.id.button_main_renew_membership);
-            test_btn.setOnClickListener(new View.OnClickListener() {
+            renew.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent renewIntent = new Intent(MainActivity.this, RenewMembershipActivity.class);
                     startActivity(renewIntent);
                 }
             });
+
+            Button classchange = findViewById(R.id.button_main_class_change);
+            classchange.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent classchangeIntent = new Intent(MainActivity.this, ClassChangeActivity.class);
+                    startActivity(classchangeIntent);
+                }
+            });
+
+
         }
     }
 
