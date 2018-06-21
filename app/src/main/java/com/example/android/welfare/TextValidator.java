@@ -26,16 +26,20 @@ public class TextValidator {
         }
     }
 
+    public String returnText() {
+        return inputString;
+    }
+
     private boolean isEmpty(String input) {
         return TextUtils.isEmpty(input);
     }
 
     public boolean isValid() {
-        return error;
+        return !error;
     }
 
     public boolean regexValidator(String regexPattern) {
-        if (error) return true;
+        if (error) return false;
         else {
             Pattern pattern = Pattern.compile(regexPattern);
             Matcher matcher = pattern.matcher(inputString);
