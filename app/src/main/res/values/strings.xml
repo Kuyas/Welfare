@@ -13,20 +13,21 @@
     <string name="language_english">English</string>
     <string name="language_malayalam">Malayalam</string>
 
-    <string name="login_login">Login</string>
-    <string name="login_or">OR</string>
-    <string name="login_signup">Signup</string>
-    <string name="login_name_field">Name</string>
-    <string name="login_name_field_hint">Name: less than 100 characters</string>
-    <string name="login_password_field">Password</string>
-    <!--//TODO: en dash em dash-->
-    <string name="login_password_field_hint">Password: less than 8-15 charcters</string>
-    <string name="login_submit">Submit</string>
+    <string name="activity_login_title">Login or Signup</string>
+    <string name="activity_login_or">OR</string>
+    <string name="activity_login_signup">Signup</string>
+    <string name="activity_login_forgot_password">Forgot Password</string>
+    <string name="activity_login_login">Login</string>
+    <string name="activity_login_name">Name</string>
+    <string name="activity_login_password">Password</string>
+    <string name="activity_login_submit">Submit</string>
 
     <string name="activity_signup_title">Signup</string>
     <string name="activity_signup_name_field">Name</string>
     <string name="activity_signup_password_field">Password</string>
+    <string name="activity_signup_retype_password_field">Retype Password</string>
     <string name="activity_signup_otp_field">OTP</string>
+    <string name="activity_signup_button_send_otp">Send OTP</string>
     <string name="activity_signup_submit">Submit</string>
 
     <string name="activity_lang_textview_language_choice">Choose your Language</string>
@@ -82,6 +83,15 @@
     <string name="activity_renew_membership_class">Class fees</string>
     <string name="activity_renew_membership_total">Total</string>
     <string name="activity_renew_membership_pay">Pay using netbanking</string>
+
+    <string name="activity_forgot_password_name_field">Name</string>
+    <string name="activity_forgot_password_otp_field">OTP</string>
+    <string name="activity_forgot_password_password_field">Password</string>
+    <string name="activity_forgot_password_retype_password_field">Retype Password</string>
+    <string name="activity_forgot_password_send_otp">Send OTP</string>
+    <string name="activity_forgot_password_change_login">Change Password and Login</string>
+
+    <string name="sendotp_key">219212Ahay2KSML5b17f2fe</string>
 
     <string name="activity_other_details_location">Location</string>
     <string name="activity_other_details_rupees">Rs.</string>

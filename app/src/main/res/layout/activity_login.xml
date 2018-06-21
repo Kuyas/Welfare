@@ -6,55 +6,62 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:gravity="start"
-        android:textStyle="bold"
-        android:text="@string/login_login" />
+    <include layout="@layout/app_bar_main"></include>
 
-    <TextView
-        android:layout_gravity="center"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="@string/login_name_field" />
-    <EditText
-        android:textAlignment="center"
-        android:maxLength="100"
-        android:inputType="text"
-        android:hint="@string/login_name_field_hint"
-        android:id="@+id/linearlayout_login_name"
-        android:layout_gravity="center"
-        android:layout_width="250dp"
-        android:layout_height="60dp" />
-    <TextView
-        android:layout_gravity="center"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="@string/login_password_field" />
-    <EditText
-        android:textAlignment="center"
-        android:maxLength="100"
-        android:inputType="textPassword"
-        android:hint="@string/login_password_field_hint"
-        android:id="@+id/linearlayout_login_password"
-        android:layout_gravity="center"
-        android:layout_width="250dp"
-        android:layout_height="60dp" />
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_login_textinput_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_login_edittext_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/activity_login_name"
+            android:inputType="text"
+            android:textAllCaps="true"
+            android:maxLength="100"
+            android:textColor="#000000" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_login_textinput_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_login_edittext_password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/activity_login_password"
+            android:inputType="textPassword"
+            android:textAllCaps="true"
+            android:maxLength="100"
+            android:textColor="#000000" />
+
+    </android.support.design.widget.TextInputLayout>
+
     <Button
-        android:text="@string/login_submit"
-        android:id="@+id/linearlayout_login_submit"
+        android:text="@string/activity_login_login"
+        android:id="@+id/acitvity_login_button_signin"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:layout_width="120dp"
         android:layout_height="60dp" />
     <Button
-        android:text="@string/login_signup"
-        android:id="@+id/linearlayout_login_signup"
+        android:text="@string/activity_login_signup"
+        android:id="@+id/activity_login_button_signup"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:layout_width="120dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:text="@string/activity_login_forgot_password"
+        android:id="@+id/activity_login_button_forgot_password"
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:layout_width="120dp"

@@ -6,32 +6,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_lang_textview_language_choice"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:layout_marginTop="100dp"/>
 
-        <Button
-            android:id="@+id/english_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:padding="25dp"
-            android:text="@string/activity_lang_button_language_english"/>
+    <include layout="@layout/app_bar_main"></include>
 
-        <Button
-            android:id="@+id/malayalam_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
-            android:padding="25dp"
-            android:text="@string/activity_lang_button_language_malayalam"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_lang_textview_language_choice"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/button_lang_english"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:padding="25dp"
+        android:text="@string/activity_lang_button_language_english"/>
+
+    <Button
+        android:id="@+id/button_lang_malayalam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:padding="25dp"
+        android:text="@string/activity_lang_button_language_malayalam"/>
     </LinearLayout>
 
