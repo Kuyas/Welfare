@@ -1,5 +1,6 @@
 package com.example.android.welfare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -14,7 +15,7 @@ public class BankingDetailsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banking_details);
 
-        Button submitButton = (Button) findViewById(R.id.activity_bank_details_button_submit);
+        Button submitButton = findViewById(R.id.activity_bank_details_button_submit);
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +70,13 @@ public class BankingDetailsActivity extends AppCompatActivity{
                 }
 
                 if (flag) {
-                    Toast.makeText(BankingDetailsActivity.this, "Details submitted", Toast.LENGTH_LONG);
+                    Toast.makeText(BankingDetailsActivity.this, "Details submitted", Toast.LENGTH_LONG).show();
                 }
+
+
+                Intent paymentDetailsIntent = new Intent(BankingDetailsActivity.this,
+                        PaymentDetailsActivity.class);
+                startActivity(paymentDetailsIntent);
 
             }
         });

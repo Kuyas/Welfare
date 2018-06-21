@@ -21,13 +21,13 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences flag;
-    private Button editProfile;
-    private Button renewMembership;
-    private Button classChange;
-    private Button applicationStatus;
-    private Button claimStatus;
-    private Button pensionStatus;
+    private SharedPreferences flag;
+    private Button buttonEditProfile;
+    private Button buttonRenewMembership;
+    private Button buttonClassChange;
+    private Button buttonApplicationStatus;
+    private Button buttonClaimStatus;
+    private Button buttonPensionStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,45 +69,29 @@ public class MainActivity extends AppCompatActivity {
 
             setContentView(R.layout.activity_main);
 
+            buttonEditProfile = findViewById(R.id.button_main_edit_profile);
+            buttonRenewMembership = findViewById(R.id.button_main_renew_membership);
+            buttonClassChange = findViewById(R.id.button_main_class_change);
+            buttonApplicationStatus = findViewById(R.id.button_main_application_status);
+            buttonClaimStatus = findViewById(R.id.button_main_claim_status);
+            buttonPensionStatus = findViewById(R.id.button_main_pension_status);
+
+            buttonEditProfile.setOnClickListener(onClickListener);
+            buttonRenewMembership.setOnClickListener(onClickListener);
+            buttonClassChange.setOnClickListener(onClickListener);
+            buttonApplicationStatus.setOnClickListener(onClickListener);
+            buttonClaimStatus.setOnClickListener(onClickListener);
+            buttonPensionStatus.setOnClickListener(onClickListener);
+
             final Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
             toolbar.setTitle(getString(R.string.activity_main_heading));
             setSupportActionBar(toolbar);
 
-
-            Button button_edit_profile = findViewById(R.id.button_main_edit_profile);
-            button_edit_profile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent userDetailsIntent = new Intent(MainActivity.this, PersonalDetailsActivity.class);
-                    startActivity(userDetailsIntent);
-                }
-            });
-
-            Button button_renew_membership = findViewById(R.id.button_main_renew_membership);
-            button_renew_membership.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent renewIntent = new Intent(MainActivity.this, RenewMembershipActivity.class);
-                    startActivity(renewIntent);
-                }
-            });
         }
     }
-        editProfile = findViewById(R.id.button_main_edit_profile);
-        renewMembership = findViewById(R.id.button_main_renew_membership);
-        classChange = findViewById(R.id.button_main_class_change);
-        applicationStatus = findViewById(R.id.button_main_application_status);
-        claimStatus = findViewById(R.id.button_main_claim_status);
-        pensionStatus = findViewById(R.id.button_main_pension_status);
 
-        editProfile.setOnClickListener(onClickListener);
-        renewMembership.setOnClickListener(onClickListener);
-        classChange.setOnClickListener(onClickListener);
-        applicationStatus.setOnClickListener(onClickListener);
-        claimStatus.setOnClickListener(onClickListener);
-        pensionStatus.setOnClickListener(onClickListener);
 
-    }
+
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -116,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()) {
 
                 case (R.id.button_main_edit_profile): {
-                    Intent editProfileIntent = new Intent(MainActivity.this, UserDetailsActivity.class);
+                    Intent editProfileIntent = new Intent(MainActivity.this, PersonalDetailsActivity.class);
                     startActivity(editProfileIntent);
                     break;
                 }

@@ -23,9 +23,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserDetailsActivity"
-            android:parentActivityName=".MainActivity" />
-        <!-- TODO: change the activity name above -->
+            android:name=".PersonalDetailsActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="Personal Details"/>
 
         <activity
             android:name=".LoginActivity"
@@ -39,6 +39,27 @@
         <activity
             android:name=".BankingDetailsActivity"
             android:label="Banking Details"/>
+
+        <activity
+            android:name=".FamilyDetailsActivity"
+            android:label="Family Details">
+        </activity>
+
+        <activity
+            android:name=".TradingDetailsActivity"
+            android:label="Trading Details">
+        </activity>
+
+        <activity
+            android:name=".OtherDetailsActivity"
+            android:label="Other Details">
+        </activity>
+
+        <activity
+            android:name=".PaymentDetailsActivity"
+            android:label="Payment Details">
+        </activity>
+
 
     </application>
 
