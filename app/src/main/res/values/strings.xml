@@ -103,6 +103,14 @@
 
     <string name="sendotp_key">219212Ahay2KSML5b17f2fe</string>
 
+    <string name="activity_class_change">Class Change</string>
+    <string name="activity_classchange_title">Class Change</string>
+    <string name="activity_classchange_old_income">Current Income</string>
+    <string name="activity_classchange_old_class">Current Class</string>
+    <string name="activity_classchange_name">New Income</string>
+    <string name="activity_classchange_submit">Submit</string>
+    <string name="activity_classchange_class">New Class</string>
+
     <string name="activity_other_details_location">Location</string>
     <string name="activity_other_details_rupees">Rs.</string>
     <string name="user_details_button_next">NEXT</string>

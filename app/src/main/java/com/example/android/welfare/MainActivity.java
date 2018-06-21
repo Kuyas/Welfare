@@ -109,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(renewMembershipIntent);
                     break;
                 }
+                case (R.id.button_main_class_change): {
+                    Intent classchangeIntent = new Intent(MainActivity.this, ClassChangeActivity.class);
+                    startActivity(classchangeIntent);
+                }
                 default: {
                     break;
                 }
