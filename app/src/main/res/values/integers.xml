@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <integer name="user_details_weight_sum">100</integer>
+
+    <integer name="activity_other_details_column_location_weight">35</integer>
+    <integer name="activity_other_details_column_market_value_weight">65</integer>
+
+    <integer name="activity_payment_details_column_key_weight">50</integer>
+    <integer name="activity_payment_details_column_value_weight">50</integer>
+
+</resources>

@@ -1,6 +1,458 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/user_details_left_padding"
+            android:textSize="@dimen/user_details_heading_height"
+            android:text="@string/activity_other_details_heading"/>
+
+
+<!-- sub point 1 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/user_details_left_padding"
+                android:text="@string/activity_other_details_own_building"
+                android:textSize="@dimen/activity_other_details_subheading_text_size"/>
+
+            <View
+                style="@style/HorizontalDividerLineThick" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="@integer/user_details_weight_sum"
+                android:paddingStart="@dimen/user_details_left_padding">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_location_weight"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_location"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:textColor="@color/colorOtherDetailsColumnHeading"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_main_branch"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_branch"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="26dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_godown"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="27dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_factory"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="27dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_others"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="25dp"/>
+
+
+                </LinearLayout>
+
+                <View
+                    style="@style/VerticalDividerLineThin"
+                    android:layout_marginEnd="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_market_value_weight"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_market_value"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:textColor="@color/colorOtherDetailsColumnHeading"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_own_main_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_own_main_branch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_own_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_own_branch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_own_godown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_own_godown"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_own_factory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_own_factory"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_own_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_own_other"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            style="@style/HorizontalDividerLineThick"
+            android:layout_marginBottom="20dp"/>
+
+<!-- sub point 2 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/user_details_left_padding"
+                android:text="@string/activity_other_details_rented_building"
+                android:textSize="@dimen/activity_other_details_subheading_text_size"/>
+
+            <View
+                style="@style/HorizontalDividerLineThick" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="@integer/user_details_weight_sum"
+                android:paddingStart="@dimen/user_details_left_padding">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_location_weight"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_location"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:textColor="@color/colorOtherDetailsColumnHeading"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_main_branch"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_branch"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="26dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_godown"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="27dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_factory"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="27dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_own_building_others"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="25dp"/>
+
+
+                </LinearLayout>
+
+                <View
+                    style="@style/VerticalDividerLineThin"
+                    android:layout_marginEnd="12dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_other_details_column_market_value_weight"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_other_details_rent_amount"
+                        android:textSize="@dimen/user_details_text_size"
+                        android:textColor="@color/colorOtherDetailsColumnHeading"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_rented_main_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_rented_main_branch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_rented_branch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_rented_branch"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_rented_godown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_rented_godown"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_rented_factory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_rented_factory"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_rented_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/edit_text_rented_other"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="numberDecimal"
+                            android:hint="@string/activity_other_details_rupees"
+                            android:textColor="@color/colorEditText" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            style="@style/HorizontalDividerLineThick"
+            android:layout_marginBottom="20dp"/>
+
+<!-- sub point 3 -->
+
+<!--TODO: add the 'terms & conditions' feature -->
+
+<!-- sub point 4 -->
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/user_details_left_padding"
+            android:text="@string/activity_other_details_organization"
+            android:textSize="@dimen/user_details_text_size"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_organisation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_organisation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:hint="@string/activity_other_details_organization_hint"
+                android:textColor="@color/colorEditText" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="25dp">
+
+            <Button
+                android:id="@+id/button_other_details_next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="@dimen/user_details_text_size"
+                android:text="@string/user_details_button_next"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

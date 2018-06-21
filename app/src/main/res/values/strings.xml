@@ -51,6 +51,16 @@
         <item>Other</item>
     </string-array>
 
+
+    <string name="activity_family_details_add_row">Add Row</string>
+    <string name="activity_family_details_heading_srNo">Sr.No</string>
+    <string name="activity_family_details_heading_name">Name</string>
+    <string name="activity_family_details_heading_age">Age</string>
+    <string name="activity_family_details_heading_gender">Gender</string>
+    <string name="activity_family_details_heading_occupation">Occupation</string>
+    <string name="activity_family_details_heading_relationship">Relationship</string>
+
+
     <string name="activity_trading_details_heading">Trading Details</string>
     <string name="activity_trading_details_name">Name of Trading Firm</string>
     <string name="activity_trading_details_name_hint">Name of Trading Firm</string>
@@ -92,4 +102,57 @@
     <string name="activity_forgot_password_change_login">Change Password and Login</string>
 
     <string name="sendotp_key">219212Ahay2KSML5b17f2fe</string>
+
+    <string name="activity_class_change">Class Change</string>
+    <string name="activity_classchange_title">Class Change</string>
+    <string name="activity_classchange_old_income">Current Income</string>
+    <string name="activity_classchange_old_class">Current Class</string>
+    <string name="activity_classchange_name">New Income</string>
+    <string name="activity_classchange_submit">Submit</string>
+    <string name="activity_classchange_class">New Class</string>
+
+    <string name="activity_other_details_location">Location</string>
+    <string name="activity_other_details_rupees">Rs.</string>
+    <string name="user_details_button_next">NEXT</string>
+
+    <string name="activity_other_details_heading">Other Details</string>
+    <string name="activity_other_details_own_building">If firm operates in own building:</string>
+    <string name="activity_other_details_market_value">Expected Market Value</string>
+    <string name="activity_other_details_own_building_main_branch">Main Branch</string>
+    <string name="activity_other_details_own_building_branch">Branch</string>
+    <string name="activity_other_details_own_building_godown">Godown</string>
+    <string name="activity_other_details_own_building_factory">Factory</string>
+    <string name="activity_other_details_own_building_others">Others</string>
+
+    <string name="activity_other_details_rented_building">If firm operates in rented building:</string>
+    <string name="activity_other_details_rent_amount">Annual Rent Amount</string>
+    <string name="activity_other_details_rented_building_main_branch">Main Branch</string>
+    <string name="activity_other_details_rented_building_branch">Branch</string>
+    <string name="activity_other_details_rented_building_godown">Godown</string>
+    <string name="activity_other_details_rented_building_factory">Factory</string>
+    <string name="activity_other_details_rented_building_other">Other</string>
+
+    <string name="activity_other_details_other_terms">Other Terms &amp; Condtitions if any</string>
+    <string name="activity_other_details_other_terms_main_branch">Main Branch</string>
+    <string name="activity_other_details_other_terms_branch">Branch</string>
+    <string name="activity_other_details_other_terms_godown">Godown</string>
+    <string name="activity_other_details_other_terms_factory">Factory</string>
+
+    <string name="activity_other_details_organization">If member of any traders organization, specify the name of the organization:</string>
+    <string name="activity_other_details_organization_hint">Organisation Name</string>
+    <string name="activity_other_details_family_details">Family Details:</string>
+    <string name="activity_other_details_family_name">Name</string>
+    <string name="activity_other_details_age">Age</string>
+    <string name="activity_other_details_gender">Gender</string>
+    <string name="activity_other_details_occupation">Occupation</string>
+    <string name="activity_other_details_relationship">Relationship</string>
+
+    <string name="activity_payment_details_heading">Payment Details</string>
+    <string name="activity_payment_details_reg_fee">Registration Fee</string>
+    <string name="activity_payment_details_annual_fee">Annual Fee</string>
+    <string name="activity_payment_details_class">Class</string>
+    <string name="activity_payment_details_payment_gateway">Payment Gateway</string>
+
+    <string name="user_details_submit">SUBMIT</string>
+
 </resources>
