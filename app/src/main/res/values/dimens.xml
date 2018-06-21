@@ -17,8 +17,14 @@
     <dimen name="activity_other_details_subheading_text_size">25sp</dimen>
     <dimen name="activity_payment_details_field_text_size">25sp</dimen>
 
+    <dimen name="activity_family_details_row_height">30dp</dimen>
+    <dimen name="activity_family_details_rows_text_size">20sp</dimen>
+    <dimen name="activity_family_details_heading_text_size">12sp</dimen>
+
 
     <!-- TODO: add scrollview and weights to all layouts -->
     <!-- TODO: use inputType as capCharacters for textInput in all layouts -->
+    <!-- TODO: use savedInstanceState for all java classes -->
+    <!-- TODO: handle all the exceptions -->
 
 </resources>

@@ -51,6 +51,16 @@
         <item>Other</item>
     </string-array>
 
+
+    <string name="activity_family_details_add_row">Add Row</string>
+    <string name="activity_family_details_heading_srNo">Sr.No</string>
+    <string name="activity_family_details_heading_name">Name</string>
+    <string name="activity_family_details_heading_age">Age</string>
+    <string name="activity_family_details_heading_gender">Gender</string>
+    <string name="activity_family_details_heading_occupation">Occupation</string>
+    <string name="activity_family_details_heading_relationship">Relationship</string>
+
+
     <string name="activity_trading_details_heading">Trading Details</string>
     <string name="activity_trading_details_name">Name of Trading Firm</string>
     <string name="activity_trading_details_name_hint">Name of Trading Firm</string>
