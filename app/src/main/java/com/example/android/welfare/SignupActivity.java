@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,19 +21,47 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        Button sendotp = (Button) findViewById(R.id.activity_signup_button_send_otp);
-        sendotp.setOnClickListener(new View.OnClickListener() {
+        Button SignupButton = (Button) findViewById(R.id.activity_signup_button_signup);
+        Button SendOTPButton = (Button) findViewById(R.id.activity_signup_button_send_otp);
+
+        SignupButton.setEnabled(false);
+
+        final TextInputEditText mobile = (TextInputEditText) findViewById(R.id.activity_signup_edittext_mobile);
+        final TextInputEditText password = (TextInputEditText) findViewById(R.id.activity_signup_edittext_password);
+        final TextInputEditText retypePassword = (TextInputEditText) findViewById(R.id.activity_signup_edittext_retype_password);
+        final TextInputEditText otp = (TextInputEditText) findViewById(R.id.activity_signup_edittext_otp);
+
+        SendOTPButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: implement checks for mobile number and password values
-                otpVerfication = new OtpVerfication();
-                String phoneNumber = "123456789";
-                otpVerfication.setter(phoneNumber, SignupActivity.this);
+                TextValidator validMobile = new TextValidator(mobile);
+                TextValidator validPassword = new TextValidator(password);
+                TextValidator validRetypePassword = new TextValidator(retypePassword);
+                TextValidator validOTP = new TextValidator(otp);
 
-                if(Build.VERSION.SDK_INT < 23){
-                    otpVerfication.initiate();
-                }else {
-                    requestSMSPermission();
+                boolean flag = true;
+                if (!validMobile.regexValidator("\\d{10}")) {
+                    flag = false;
+                    mobile.setError("Please enter valid 10 digit mobile number");
+                } else if (!validPassword.regexValidator("[a-zA-Z0-9]{8,16}")) {
+                    flag = false;
+                    password.setError("Please enter a valid password between 8-16 characters");
+                } else if (!validRetypePassword.regexValidator("[a-zA-Z]{8,16}")) {
+                    flag = false;
+                    retypePassword.setError("Please enter a valid password between 8-16 characters");
+                } else if (!validPassword.returnText().equals(validRetypePassword.returnText())){
+                    flag = false;
+                    retypePassword.setError("Password and retyped password are not same");
+                } else {
+                    otpVerfication = new OtpVerfication();
+                    String phoneNumber = validMobile.returnText();
+                    otpVerfication.setter(phoneNumber, SignupActivity.this);
+
+                    if(Build.VERSION.SDK_INT < 23){
+                        otpVerfication.initiate();
+                    }else {
+                        requestSMSPermission();
+                    }
                 }
             }
         });
@@ -52,7 +81,7 @@ public class SignupActivity extends AppCompatActivity {
 
         if(hasContactPermission != PackageManager.PERMISSION_GRANTED ) {
             ActivityCompat.requestPermissions(this , new String[] {Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
-        }else {
+        } else {
             otpVerfication.initiate();
         }
     }
