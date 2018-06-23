@@ -1,5 +1,6 @@
 package com.example.android.welfare;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +9,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
@@ -21,6 +26,57 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
 
         //Spinner for Type of Ownership
+        final Spinner spinner = findViewById(R.id.spinner_layout_trading_details_ownership);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.activity_trading_details_spinner_ownership, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Context context = getApplicationContext();
+                Object text =  parent.getItemAtPosition(pos);
+                if(pos>0) {
+                    Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //Another interface callback
+                Context context = getApplicationContext();
+//            Object text =  parent.getItemAtPosition(pos);
+                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Spinner for Type of Authority
+        final Spinner spinner1 = findViewById(R.id.spinner_layout_trading_details_authority);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.activity_trading_details_spinner_ownership, android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter1);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                Context context = getApplicationContext();
+                Object text =  parent.getItemAtPosition(pos);
+                if(pos>0) {
+                    Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //Another interface callback
+                Context context = getApplicationContext();
+//            Object text =  parent.getItemAtPosition(pos);
+                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
 
         final Button buttonNext = findViewById(R.id.button_trading_details_next);
@@ -110,6 +166,17 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     flag = false;
                     licenseAuthority.setError("Please enter a valid License Authority");
                 }
+                if(spinner.getSelectedItem().toString().trim().equals("Type of Ownership")){
+                    flag = false;
+                    Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Type of Ownership", Toast.LENGTH_SHORT).show();
+
+                }
+                if(spinner1.getSelectedItem().toString().trim().equals("Name of Official Authority")){
+                    flag = false;
+                    Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Official Authority", Toast.LENGTH_SHORT).show();
+
+
+                }
 
                 if (!flag) {
                     Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
@@ -158,4 +225,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
             }
         }
     };
+
+
 }

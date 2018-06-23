@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -29,6 +30,7 @@ import java.util.Date;
 import java.util.List;
 
 import static android.widget.Toast.LENGTH_SHORT;
+
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -106,6 +108,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                 //Another interface callback
             }
         });
+
+
 
 
         final Button buttonNext = findViewById(R.id.button_personal_details_next);
@@ -196,6 +200,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
 
     }
+
 
 
 
