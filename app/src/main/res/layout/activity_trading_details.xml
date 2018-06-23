@@ -137,6 +137,7 @@
             </android.support.design.widget.TextInputLayout>
 
 
+
             <Spinner
                 android:id="@+id/spinner_layout_trading_details_ownership"
                 android:layout_width="match_parent"

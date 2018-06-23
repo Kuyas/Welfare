@@ -102,12 +102,14 @@
     <string name="activity_trading_details_spinner_ownership_prompt">Nature of Ownership</string>
     <string name="activity_trading_details_spinner_authority_prompt">Authority</string>
     <string-array name="activity_trading_details_spinner_ownership">
+        <item>Type of Ownership</item>
         <item>Single owner</item>
         <item>Partnership</item>
         <item>Self-help group</item>
         <item>Other</item>
     </string-array>
     <string-array name="activity_trading_details_spinner_authority">
+        <item>Name of Official Authority</item>
         <item>State GST Rules</item>
         <item>Panchayat</item>
         <item>Municipality</item>

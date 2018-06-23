@@ -116,7 +116,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                 TextInputEditText name = findViewById(R.id.edit_text_personal_name);
                 TextInputEditText address = findViewById(R.id.edit_text_personal_address);
                 TextInputEditText place = findViewById(R.id.edit_text_personal_place);
-                TextView date = findViewById(R.id.activity_personal_textview_date);
+//                TextView date = findViewById(R.id.activity_personal_textview_date);
 
                 TextValidator validName = new TextValidator(name);
                 TextValidator validAddress = new TextValidator(address);
