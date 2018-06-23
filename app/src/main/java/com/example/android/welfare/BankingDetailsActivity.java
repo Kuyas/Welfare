@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -17,16 +19,31 @@ public class BankingDetailsActivity extends AppCompatActivity{
 
         Button submitButton = findViewById(R.id.activity_bank_details_button_submit);
 
+        final Toolbar toolbar = findViewById(R.id.activity_toolbar);
+        toolbar.setTitle(getString(R.string.activity_bank_details_heading));
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean flag = true;
-                TextInputEditText bankName = (TextInputEditText) findViewById(R.id.activity_bank_details_edittext_name);
-                TextInputEditText owner = (TextInputEditText) findViewById(R.id.activity_bank_details_edittext_owner);
-                TextInputEditText accountNumber = (TextInputEditText) findViewById(R.id.activity_bank_details_edittext_account);
-                TextInputEditText branch = (TextInputEditText) findViewById(R.id.activity_bank_details_edittext_branch);
-                TextInputEditText ifsc = (TextInputEditText) findViewById(R.id.activity_bank_details_edittext_ifsc);
+                TextInputEditText bankName = findViewById(R.id.activity_bank_details_edittext_name);
+                TextInputEditText owner = findViewById(R.id.activity_bank_details_edittext_owner);
+                TextInputEditText accountNumber = findViewById(R.id.activity_bank_details_edittext_account);
+                TextInputEditText branch = findViewById(R.id.activity_bank_details_edittext_branch);
+                TextInputEditText ifsc = findViewById(R.id.activity_bank_details_edittext_ifsc);
 
                 TextValidator validbankName = new TextValidator(bankName);
                 TextValidator validOwner = new TextValidator(owner);

@@ -51,7 +51,7 @@
         <item>Other</item>
     </string-array>
 
-
+    <string name="activity_family_details_heading">Family Details</string>
     <string name="activity_family_details_add_row">Add Row</string>
     <string name="activity_family_details_heading_srNo">Sr.No</string>
     <string name="activity_family_details_heading_name">Name</string>
@@ -79,12 +79,12 @@
     <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
     <string name="activity_trading_details_auth_name">Name of Authority</string>
 
-    <string name="activity_bank_details_title">Bank details</string>
-    <string name="activity_bank_details_bankname">Bank name</string>
-    <string name="activity_bank_details_account">Account number</string>
+    <string name="activity_bank_details_heading">Banking Details</string>
+    <string name="activity_bank_details_bankname">Bank Name</string>
+    <string name="activity_bank_details_account">Account Number</string>
     <string name="activity_bank_details_owner">Name of a/c holder</string>
     <string name="activity_bank_details_branch">Branch</string>
-    <string name="activity_bank_details_ifsc">IFSC code</string>
+    <string name="activity_bank_details_ifsc">IFSC Code</string>
     <string name="activity_bank_details_save">Save</string>
     <string name="activity_bank_details_change">Change</string>
 
