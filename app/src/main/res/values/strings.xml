@@ -46,10 +46,31 @@
     <string name="activity_personal_district">District</string>
     <string name="activity_personal_district_hint">District</string>
     <string-array name="activity_personal_spinner_gender">
+        <item>Choose Gender</item>
         <item>Male</item>
         <item>Female</item>
         <item>Other</item>
     </string-array>
+
+    <string name="activity_personal_textview_dob">dd/mm/yyyy</string>
+    <string-array name="activity_personal_spinner_district">
+        <!--<item>Choose District</item>-->
+        <item>Kasaragod</item>
+        <item>Kannur</item>
+        <item>Wayanad</item>
+        <item>Kozhikode</item>
+        <item>Malappuram</item>
+        <item>Palakkad</item>
+        <item>Thrissur</item>
+        <item>Ernakulam</item>
+        <item>Idukki</item>
+        <item>Kottayam</item>
+        <item>Alappuzha</item>
+        <item>Pathanamthitta</item>
+        <item>Kollam</item>
+        <item>Thiruvananthapuram</item>
+    </string-array>
+
 
     <string name="activity_family_details_heading">Family Details</string>
     <string name="activity_family_details_add_row">Add Row</string>
@@ -65,7 +86,6 @@
     <string name="activity_trading_details_name">Name of Trading Firm</string>
     <string name="activity_trading_details_name_hint">Name of Trading Firm</string>
     <string name="activity_trading_details_address">Address of Trading Firm</string>
-    <!--<string name="activity_trading_details_address_hint">Address of Trading Firm</string>-->
     <string name="activity_trading_details_subheading">Main Trading Place</string>
     <string name="activity_trading_details_address_branch">Branch</string>
     <string name="activity_trading_details_address_godown">Godown</string>
@@ -78,6 +98,23 @@
     <string name="activity_trading_details_license_number">License Number</string>
     <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
     <string name="activity_trading_details_auth_name">Name of Authority</string>
+    <string name="activity_trading_details_button_next">Next</string>
+    <string name="activity_trading_details_spinner_ownership_prompt">Nature of Ownership</string>
+    <string name="activity_trading_details_spinner_authority_prompt">Authority</string>
+    <string-array name="activity_trading_details_spinner_ownership">
+        <item>Type of Ownership</item>
+        <item>Single owner</item>
+        <item>Partnership</item>
+        <item>Self-help group</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="activity_trading_details_spinner_authority">
+        <item>Name of Official Authority</item>
+        <item>State GST Rules</item>
+        <item>Panchayat</item>
+        <item>Municipality</item>
+        <item>Corporation</item>
+    </string-array>
 
     <string name="activity_bank_details_heading">Banking Details</string>
     <string name="activity_bank_details_bankname">Bank Name</string>
@@ -155,5 +192,12 @@
 
     <string name="user_details_submit">SUBMIT</string>
     <string name="user_details_validation_snackbar_message">Please enter valid data</string>
+
+    <string name="activity_otp_verification_button_resend">Resend OTP</string>
+    <string name="activity_otp_verification_otp_field_hint">OTP</string>
+    <string name="activity_otp_verification_textview_otp_sent">OTP has been sent</string>
+    <string name="activity_otp_verification_textview_otp_not_sent">OTP has not been sent. Please check network</string>
+    <string name="activity_otp_verification_textview_otp_failed">OTP verification has failed. Please resend for OTP</string>
+    <string name="activity_otp_verification_textview_otp_verified">OTP verification successful!</string>
 
 </resources>

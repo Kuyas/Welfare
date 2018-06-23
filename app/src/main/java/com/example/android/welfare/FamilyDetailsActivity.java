@@ -22,7 +22,6 @@ public class FamilyDetailsActivity extends AppCompatActivity {
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
         toolbar.setTitle(getString(R.string.activity_family_details_heading));
-
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
