@@ -74,9 +74,6 @@
             android:parentActivityName=".MainActivity"
             android:label="Class Change"/>
 
-        <activity
-            android:name=".OtpVerificationActivity"
-            android:label="Otp Verification" />
 
     </application>
 
