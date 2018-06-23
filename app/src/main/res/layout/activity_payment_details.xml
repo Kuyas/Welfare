@@ -1,174 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_payment_details"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PaymentDetailsActivity">
 
-    <LinearLayout
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/user_details_left_padding">
-
-        <TextView
-            android:id="@+id/payment_details_heading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/activity_payment_details_heading"
-            android:textSize="@dimen/user_details_heading_height"/>
-
-
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="@integer/user_details_weight_sum"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="@integer/activity_payment_details_column_key_weight"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/payment_details_reg_fee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_payment_details_reg_fee"
-                    android:textSize="@dimen/activity_payment_details_field_text_size"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="@integer/activity_payment_details_column_value_weight"
-                android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/payment_details_data_reg_fee"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="from database"
-                android:textColor="@color/colorDatabaseValues"
-                android:textSize="@dimen/activity_payment_details_field_text_size"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="@integer/user_details_weight_sum"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="@integer/activity_payment_details_column_key_weight"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/payment_details_annual_fee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_payment_details_annual_fee"
-                    android:textSize="@dimen/activity_payment_details_field_text_size"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="@integer/activity_payment_details_column_value_weight"
-                android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/payment_details_data_annual_fee"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="from database"
-                android:textColor="@color/colorDatabaseValues"
-                android:textSize="@dimen/activity_payment_details_field_text_size"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="@integer/user_details_weight_sum"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="@integer/activity_payment_details_column_key_weight"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/payment_details_class"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_payment_details_class"
-                    android:textSize="@dimen/activity_payment_details_field_text_size"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="@integer/activity_payment_details_column_value_weight"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/payment_details_data_class"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="from database"
-                    android:textColor="@color/colorDatabaseValues"
-                    android:textSize="@dimen/activity_payment_details_field_text_size"
-                    android:gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="25dp">
+            android:paddingStart="@dimen/user_details_left_padding">
 
-            <Button
-                android:id="@+id/button_payment_details_submit"
+            <!--<TextView-->
+                <!--android:id="@+id/payment_details_heading"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:text="@string/activity_payment_details_heading"-->
+                <!--android:textSize="@dimen/user_details_heading_height"/>-->
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textSize="@dimen/user_details_text_size"
-                android:text="@string/user_details_submit"/>
+                android:layout_height="wrap_content"
+                android:weightSum="@integer/user_details_weight_sum"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_payment_details_column_key_weight"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/payment_details_reg_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_payment_details_reg_fee"
+                        android:textSize="@dimen/activity_payment_details_field_text_size"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_payment_details_column_value_weight"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/payment_details_data_reg_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="from database"
+                        android:textColor="@color/colorDatabaseValues"
+                        android:textSize="@dimen/activity_payment_details_field_text_size"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="@integer/user_details_weight_sum"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_payment_details_column_key_weight"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/payment_details_annual_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_payment_details_annual_fee"
+                        android:textSize="@dimen/activity_payment_details_field_text_size"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_payment_details_column_value_weight"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/payment_details_data_annual_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="from database"
+                        android:textColor="@color/colorDatabaseValues"
+                        android:textSize="@dimen/activity_payment_details_field_text_size"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="@integer/user_details_weight_sum"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_payment_details_column_key_weight"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/payment_details_class"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/activity_payment_details_class"
+                        android:textSize="@dimen/activity_payment_details_field_text_size"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="@integer/activity_payment_details_column_value_weight"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/payment_details_data_class"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="from database"
+                        android:textColor="@color/colorDatabaseValues"
+                        android:textSize="@dimen/activity_payment_details_field_text_size"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="25dp">
+
+                <Button
+                    android:id="@+id/button_payment_details_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/user_details_text_size"
+                    android:text="@string/user_details_submit"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+</LinearLayout>
