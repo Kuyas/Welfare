@@ -1,6 +1,7 @@
 package com.example.android.welfare;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -12,9 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class SignupActivity extends AppCompatActivity {
-    private final int REQUEST_CODE_ASK_PERMISSIONS = 123;
-    private OtpVerfication otpVerfication;
+import com.msg91.sendotp.library.SendOtpVerification;
+import com.msg91.sendotp.library.Verification;
+import com.msg91.sendotp.library.VerificationListener;
+
+public class SignupActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +56,13 @@ public class SignupActivity extends AppCompatActivity {
                     flag = false;
                     retypePassword.setError("Password and retyped password are not same");
                 } else {
-                    otpVerfication = new OtpVerfication();
+                    //
                     String phoneNumber = validMobile.returnText();
-                    otpVerfication.setter(phoneNumber, SignupActivity.this);
+                    Intent otpVerification = new Intent(getApplicationContext(), OtpVerificationActivity.class);
+                    otpVerification.putExtra("phonenumber", phoneNumber);
+                    startActivity(otpVerification);
 
-                    if(Build.VERSION.SDK_INT < 23){
-                        otpVerfication.initiate();
-                    }else {
-                        requestSMSPermission();
-                    }
+                    // TODO: send data to server on verification of OTP
                 }
             }
         });
@@ -74,30 +75,5 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    private void requestSMSPermission() {
-        int hasContactPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
-
-        if(hasContactPermission != PackageManager.PERMISSION_GRANTED ) {
-            ActivityCompat.requestPermissions(this , new String[] {Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
-        } else {
-            otpVerfication.initiate();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_CODE_ASK_PERMISSIONS:
-                // Check if the only required permission has been granted
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.i("Permission", "Contact permission has now been granted. Showing result.");
-                    otpVerfication.initiate();
-                } else {
-                    Log.i("Permission", "Contact permission was NOT granted.");
-                }
-                break;
-        }
     }
 }

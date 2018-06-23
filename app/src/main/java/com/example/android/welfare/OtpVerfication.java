@@ -1,6 +1,10 @@
 package com.example.android.welfare;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.msg91.sendotp.library.SendOtpVerification;
@@ -9,8 +13,26 @@ import com.msg91.sendotp.library.VerificationListener;
 
 import static android.content.ContentValues.TAG;
 
-public class OtpVerfication implements VerificationListener{
-    private static Verification mobileVerification;
+public abstract class OtpVerfication extends AppCompatActivity implements VerificationListener{
+    private Verification mobileVerification;
+    private Context CallerActivity;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getIntent().getExtras()!=null) {
+            mobileVerification = SendOtpVerification.createSmsVerification(
+                    SendOtpVerification
+                            .config("+91" + getIntent().getExtras().getString("phonenumber"))
+                            .context(this)
+                            .autoVerification(true)
+                            .build(), this);
+        } else {
+            // TODO: show error on not receiving phone number
+            finish();
+        }
+    }
 
     public void setter(String phoneNumber, Context that) {
         mobileVerification = SendOtpVerification.createSmsVerification(
