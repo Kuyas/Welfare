@@ -65,7 +65,6 @@
     <string name="activity_trading_details_name">Name of Trading Firm</string>
     <string name="activity_trading_details_name_hint">Name of Trading Firm</string>
     <string name="activity_trading_details_address">Address of Trading Firm</string>
-    <!--<string name="activity_trading_details_address_hint">Address of Trading Firm</string>-->
     <string name="activity_trading_details_subheading">Main Trading Place</string>
     <string name="activity_trading_details_address_branch">Branch</string>
     <string name="activity_trading_details_address_godown">Godown</string>
@@ -78,6 +77,21 @@
     <string name="activity_trading_details_license_number">License Number</string>
     <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
     <string name="activity_trading_details_auth_name">Name of Authority</string>
+    <string name="activity_trading_details_button_next">Next</string>
+    <string name="activity_trading_details_spinner_ownership_prompt">Nature of Ownership</string>
+    <string name="activity_trading_details_spinner_authority_prompt">Authority</string>
+    <string-array name="activity_trading_details_spinner_ownership">
+        <item>Single owner</item>
+        <item>Partnership</item>
+        <item>Self-help group</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="activity_trading_details_spinner_authority">
+        <item>State GST Rules</item>
+        <item>Panchayat</item>
+        <item>Municipality</item>
+        <item>Corporation</item>
+    </string-array>
 
     <string name="activity_bank_details_title">Bank details</string>
     <string name="activity_bank_details_bankname">Bank name</string>
@@ -154,5 +168,12 @@
     <string name="activity_payment_details_payment_gateway">Payment Gateway</string>
 
     <string name="user_details_submit">SUBMIT</string>
+
+    <string name="activity_otp_verification_button_resend">Resend OTP</string>
+    <string name="activity_otp_verification_otp_field_hint">OTP</string>
+    <string name="activity_otp_verification_textview_otp_sent">OTP has been sent</string>
+    <string name="activity_otp_verification_textview_otp_not_sent">OTP has not been sent. Please check network</string>
+    <string name="activity_otp_verification_textview_otp_failed">OTP verification has failed. Please resend for OTP</string>
+    <string name="activity_otp_verification_textview_otp_verified">OTP verification successful!</string>
 
 </resources>

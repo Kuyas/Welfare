@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_otp_verification"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/activity_otp_verification_textinput_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/activity_otp_verification_edittext_otp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:hint="@string/activity_otp_verification_otp_field_hint"
+            android:textColor="@color/colorEditText"
+            android:gravity="center"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/activity_otp_verification_textview_message"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/user_details_left_padding"
+        android:textSize="@dimen/activity_other_details_subheading_text_size"/>
+
+    <Button
+        android:id="@+id/activity_otp_verification_button_resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_otp_verification_button_resend" />
+</LinearLayout>

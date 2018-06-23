@@ -65,6 +65,9 @@
             android:label="Class Change">
         </activity>
 
+        <activity
+            android:name=".OtpVerificationActivity"
+            android:label="Otp Verification" />
 
     </application>
 
