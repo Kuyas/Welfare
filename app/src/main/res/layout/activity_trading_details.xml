@@ -1,351 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_activity_trading_details"
+    android:id="@+id/layout_activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:orientation="vertical"
-    tools:context=".TradingDetailsActivity">
+    android:padding="4dp"
+    android:stretchColumns="1"
+    tools:context=".MainActivity">
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1"
-        android:fillViewport="true"
-        android:padding="10dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:textAlignment="center">
 
 
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:text="@string/activity_trading_details_heading"
+            android:textSize="35sp" />
 
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="35sp"-->
-                <!--android:text="@string/activity_trading_details_heading"/>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_name_hint"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_address"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_address"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="@string/activity_trading_details_subheading"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_branch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_branch"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_address_branch"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_godown"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_godown"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_address_godown"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_factory"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_factory"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_address_factory"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_others"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_others"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_address_others"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <Spinner
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"> <!--Nature of Ownership-->
-                </Spinner>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_capital"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_capital"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_capital"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_gstn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_gstn"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_gstn"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_license_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_license_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_license_number"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_licensing_authority"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_licensing_authority"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_licensing_authority"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:textAlignment="center">
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_trading_auth_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/edit_text_trading_auth_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="@string/activity_trading_details_auth_name"
-                        android:textColor="@color/inputTextColor" />
-
-                </android.support.design.widget.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
-                <Button
-                    android:id="@+id/button_trading_details_next"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="10dp"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:text="NEXT"/>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                android:hint="@string/activity_trading_details_name_hint"
+                android:textColor="@color/inputTextColor" />
 
-            </LinearLayout>
+        </android.support.design.widget.TextInputLayout>
 
 
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_address"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_trading_details_subheading"
+            android:textSize="30sp" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_branch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_branch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_address_branch"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_godown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_godown"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_address_godown"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_factory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_factory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_address_factory"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_others"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_others"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_address_others"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/spinner_layout_trading_details_ownership"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/activity_trading_details_spinner_ownership"
+            android:prompt="@string/activity_trading_details_spinner_ownership_prompt" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_capital"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_capital"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_capital"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_gstn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_gstn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_gstn"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_license_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_license_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_license_number"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_input_layout_trading_licensing_authority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_text_trading_licensing_authority"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/activity_trading_details_licensing_authority"
+                android:textColor="@color/inputTextColor" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Spinner
+            android:id="@+id/spinner_layout_trading_details_authority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/activity_trading_details_spinner_authority"
+            android:prompt="@string/activity_trading_details_spinner_authority_prompt" />
+
+
+        <Button
+            android:id="@+id/button_trading_details_next"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/activity_trading_details_button_next"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</ScrollView>
