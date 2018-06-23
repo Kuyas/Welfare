@@ -154,5 +154,6 @@
     <string name="activity_payment_details_payment_gateway">Payment Gateway</string>
 
     <string name="user_details_submit">SUBMIT</string>
+    <string name="user_details_validation_snackbar_message">Please enter valid data</string>
 
 </resources>

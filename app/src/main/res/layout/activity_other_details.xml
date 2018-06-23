@@ -436,7 +436,7 @@
                 android:layout_marginEnd="20dp">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/edit_text_organisation"
+                    android:id="@+id/edit_text_traders_organisation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="text"

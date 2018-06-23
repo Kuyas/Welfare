@@ -3,19 +3,75 @@ package com.example.android.welfare;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class OtherDetailsActivity extends AppCompatActivity {
+
+    private TextInputEditText ownMainBranch;
+    private TextInputEditText ownBranch;
+    private TextInputEditText ownGodown;
+    private TextInputEditText ownFactory;
+    private TextInputEditText ownOthers;
+
+    private TextInputEditText rentedMainBranch;
+    private TextInputEditText rentedBranch;
+    private TextInputEditText rentedGodown;
+    private TextInputEditText rentedFactory;
+    private TextInputEditText rentedOthers;
+    private TextInputEditText tradersOrganisation;
+
+    private TextValidator validateOwnMainBranch;
+    private TextValidator validateOwnBranch;
+    private TextValidator validateOwnGodown;
+    private TextValidator validateOwnFactory;
+    private TextValidator validateOwnOthers;
+
+    private TextValidator validateRentedMainBranch;
+    private TextValidator validateRentedBranch;
+    private TextValidator validateRentedGodown;
+    private TextValidator validateRentedFactory;
+    private TextValidator validateRentedOthers;
+    private TextValidator validateTradersOrganisation;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other_details);
 
         final Button buttonNext = findViewById(R.id.button_other_details_next);
+
+        ownMainBranch = findViewById(R.id.edit_text_own_main_branch);
+        ownBranch = findViewById(R.id.edit_text_own_branch);
+        ownGodown = findViewById(R.id.edit_text_own_godown);
+        ownFactory = findViewById(R.id.edit_text_own_factory);
+        ownOthers = findViewById(R.id.edit_text_own_other);
+
+         rentedMainBranch = findViewById(R.id.edit_text_rented_main_branch);
+         rentedBranch = findViewById(R.id.edit_text_rented_branch);
+         rentedGodown = findViewById(R.id.edit_text_rented_godown);
+         rentedFactory = findViewById(R.id.edit_text_rented_factory);
+         rentedOthers = findViewById(R.id.edit_text_rented_other);
+         tradersOrganisation = findViewById(R.id.edit_text_traders_organisation);
+        
+         validateOwnMainBranch = new TextValidator(ownMainBranch);
+         validateOwnBranch = new TextValidator(ownBranch);
+         validateOwnGodown = new TextValidator(ownGodown);
+         validateOwnFactory = new TextValidator(ownFactory);
+         validateOwnOthers = new TextValidator(ownOthers);
+
+         validateRentedMainBranch = new TextValidator(rentedMainBranch);
+         validateRentedBranch = new TextValidator(rentedBranch);
+         validateRentedGodown = new TextValidator(rentedGodown);
+         validateRentedFactory = new TextValidator(rentedFactory);
+         validateRentedOthers = new TextValidator(rentedOthers);
+         validateTradersOrganisation = new TextValidator(tradersOrganisation);
 
         buttonNext.setOnClickListener(onClickListener);
 
@@ -33,6 +89,8 @@ public class OtherDetailsActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -40,9 +98,30 @@ public class OtherDetailsActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case (R.id.button_other_details_next): {
-                    Intent otherDetailsIntent = new Intent(OtherDetailsActivity.this,
-                            BankingDetailsActivity.class);
-                    startActivity(otherDetailsIntent);
+                    boolean flag = true;
+
+                    // TODO: check which fields in OtherDetails are to be compulsory
+                    if (validateOwnMainBranch.isValid()) {
+                        // store value
+                    } else {
+                        flag = false;
+                        ownMainBranch.setError("Please enter a valid branch");
+                    }
+
+                    
+                    
+                    if (flag) {
+                        Intent otherDetailsIntent = new Intent(OtherDetailsActivity.this,
+                                BankingDetailsActivity.class);
+                        startActivity(otherDetailsIntent);
+                    } else {
+                        LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_other_details);
+                        Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
+                                getString(R.string.user_details_validation_snackbar_message),
+                                Snackbar.LENGTH_LONG);
+
+                        validationSnackbar.show();
+                    }
                 }
                 default: {
                     break;
