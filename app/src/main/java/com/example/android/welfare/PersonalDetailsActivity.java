@@ -163,7 +163,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 //                    //write to variable
 //                }
 
-                if (flag) {
+                if (!flag) {
                     Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
                     Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
