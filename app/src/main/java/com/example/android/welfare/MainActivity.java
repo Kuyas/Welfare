@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             buttonClaimStatus.setOnClickListener(onClickListener);
             buttonPensionStatus.setOnClickListener(onClickListener);
 
-            final Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
+            final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_main_heading));
             setSupportActionBar(toolbar);
 

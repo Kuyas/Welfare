@@ -25,7 +25,8 @@
         <activity
             android:name=".PersonalDetailsActivity"
             android:parentActivityName=".MainActivity"
-            android:label="Personal Details"/>
+            android:label="Personal Details"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".LoginActivity"
@@ -35,35 +36,44 @@
             android:label="@string/activity_signup_title"/>
         <activity
             android:name=".RenewMembershipActivity"
+            android:parentActivityName=".MainActivity"
             android:label="@string/activity_renew_membership_title"/>
         <activity
             android:name=".BankingDetailsActivity"
-            android:label="Banking Details"/>
+            android:parentActivityName=".OtherDetailsActivity"
+            android:label="Banking Details"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".FamilyDetailsActivity"
-            android:label="Family Details">
-        </activity>
+            android:parentActivityName=".PersonalDetailsActivity"
+            android:label="Family Details"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".TradingDetailsActivity"
-            android:label="Trading Details">
-        </activity>
+            android:parentActivityName=".FamilyDetailsActivity"
+            android:label="Trading Details"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".OtherDetailsActivity"
-            android:label="Other Details">
-        </activity>
+            android:parentActivityName=".TradingDetailsActivity"
+            android:label="Other Details"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
 
         <activity
             android:name=".PaymentDetailsActivity"
-            android:label="Payment Details">
-        </activity>
+            android:parentActivityName=".BankingDetailsActivity"
+            android:label="Payment Details"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".ClassChangeActivity"
-            android:label="Class Change">
-        </activity>
+            android:parentActivityName=".MainActivity"
+            android:label="Class Change"/>
+
 
     </application>
 
