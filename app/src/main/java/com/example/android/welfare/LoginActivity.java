@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final boolean DEBUG = true;
     private SharedPreferences sharedPreferences;
     private String mobileString, passwordString;
+    private TextValidator mobileValidator, passwordValidator;
     private boolean entry_flag;
 
     @Override
@@ -59,20 +60,6 @@ public class LoginActivity extends AppCompatActivity {
         mobile = findViewById(R.id.activity_login_edittext_mobile);
         password = findViewById(R.id.activity_login_edittext_password);
 
-        final TextValidator mobileValidator = new TextValidator(mobile);
-        final TextValidator passwordValidator = new TextValidator(password);
-
-        entry_flag = true;
-        if (!mobileValidator.regexValidator(TextValidator.mobilenumberregex)) {
-            entry_flag = false;
-            mobile.setError("Please enter valid 10 digit mobile number");
-        } else if (!passwordValidator.regexValidator(TextValidator.passwordregex)) {
-            entry_flag = false;
-            password.setError("Please enter a valid password between 8-16 characters");
-        } else {
-            mobileString = mobileValidator.returnText();
-            passwordString = passwordValidator.returnText();
-        }
 
         Button signupbutton = findViewById(R.id.activity_login_button_signup);
         signupbutton.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +74,19 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                entry_flag = true;
+                mobileValidator = new TextValidator(mobile);
+                passwordValidator = new TextValidator(password);
+                if (!mobileValidator.regexValidator(TextValidator.mobilenumberregex)) {
+                    entry_flag = false;
+                    mobile.setError("Please enter valid 10 digit mobile number");
+                } else if (!passwordValidator.regexValidator(TextValidator.passwordregex)) {
+                    entry_flag = false;
+                    password.setError("Please enter a valid password between 8-16 characters");
+                } else {
+                    mobileString = mobileValidator.returnText();
+                    passwordString = passwordValidator.returnText();
+                }
                 if (entry_flag || DEBUG) {
                     LoginWithDetails(mobileValidator.returnText(), passwordValidator.returnText());
                 }

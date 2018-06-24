@@ -26,7 +26,7 @@ public class JSONParser {
     static InputStream is;
     static JSONObject jObj;
     static String json;
-    private static final String baseUrl = "http:localhost/";
+    private static final String baseUrl = "http://192.168.43.56/";
 
     // constructor
     public JSONParser() {
