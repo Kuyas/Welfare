@@ -51,13 +51,13 @@ public class SignupActivity extends AppCompatActivity{
                 TextValidator validOTP = new TextValidator(otp);
 
                 boolean flag = true;
-                if (!validMobile.regexValidator("\\d{10}")) {
+                if (!validMobile.regexValidator(TextValidator.mobilenumberregex)) {
                     flag = false;
                     mobile.setError("Please enter valid 10 digit mobile number");
-                } else if (!validPassword.regexValidator("[a-zA-Z0-9]{8,16}")) {
+                } else if (!validPassword.regexValidator(TextValidator.passwordregex)) {
                     flag = false;
                     password.setError("Please enter a valid password between 8-16 characters");
-                } else if (!validRetypePassword.regexValidator("[a-zA-Z]{8,16}")) {
+                } else if (!validRetypePassword.regexValidator(TextValidator.passwordregex)) {
                     flag = false;
                     retypePassword.setError("Please enter a valid password between 8-16 characters");
                 } else if (!validPassword.returnText().equals(validRetypePassword.returnText())){

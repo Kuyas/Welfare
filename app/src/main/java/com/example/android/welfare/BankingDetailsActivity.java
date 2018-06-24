@@ -67,7 +67,7 @@ public class BankingDetailsActivity extends AppCompatActivity{
                     owner.setError("Please enter a valid Account Holder name");
                 }
 
-                if (validAccountNumber.regexValidator("^\\d{9,18}$")) {
+                if (validAccountNumber.regexValidator(TextValidator.accountnumberregex)) {
                     // write to variable
                 } else {
                     flag = false;
@@ -81,7 +81,7 @@ public class BankingDetailsActivity extends AppCompatActivity{
                     branch.setError("Please enter a valid branch name");
                 }
 
-                if (validIfsc.regexValidator("^[A-Za-z]{4}\\d{7}$")) {
+                if (validIfsc.regexValidator(TextValidator.ifscregex)) {
                     // write to variable
                 } else {
                     flag = false;

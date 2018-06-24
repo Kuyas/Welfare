@@ -78,6 +78,9 @@
             android:name=".OtpVerificationActivity"
             android:label="Otp Verification" />
 
+        <activity android:name=".LanguageActivity"
+            android:label="Choose Language" />
+
     </application>
 
 </manifest>

@@ -6,6 +6,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextValidator {
+    public static final String ifscregex = "^[A-Za-z]{4}\\d{7}$";
+    public static final String accountnumberregex = "^\\d{9,18}$";
+    public static final String mobilenumberregex = "\\d{10}";
+    public static final String passwordregex = "[a-zA-Z0-9]{8,16}";
+
+
     private TextInputEditText input;
     private String inputString;
     private boolean error;
