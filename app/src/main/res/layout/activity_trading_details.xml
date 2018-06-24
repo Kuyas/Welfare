@@ -27,13 +27,6 @@
             android:textAlignment="center">
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_trading_details_heading"
-                android:textSize="35sp" />
-
-
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_name"
                 android:layout_width="match_parent"

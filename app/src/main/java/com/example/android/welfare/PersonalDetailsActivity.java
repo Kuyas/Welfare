@@ -1,8 +1,6 @@
 package com.example.android.welfare;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,10 +22,7 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -194,6 +188,16 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             }
         });
 
+
+        final Button homeButton = findViewById(R.id.activity_button_home);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(PersonalDetailsActivity.this, MainActivity.class);
+                startActivity(homeIntent);
+                overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+            }
+        });
 
     }
 

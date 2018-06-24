@@ -46,6 +46,10 @@ public class OtherDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_other_details);
 
         final Button buttonNext = findViewById(R.id.button_other_details_next);
+        final Button buttonHome = findViewById(R.id.activity_button_home);
+
+        buttonNext.setOnClickListener(onClickListener);
+        buttonHome.setOnClickListener(onClickListener);
 
         ownMainBranch = findViewById(R.id.edit_text_own_main_branch);
         ownBranch = findViewById(R.id.edit_text_own_branch);
@@ -73,7 +77,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
          validateRentedOthers = new TextValidator(rentedOthers);
          validateTradersOrganisation = new TextValidator(tradersOrganisation);
 
-        buttonNext.setOnClickListener(onClickListener);
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
         toolbar.setTitle(getString(R.string.activity_other_details_heading));
@@ -101,12 +104,12 @@ public class OtherDetailsActivity extends AppCompatActivity {
                     boolean flag = true;
 
                     // TODO: check which fields in OtherDetails are to be compulsory
-                    if (validateOwnMainBranch.isValid()) {
-                        // store value
-                    } else {
-                        flag = false;
-                        ownMainBranch.setError("Please enter a valid branch");
-                    }
+//                    if (validateOwnMainBranch.isValid()) {
+//                        // store value
+//                    } else {
+//                        flag = false;
+//                        ownMainBranch.setError("Please enter a valid branch");
+//                    }
 
                     
                     
@@ -122,6 +125,13 @@ public class OtherDetailsActivity extends AppCompatActivity {
 
                         validationSnackbar.show();
                     }
+                    break;
+                }
+                case (R.id.activity_button_home): {
+                    Intent homeIntent = new Intent(OtherDetailsActivity.this, MainActivity.class);
+                    startActivity(homeIntent);
+                    overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+                    break;
                 }
                 default: {
                     break;

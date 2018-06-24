@@ -1,21 +1,13 @@
 package com.example.android.welfare;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-
-import com.msg91.sendotp.library.SendOtpVerification;
-import com.msg91.sendotp.library.Verification;
-import com.msg91.sendotp.library.VerificationListener;
 
 public class SignupActivity extends AppCompatActivity{
 
@@ -24,15 +16,31 @@ public class SignupActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        Button SignupButton = (Button) findViewById(R.id.activity_signup_button_signup);
-        Button SendOTPButton = (Button) findViewById(R.id.activity_signup_button_send_otp);
+        final Toolbar toolbar = findViewById(R.id.activity_toolbar);
+        toolbar.setTitle(getString(R.string.activity_signup_title));
+        setSupportActionBar(toolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+        Button SignupButton = findViewById(R.id.activity_signup_button_signup);
+        Button SendOTPButton = findViewById(R.id.activity_signup_button_send_otp);
 
         SignupButton.setEnabled(false);
 
-        final TextInputEditText mobile = (TextInputEditText) findViewById(R.id.activity_signup_edittext_mobile);
-        final TextInputEditText password = (TextInputEditText) findViewById(R.id.activity_signup_edittext_password);
-        final TextInputEditText retypePassword = (TextInputEditText) findViewById(R.id.activity_signup_edittext_retype_password);
-        final TextInputEditText otp = (TextInputEditText) findViewById(R.id.activity_signup_edittext_otp);
+        final TextInputEditText mobile = findViewById(R.id.activity_signup_edittext_mobile);
+        final TextInputEditText password = findViewById(R.id.activity_signup_edittext_password);
+        final TextInputEditText retypePassword = findViewById(R.id.activity_signup_edittext_retype_password);
+        final TextInputEditText otp = findViewById(R.id.activity_signup_edittext_otp);
 
         SendOTPButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,8 +75,7 @@ public class SignupActivity extends AppCompatActivity{
             }
         });
 
-        Button signupbutton = (Button) findViewById(R.id.activity_signup_button_signup);
-        signupbutton.setOnClickListener(new View.OnClickListener() {
+        SignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);

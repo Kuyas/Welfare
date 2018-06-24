@@ -129,6 +129,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    public void onBackPressed() {
+        Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
+        closeAppIntent.addCategory(Intent.CATEGORY_HOME);
+        closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(closeAppIntent);
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {

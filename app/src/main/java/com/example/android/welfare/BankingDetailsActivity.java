@@ -108,5 +108,16 @@ public class BankingDetailsActivity extends AppCompatActivity{
                 }
             }
         });
+
+
+        final Button homeButton = findViewById(R.id.activity_button_home);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(BankingDetailsActivity.this, MainActivity.class);
+                startActivity(homeIntent);
+                overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+            }
+        });
     }
 }
