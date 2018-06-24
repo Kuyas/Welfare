@@ -1,32 +1,40 @@
 package com.example.android.welfare;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.android.welfare.JSONParser;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.*;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.simple.JSONArray;
-
-import org.json.simple.parser.ParseException;
-
 
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        final Toolbar toolbar = findViewById(R.id.activity_toolbar);
+        toolbar.setTitle(getString(R.string.activity_login_title));
+
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         final EditText username,password;
         Button login;
@@ -34,13 +42,11 @@ public class LoginActivity extends AppCompatActivity {
 
         JSONParser jsonParser=new JSONParser();
 
-        int i=0;
+        // int i=0;
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
 
-        username =(EditText)findViewById(R.id.activity_login_edittext_mobile);
-        password = (EditText)findViewById(R.id.activity_login_edittext_password);
+        username = findViewById(R.id.activity_login_edittext_mobile);
+        password = findViewById(R.id.activity_login_edittext_password);
 
 
 //        Button loginbutton = (Button) findViewById(R.id.acitvity_login_button_login);
@@ -71,10 +77,19 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
+        closeAppIntent.addCategory(Intent.CATEGORY_HOME);
+        closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(closeAppIntent);
+    }
+
+
     private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
 
         @Override
-
         protected void onPreExecute() {
 
             super.onPreExecute();
@@ -82,7 +97,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         @Override
-
         protected JSONObject doInBackground(String... args)  {
 
 

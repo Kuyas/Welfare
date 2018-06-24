@@ -1,6 +1,5 @@
 package com.example.android.welfare;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.content.Context;
@@ -110,8 +109,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         });
 
 
-
-
         final Button buttonNext = findViewById(R.id.button_personal_details_next);
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,8 +196,17 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         });
 
 
-    }
+        final Button homeButton = findViewById(R.id.activity_button_home);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(PersonalDetailsActivity.this, MainActivity.class);
+                startActivity(homeIntent);
+                overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+            }
+        });
 
+    }
 
 
 

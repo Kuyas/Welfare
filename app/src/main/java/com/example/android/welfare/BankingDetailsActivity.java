@@ -3,12 +3,14 @@ package com.example.android.welfare;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class BankingDetailsActivity extends AppCompatActivity{
@@ -91,10 +93,30 @@ public class BankingDetailsActivity extends AppCompatActivity{
                 }
 
 
-                Intent paymentDetailsIntent = new Intent(BankingDetailsActivity.this,
-                        PaymentDetailsActivity.class);
-                startActivity(paymentDetailsIntent);
+                if (flag) {
+                    Intent paymentDetailsIntent = new Intent(BankingDetailsActivity.this,
+                            PaymentDetailsActivity.class);
+                    startActivity(paymentDetailsIntent);
+                }
+                else {
+                    LinearLayout activityBankingDetailsLayout = findViewById(R.id.layout_activity_bank_details);
+                    Snackbar validationSnackbar = Snackbar.make(activityBankingDetailsLayout,
+                            getString(R.string.user_details_validation_snackbar_message),
+                            Snackbar.LENGTH_LONG);
 
+                    validationSnackbar.show();
+                }
+            }
+        });
+
+
+        final Button homeButton = findViewById(R.id.activity_button_home);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(BankingDetailsActivity.this, MainActivity.class);
+                startActivity(homeIntent);
+                overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
             }
         });
     }

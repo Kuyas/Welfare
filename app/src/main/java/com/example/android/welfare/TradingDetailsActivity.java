@@ -16,8 +16,6 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class TradingDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -203,6 +201,17 @@ public class TradingDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+
+        final Button homeButton = findViewById(R.id.activity_button_home);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(TradingDetailsActivity.this, MainActivity.class);
+                startActivity(homeIntent);
+                overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
             }
         });
     }

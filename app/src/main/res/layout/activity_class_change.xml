@@ -4,94 +4,116 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_classchange_title"
-        android:textSize="30sp"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/activity_classchange_old_income"
-        android:textSize="25sp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="From Database"
-        android:textColor="#ff0000"
-        android:paddingLeft="15dp"
-        android:textSize="25sp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_classchange_old_class"
-            android:textSize="25sp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="From Database"
-            android:textColor="#ff0000"
-            android:paddingLeft="15dp"
-            android:textSize="25sp"/>
-    </LinearLayout>
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/activity_classchange_textinput_new_income"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" />
 
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/activity_classchange_title"-->
+    <!--android:textSize="30sp"/>-->
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/activity_classchange_edittext_new_income"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/activity_classchange_name"
-            android:inputType="numberDecimal"
-            android:textSize="25sp"
-            android:textAllCaps="true"
-            android:maxLength="100"
-            android:textColor="#000000" />
-
-    </android.support.design.widget.TextInputLayout>
-
-
-    <Button
-        android:text="@string/activity_classchange_submit"
-        android:id="@+id/acitvity_classchange_button_submit"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:layout_width="120dp"
-        android:layout_height="60dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Class"
-            android:textSize="25sp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Depends on New Income"
-            android:textColor="#ff0000"
-            android:paddingLeft="15dp"
-            android:textSize="25sp"/>
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_classchange_old_income"
+                    android:textSize="25sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Database"
+                    android:textColor="#ff0000"
+                    android:paddingLeft="15dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_classchange_old_class"
+                    android:textSize="25sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From Database"
+                    android:textColor="#ff0000"
+                    android:paddingLeft="15dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/activity_classchange_textinput_new_income"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_classchange_edittext_new_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/activity_classchange_name"
+                    android:inputType="numberDecimal"
+                    android:textSize="25sp"
+                    android:textAllCaps="true"
+                    android:maxLength="100"
+                    android:textColor="#000000" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <Button
+                android:text="@string/activity_classchange_submit"
+                android:id="@+id/acitvity_classchange_button_submit"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Class"
+                    android:textSize="25sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Depends on New Income"
+                    android:textColor="#ff0000"
+                    android:paddingLeft="15dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

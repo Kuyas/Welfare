@@ -129,6 +129,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    public void onBackPressed() {
+        Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
+        closeAppIntent.addCategory(Intent.CATEGORY_HOME);
+        closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        startActivity(closeAppIntent);
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -143,8 +153,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case (R.id.button_menu_change_language): {
-                LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
-                Snackbar changeLanguageSnackbar = Snackbar.make(linearLayout, "Redirect to Change Language page", Snackbar.LENGTH_LONG);
+                LinearLayout mainActivityLinearLayout = findViewById(R.id.layout_activity_main);
+                Snackbar changeLanguageSnackbar = Snackbar.make(mainActivityLinearLayout, "Redirect to Change Language page", Snackbar.LENGTH_LONG);
                 changeLanguageSnackbar.show();
                 //TODO: redirect to Select Language activity
                 break;

@@ -16,9 +16,11 @@ public class FamilyDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_family_details);
 
         final Button buttonNext = findViewById(R.id.button_family_details_next);
+        final Button buttonHome = findViewById(R.id.activity_button_home);
 
 
         buttonNext.setOnClickListener(onClickListener);
+        buttonHome.setOnClickListener(onClickListener);
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
         toolbar.setTitle(getString(R.string.activity_family_details_heading));
@@ -44,6 +46,13 @@ public class FamilyDetailsActivity extends AppCompatActivity {
                     Intent tradingDetailsIntent = new Intent(FamilyDetailsActivity.this,
                             TradingDetailsActivity.class);
                     startActivity(tradingDetailsIntent);
+                    break;
+                }
+                case (R.id.activity_button_home): {
+                    Intent homeIntent = new Intent(FamilyDetailsActivity.this, MainActivity.class);
+                    startActivity(homeIntent);
+                    overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+                    break;
                 }
                 default: {
                     break;

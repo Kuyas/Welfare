@@ -125,11 +125,11 @@
     <string name="activity_bank_details_save">Save</string>
     <string name="activity_bank_details_change">Change</string>
 
-    <string name="activity_renew_membership_title">Renew membership</string>
-    <string name="activity_renew_membership_annual">Annual fees</string>
-    <string name="activity_renew_membership_class">Class fees</string>
+    <string name="activity_renew_membership_title">Renew Membership</string>
+    <string name="activity_renew_membership_annual">Annual Fees</string>
+    <string name="activity_renew_membership_class">Class Fees</string>
     <string name="activity_renew_membership_total">Total</string>
-    <string name="activity_renew_membership_pay">Pay using netbanking</string>
+    <string name="activity_renew_membership_pay">Pay using Netbanking</string>
 
     <string name="activity_forgot_password_mobile_field">Mobile</string>
     <string name="activity_forgot_password_otp_field">OTP</string>
@@ -140,7 +140,7 @@
 
     <string name="sendotp_key">219212Ahay2KSML5b17f2fe</string>
 
-    <string name="activity_class_change">Class Change</string>
+    <string name="activity_class_change_heading">Class Change</string>
     <string name="activity_classchange_title">Class Change</string>
     <string name="activity_classchange_old_income">Current Income</string>
     <string name="activity_classchange_old_class">Current Class</string>
@@ -191,6 +191,7 @@
     <string name="activity_payment_details_payment_gateway">Payment Gateway</string>
 
     <string name="user_details_submit">SUBMIT</string>
+    <string name="user_details_validation_snackbar_message">Please enter valid data</string>
 
     <string name="activity_otp_verification_button_resend">Resend OTP</string>
     <string name="activity_otp_verification_otp_field_hint">OTP</string>
