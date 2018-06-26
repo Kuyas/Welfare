@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -33,128 +34,137 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
+    private SharedPreferences sharedPreferences;
+
 
     String date_test;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_personal_details);
+        sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
+        if (!sharedPreferences.getString("loggedInID", "").isEmpty()) {
+            //TODO: Remove the negation
 
-         final int position,position1;
+            Intent loginIntent = new Intent(PersonalDetailsActivity.this, LoginActivity.class);
+            startActivity(loginIntent);
+        } else {
+            setContentView(R.layout.activity_personal_details);
 
-        //DATE PICKER
-        Button btn = findViewById(R.id.activity_personal_button_dob);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.support.v4.app.DialogFragment datePicker = new DatePickerFragment();
-                datePicker.show(getSupportFragmentManager(),"date picker");
+            final int position, position1;
 
-            }
-        });
+            //DATE PICKER
+            Button btn = findViewById(R.id.activity_personal_button_dob);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    android.support.v4.app.DialogFragment datePicker = new DatePickerFragment();
+                    datePicker.show(getSupportFragmentManager(), "date picker");
 
-        // SPINNER FOR GENDER SELECT
-        final Spinner spinner = findViewById(R.id.activity_personal_details_gender_select);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                Context context = getApplicationContext();
-                Object text =  parent.getItemAtPosition(pos);
-                if(pos>0) {
-                    Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
                 }
-            }
+            });
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                //Another interface callback
-                Context context = getApplicationContext();
+            // SPINNER FOR GENDER SELECT
+            final Spinner spinner = findViewById(R.id.activity_personal_details_gender_select);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                    Context context = getApplicationContext();
+                    Object text = parent.getItemAtPosition(pos);
+                    if (pos > 0) {
+                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    //Another interface callback
+                    Context context = getApplicationContext();
 //            Object text =  parent.getItemAtPosition(pos);
-                Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        //SPINNER FOR DISTRICT SELECT
-        final Spinner spinner2 =  findViewById(R.id.activity_personal_details_district_select);
-
-        List<String> district ;
-        String[] arrayDistrict = getResources().getStringArray(R.array.activity_personal_spinner_district);
-        Arrays.sort(arrayDistrict);
-        district = new ArrayList<>(Arrays.asList(arrayDistrict));
-        district.add(0,"Choose District");
-
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,district);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        spinner2.setAdapter(spinnerArrayAdapter);
-
-        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos1, long id) {
-                Context context = getApplicationContext();
-                Object text =  parent.getItemAtPosition(pos1);
-                if(pos1>0) {
-                    Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
                 }
-            }
+            });
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                //Another interface callback
-            }
-        });
+            //SPINNER FOR DISTRICT SELECT
+            final Spinner spinner2 = findViewById(R.id.activity_personal_details_district_select);
+
+            List<String> district;
+            String[] arrayDistrict = getResources().getStringArray(R.array.activity_personal_spinner_district);
+            Arrays.sort(arrayDistrict);
+            district = new ArrayList<>(Arrays.asList(arrayDistrict));
+            district.add(0, "Choose District");
+
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, district);
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            spinner2.setAdapter(spinnerArrayAdapter);
+
+            spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int pos1, long id) {
+                    Context context = getApplicationContext();
+                    Object text = parent.getItemAtPosition(pos1);
+                    if (pos1 > 0) {
+                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    //Another interface callback
+                }
+            });
 
 
-        final Button buttonNext = findViewById(R.id.button_personal_details_next);
-        buttonNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean flag = true;
-                TextInputEditText name = findViewById(R.id.edit_text_personal_name);
-                TextInputEditText address = findViewById(R.id.edit_text_personal_address);
-                TextInputEditText place = findViewById(R.id.edit_text_personal_place);
+            final Button buttonNext = findViewById(R.id.button_personal_details_next);
+            buttonNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean flag = true;
+                    TextInputEditText name = findViewById(R.id.edit_text_personal_name);
+                    TextInputEditText address = findViewById(R.id.edit_text_personal_address);
+                    TextInputEditText place = findViewById(R.id.edit_text_personal_place);
 //                TextView date = findViewById(R.id.activity_personal_textview_date);
 
-                TextValidator validName = new TextValidator(name);
-                TextValidator validAddress = new TextValidator(address);
-                TextValidator validPlace = new TextValidator(place);
+                    TextValidator validName = new TextValidator(name);
+                    TextValidator validAddress = new TextValidator(address);
+                    TextValidator validPlace = new TextValidator(place);
 
-                if(validName.isValid()){
-                    //write to variable
-                } else {
-                    flag = false;
-                    name.setError("Please Enter a Valid Name");
-                }
-                if(validAddress.isValid()){
-                    //write to variable
-                }else{
-                    flag = false;
-                    address.setError("Please Enter a valid Address");
-                }
-                if(validPlace.isValid()){
-                    //write to variable
-                }else{
-                    place.setError("Please Enter a Valid Place");
-                }
-                if(spinner.getSelectedItem().toString().trim().equals("Choose Gender")){
-                    flag = false;
-                    Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
+                    if (validName.isValid()) {
+                        //write to variable
+                    } else {
+                        flag = false;
+                        name.setError("Please Enter a Valid Name");
+                    }
+                    if (validAddress.isValid()) {
+                        //write to variable
+                    } else {
+                        flag = false;
+                        address.setError("Please Enter a valid Address");
+                    }
+                    if (validPlace.isValid()) {
+                        //write to variable
+                    } else {
+                        place.setError("Please Enter a Valid Place");
+                    }
+                    if (spinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
+                        flag = false;
+                        Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
 
-                }
-                if(spinner2.getSelectedItem().toString().trim().equals("Choose District")){
-                    flag = false;
-                    Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
+                    }
+                    if (spinner2.getSelectedItem().toString().trim().equals("Choose District")) {
+                        flag = false;
+                        Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
 
 
-                }
-                if(date_test == null) {
-                    flag = false;
-                    Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
-                }
+                    }
+                    if (date_test == null) {
+                        flag = false;
+                        Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
+                    }
 
 //                if(date.toString().equals("dd/mm/yyyy")){
 //                    flag = false;
@@ -164,51 +174,49 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 //                    //write to variable
 //                }
 
-                if (!flag) {
-                    Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                    if (!flag) {
+                        Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                    Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
-                            FamilyDetailsActivity.class);
-                    startActivity(paymentDetailsIntent);
+                        Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
+                                FamilyDetailsActivity.class);
+                        startActivity(paymentDetailsIntent);
+                    }
+
                 }
-
-            }
-        });
+            });
 
 
+            final Toolbar toolbar = findViewById(R.id.activity_toolbar);
+            toolbar.setTitle(getString(R.string.activity_personal_heading));
+            setSupportActionBar(toolbar);
+
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
 
 
+            final Button homeButton = findViewById(R.id.activity_button_home);
+            homeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent homeIntent = new Intent(PersonalDetailsActivity.this, MainActivity.class);
+                    startActivity(homeIntent);
+                    overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+                }
+            });
 
-
-        final Toolbar toolbar = findViewById(R.id.activity_toolbar);
-        toolbar.setTitle(getString(R.string.activity_personal_heading));
-        setSupportActionBar(toolbar);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-
-
-        final Button homeButton = findViewById(R.id.activity_button_home);
-        homeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(PersonalDetailsActivity.this, MainActivity.class);
-                startActivity(homeIntent);
-                overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
-            }
-        });
-
+        }
     }
-
-
+//=======================================================
+//=======================================================
+    //=======================================================
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

@@ -1,6 +1,8 @@
 package com.example.android.welfare;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -10,31 +12,43 @@ import android.view.View;
 import android.widget.Button;
 
 public class PaymentDetailsActivity extends AppCompatActivity {
+
+    private SharedPreferences sharedPreferences;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment_details);
+        sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
+        if (!sharedPreferences.getString("loggedInID", "").isEmpty()) {
+            //TODO: Remove the negation
 
-        final Button buttonNext = findViewById(R.id.button_payment_details_submit);
-        final Button buttonHome = findViewById(R.id.activity_button_home);
+            Intent loginIntent = new Intent(PaymentDetailsActivity.this, LoginActivity.class);
+            startActivity(loginIntent);
+        } else {
+            setContentView(R.layout.activity_payment_details);
 
-        buttonNext.setOnClickListener(onClickListener);
-        buttonHome.setOnClickListener(onClickListener);
+            final Button buttonNext = findViewById(R.id.button_payment_details_submit);
+            final Button buttonHome = findViewById(R.id.activity_button_home);
 
-        final Toolbar toolbar = findViewById(R.id.activity_toolbar);
-        toolbar.setTitle(getString(R.string.activity_payment_details_heading));
-        setSupportActionBar(toolbar);
+            buttonNext.setOnClickListener(onClickListener);
+            buttonHome.setOnClickListener(onClickListener);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
+            final Toolbar toolbar = findViewById(R.id.activity_toolbar);
+            toolbar.setTitle(getString(R.string.activity_payment_details_heading));
+            setSupportActionBar(toolbar);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+        }
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {

@@ -129,10 +129,11 @@ public class LoginActivity extends AppCompatActivity {
             params.put("mobile", mobile);
             params.put("password", password);
 
-            JSONObject json = JSONParser.makeHttpRequest("test_android/index.php", "POST", params);
+//            JSONObject json = JSONParser.makeHttpRequest("test_android/index.php", "POST", params);
 
-            return json;
+//            return json;
 
+            return null;
         }
 
         protected void onPostExecute(JSONObject result) {

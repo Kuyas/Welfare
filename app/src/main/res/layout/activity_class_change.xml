@@ -23,6 +23,7 @@
         android:padding="10dp">
 
         <LinearLayout
+            android:id="@+id/layout_activity_class_change"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

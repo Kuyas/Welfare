@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
             Intent languageIntent = new Intent(MainActivity.this, LanguageActivity.class);
             startActivity(languageIntent);
         } else if (!sharedPreferences.getString("loggedInID", "").isEmpty()){
-            Intent languageIntent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(languageIntent);
+            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_main);
 
