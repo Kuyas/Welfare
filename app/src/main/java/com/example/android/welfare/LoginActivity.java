@@ -1,9 +1,12 @@
 package com.example.android.welfare;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,14 +17,30 @@ import android.widget.Toast;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final boolean DEBUG = true;
+    private SharedPreferences sharedPreferences;
+    private String mobileString, passwordString;
+    private TextValidator mobileValidator, passwordValidator;
+    private boolean entry_flag;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
+
+        // Login if mobile and password is already stored
+        if (!sharedPreferences.getString("mobile", "").isEmpty() &&
+                !sharedPreferences.getString("password", "").isEmpty() &&
+                DEBUG) {
+            LoginWithDetails(sharedPreferences.getString("mobile", ""), sharedPreferences.getString("password", ""));
+        }
+
         setContentView(R.layout.activity_login);
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
@@ -36,29 +55,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        final EditText username,password;
+        final TextInputEditText mobile,password;
         Button login;
-        String url = "http://10.0.3.2/test_android/index.php";
 
-        JSONParser jsonParser=new JSONParser();
-
-        // int i=0;
-
-
-        username = findViewById(R.id.activity_login_edittext_mobile);
+        mobile = findViewById(R.id.activity_login_edittext_mobile);
         password = findViewById(R.id.activity_login_edittext_password);
 
 
-//        Button loginbutton = (Button) findViewById(R.id.acitvity_login_button_login);
-//        loginbutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-        Button signupbutton = (Button) findViewById(R.id.activity_login_button_signup);
+        Button signupbutton = findViewById(R.id.activity_login_button_signup);
         signupbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,15 +70,34 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        login = (Button)findViewById(R.id.acitvity_login_button_signin);
+
+        login = findViewById(R.id.acitvity_login_button_signin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AttemptLogin attemptLogin= new AttemptLogin();
-                attemptLogin.execute(username.getText().toString(),password.getText().toString(),"");
+                entry_flag = true;
+                mobileValidator = new TextValidator(mobile);
+                passwordValidator = new TextValidator(password);
+                if (!mobileValidator.regexValidator(TextValidator.mobilenumberregex)) {
+                    entry_flag = false;
+                    mobile.setError("Please enter valid 10 digit mobile number");
+                } else if (!passwordValidator.regexValidator(TextValidator.passwordregex)) {
+                    entry_flag = false;
+                    password.setError("Please enter a valid password between 8-16 characters");
+                } else {
+                    mobileString = mobileValidator.returnText();
+                    passwordString = passwordValidator.returnText();
+                }
+                if (entry_flag || DEBUG) {
+                    LoginWithDetails(mobileValidator.returnText(), passwordValidator.returnText());
+                }
             }
-
         });
+    }
+
+    private void LoginWithDetails(String mobile, String password) {
+        AttemptLogin attemptLogin = new AttemptLogin();
+        attemptLogin.execute(mobile, password);
     }
 
     @Override
@@ -99,20 +122,14 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected JSONObject doInBackground(String... args)  {
 
-
-
-            String email = args[2];
             String password = args[1];
-            String name= args[0];
+            String mobile= args[0];
 
-            ArrayList params = new ArrayList();
-            params.add(new BasicNameValuePair("username", name));
-            params.add(new BasicNameValuePair("password", password));
-            if(email.length()>0)
-                params.add(new BasicNameValuePair("email",email));
+            HashMap<String, String> params = new HashMap<>();
+            params.put("mobile", mobile);
+            params.put("password", password);
 
-            JSONObject json = JSONParser.makeHttpRequest("http://192.168.43.56/test_android/index.php", "POST", params);
-
+            JSONObject json = JSONParser.makeHttpRequest("test_android/index.php", "POST", params);
 
             return json;
 
@@ -125,12 +142,15 @@ public class LoginActivity extends AppCompatActivity {
 
             try {
                 if (result != null) {
-                    Toast.makeText(getApplicationContext(),result.getString("message"),Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                   startActivity(intent);
+                    Toast.makeText(getApplicationContext(),result.getString("code"),Toast.LENGTH_LONG).show();
+                    if (result.get("code").toString().equals("200")) {
+                        sharedPreferences.edit().putString("loggedInID", result.get("loggedInID").toString()).apply();
+                    }
 
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Invalid Mobile or Password", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

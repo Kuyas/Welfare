@@ -3,25 +3,20 @@ package com.example.android.welfare;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import java.util.Locale;
-
 
 public class MainActivity extends AppCompatActivity {
 
-    private SharedPreferences flag;
+    private SharedPreferences sharedPreferences;
     private Button buttonEditProfile;
     private Button buttonRenewMembership;
     private Button buttonClassChange;
@@ -32,41 +27,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        flag = getSharedPreferences("flag", Context.MODE_PRIVATE);
+        sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
 
-        if (!flag.getBoolean("language", false)) {
-            setContentView(R.layout.activity_lang);
-            final SharedPreferences.Editor flagEditor = flag.edit();
-
-            Button langEnglishButton = findViewById(R.id.button_lang_english);
-            langEnglishButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setLocale("en");
-
-                    flagEditor.putBoolean("language", true);
-                    flagEditor.apply();
-
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-            });
-
-            Button langMalayalamButton = findViewById(R.id.button_lang_malayalam);
-            langMalayalamButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    setLocale("ml");
-
-                    flagEditor.putBoolean("language", true);
-                    flagEditor.apply();
-
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }
-            });
+        if (!sharedPreferences.getBoolean("language", false)) {
+            Intent languageIntent = new Intent(MainActivity.this, LanguageActivity.class);
+            startActivity(languageIntent);
+        } else if (!sharedPreferences.getString("loggedInID", "").isEmpty()){
+            Intent languageIntent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(languageIntent);
         } else {
-
             setContentView(R.layout.activity_main);
 
             buttonEditProfile = findViewById(R.id.button_main_edit_profile);
@@ -146,17 +115,15 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
                 Snackbar snackbar = Snackbar.make(linearLayout, "You have successfully logged out", Snackbar.LENGTH_LONG);
                 snackbar.show();
+                sharedPreferences.edit().remove("loggedInID").apply();
 
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
-                //TODO: implement Logout functionality
                 break;
             }
             case (R.id.button_menu_change_language): {
-                LinearLayout mainActivityLinearLayout = findViewById(R.id.layout_activity_main);
-                Snackbar changeLanguageSnackbar = Snackbar.make(mainActivityLinearLayout, "Redirect to Change Language page", Snackbar.LENGTH_LONG);
-                changeLanguageSnackbar.show();
-                //TODO: redirect to Select Language activity
+                Intent langActivityIntent = new Intent(MainActivity.this, LanguageActivity.class);
+                startActivity(langActivityIntent);
                 break;
             }
             default: {
@@ -165,14 +132,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
-    }
-
-    public void setLocale(String lang) {
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
     }
 }
