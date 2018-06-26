@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login = (Button)findViewById(R.id.acitvity_login_button_signin);
+        login = findViewById(R.id.acitvity_login_button_signin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
