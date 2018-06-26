@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
     private static final boolean DEBUG = true;
@@ -124,12 +125,11 @@ public class LoginActivity extends AppCompatActivity {
             String password = args[1];
             String mobile= args[0];
 
-            ArrayList params = new ArrayList();
-            params.add(new BasicNameValuePair("mobile", mobile));
-            params.add(new BasicNameValuePair("password", password));
+            HashMap<String, String> params = new HashMap<>();
+            params.put("mobile", mobile);
+            params.put("password", password);
 
             JSONObject json = JSONParser.makeHttpRequest("test_android/index.php", "POST", params);
-
 
             return json;
 
@@ -143,9 +143,8 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 if (result != null) {
                     Toast.makeText(getApplicationContext(),result.getString("code"),Toast.LENGTH_LONG).show();
-                    if (result.get("code").equals("200")) {
-                        sharedPreferences.edit().putString("mobile", mobileString).apply();
-                        sharedPreferences.edit().putString("password", passwordString).apply();
+                    if (result.get("code").toString().equals("200")) {
+                        sharedPreferences.edit().putString("loggedInID", result.get("loggedInID").toString()).apply();
                     }
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
