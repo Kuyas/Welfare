@@ -22,32 +22,28 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
     private static final boolean DEBUG = true;
     private SharedPreferences sharedPreferences;
     private String mobileString, passwordString;
     private TextValidator mobileValidator, passwordValidator;
     private boolean entry_flag;
+    private APIService loginUsingApi;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
 
-        // Login if mobile and password is already stored
-        if (!sharedPreferences.getString("mobile", "").isEmpty() &&
-                !sharedPreferences.getString("password", "").isEmpty() &&
-                DEBUG) {
-            LoginWithDetails(sharedPreferences.getString("mobile", ""), sharedPreferences.getString("password", ""));
-        }
-
         setContentView(R.layout.activity_login);
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
         toolbar.setTitle(getString(R.string.activity_login_title));
-
         setSupportActionBar(toolbar);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
         mobile = findViewById(R.id.activity_login_edittext_mobile);
         password = findViewById(R.id.activity_login_edittext_password);
+        loginUsingApi = APIUtils.getAPIService();
 
 
         Button signupbutton = findViewById(R.id.activity_login_button_signup);
@@ -89,15 +86,26 @@ public class LoginActivity extends AppCompatActivity {
                     passwordString = passwordValidator.returnText();
                 }
                 if (entry_flag || DEBUG) {
-                    LoginWithDetails(mobileValidator.returnText(), passwordValidator.returnText());
+                    loginUsingApi.savePost(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<LoginPostData>() {
+                        @Override
+                        public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
+                            long response_code = response.body().getResponseCode();
+                            if (response_code==200) {
+                                sharedPreferences.edit().putString("loggedInID", response.body().getId());
+                                Toast.makeText(LoginActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginPostData> call, Throwable t) {
+                            Toast.makeText(LoginActivity.this, "Failed to make request", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         });
-    }
-
-    private void LoginWithDetails(String mobile, String password) {
-        AttemptLogin attemptLogin = new AttemptLogin();
-        attemptLogin.execute(mobile, password);
     }
 
     @Override
@@ -108,60 +116,5 @@ public class LoginActivity extends AppCompatActivity {
 
         startActivity(closeAppIntent);
     }
-
-
-    private class AttemptLogin extends AsyncTask<String, String, JSONObject> {
-
-        @Override
-        protected void onPreExecute() {
-
-            super.onPreExecute();
-
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... args)  {
-
-            String password = args[1];
-            String mobile= args[0];
-
-            HashMap<String, String> params = new HashMap<>();
-            params.put("mobile", mobile);
-            params.put("password", password);
-
-//            JSONObject json = JSONParser.makeHttpRequest("test_android/index.php", "POST", params);
-
-//            return json;
-
-            return null;
-        }
-
-        protected void onPostExecute(JSONObject result) {
-
-            // dismiss the dialog once product deleted
-            //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
-
-            try {
-                if (result != null) {
-                    Toast.makeText(getApplicationContext(),result.getString("code"),Toast.LENGTH_LONG).show();
-                    if (result.get("code").toString().equals("200")) {
-                        sharedPreferences.edit().putString("loggedInID", result.get("loggedInID").toString()).apply();
-                    }
-
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "Invalid Mobile or Password", Toast.LENGTH_LONG).show();
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-        }
-
-    }
-
-
 
 }
