@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         if (!sharedPreferences.getBoolean("language", false)) {
             Intent languageIntent = new Intent(MainActivity.this, LanguageActivity.class);
             startActivity(languageIntent);
-        } else if (!sharedPreferences.getString("password", "").isEmpty()){
+        } else if (!sharedPreferences.getString("loggedInID", "").isEmpty()){
             Intent languageIntent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(languageIntent);
         } else {
@@ -115,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
                 LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
                 Snackbar snackbar = Snackbar.make(linearLayout, "You have successfully logged out", Snackbar.LENGTH_LONG);
                 snackbar.show();
+                sharedPreferences.edit().remove("loggedInID").apply();
 
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
-                //TODO: implement Logout functionality
                 break;
             }
             case (R.id.button_menu_change_language): {
