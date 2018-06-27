@@ -52,7 +52,7 @@
         <item>Other</item>
     </string-array>
 
-    <string name="activity_personal_textview_dob">dd/mm/yyyy</string>
+    <string name="activity_personal_textview_dob">dd-mm-yyyy</string>
     <string-array name="activity_personal_spinner_district">
         <!--<item>Choose District</item>-->
         <item>Kasaragod</item>

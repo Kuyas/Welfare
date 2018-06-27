@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +22,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private static final boolean DEBUG = true;
@@ -125,15 +127,18 @@ public class LoginActivity extends AppCompatActivity {
             String password = args[1];
             String mobile= args[0];
 
-            HashMap<String, String> params = new HashMap<>();
-            params.put("mobile", mobile);
-            params.put("password", password);
+//            HashMap<String, String> params = new HashMap<>();
+//            params.put("mobile", mobile);
+//            params.put("password", password);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair( "mobile_number", mobile));
+            params.add(new BasicNameValuePair("password", password));
 
-//            JSONObject json = JSONParser.makeHttpRequest("test_android/index.php", "POST", params);
+            JSONObject json = JSONParser.makeHttpRequest("http://192.168.43.56/Welfare-backend/login_user.php", "POST", params);
 
-//            return json;
+            return json;
 
-            return null;
+//            return null;
         }
 
         protected void onPostExecute(JSONObject result) {
