@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +16,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
 import java.text.DateFormat;
@@ -121,48 +124,49 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             buttonNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean flag = true;
-                    TextInputEditText name = findViewById(R.id.edit_text_personal_name);
-                    TextInputEditText address = findViewById(R.id.edit_text_personal_address);
-                    TextInputEditText place = findViewById(R.id.edit_text_personal_place);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        boolean flag = true;
+                        TextInputEditText name = findViewById(R.id.edit_text_personal_name);
+                        TextInputEditText address = findViewById(R.id.edit_text_personal_address);
+                        TextInputEditText place = findViewById(R.id.edit_text_personal_place);
 //                TextView date = findViewById(R.id.activity_personal_textview_date);
 
-                    TextValidator validName = new TextValidator(name);
-                    TextValidator validAddress = new TextValidator(address);
-                    TextValidator validPlace = new TextValidator(place);
+                        TextValidator validName = new TextValidator(name);
+                        TextValidator validAddress = new TextValidator(address);
+                        TextValidator validPlace = new TextValidator(place);
 
-                    if (validName.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        name.setError("Please Enter a Valid Name");
-                    }
-                    if (validAddress.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        address.setError("Please Enter a valid Address");
-                    }
-                    if (validPlace.isValid()) {
-                        //write to variable
-                    } else {
-                        place.setError("Please Enter a Valid Place");
-                    }
-                    if (spinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
-                        flag = false;
-                        Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
+                        if (validName.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            name.setError("Please Enter a Valid Name");
+                        }
+                        if (validAddress.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            address.setError("Please Enter a valid Address");
+                        }
+                        if (validPlace.isValid()) {
+                            //write to variable
+                        } else {
+                            place.setError("Please Enter a Valid Place");
+                        }
+                        if (spinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
+                            flag = false;
+                            Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
 
-                    }
-                    if (spinner2.getSelectedItem().toString().trim().equals("Choose District")) {
-                        flag = false;
-                        Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
+                        }
+                        if (spinner2.getSelectedItem().toString().trim().equals("Choose District")) {
+                            flag = false;
+                            Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
 
 
-                    }
-                    if (date_test == null) {
-                        flag = false;
-                        Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
-                    }
+                        }
+                        if (date_test == null) {
+                            flag = false;
+                            Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
+                        }
 
 //                if(date.toString().equals("dd/mm/yyyy")){
 //                    flag = false;
@@ -172,12 +176,18 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 //                    //write to variable
 //                }
 
-                    if (!flag) {
-                        Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                        if (!flag) {
+                            Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                        Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
-                                FamilyDetailsActivity.class);
-                        startActivity(paymentDetailsIntent);
+                            Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
+                                    FamilyDetailsActivity.class);
+                            startActivity(paymentDetailsIntent);
+                        }
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_personal_details);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
                     }
 
                 }
@@ -228,12 +238,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case (R.id.button_personal_details_next): {
-                    Intent familyDetailsIntent = new Intent(PersonalDetailsActivity.this,
-                            FamilyDetailsActivity.class);
-                    startActivity(familyDetailsIntent);
-                    break;
-                }
                 case (R.id.activity_button_home): {
                     Intent homeIntent = new Intent(PersonalDetailsActivity.this, MainActivity.class);
                     homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

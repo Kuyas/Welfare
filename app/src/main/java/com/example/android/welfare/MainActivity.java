@@ -75,18 +75,40 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()) {
 
                 case (R.id.button_main_edit_profile): {
-                    Intent editProfileIntent = new Intent(MainActivity.this, PersonalDetailsActivity.class);
-                    startActivity(editProfileIntent);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        Intent editProfileIntent = new Intent(MainActivity.this, PersonalDetailsActivity.class);
+                        startActivity(editProfileIntent);
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
+                    }
                     break;
                 }
                 case (R.id.button_main_renew_membership): {
-                    Intent renewMembershipIntent = new Intent(MainActivity.this, RenewMembershipActivity.class);
-                    startActivity(renewMembershipIntent);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        Intent renewMembershipIntent = new Intent(MainActivity.this, RenewMembershipActivity.class);
+                        startActivity(renewMembershipIntent);
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
+                    }
                     break;
                 }
                 case (R.id.button_main_class_change): {
-                    Intent classchangeIntent = new Intent(MainActivity.this, ClassChangeActivity.class);
-                    startActivity(classchangeIntent);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        Intent classchangeIntent = new Intent(MainActivity.this, ClassChangeActivity.class);
+                        startActivity(classchangeIntent);
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
+                    }
+                    break;
                 }
                 default: {
                     break;

@@ -5,14 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
 public class PaymentDetailsActivity extends AppCompatActivity {
@@ -60,7 +63,16 @@ public class PaymentDetailsActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case (R.id.button_payment_details_submit): {
-                    // TODO: implement SUBMIT functionality
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        // TODO: implement SUBMIT functionality
+                    } else {
+                        LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_payment_details);
+                        Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
+                                getString(R.string.user_details_validation_snackbar_message),
+                                Snackbar.LENGTH_LONG);
+
+                        validationSnackbar.show();
+                    }
                 }
                 case (R.id.activity_button_home): {
                     Intent homeIntent = new Intent(PaymentDetailsActivity.this, MainActivity.class);

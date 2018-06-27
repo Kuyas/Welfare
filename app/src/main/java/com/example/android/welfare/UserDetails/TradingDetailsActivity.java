@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,11 +14,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
 public class TradingDetailsActivity extends AppCompatActivity {
@@ -91,107 +94,114 @@ public class TradingDetailsActivity extends AppCompatActivity {
             buttonNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean flag = true;
-                    TextInputEditText firmName = findViewById(R.id.edit_text_trading_name);
-                    TextInputEditText firmAddress = findViewById(R.id.edit_text_trading_address);
-                    TextInputEditText branch = findViewById(R.id.edit_text_trading_branch);
-                    TextInputEditText godown = findViewById(R.id.edit_text_trading_godown);
-                    TextInputEditText factory = findViewById(R.id.edit_text_trading_factory);
-                    TextInputEditText others = findViewById(R.id.edit_text_trading_others);
-                    TextInputEditText capital = findViewById(R.id.edit_text_trading_capital);
-                    TextInputEditText gstn = findViewById(R.id.edit_text_trading_gstn);
-                    TextInputEditText licenseNumber = findViewById(R.id.edit_text_trading_license_number);
-                    TextInputEditText licenseAuthority = findViewById(R.id.edit_text_trading_licensing_authority);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        boolean flag = true;
+                        TextInputEditText firmName = findViewById(R.id.edit_text_trading_name);
+                        TextInputEditText firmAddress = findViewById(R.id.edit_text_trading_address);
+                        TextInputEditText branch = findViewById(R.id.edit_text_trading_branch);
+                        TextInputEditText godown = findViewById(R.id.edit_text_trading_godown);
+                        TextInputEditText factory = findViewById(R.id.edit_text_trading_factory);
+                        TextInputEditText others = findViewById(R.id.edit_text_trading_others);
+                        TextInputEditText capital = findViewById(R.id.edit_text_trading_capital);
+                        TextInputEditText gstn = findViewById(R.id.edit_text_trading_gstn);
+                        TextInputEditText licenseNumber = findViewById(R.id.edit_text_trading_license_number);
+                        TextInputEditText licenseAuthority = findViewById(R.id.edit_text_trading_licensing_authority);
 
-                    TextValidator validFirmName = new TextValidator(firmName);
-                    TextValidator validFirmAddress = new TextValidator(firmAddress);
-                    TextValidator validBranch = new TextValidator(branch);
-                    TextValidator validGodown = new TextValidator(godown);
-                    TextValidator validFactory = new TextValidator(factory);
-                    TextValidator validOthers = new TextValidator(others);
-                    TextValidator validCapital = new TextValidator(capital);
-                    TextValidator validGstn = new TextValidator(gstn);
-                    TextValidator validLicenseNumber = new TextValidator(licenseNumber);
-                    TextValidator validLicenseAuthority = new TextValidator(licenseAuthority);
+                        TextValidator validFirmName = new TextValidator(firmName);
+                        TextValidator validFirmAddress = new TextValidator(firmAddress);
+                        TextValidator validBranch = new TextValidator(branch);
+                        TextValidator validGodown = new TextValidator(godown);
+                        TextValidator validFactory = new TextValidator(factory);
+                        TextValidator validOthers = new TextValidator(others);
+                        TextValidator validCapital = new TextValidator(capital);
+                        TextValidator validGstn = new TextValidator(gstn);
+                        TextValidator validLicenseNumber = new TextValidator(licenseNumber);
+                        TextValidator validLicenseAuthority = new TextValidator(licenseAuthority);
 
-                    if (validFirmName.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        firmName.setError("Please enter a valid Firm Name");
-                    }
-                    if (validFirmAddress.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        firmAddress.setError("Please enter a valid Firm Address");
-                    }
-                    if (validBranch.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        branch.setError("Please enter a valid Branch Address");
-                    }
-                    if (validGodown.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        godown.setError("Please enter a valid Godown Address");
-                    }
-                    if (validFactory.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        factory.setError("Please enter a valid Factory Address");
-                    }
-                    if (validOthers.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        firmName.setError("Please enter a valid address for any other subsidiaries");
-                    }
-                    if (validCapital.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        capital.setError("Please enter a valid Capital");
-                    }
-                    if (validGstn.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        gstn.setError("Please enter a valid GSTN and Date");
-                    }
-                    if (validLicenseNumber.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        licenseNumber.setError("Please enter a valid License Number");
-                    }
-                    if (validLicenseAuthority.isValid()) {
-                        //write to variable
-                    } else {
-                        flag = false;
-                        licenseAuthority.setError("Please enter a valid License Authority");
-                    }
-                    if (spinner.getSelectedItem().toString().trim().equals("Type of Ownership")) {
-                        flag = false;
-                        Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Type of Ownership", Toast.LENGTH_SHORT).show();
+                        if (validFirmName.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            firmName.setError("Please enter a valid Firm Name");
+                        }
+                        if (validFirmAddress.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            firmAddress.setError("Please enter a valid Firm Address");
+                        }
+                        if (validBranch.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            branch.setError("Please enter a valid Branch Address");
+                        }
+                        if (validGodown.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            godown.setError("Please enter a valid Godown Address");
+                        }
+                        if (validFactory.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            factory.setError("Please enter a valid Factory Address");
+                        }
+                        if (validOthers.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            firmName.setError("Please enter a valid address for any other subsidiaries");
+                        }
+                        if (validCapital.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            capital.setError("Please enter a valid Capital");
+                        }
+                        if (validGstn.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            gstn.setError("Please enter a valid GSTN and Date");
+                        }
+                        if (validLicenseNumber.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            licenseNumber.setError("Please enter a valid License Number");
+                        }
+                        if (validLicenseAuthority.isValid()) {
+                            //write to variable
+                        } else {
+                            flag = false;
+                            licenseAuthority.setError("Please enter a valid License Authority");
+                        }
+                        if (spinner.getSelectedItem().toString().trim().equals("Type of Ownership")) {
+                            flag = false;
+                            Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Type of Ownership", Toast.LENGTH_SHORT).show();
 
-                    }
-                    if (spinner1.getSelectedItem().toString().trim().equals("Name of Official Authority")) {
-                        flag = false;
-                        Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Official Authority", Toast.LENGTH_SHORT).show();
+                        }
+                        if (spinner1.getSelectedItem().toString().trim().equals("Name of Official Authority")) {
+                            flag = false;
+                            Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Official Authority", Toast.LENGTH_SHORT).show();
 
 
-                    }
+                        }
 
-                    if (!flag) {
-                        Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                        if (!flag) {
+                            Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                        Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
-                                OtherDetailsActivity.class);
-                        startActivity(paymentDetailsIntent);
+                            Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
+                                    OtherDetailsActivity.class);
+                            startActivity(paymentDetailsIntent);
+                        }
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
                     }
                 }
             });
@@ -227,9 +237,16 @@ public class TradingDetailsActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case (R.id.button_trading_details_next): {
-                    Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
-                            OtherDetailsActivity.class);
-                    startActivity(otherDetailsIntent);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
+                                OtherDetailsActivity.class);
+                        startActivity(otherDetailsIntent);
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
+                    }
                     break;
                 }
                 case (R.id.activity_button_home): {
