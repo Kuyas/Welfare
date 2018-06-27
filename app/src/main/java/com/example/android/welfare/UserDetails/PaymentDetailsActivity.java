@@ -1,4 +1,4 @@
-package com.example.android.welfare;
+package com.example.android.welfare.UserDetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.R;
 
 public class PaymentDetailsActivity extends AppCompatActivity {
 
@@ -60,8 +64,10 @@ public class PaymentDetailsActivity extends AppCompatActivity {
                 }
                 case (R.id.activity_button_home): {
                     Intent homeIntent = new Intent(PaymentDetailsActivity.this, MainActivity.class);
+                    homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(homeIntent);
                     overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+                    break;
                 }
                 default: {
                     break;

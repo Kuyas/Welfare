@@ -13,6 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.android.welfare.Login.LanguageActivity;
+import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.UserDetails.ClassChangeActivity;
+import com.example.android.welfare.UserDetails.PersonalDetailsActivity;
+import com.example.android.welfare.UserDetails.RenewMembershipActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -97,14 +103,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
-        closeAppIntent.addCategory(Intent.CATEGORY_HOME);
-        closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        startActivity(closeAppIntent);
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
+//        closeAppIntent.addCategory(Intent.CATEGORY_HOME);
+//        closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//        startActivity(closeAppIntent);
+//    }
 
 
     @Override

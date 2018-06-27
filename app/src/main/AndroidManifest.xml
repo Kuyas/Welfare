@@ -23,62 +23,62 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PersonalDetailsActivity"
+            android:name=".UserDetails.PersonalDetailsActivity"
             android:parentActivityName=".MainActivity"
             android:label="Personal Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".Login.LoginActivity"
             android:label="@string/activity_login_title" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".Login.SignupActivity"
             android:label="@string/activity_signup_title"/>
         <activity
-            android:name=".RenewMembershipActivity"
+            android:name=".UserDetails.RenewMembershipActivity"
             android:parentActivityName=".MainActivity"
             android:label="@string/activity_renew_membership_title"/>
         <activity
-            android:name=".BankingDetailsActivity"
-            android:parentActivityName=".OtherDetailsActivity"
+            android:name=".UserDetails.BankingDetailsActivity"
+            android:parentActivityName=".UserDetails.OtherDetailsActivity"
             android:label="Banking Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".FamilyDetailsActivity"
-            android:parentActivityName=".PersonalDetailsActivity"
+            android:name=".UserDetails.FamilyDetailsActivity"
+            android:parentActivityName=".UserDetails.PersonalDetailsActivity"
             android:label="Family Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".TradingDetailsActivity"
-            android:parentActivityName=".FamilyDetailsActivity"
+            android:name=".UserDetails.TradingDetailsActivity"
+            android:parentActivityName=".UserDetails.FamilyDetailsActivity"
             android:label="Trading Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".OtherDetailsActivity"
-            android:parentActivityName=".TradingDetailsActivity"
+            android:name=".UserDetails.OtherDetailsActivity"
+            android:parentActivityName=".UserDetails.TradingDetailsActivity"
             android:label="Other Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
 
         <activity
-            android:name=".PaymentDetailsActivity"
-            android:parentActivityName=".BankingDetailsActivity"
+            android:name=".UserDetails.PaymentDetailsActivity"
+            android:parentActivityName=".UserDetails.BankingDetailsActivity"
             android:label="Payment Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".ClassChangeActivity"
+            android:name=".UserDetails.ClassChangeActivity"
             android:parentActivityName=".MainActivity"
             android:label="Class Change"/>
 
         <activity
-            android:name=".OtpVerificationActivity"
+            android:name=".Login.OtpVerificationActivity"
             android:label="Otp Verification" />
 
-        <activity android:name=".LanguageActivity"
+        <activity android:name=".Login.LanguageActivity"
             android:label="Choose Language" />
 
     </application>
