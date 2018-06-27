@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
 public class BankingDetailsActivity extends AppCompatActivity{
@@ -56,70 +57,77 @@ public class BankingDetailsActivity extends AppCompatActivity{
             submitButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    boolean flag = true;
-                    TextInputEditText bankName = findViewById(R.id.activity_bank_details_edittext_name);
-                    TextInputEditText owner = findViewById(R.id.activity_bank_details_edittext_owner);
-                    TextInputEditText accountNumber = findViewById(R.id.activity_bank_details_edittext_account);
-                    TextInputEditText branch = findViewById(R.id.activity_bank_details_edittext_branch);
-                    TextInputEditText ifsc = findViewById(R.id.activity_bank_details_edittext_ifsc);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        boolean flag = true;
+                        TextInputEditText bankName = findViewById(R.id.activity_bank_details_edittext_name);
+                        TextInputEditText owner = findViewById(R.id.activity_bank_details_edittext_owner);
+                        TextInputEditText accountNumber = findViewById(R.id.activity_bank_details_edittext_account);
+                        TextInputEditText branch = findViewById(R.id.activity_bank_details_edittext_branch);
+                        TextInputEditText ifsc = findViewById(R.id.activity_bank_details_edittext_ifsc);
 
-                    TextValidator validbankName = new TextValidator(bankName);
-                    TextValidator validOwner = new TextValidator(owner);
-                    TextValidator validAccountNumber = new TextValidator(accountNumber);
-                    TextValidator validBranch = new TextValidator(branch);
-                    TextValidator validIfsc = new TextValidator(ifsc);
+                        TextValidator validbankName = new TextValidator(bankName);
+                        TextValidator validOwner = new TextValidator(owner);
+                        TextValidator validAccountNumber = new TextValidator(accountNumber);
+                        TextValidator validBranch = new TextValidator(branch);
+                        TextValidator validIfsc = new TextValidator(ifsc);
 
-                    if (validbankName.isValid()) {
-                        // write to variable
+                        if (validbankName.isValid()) {
+                            // write to variable
+                        } else {
+                            flag = false;
+                            bankName.setError("Please enter a valid Bank name");
+                        }
+
+                        if (validOwner.isValid()) {
+                            // write to variable;
+                        } else {
+                            flag = false;
+                            owner.setError("Please enter a valid Account Holder name");
+                        }
+
+                        if (validAccountNumber.regexValidator(TextValidator.accountnumberregex)) {
+                            // write to variable
+                        } else {
+                            flag = false;
+                            accountNumber.setError("Please enter an account number between 9-18 digits long");
+                        }
+
+                        if (validBranch.isValid()) {
+                            // write to variable
+                        } else {
+                            flag = false;
+                            branch.setError("Please enter a valid branch name");
+                        }
+
+                        if (validIfsc.regexValidator(TextValidator.ifscregex)) {
+                            // write to variable
+                        } else {
+                            flag = false;
+                            ifsc.setError("IFSC code should have 4 alphabets and 7 digits");
+                        }
+
+                        if (flag) {
+                            Toast.makeText(BankingDetailsActivity.this, "Details submitted", Toast.LENGTH_LONG).show();
+                        }
+
+
+                        if (flag) {
+                            Intent paymentDetailsIntent = new Intent(BankingDetailsActivity.this,
+                                    PaymentDetailsActivity.class);
+                            startActivity(paymentDetailsIntent);
+                        } else {
+                            LinearLayout activityBankingDetailsLayout = findViewById(R.id.layout_activity_bank_details);
+                            Snackbar validationSnackbar = Snackbar.make(activityBankingDetailsLayout,
+                                    getString(R.string.user_details_validation_snackbar_message),
+                                    Snackbar.LENGTH_LONG);
+
+                            validationSnackbar.show();
+                        }
                     } else {
-                        flag = false;
-                        bankName.setError("Please enter a valid Bank name");
-                    }
-
-                    if (validOwner.isValid()) {
-                        // write to variable;
-                    } else {
-                        flag = false;
-                        owner.setError("Please enter a valid Account Holder name");
-                    }
-
-                    if (validAccountNumber.regexValidator(TextValidator.accountnumberregex)) {
-                        // write to variable
-                    } else {
-                        flag = false;
-                        accountNumber.setError("Please enter an account number between 9-18 digits long");
-                    }
-
-                    if (validBranch.isValid()) {
-                        // write to variable
-                    } else {
-                        flag = false;
-                        branch.setError("Please enter a valid branch name");
-                    }
-
-                    if (validIfsc.regexValidator(TextValidator.ifscregex)) {
-                        // write to variable
-                    } else {
-                        flag = false;
-                        ifsc.setError("IFSC code should have 4 alphabets and 7 digits");
-                    }
-
-                    if (flag) {
-                        Toast.makeText(BankingDetailsActivity.this, "Details submitted", Toast.LENGTH_LONG).show();
-                    }
-
-
-                    if (flag) {
-                        Intent paymentDetailsIntent = new Intent(BankingDetailsActivity.this,
-                                PaymentDetailsActivity.class);
-                        startActivity(paymentDetailsIntent);
-                    } else {
-                        LinearLayout activityBankingDetailsLayout = findViewById(R.id.layout_activity_bank_details);
-                        Snackbar validationSnackbar = Snackbar.make(activityBankingDetailsLayout,
-                                getString(R.string.user_details_validation_snackbar_message),
-                                Snackbar.LENGTH_LONG);
-
-                        validationSnackbar.show();
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_bank_details);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
                     }
                 }
             });

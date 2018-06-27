@@ -5,14 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
 public class FamilyDetailsActivity extends AppCompatActivity {
@@ -60,9 +63,16 @@ public class FamilyDetailsActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case (R.id.button_family_details_next): {
-                    Intent tradingDetailsIntent = new Intent(FamilyDetailsActivity.this,
-                            TradingDetailsActivity.class);
-                    startActivity(tradingDetailsIntent);
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        Intent tradingDetailsIntent = new Intent(FamilyDetailsActivity.this,
+                                TradingDetailsActivity.class);
+                        startActivity(tradingDetailsIntent);
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_family_details);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
+                    }
                     break;
                 }
                 case (R.id.activity_button_home): {

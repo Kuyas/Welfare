@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
 public class OtherDetailsActivity extends AppCompatActivity {
@@ -117,9 +118,10 @@ public class OtherDetailsActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case (R.id.button_other_details_next): {
-                    boolean flag = true;
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        boolean flag = true;
 
-                    // TODO: check which fields in OtherDetails are to be compulsory
+                        // TODO: check which fields in OtherDetails are to be compulsory
 //                    if (validateOwnMainBranch.isValid()) {
 //                        // store value
 //                    } else {
@@ -127,19 +129,24 @@ public class OtherDetailsActivity extends AppCompatActivity {
 //                        ownMainBranch.setError("Please enter a valid branch");
 //                    }
 
-                    
-                    
-                    if (flag) {
-                        Intent otherDetailsIntent = new Intent(OtherDetailsActivity.this,
-                                BankingDetailsActivity.class);
-                        startActivity(otherDetailsIntent);
-                    } else {
-                        LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_other_details);
-                        Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
-                                getString(R.string.user_details_validation_snackbar_message),
-                                Snackbar.LENGTH_LONG);
 
-                        validationSnackbar.show();
+                        if (flag) {
+                            Intent otherDetailsIntent = new Intent(OtherDetailsActivity.this,
+                                    BankingDetailsActivity.class);
+                            startActivity(otherDetailsIntent);
+                        } else {
+                            LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_other_details);
+                            Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
+                                    getString(R.string.user_details_validation_snackbar_message),
+                                    Snackbar.LENGTH_LONG);
+
+                            validationSnackbar.show();
+                        }
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_other_details);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
                     }
                     break;
                 }

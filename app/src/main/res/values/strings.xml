@@ -200,4 +200,6 @@
     <string name="activity_otp_verification_textview_otp_failed">OTP verification has failed. Please resend for OTP</string>
     <string name="activity_otp_verification_textview_otp_verified">OTP verification successful!</string>
 
+    <string name="internet_connection_error_message">Could not connect to internet. Please try again</string>
+
 </resources>
