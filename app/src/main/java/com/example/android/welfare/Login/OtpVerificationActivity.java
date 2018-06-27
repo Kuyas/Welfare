@@ -1,4 +1,4 @@
-package com.example.android.welfare;
+package com.example.android.welfare.Login;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.android.welfare.R;
 import com.msg91.sendotp.library.SendOtpVerification;
 import com.msg91.sendotp.library.Verification;
 import com.msg91.sendotp.library.VerificationListener;

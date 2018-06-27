@@ -1,7 +1,6 @@
-package com.example.android.welfare;
+package com.example.android.welfare.UserDetails;
 
 import android.app.DatePickerDialog;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,9 +10,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,14 +19,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.R;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -203,20 +201,11 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
 
             final Button homeButton = findViewById(R.id.activity_button_home);
-            homeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent homeIntent = new Intent(PersonalDetailsActivity.this, MainActivity.class);
-                    startActivity(homeIntent);
-                    overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
-                }
-            });
+            homeButton.setOnClickListener(onClickListener);
 
         }
     }
-//=======================================================
-//=======================================================
-    //=======================================================
+
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -243,6 +232,14 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     Intent familyDetailsIntent = new Intent(PersonalDetailsActivity.this,
                             FamilyDetailsActivity.class);
                     startActivity(familyDetailsIntent);
+                    break;
+                }
+                case (R.id.activity_button_home): {
+                    Intent homeIntent = new Intent(PersonalDetailsActivity.this, MainActivity.class);
+                    homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(homeIntent);
+                    overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
+                    break;
                 }
                 default: {}
             }

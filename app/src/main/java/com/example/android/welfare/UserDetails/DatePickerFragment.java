@@ -1,4 +1,4 @@
-package com.example.android.welfare;
+package com.example.android.welfare.UserDetails;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;

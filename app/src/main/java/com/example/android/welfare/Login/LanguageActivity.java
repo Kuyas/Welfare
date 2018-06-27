@@ -1,4 +1,4 @@
-package com.example.android.welfare;
+package com.example.android.welfare.Login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.R;
 
 import java.util.Locale;
 
