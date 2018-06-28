@@ -11,7 +11,20 @@ public interface APIService {
 
     @POST("login_user.php")
     @FormUrlEncoded
-    Call<LoginPostData> savePost(@Field("mobile_number") String mobile_number,
+    Call<LoginPostData> loginUser(@Field("mobile_number") String mobile_number,
+                        @Field("password") String password);
+
+    @POST("register_user.php")
+    @FormUrlEncoded
+    Call<LoginPostData> registerUser(@Field("mobile_number") String mobile_number,
                                  @Field("password") String password);
 
+    @POST("getuserid.php")
+    @FormUrlEncoded
+    Call<LoginPostData> getUserId(@Field("mobile_number") String mobile_number);
+
+    @POST("forgotpassword_user.php")
+    @FormUrlEncoded
+    Call<LoginPostData> changePassword(@Field("user_id") String user_id,
+                                       @Field("password") String password);
 }
