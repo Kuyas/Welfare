@@ -1,6 +1,8 @@
 package com.example.android.welfare.Login;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -103,7 +105,7 @@ public class OtpVerificationActivity extends AppCompatActivity implements Verifi
                     mobileVerification.initiate();
                 } else {
                     Log.i("Permission", "Contact permission was NOT granted.");
-                    // TODO: Alert user about manual otp verification
+                    message.setText("Please enter OTP manually");
                 }
                 break;
         }
@@ -125,6 +127,9 @@ public class OtpVerificationActivity extends AppCompatActivity implements Verifi
     public void onVerified(String response) {
         Log.d(TAG, "Verified!\n" + response);
         message.setText(R.string.activity_otp_verification_textview_otp_verified);
+        Intent resultIntent = new Intent();
+        setResult(Activity.RESULT_OK, resultIntent);
+        finish();
     }
 
     @Override
