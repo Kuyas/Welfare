@@ -56,7 +56,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         retypepassword = findViewById(R.id.activity_forgot_password_edittext_retype_password);
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
-        toolbar.setTitle(getString(R.string.activity_signup_title));
+        toolbar.setTitle(getString(R.string.activity_forgot_password_title));
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();

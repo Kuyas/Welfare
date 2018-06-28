@@ -1,152 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/layout_activity_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".MainActivity">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.design.widget.AppBarLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:background="?android:attr/colorPrimary"
+            android:elevation="4dp"
+            app:layout_scrollFlags="enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/activity_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/colorPrimary"
-                android:elevation="4dp"
-                app:layout_scrollFlags="enterAlways"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
+        </android.support.v7.widget.Toolbar>
 
-            </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
-        </android.support.design.widget.AppBarLayout>
-
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/activity_main_button_size"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/activity_user_details_tabs_height">
-
+            android:layout_height="match_parent"
+            android:orientation="vertical">
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-                <Button
-                    android:id="@+id/button_main_edit_profile"
-                    android:layout_width="@dimen/activity_main_button_size"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_main_button_size"
+                android:layout_marginTop="@dimen/activity_user_details_tabs_height"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/activity_main_button_edit_profile"
-                    android:textSize="@dimen/activity_main_text_size" />
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/button_main_edit_profile"
+                        android:layout_width="@dimen/activity_main_button_size"
+                        android:layout_height="match_parent"
+                        android:text="@string/activity_main_button_edit_profile"
+                        android:textSize="@dimen/activity_main_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/button_main_class_change"
+                        android:layout_width="@dimen/activity_main_button_size"
+                        android:layout_height="@dimen/activity_main_button_size"
+                        android:layout_gravity="center"
+                        android:text="@string/activity_main_button_class_change"
+                        android:textSize="@dimen/activity_main_text_size"/>
+                </LinearLayout>
+
             </LinearLayout>
 
+
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center">
-
-            <Button
-                android:id="@+id/button_main_class_change"
-                android:layout_width="@dimen/activity_main_button_size"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/activity_main_button_size"
-                android:layout_gravity="center"
-                android:text="@string/activity_main_button_class_change"
-                android:textSize="@dimen/activity_main_text_size"/>
+                android:layout_marginTop="@dimen/activity_user_details_tabs_height"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/button_main_application_status"
+                        android:layout_width="@dimen/activity_main_button_size"
+                        android:layout_height="@dimen/activity_main_button_size"
+                        android:text="@string/activity_main_button_application_status"
+                        android:textSize="@dimen/activity_main_text_size" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/button_main_pension_status"
+                        android:layout_width="@dimen/activity_main_button_size"
+                        android:layout_height="@dimen/activity_main_button_size"
+                        android:layout_gravity="end"
+                        android:text="@string/activity_main_button_pension_status"
+                        android:textSize="@dimen/activity_main_text_size"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_main_button_size"
+                android:layout_marginTop="@dimen/activity_user_details_tabs_height"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+                    <Button
+                        android:id="@+id/button_main_claim_status"
+                        android:layout_width="@dimen/activity_main_button_size"
+                        android:layout_height="@dimen/activity_main_button_size"
+                        android:layout_marginEnd="@dimen/activity_main_button_margin_right"
+                        android:layout_marginStart="@dimen/activity_main_button_margin_left"
+                        android:text="@string/activity_main_button_claim_status"
+                        android:textSize="@dimen/activity_main_text_size" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <Button
+                        android:id="@+id/button_main_renew_membership"
+                        android:layout_width="@dimen/activity_main_button_size"
+                        android:layout_height="@dimen/activity_main_button_size"
+                        android:layout_gravity="end"
+                        android:text="@string/activity_main_button_renew_membership"
+                        android:textSize="@dimen/activity_main_text_size"/>
+
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_main_button_size"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/activity_user_details_tabs_height">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center">
-        <Button
-            android:id="@+id/button_main_application_status"
-            android:layout_width="@dimen/activity_main_button_size"
-            android:layout_height="@dimen/activity_main_button_size"
-            android:text="@string/activity_main_button_application_status"
-            android:textSize="@dimen/activity_main_text_size" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center">
-        <Button
-            android:id="@+id/button_main_pension_status"
-            android:layout_width="@dimen/activity_main_button_size"
-            android:layout_height="@dimen/activity_main_button_size"
-            android:layout_gravity="end"
-            android:text="@string/activity_main_button_pension_status"
-            android:textSize="@dimen/activity_main_text_size"/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_main_button_size"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/activity_user_details_tabs_height">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center">
-        <Button
-            android:id="@+id/button_main_claim_status"
-            android:layout_width="@dimen/activity_main_button_size"
-            android:layout_height="@dimen/activity_main_button_size"
-            android:layout_marginStart="@dimen/activity_main_button_margin_left"
-            android:layout_marginEnd="@dimen/activity_main_button_margin_right"
-            android:text="@string/activity_main_button_claim_status"
-            android:textSize="@dimen/activity_main_text_size" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-        <Button
-            android:id="@+id/button_main_renew_membership"
-            android:layout_width="@dimen/activity_main_button_size"
-            android:layout_height="@dimen/activity_main_button_size"
-            android:layout_gravity="end"
-            android:text="@string/activity_main_button_renew_membership"
-            android:textSize="@dimen/activity_main_text_size"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>
 
-    </ScrollView>
 
