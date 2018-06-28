@@ -1,6 +1,9 @@
 package com.example.android.welfare;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
@@ -8,13 +11,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity{
+    private static final int otpAcitivyCode = 1;
+    private APIService registerUsingApi;
+    private TextValidator validMobile;
+    private TextValidator validPassword;
+    private TextValidator validRetypePassword;
+    private TextValidator validOTP;
+    private static final boolean DEBUG = true;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
         toolbar.setTitle(getString(R.string.activity_signup_title));
@@ -32,23 +50,18 @@ public class SignupActivity extends AppCompatActivity{
         });
 
 
-        Button SignupButton = findViewById(R.id.activity_signup_button_signup);
         Button SendOTPButton = findViewById(R.id.activity_signup_button_send_otp);
-
-        SignupButton.setEnabled(false);
 
         final TextInputEditText mobile = findViewById(R.id.activity_signup_edittext_mobile);
         final TextInputEditText password = findViewById(R.id.activity_signup_edittext_password);
         final TextInputEditText retypePassword = findViewById(R.id.activity_signup_edittext_retype_password);
-        final TextInputEditText otp = findViewById(R.id.activity_signup_edittext_otp);
 
         SendOTPButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TextValidator validMobile = new TextValidator(mobile);
-                TextValidator validPassword = new TextValidator(password);
-                TextValidator validRetypePassword = new TextValidator(retypePassword);
-                TextValidator validOTP = new TextValidator(otp);
+                validMobile = new TextValidator(mobile);
+                validPassword = new TextValidator(password);
+                validRetypePassword = new TextValidator(retypePassword);
 
                 boolean flag = true;
                 if (!validMobile.regexValidator(TextValidator.mobilenumberregex)) {
@@ -68,19 +81,42 @@ public class SignupActivity extends AppCompatActivity{
                     String phoneNumber = validMobile.returnText();
                     Intent otpVerification = new Intent(getApplicationContext(), OtpVerificationActivity.class);
                     otpVerification.putExtra("phonenumber", phoneNumber);
-                    startActivity(otpVerification);
-
-                    // TODO: send data to server on verification of OTP
+                    startActivityForResult(otpVerification, otpAcitivyCode);
                 }
             }
         });
 
-        SignupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                startActivity(intent);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case (otpAcitivyCode) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    registerUsingApi = APIUtils.getAPIService();
+                    registerUsingApi.registerUser(validMobile.returnText(), validPassword.returnText()).enqueue(new Callback<LoginPostData>() {
+                        @Override
+                        public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
+                            long response_code = response.body().getResponseCode();
+                            if (response_code==1) {
+                                sharedPreferences.edit().putString("loggedInID", response.body().getId());
+                                if (DEBUG) Toast.makeText(SignupActivity.this, "registered in ID is " + response.body().getId(), Toast.LENGTH_LONG).show();
+                                Intent mainActivity = new Intent(SignupActivity.this, MainActivity.class);
+                                startActivity(mainActivity);
+                            } else {
+                                Toast.makeText(SignupActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginPostData> call, Throwable t) {
+                            Toast.makeText(SignupActivity.this, "Failed to make request", Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+                break;
             }
-        });
+        }
     }
 }

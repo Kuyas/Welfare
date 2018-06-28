@@ -86,13 +86,15 @@ public class LoginActivity extends AppCompatActivity {
                     passwordString = passwordValidator.returnText();
                 }
                 if (entry_flag || DEBUG) {
-                    loginUsingApi.savePost(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<LoginPostData>() {
+                    loginUsingApi.loginUser(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<LoginPostData>() {
                         @Override
                         public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
                             long response_code = response.body().getResponseCode();
-                            if (response_code==200) {
-                                sharedPreferences.edit().putString("loggedInID", response.body().getId());
-                                Toast.makeText(LoginActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
+                            if (response_code==1) {
+                                sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
+                                if (DEBUG) Toast.makeText(LoginActivity.this, "logged in ID is " + response.body().getId(), Toast.LENGTH_LONG).show();
+                                Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(mainActivity);
                             } else {
                                 Toast.makeText(LoginActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
                             }
@@ -106,6 +108,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button forgotPassword = findViewById(R.id.activity_login_button_forgot_password);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotPasswordActivity = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(forgotPasswordActivity);
+            }
+        });
     }
 
     @Override
@@ -113,7 +124,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
         closeAppIntent.addCategory(Intent.CATEGORY_HOME);
         closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
         startActivity(closeAppIntent);
     }
 
