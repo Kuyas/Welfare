@@ -18,13 +18,25 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.welfare.DatabaseConnection.APIService;
+import com.example.android.welfare.DatabaseConnection.APIUtils;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingPostData;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TradingDetailsActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
+    private String loginID;
+    private APIService tradingUsingAPI;
+    private String ownershipSelect;
+    private String officialSelect;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,6 +100,12 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
                 }
             });
+
+
+
+            tradingUsingAPI = APIUtils.getAPIService();
+//            loginID = sharedPreferences.getString("loggedInID","");
+            loginID = "1";
 
 
             final Button buttonNext = findViewById(R.id.button_trading_details_next);
@@ -182,15 +200,42 @@ public class TradingDetailsActivity extends AppCompatActivity {
                             flag = false;
                             Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Type of Ownership", Toast.LENGTH_SHORT).show();
 
+                        }else {
+                            ownershipSelect = spinner.getSelectedItem().toString().trim();
                         }
                         if (spinner1.getSelectedItem().toString().trim().equals("Name of Official Authority")) {
                             flag = false;
                             Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Official Authority", Toast.LENGTH_SHORT).show();
 
 
+                        }else{
+                            officialSelect = spinner1.getSelectedItem().toString().trim();
                         }
 
-                        if (!flag) {
+                        if (flag) {
+
+                            tradingUsingAPI.savePost(loginID, validFirmName.returnText(), validFirmAddress.returnText(),
+                                    validBranch.returnText(), validGodown.returnText(), validFactory.returnText(), validOthers.returnText(),
+                                    "Ownership", validCapital.returnText(), validGstn.returnText(), validLicenseNumber.returnText(), validLicenseAuthority.returnText(),
+                                    "Official").enqueue(new Callback<TradingPostData>() {
+                                @Override
+                                public void onResponse(Call<TradingPostData> call, Response<TradingPostData> response) {
+                                    sharedPreferences.edit().putString("loggedInID", response.body().getId());
+                                    Toast.makeText(TradingDetailsActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
+
+                                    Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+
+                                    Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
+                                            FamilyDetailsActivity.class);
+                                    startActivity(paymentDetailsIntent);
+                                }
+
+                                @Override
+                                public void onFailure(Call<TradingPostData> call, Throwable t) {
+
+                                }
+                            });
+
                             Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
                             Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
