@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         if (!sharedPreferences.getBoolean("language", false)) {
             Intent languageIntent = new Intent(MainActivity.this, LanguageActivity.class);
             startActivity(languageIntent);
-        } else if (!sharedPreferences.getString("loggedInID", "").isEmpty()){
+        } else if (sharedPreferences.getString("loggedInID", "").isEmpty()){
             Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
@@ -123,17 +123,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-
-//    @Override
-//    public void onBackPressed() {
-//        Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
-//        closeAppIntent.addCategory(Intent.CATEGORY_HOME);
-//        closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-//        startActivity(closeAppIntent);
-//    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

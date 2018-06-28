@@ -21,13 +21,13 @@ public interface APIService {
     Call<LoginPostData> registerUser(@Field("mobile_number") String mobile_number,
                                  @Field("password") String password);
 
-    @POST("getuserid.php")
+    @POST("check_mobile.php")
     @FormUrlEncoded
-    Call<LoginPostData> getUserId(@Field("mobile_number") String mobile_number);
+    Call<LoginPostData> checkMobile(@Field("mobile_number") String mobile_number);
 
     @POST("forgotpassword_user.php")
     @FormUrlEncoded
-    Call<LoginPostData> changePassword(@Field("user_id") String user_id,
+    Call<LoginPostData> changePassword(@Field("mobile_number") String user_id,
                                        @Field("password") String password);
     @POST("personal_form.php")
     @FormUrlEncoded

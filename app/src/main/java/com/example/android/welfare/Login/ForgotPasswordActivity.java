@@ -29,13 +29,14 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private static final boolean DEBUG = true;
     private static final int otpAcitivyCode = 1;
     private boolean verified = false;
+    private Context currentContext;
 
     private SharedPreferences sharedPreferences;
     private TextInputEditText mobile;
     private TextInputEditText password;
     private TextInputEditText retypepassword;
     private APIService changePasswordAPI;
-    private APIService getUserIdAPI;
+    private APIService checkMobileIdAPI;
     private String loggedInID;
 
     private TextValidator validMobile;
@@ -48,6 +49,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        currentContext = ForgotPasswordActivity.this;
 
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
 
@@ -76,11 +78,25 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 validMobile = new TextValidator(mobile);
                 if (DEBUG || validMobile.regexValidator(TextValidator.mobilenumberregex)) {
-                    mobile.setFocusable(false);
-                    String phoneNumber = validMobile.returnText();
-                    Intent otpVerification = new Intent(getApplicationContext(), OtpVerificationActivity.class);
-                    otpVerification.putExtra("phonenumber", phoneNumber);
-                    startActivityForResult(otpVerification, otpAcitivyCode);
+                    checkMobileIdAPI = APIUtils.getAPIService();
+                    checkMobileIdAPI.checkMobile(validMobile.returnText()).enqueue(new Callback<LoginPostData>() {
+                        @Override
+                        public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
+                            int response_code = response.body().getResponseCode();
+                            if (response_code == 200) {
+                                Intent otpVerification = new Intent(getApplicationContext(), OtpVerificationActivity.class);
+                                otpVerification.putExtra("phonenumber", validMobile.returnText());
+                                startActivityForResult(otpVerification, otpAcitivyCode);
+                            } else {
+                                mobile.setError("This mobile number does not exist in database");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginPostData> call, Throwable t) {
+                            mobile.setError("Failed to send request");
+                        }
+                    });
                 }
             }
         });
@@ -108,15 +124,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         retypepassword.setError("Password and retyped password are not same");
                     } else {
                         changePasswordAPI = APIUtils.getAPIService();
-                        changePasswordAPI.changePassword(loggedInID, validPassword.returnText()).enqueue(new Callback<LoginPostData>() {
+                        changePasswordAPI.changePassword(validMobile.returnText(), validPassword.returnText()).enqueue(new Callback<LoginPostData>() {
                             @Override
                             public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
-                                long response_code = response.body().getResponseCode();
-                                if (response_code==1) {
-                                    sharedPreferences.edit().putString("loggedInID", loggedInID).apply();
-                                    Intent mainactivity = new Intent(ForgotPasswordActivity.this, MainActivity.class);
-                                    startActivity(mainactivity);
+                                int response_code = response.body().getResponseCode();
+                                if (response_code==200) {
                                     if (DEBUG) Toast.makeText(ForgotPasswordActivity.this, "changed password ", Toast.LENGTH_LONG).show();
+                                    sharedPreferences.edit().putString("loggedInID", loggedInID).apply();
+                                    Intent mainactivity = new Intent(currentContext, MainActivity.class);
+                                    startActivity(mainactivity);
                                 } else {
                                     Toast.makeText(ForgotPasswordActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
                                 }
@@ -139,28 +155,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             case (otpAcitivyCode): {
                 if (resultCode == Activity.RESULT_OK) {
                     verified = true;
-                    getUserIdAPI = APIUtils.getAPIService();
-                    getUserIdAPI.getUserId(validMobile.returnText()).enqueue(new Callback<LoginPostData>() {
-                        @Override
-                        public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
-                            long response_code = response.body().getResponseCode();
-                            if (response_code==1) {
-                                loggedInID = response.body().getId();
-                                verified = true;
-                                mobile.setFocusable(false);
-                                sendOTP.setEnabled(false);
-                                changePassword.setEnabled(true);
-                                if (DEBUG) Toast.makeText(ForgotPasswordActivity.this, "registered in ID is " + response.body().getId(), Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(ForgotPasswordActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<LoginPostData> call, Throwable t) {
-                            Toast.makeText(ForgotPasswordActivity.this, "Failed to make request", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    mobile.setFocusable(false);
+                    sendOTP.setEnabled(false);
+                    changePassword.setEnabled(true);
                     break;
                 }
             }

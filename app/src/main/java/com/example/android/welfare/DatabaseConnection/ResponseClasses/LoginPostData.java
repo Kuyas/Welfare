@@ -7,16 +7,16 @@ public class LoginPostData {
 
     @SerializedName("response_code")
     @Expose
-    private Long responseCode;
+    private int responseCode;
     @SerializedName("id")
     @Expose
     private String id;
 
-    public Long getResponseCode() {
+    public int getResponseCode() {
         return responseCode;
     }
 
-    public void setResponseCode(Long responseCode) {
+    public void setResponseCode(int responseCode) {
         this.responseCode = responseCode;
     }
 
