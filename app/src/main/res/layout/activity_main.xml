@@ -127,8 +127,6 @@
                         android:id="@+id/button_main_claim_status"
                         android:layout_width="@dimen/activity_main_button_size"
                         android:layout_height="@dimen/activity_main_button_size"
-                        android:layout_marginEnd="@dimen/activity_main_button_margin_right"
-                        android:layout_marginStart="@dimen/activity_main_button_margin_left"
                         android:text="@string/activity_main_button_claim_status"
                         android:textSize="@dimen/activity_main_text_size" />
                 </LinearLayout>
