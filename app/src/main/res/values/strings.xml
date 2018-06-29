@@ -47,9 +47,9 @@
     <string name="activity_personal_district_hint">District</string>
     <string-array name="activity_personal_spinner_gender">
         <item>Choose Gender</item>
-        <item>Male</item>
-        <item>Female</item>
-        <item>Other</item>
+        <item>MALE</item>
+        <item>FEMALE</item>
+        <item>OTHER</item>
     </string-array>
 
     <string name="activity_personal_textview_dob">dd-mm-yyyy</string>

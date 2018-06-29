@@ -3,21 +3,20 @@ package com.example.android.welfare.DatabaseConnection.ResponseClasses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TradingPostData {
-
+public class AuthenticationData {
 
     @SerializedName("response_code")
     @Expose
-    private Long responseCode;
+    private int responseCode;
     @SerializedName("id")
     @Expose
     private String id;
 
-    public Long getResponseCode() {
+    public int getResponseCode() {
         return responseCode;
     }
 
-    public void setResponseCode(Long responseCode) {
+    public void setResponseCode(int responseCode) {
         this.responseCode = responseCode;
     }
 
@@ -28,4 +27,5 @@ public class TradingPostData {
     public void setId(String id) {
         this.id = id;
     }
+
 }
