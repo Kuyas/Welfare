@@ -10,22 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:padding="15dp"
         android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="15dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="25sp"
                 android:text="@string/activity_renew_membership_annual" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:textColor="#ff0000"
+                android:paddingLeft="20dp"
+                android:textSize="25sp"
+                android:text="From Database"
                 android:gravity="end" />
 
         </LinearLayout>
@@ -38,11 +46,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:textSize="25sp"
                 android:text="@string/activity_renew_membership_class" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingTop="15dp"
                 android:layout_height="wrap_content"
+                android:text="From Database"
+                android:textColor="#ff0000"
+                android:textSize="25sp"
                 android:gravity="end" />
 
         </LinearLayout>
@@ -53,21 +68,29 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:textSize="25sp"
                 android:text="@string/activity_renew_membership_total" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:textColor="#ff0000"
+                android:textSize="25sp"
+                android:text="From Database"
                 android:gravity="end" />
 
         </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
         android:text="@string/activity_renew_membership_pay" />
 
 </LinearLayout>

@@ -52,7 +52,7 @@
         <item>Other</item>
     </string-array>
 
-    <string name="activity_personal_textview_dob">dd/mm/yyyy</string>
+    <string name="activity_personal_textview_dob">dd-mm-yyyy</string>
     <string-array name="activity_personal_spinner_district">
         <!--<item>Choose District</item>-->
         <item>Kasaragod</item>
@@ -134,6 +134,7 @@
     <string name="activity_renew_membership_total">Total</string>
     <string name="activity_renew_membership_pay">Pay using Netbanking</string>
 
+    <string name="activity_forgot_password_title">Forgot Password</string>
     <string name="activity_forgot_password_mobile_field">Mobile</string>
     <string name="activity_forgot_password_otp_field">OTP</string>
     <string name="activity_forgot_password_password_field">Password</string>
@@ -196,6 +197,7 @@
     <string name="user_details_submit">SUBMIT</string>
     <string name="user_details_validation_snackbar_message">Please enter valid data</string>
 
+    <string name="activity_otp_verification_title">OTP Verification</string>
     <string name="activity_otp_verification_button_resend">Resend OTP</string>
     <string name="activity_otp_verification_otp_field_hint">OTP</string>
     <string name="activity_otp_verification_textview_otp_sent">OTP has been sent</string>

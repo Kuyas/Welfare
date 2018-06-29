@@ -21,6 +21,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.welfare.DatabaseConnection.APIService;
+import com.example.android.welfare.DatabaseConnection.APIUtils;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalPostData;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
@@ -32,18 +35,25 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private SharedPreferences sharedPreferences;
-
+    private APIService personalUsingAPI;
+    private String loginID;
+    private String genderSelect;
+    private String districtSelect;
 
     String date_test;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        if (!sharedPreferences.getString("loggedInID", "").isEmpty()) {
+        if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             //TODO: Remove the negation
 
             Intent loginIntent = new Intent(PersonalDetailsActivity.this, LoginActivity.class);
@@ -120,6 +130,11 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             });
 
 
+            personalUsingAPI = APIUtils.getAPIService();
+//            loginID = sharedPreferences.getString("loggedInID","");
+            loginID = "1";
+
+
             final Button buttonNext = findViewById(R.id.button_personal_details_next);
             buttonNext.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -156,12 +171,17 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                             flag = false;
                             Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
 
+                        } else {
+
+                            genderSelect = spinner.getSelectedItem().toString().trim();
+
+
                         }
                         if (spinner2.getSelectedItem().toString().trim().equals("Choose District")) {
                             flag = false;
                             Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
-
-
+                        }else {
+                            districtSelect = spinner2.getSelectedItem().toString().trim();
                         }
                         if (date_test == null) {
                             flag = false;
@@ -176,12 +196,41 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 //                    //write to variable
 //                }
 
-                        if (!flag) {
-                            Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                        if (flag) {
 
-                            Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
-                                    FamilyDetailsActivity.class);
-                            startActivity(paymentDetailsIntent);
+                            personalUsingAPI.savePost(loginID, validName.returnText(),"29-03-1998", genderSelect, validAddress.returnText(),
+                                    validPlace.returnText(), districtSelect).enqueue(new Callback<PersonalPostData>() {
+                                @Override
+                                public void onResponse(Call<PersonalPostData> call, Response<PersonalPostData> response) {
+                                    long response_code = response.body().getResponseCode();
+//                                    Toast.makeText(PersonalDetailsActivity.this, (int) response_code, Toast.LENGTH_LONG).show();
+
+                                    if (response_code == 1) {
+                                        sharedPreferences.edit().putString("loggedInID", response.body().getId());
+                                        Toast.makeText(PersonalDetailsActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
+
+                                        Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+
+                                        Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
+                                                FamilyDetailsActivity.class);
+                                        startActivity(paymentDetailsIntent);
+                                    } else {
+
+
+                                        Toast.makeText(PersonalDetailsActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
+                                    }
+
+
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<PersonalPostData> call, Throwable t) {
+                                    Toast.makeText(PersonalDetailsActivity.this, "Details failed", Toast.LENGTH_LONG).show();
+
+                                }
+                            });
+
                         }
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_personal_details);

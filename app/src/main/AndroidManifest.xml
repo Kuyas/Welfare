@@ -84,6 +84,9 @@
         <activity android:name=".Login.LanguageActivity"
             android:label="Choose Language" />
 
+        <activity android:name=".Login.ForgotPasswordActivity"
+            android:label="Change Password" />
+
     </application>
 
 </manifest>

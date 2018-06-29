@@ -26,61 +26,70 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/activity_login_textinput_mobile"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/activity_login_edittext_mobile"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/activity_login_name"
-            android:inputType="phone"
-            android:digits="0123456789"
-            android:maxLength="10"
-            android:textColor="#000000" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/activity_login_textinput_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:orientation="vertical">
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/activity_login_textinput_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
 
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/activity_login_edittext_password"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/activity_login_password"
-            android:inputType="textPassword"
-            android:maxLength="100"
-            android:textColor="#000000" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_login_edittext_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/activity_login_name"
+                    android:inputType="phone"
+                    android:digits="0123456789"
+                    android:maxLength="10"
+                    android:textColor="#000000" />
 
-    </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:text="@string/activity_login_login"
-        android:id="@+id/acitvity_login_button_signin"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:layout_width="120dp"
-        android:layout_height="60dp" />
-    <Button
-        android:text="@string/activity_login_signup"
-        android:id="@+id/activity_login_button_signup"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center"
-        android:layout_width="120dp"
-        android:layout_height="60dp" />
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/activity_login_textinput_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <Button
-        android:text="@string/activity_login_forgot_password"
-        android:id="@+id/activity_login_button_forgot_password"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center"
-        android:layout_width="120dp"
-        android:layout_height="60dp" />
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/activity_login_edittext_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/activity_login_password"
+                    android:inputType="textPassword"
+                    android:maxLength="100"
+                    android:textColor="#000000" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:text="@string/activity_login_login"
+                android:id="@+id/acitvity_login_button_signin"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+            <Button
+                android:text="@string/activity_login_signup"
+                android:id="@+id/activity_login_button_signup"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+
+            <Button
+                android:text="@string/activity_login_forgot_password"
+                android:id="@+id/activity_login_button_forgot_password"
+                android:layout_marginTop="40dp"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:layout_height="60dp" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

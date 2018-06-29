@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.LoginPostData;
+import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 import com.example.android.welfare.UserDetails.TextValidator;
@@ -93,13 +94,15 @@ public class LoginActivity extends AppCompatActivity {
                         passwordString = passwordValidator.returnText();
                     }
                     if (entry_flag || DEBUG) {
-                        loginUsingApi.savePost(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<LoginPostData>() {
+                        loginUsingApi.loginUser(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<LoginPostData>() {
                             @Override
                             public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
-                                long response_code = response.body().getResponseCode();
+                                int response_code = response.body().getResponseCode();
                                 if (response_code == 200) {
-                                    sharedPreferences.edit().putString("loggedInID", response.body().getId());
+                                    sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
                                     Toast.makeText(LoginActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
+                                    Intent mainactivity = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(mainactivity);
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
                                 }
@@ -119,6 +122,15 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button forgotpassword = findViewById(R.id.activity_login_button_forgot_password);
+        forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent forgotpasswordActivity = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(forgotpasswordActivity);
+            }
+        });
     }
 
     @Override
@@ -126,7 +138,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent closeAppIntent = new Intent(Intent.ACTION_MAIN);
         closeAppIntent.addCategory(Intent.CATEGORY_HOME);
         closeAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
         startActivity(closeAppIntent);
     }
 
