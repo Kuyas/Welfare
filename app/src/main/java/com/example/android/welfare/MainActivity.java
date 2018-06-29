@@ -133,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar snackbar = Snackbar.make(linearLayout, "You have successfully logged out", Snackbar.LENGTH_LONG);
                 snackbar.show();
                 sharedPreferences.edit().remove("loggedInID").apply();
+                sharedPreferences.edit().remove("mobile_number").apply();
+                sharedPreferences.edit().remove("password").apply();
 
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);

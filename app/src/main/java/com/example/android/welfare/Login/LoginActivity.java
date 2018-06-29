@@ -100,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
                                 int response_code = response.body().getResponseCode();
                                 if (response_code == 200) {
                                     sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
+                                    sharedPreferences.edit().putString("mobile_number", mobileValidator.returnText()).apply();
+                                    sharedPreferences.edit().putString("password", passwordValidator.returnText()).apply();
                                     Toast.makeText(LoginActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
                                     Intent mainactivity = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(mainactivity);

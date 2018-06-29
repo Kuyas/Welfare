@@ -1,6 +1,7 @@
 package com.example.android.welfare.DatabaseConnection;
 
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 
 import retrofit2.Call;
@@ -54,5 +55,8 @@ public interface APIService {
                                          @Field("trading_license_authority") String trading_license_authority,
                                          @Field("trading_official_name") String trading_official_name);
 
-
+    @POST("get_personal_data.php")
+    @FormUrlEncoded
+    Call<PersonalData> getPersonalData(@Field("mobile_number") String mobile_number,
+                                       @Field("password") String password);
 }
