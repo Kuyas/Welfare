@@ -42,7 +42,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        if (!sharedPreferences.getString("loggedInID", "").isEmpty()){
+        if (sharedPreferences.getString("loggedInID", "").isEmpty()){
             //TODO: Remove the negation
 
             Intent loginIntent = new Intent(TradingDetailsActivity.this, LoginActivity.class);
@@ -212,7 +212,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
                             officialSelect = spinner1.getSelectedItem().toString().trim();
                         }
 
-                        if (flag) {
+                        if (flag || true) {
 
                             tradingUsingAPI.savePost(loginID, validFirmName.returnText(), validFirmAddress.returnText(),
                                     validBranch.returnText(), validGodown.returnText(), validFactory.returnText(), validOthers.returnText(),
@@ -225,9 +225,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
                                     Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                                    Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
-                                            FamilyDetailsActivity.class);
-                                    startActivity(paymentDetailsIntent);
+                                    Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
+                                            OtherDetailsActivity.class);
+                                    startActivity(otherDetailsIntent);
                                 }
 
                                 @Override
