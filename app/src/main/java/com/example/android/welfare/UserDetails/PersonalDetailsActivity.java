@@ -28,6 +28,7 @@ import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
+import com.example.android.welfare.UserDetails.FamilyDetails.FamilyDetailsActivity;
 
 import java.text.DateFormat;
 import java.util.ArrayList;

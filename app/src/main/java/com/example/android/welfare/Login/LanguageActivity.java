@@ -34,8 +34,9 @@ public class LanguageActivity extends AppCompatActivity {
 
                 sharedPreferences.edit().putBoolean("language", true).apply();
 
-                Intent intent = new Intent(LanguageActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent homeIntent = new Intent(LanguageActivity.this, MainActivity.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(homeIntent);
             }
         });
 
@@ -47,8 +48,9 @@ public class LanguageActivity extends AppCompatActivity {
 
                 sharedPreferences.edit().putBoolean("language", true).apply();
 
-                Intent intent = new Intent(LanguageActivity.this, MainActivity.class);
-                startActivity(intent);
+                Intent homeIntent = new Intent(LanguageActivity.this, MainActivity.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(homeIntent);
             }
         });
     }

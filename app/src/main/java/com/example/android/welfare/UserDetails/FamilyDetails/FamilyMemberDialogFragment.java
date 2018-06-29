@@ -1,4 +1,4 @@
-package com.example.android.welfare;
+package com.example.android.welfare.UserDetails.FamilyDetails;
 
 import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
+
+import com.example.android.welfare.R;
 
 public class FamilyMemberDialogFragment extends DialogFragment {
 

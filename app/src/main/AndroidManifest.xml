@@ -48,14 +48,14 @@
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".UserDetails.FamilyDetailsActivity"
+            android:name=".UserDetails.FamilyDetails.FamilyDetailsActivity"
             android:parentActivityName=".UserDetails.PersonalDetailsActivity"
             android:label="Family Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".UserDetails.TradingDetailsActivity"
-            android:parentActivityName=".UserDetails.FamilyDetailsActivity"
+            android:parentActivityName=".UserDetails.FamilyDetails.FamilyDetailsActivity"
             android:label="Trading Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 

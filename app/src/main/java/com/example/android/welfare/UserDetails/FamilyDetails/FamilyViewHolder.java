@@ -1,8 +1,10 @@
-package com.example.android.welfare;
+package com.example.android.welfare.UserDetails.FamilyDetails;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.android.welfare.R;
 
 public class FamilyViewHolder extends RecyclerView.ViewHolder {
 
