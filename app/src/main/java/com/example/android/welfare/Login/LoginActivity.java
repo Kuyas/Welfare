@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.LoginPostData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
@@ -94,9 +94,9 @@ public class LoginActivity extends AppCompatActivity {
                         passwordString = passwordValidator.returnText();
                     }
                     if (entry_flag || DEBUG) {
-                        loginUsingApi.loginUser(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<LoginPostData>() {
+                        loginUsingApi.loginUser(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<AuthenticationData>() {
                             @Override
-                            public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
+                            public void onResponse(Call<AuthenticationData> call, Response<AuthenticationData> response) {
                                 int response_code = response.body().getResponseCode();
                                 if (response_code == 200) {
                                     sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure(Call<LoginPostData> call, Throwable t) {
+                            public void onFailure(Call<AuthenticationData> call, Throwable t) {
                                 Toast.makeText(LoginActivity.this, "Failed to make request", Toast.LENGTH_LONG).show();
                             }
                         });

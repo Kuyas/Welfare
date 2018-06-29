@@ -20,7 +20,8 @@ import android.widget.Toast;
 
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingPostData;
+import com.example.android.welfare.DatabaseConnection.DisplayErrorMessage;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
@@ -31,6 +32,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TradingDetailsActivity extends AppCompatActivity {
+    private static final boolean DEBUG = true;
+
     private SharedPreferences sharedPreferences;
     private String loginID;
     private APIService tradingUsingAPI;
@@ -43,13 +46,10 @@ public class TradingDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()){
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(TradingDetailsActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_trading_details);
-
 
             //Spinner for Type of Ownership
             final Spinner spinner = findViewById(R.id.spinner_layout_trading_details_ownership);
@@ -104,9 +104,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
 
             tradingUsingAPI = APIUtils.getAPIService();
-//            loginID = sharedPreferences.getString("loggedInID","");
-            loginID = "1";
-
 
             final Button buttonNext = findViewById(R.id.button_trading_details_next);
             buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -136,111 +133,85 @@ public class TradingDetailsActivity extends AppCompatActivity {
                         TextValidator validLicenseNumber = new TextValidator(licenseNumber);
                         TextValidator validLicenseAuthority = new TextValidator(licenseAuthority);
 
-                        if (validFirmName.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validFirmName.isValid()) {
                             flag = false;
                             firmName.setError("Please enter a valid Firm Name");
                         }
-                        if (validFirmAddress.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validFirmAddress.isValid()) {
                             flag = false;
                             firmAddress.setError("Please enter a valid Firm Address");
                         }
-                        if (validBranch.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validBranch.isValid()) {
                             flag = false;
                             branch.setError("Please enter a valid Branch Address");
                         }
-                        if (validGodown.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validGodown.isValid()) {
                             flag = false;
                             godown.setError("Please enter a valid Godown Address");
                         }
-                        if (validFactory.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validFactory.isValid()) {
                             flag = false;
                             factory.setError("Please enter a valid Factory Address");
                         }
-                        if (validOthers.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validOthers.isValid()) {
                             flag = false;
                             firmName.setError("Please enter a valid address for any other subsidiaries");
                         }
-                        if (validCapital.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validCapital.isValid()) {
                             flag = false;
                             capital.setError("Please enter a valid Capital");
                         }
-                        if (validGstn.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validGstn.isValid()) {
                             flag = false;
                             gstn.setError("Please enter a valid GSTN and Date");
                         }
-                        if (validLicenseNumber.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validLicenseNumber.isValid()) {
                             flag = false;
                             licenseNumber.setError("Please enter a valid License Number");
                         }
-                        if (validLicenseAuthority.isValid()) {
-                            //write to variable
-                        } else {
+                        if (!validLicenseAuthority.isValid()) {
                             flag = false;
                             licenseAuthority.setError("Please enter a valid License Authority");
                         }
                         if (spinner.getSelectedItem().toString().trim().equals("Type of Ownership")) {
                             flag = false;
                             Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Type of Ownership", Toast.LENGTH_SHORT).show();
-
                         }else {
                             ownershipSelect = spinner.getSelectedItem().toString().trim();
                         }
                         if (spinner1.getSelectedItem().toString().trim().equals("Name of Official Authority")) {
                             flag = false;
                             Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Official Authority", Toast.LENGTH_SHORT).show();
-
-
                         }else{
                             officialSelect = spinner1.getSelectedItem().toString().trim();
                         }
 
-                        if (flag || true) {
+                        if (flag || DEBUG) {
 
-                            tradingUsingAPI.savePost(loginID, validFirmName.returnText(), validFirmAddress.returnText(),
+                            tradingUsingAPI.saveTrading(loginID, validFirmName.returnText(), validFirmAddress.returnText(),
                                     validBranch.returnText(), validGodown.returnText(), validFactory.returnText(), validOthers.returnText(),
-                                    "Ownership", validCapital.returnText(), validGstn.returnText(), validLicenseNumber.returnText(), validLicenseAuthority.returnText(),
-                                    "Official").enqueue(new Callback<TradingPostData>() {
+                                    ownershipSelect, validCapital.returnText(), validGstn.returnText(), validLicenseNumber.returnText(), validLicenseAuthority.returnText(),
+                                    officialSelect).enqueue(new Callback<ResponseData>() {
                                 @Override
-                                public void onResponse(Call<TradingPostData> call, Response<TradingPostData> response) {
-                                    sharedPreferences.edit().putString("loggedInID", response.body().getId());
-                                    Toast.makeText(TradingDetailsActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
-
-                                    Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
-
-                                    Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
-                                            OtherDetailsActivity.class);
-                                    startActivity(otherDetailsIntent);
+                                public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                    int response_code = response.body().getResponseCode();
+                                    if (response_code == 200) {
+                                        Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                                        Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
+                                                OtherDetailsActivity.class);
+                                        startActivity(otherDetailsIntent);
+                                    } else {
+                                        Toast.makeText(TradingDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code),
+                                                Toast.LENGTH_LONG).show();
+                                    }
                                 }
 
                                 @Override
-                                public void onFailure(Call<TradingPostData> call, Throwable t) {
-
+                                public void onFailure(Call<ResponseData> call, Throwable t) {
+                                    Toast.makeText(TradingDetailsActivity.this, "Request not sent",
+                                            Toast.LENGTH_LONG).show();
                                 }
                             });
-
-                            Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
-
-                            Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
-                                    OtherDetailsActivity.class);
-                            startActivity(paymentDetailsIntent);
                         }
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);

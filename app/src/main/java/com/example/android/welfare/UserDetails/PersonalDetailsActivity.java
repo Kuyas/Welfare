@@ -23,17 +23,21 @@ import android.widget.Toast;
 
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalPostData;
+import com.example.android.welfare.DatabaseConnection.DisplayErrorMessage;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,7 +48,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     private SharedPreferences sharedPreferences;
     private APIService personalUsingAPI;
-    private String loginID;
     private String genderSelect;
     private String districtSelect;
 
@@ -54,14 +57,10 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(PersonalDetailsActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_personal_details);
-
-            final int position, position1;
 
             //DATE PICKER
             Button btn = findViewById(R.id.activity_personal_button_dob);
@@ -129,11 +128,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                 }
             });
 
-
             personalUsingAPI = APIUtils.getAPIService();
-//            loginID = sharedPreferences.getString("loggedInID","");
-            loginID = "1";
-
 
             final Button buttonNext = findViewById(R.id.button_personal_details_next);
             buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -144,7 +139,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                         TextInputEditText name = findViewById(R.id.edit_text_personal_name);
                         TextInputEditText address = findViewById(R.id.edit_text_personal_address);
                         TextInputEditText place = findViewById(R.id.edit_text_personal_place);
-//                TextView date = findViewById(R.id.activity_personal_textview_date);
 
                         TextValidator validName = new TextValidator(name);
                         TextValidator validAddress = new TextValidator(address);
@@ -170,12 +164,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                         if (spinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
                             flag = false;
                             Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
-
                         } else {
-
                             genderSelect = spinner.getSelectedItem().toString().trim();
-
-
                         }
                         if (spinner2.getSelectedItem().toString().trim().equals("Choose District")) {
                             flag = false;
@@ -188,46 +178,27 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                             Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
                         }
 
-//                if(date.toString().equals("dd/mm/yyyy")){
-//                    flag = false;
-//                    Toast.mak eText(PersonalDetailsActivity.this, "Details Not Saved", Toast.LENGTH_LONG).show();
-//
-//                }else {
-//                    //write to variable
-//                }
-
-                        if (flag || true) {
-
-                            personalUsingAPI.savePost(loginID, validName.returnText(),"29-03-1998", genderSelect, validAddress.returnText(),
-                                    validPlace.returnText(), districtSelect).enqueue(new Callback<PersonalPostData>() {
+                        if (flag) {
+                            personalUsingAPI.savePersonal(sharedPreferences.getString("loggedInID", ""), validName.returnText(),date_test,
+                                    genderSelect, validAddress.returnText(),
+                                    validPlace.returnText(), districtSelect).enqueue(new Callback<ResponseData>() {
                                 @Override
-                                public void onResponse(Call<PersonalPostData> call, Response<PersonalPostData> response) {
-                                    long response_code = response.body().getResponseCode();
-//                                    Toast.makeText(PersonalDetailsActivity.this, (int) response_code, Toast.LENGTH_LONG).show();
-
-                                    if (true || response_code == 1) {
-                                        sharedPreferences.edit().putString("loggedInID", response.body().getId());
-//                                        Toast.makeText(PersonalDetailsActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
-
+                                public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                    int response_code = response.body().getResponseCode();
+                                    if (response_code == 200) {
                                         Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                                        Intent paymentDetailsIntent = new Intent(PersonalDetailsActivity.this,
+                                        Intent familyDetailsIntent = new Intent(PersonalDetailsActivity.this,
                                                 FamilyDetailsActivity.class);
-                                        startActivity(paymentDetailsIntent);
+                                        startActivity(familyDetailsIntent);
                                     } else {
-
-
-                                        Toast.makeText(PersonalDetailsActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(PersonalDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
                                     }
-
-
-
                                 }
 
                                 @Override
-                                public void onFailure(Call<PersonalPostData> call, Throwable t) {
+                                public void onFailure(Call<ResponseData> call, Throwable t) {
                                     Toast.makeText(PersonalDetailsActivity.this, "Details failed", Toast.LENGTH_LONG).show();
-
                                 }
                             });
 
@@ -273,7 +244,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
 
-        String currentDateString = DateFormat.getDateInstance(DateFormat.DEFAULT).format(c.getTime());
+        String currentDateString = new SimpleDateFormat("dd-MM-yyyy", getResources().getConfiguration().locale).format(c.getTime());
         TextView textView = findViewById(R.id.activity_personal_textview_date);
         textView.setText(currentDateString);
         date_test = currentDateString;
