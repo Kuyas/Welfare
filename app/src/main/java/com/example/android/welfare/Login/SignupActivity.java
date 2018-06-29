@@ -115,6 +115,8 @@ public class SignupActivity extends AppCompatActivity{
                             if (response_code == 200) {
                                 Toast.makeText(SignupActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
                                 sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
+                                sharedPreferences.edit().putString("mobile_number", validMobile.returnText()).apply();
+                                sharedPreferences.edit().putString("password", validPassword.returnText()).apply();
                                 Intent mainActivityIntent = new Intent(SignupActivity.this, MainActivity.class);
                                 startActivity(mainActivityIntent);
                             } else {

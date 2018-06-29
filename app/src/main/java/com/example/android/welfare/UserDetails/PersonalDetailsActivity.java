@@ -24,20 +24,24 @@ import android.widget.Toast;
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
 import com.example.android.welfare.DatabaseConnection.DisplayErrorMessage;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
-import java.text.DateFormat;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,11 +49,21 @@ import retrofit2.Response;
 
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+    private static final String cacheDataFile = "personaldatacache.data";
 
     private SharedPreferences sharedPreferences;
     private APIService personalUsingAPI;
     private String genderSelect;
     private String districtSelect;
+
+    private TextInputEditText name;
+    private TextInputEditText address;
+    private TextInputEditText place;
+    private String[] arrayDistrict;
+    private ArrayAdapter<CharSequence> genderAdapter;
+
+    private Spinner districtSpinner;
+    private Spinner genderSpinner;
 
     String date_test;
     @Override
@@ -74,12 +88,12 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             });
 
             // SPINNER FOR GENDER SELECT
-            final Spinner spinner = findViewById(R.id.activity_personal_details_gender_select);
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
+            genderSpinner = findViewById(R.id.activity_personal_details_gender_select);
+            genderAdapter = ArrayAdapter.createFromResource(this, R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
+            genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            genderSpinner.setAdapter(genderAdapter);
 
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                     Context context = getApplicationContext();
@@ -99,10 +113,10 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             });
 
             //SPINNER FOR DISTRICT SELECT
-            final Spinner spinner2 = findViewById(R.id.activity_personal_details_district_select);
+            districtSpinner = findViewById(R.id.activity_personal_details_district_select);
 
             List<String> district;
-            String[] arrayDistrict = getResources().getStringArray(R.array.activity_personal_spinner_district);
+            arrayDistrict = getResources().getStringArray(R.array.activity_personal_spinner_district);
             Arrays.sort(arrayDistrict);
             district = new ArrayList<>(Arrays.asList(arrayDistrict));
             district.add(0, "Choose District");
@@ -110,9 +124,9 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, district);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-            spinner2.setAdapter(spinnerArrayAdapter);
+            districtSpinner.setAdapter(spinnerArrayAdapter);
 
-            spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            districtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int pos1, long id) {
                     Context context = getApplicationContext();
@@ -129,6 +143,11 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             });
 
             personalUsingAPI = APIUtils.getAPIService();
+            name = findViewById(R.id.edit_text_personal_name);
+            address = findViewById(R.id.edit_text_personal_address);
+            place = findViewById(R.id.edit_text_personal_place);
+
+            fillWithCache();
 
             final Button buttonNext = findViewById(R.id.button_personal_details_next);
             buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -136,10 +155,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                 public void onClick(View v) {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
                         boolean flag = true;
-                        TextInputEditText name = findViewById(R.id.edit_text_personal_name);
-                        TextInputEditText address = findViewById(R.id.edit_text_personal_address);
-                        TextInputEditText place = findViewById(R.id.edit_text_personal_place);
-
                         TextValidator validName = new TextValidator(name);
                         TextValidator validAddress = new TextValidator(address);
                         TextValidator validPlace = new TextValidator(place);
@@ -161,17 +176,17 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                         } else {
                             place.setError("Please Enter a Valid Place");
                         }
-                        if (spinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
+                        if (genderSpinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
                             flag = false;
                             Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
                         } else {
-                            genderSelect = spinner.getSelectedItem().toString().trim();
+                            genderSelect = genderSpinner.getSelectedItem().toString().trim();
                         }
-                        if (spinner2.getSelectedItem().toString().trim().equals("Choose District")) {
+                        if (districtSpinner.getSelectedItem().toString().trim().equals("Choose District")) {
                             flag = false;
                             Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
                         }else {
-                            districtSelect = spinner2.getSelectedItem().toString().trim();
+                            districtSelect = districtSpinner.getSelectedItem().toString().trim();
                         }
                         if (date_test == null) {
                             flag = false;
@@ -249,6 +264,62 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         textView.setText(currentDateString);
         date_test = currentDateString;
 
+    }
+
+    public void getCacheData() {
+        APIService storePersonalData = APIUtils.getAPIService();
+        storePersonalData.getPersonalData("9830955456", "qwertyuiop").enqueue(new Callback<PersonalData>() {
+            @Override
+            public void onResponse(Call<PersonalData> call, Response<PersonalData> response) {
+                try {
+                    int response_code = response.body().getResponseCode();
+                    if (response_code== 200) {
+                        File cache = new File(getCacheDir(), cacheDataFile);
+                        ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
+                        cacheWriter.writeObject(response.body());
+                        cacheWriter.close();
+                        fillWithCache();
+                    } else {
+                        Toast.makeText(PersonalDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<PersonalData> call, Throwable t) {
+                System.out.println("Request failed");
+            }
+        });
+    }
+
+    public void fillWithCache() {
+        try {
+            ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(getCacheDir() + File.separator + cacheDataFile));
+            PersonalData cached = (PersonalData) cacheReader.readObject();
+            name.setText(cached.getName());
+            address.setText(cached.getAddress());
+            place.setText(cached.getPlace());
+            for (int i = 0; i < arrayDistrict.length; i++) {
+                if (arrayDistrict[i].equals(cached.getDistrict())) {
+                    districtSpinner.setSelection(i);
+                    break;
+                }
+            }
+
+            for (int i = 0; i < genderAdapter.getCount(); i++) {
+                if (genderAdapter.getItem(i).equals(cached.getGender())) {
+                    genderSpinner.setSelection(i);
+                    break;
+                }
+            }
+
+            // TODO: fill date picker fragment with previously selected value
+        } catch (IOException | ClassNotFoundException e) {
+            getCacheData();
+        }
     }
 
 

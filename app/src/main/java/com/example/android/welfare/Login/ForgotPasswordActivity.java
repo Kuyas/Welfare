@@ -131,6 +131,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                                 if (response_code==200) {
                                     if (DEBUG) Toast.makeText(ForgotPasswordActivity.this, "changed password ", Toast.LENGTH_LONG).show();
                                     sharedPreferences.edit().putString("loggedInID", loggedInID).apply();
+                                    sharedPreferences.edit().putString("mobile_number", validMobile.returnText()).apply();
+                                    sharedPreferences.edit().putString("password", validPassword.returnText()).apply();
                                     Intent mainactivity = new Intent(currentContext, MainActivity.class);
                                     startActivity(mainactivity);
                                 } else {
