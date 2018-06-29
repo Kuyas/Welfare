@@ -93,9 +93,9 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
                     //Another interface callback
-                    Context context = getApplicationContext();
+//                    Context context = getApplicationContext();
 //            Object text =  parent.getItemAtPosition(pos);
-                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
                 }
             });
 

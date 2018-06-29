@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.android.welfare.DatabaseConnection.APIService;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextValidator mobileValidator, passwordValidator;
     private boolean entry_flag;
     private APIService loginUsingApi;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,12 +101,12 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
                                 int response_code = response.body().getResponseCode();
                                 if (response_code == 200) {
-                                    sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
+                                    sharedPreferences.edit().putString("loggedInID", response.body().getId());
                                     Toast.makeText(LoginActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
                                     Intent mainactivity = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(mainactivity);
                                 } else {
-                                    Toast.makeText(LoginActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
+                                     Toast.makeText(LoginActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
                                 }
                             }
 

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_bar_main"></include>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_application"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                card_view:cardCornerRadius="4dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/info_application"
+                    android:layout_width="match_parent"
+                    android:text="Application Status"
+                    android:layout_height="wrap_content" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_application"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:minHeight="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:progress="25"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_pension"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                card_view:cardCornerRadius="4dp">
+
+                <TextView
+                    android:id="@+id/info_pension"
+                    android:layout_width="match_parent"
+                    android:text="Pension Status"
+                    android:layout_height="wrap_content" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_pension"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:minHeight="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:progress="25"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/car_view_claim"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                card_view:cardCornerRadius="4dp">
+
+                <TextView
+                    android:id="@+id/info_claim"
+                    android:layout_width="match_parent"
+                    android:text="Claim Status"
+                    android:layout_height="wrap_content" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_claim"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:minHeight="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:progress="25"/>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

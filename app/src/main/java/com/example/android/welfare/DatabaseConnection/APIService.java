@@ -55,5 +55,9 @@ public interface APIService {
                                    @Field("trading_license_authority") String trading_license_authority,
                                    @Field("trading_official_name") String trading_official_name);
 
+    @POST("app_status.php")
+    @FormUrlEncoded
+    Call<LoginPostData> checkStatus(@Field("user_id") String user_id);
+
 
 }

@@ -220,14 +220,14 @@ public class TradingDetailsActivity extends AppCompatActivity {
                                     "Official").enqueue(new Callback<TradingPostData>() {
                                 @Override
                                 public void onResponse(Call<TradingPostData> call, Response<TradingPostData> response) {
-                                    sharedPreferences.edit().putString("loggedInID", response.body().getId());
+                                    sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
                                     Toast.makeText(TradingDetailsActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
 
                                     Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                                    Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
-                                            OtherDetailsActivity.class);
-                                    startActivity(otherDetailsIntent);
+//                                    Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
+//                                            OtherDetailsActivity.class);
+//                                    startActivity(otherDetailsIntent);
                                 }
 
                                 @Override
@@ -238,9 +238,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
                             Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                            Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
+                            Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
                                     OtherDetailsActivity.class);
-                            startActivity(paymentDetailsIntent);
+                            startActivity(otherDetailsIntent);
                         }
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);

@@ -12,28 +12,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
+import com.example.android.welfare.DatabaseConnection.APIService;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.LoginPostData;
 import com.example.android.welfare.Login.LanguageActivity;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.UserDetails.ClassChangeActivity;
 import com.example.android.welfare.UserDetails.PersonalDetailsActivity;
 import com.example.android.welfare.UserDetails.RenewMembershipActivity;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
+    private SharedPreferences claim;
     private Button buttonEditProfile;
     private Button buttonRenewMembership;
     private Button buttonClassChange;
     private Button buttonApplicationStatus;
     private Button buttonClaimStatus;
     private Button buttonPensionStatus;
+    private APIService statusUsingAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
+        claim = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
+
 
         if (!sharedPreferences.getBoolean("language", false)) {
             Intent languageIntent = new Intent(MainActivity.this, LanguageActivity.class);
@@ -109,6 +120,22 @@ public class MainActivity extends AppCompatActivity {
                         noConnectionSnackbar.show();
                     }
                     break;
+                }
+
+                case (R.id.button_main_claim_status): {
+                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                        Intent classchangeIntent = new Intent(MainActivity.this, StatusActivity.class);
+                        startActivity(classchangeIntent);
+                    } else {
+                        LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
+                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                        noConnectionSnackbar.show();
+                    }
+
+//
+                    break;
+
                 }
                 default: {
                     break;
