@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.example.android.welfare.DatabaseConnection.APIService;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.LoginPostData;
 import com.example.android.welfare.Login.LanguageActivity;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.UserDetails.ClassChangeActivity;
@@ -30,7 +29,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
-    private SharedPreferences claim;
     private Button buttonEditProfile;
     private Button buttonRenewMembership;
     private Button buttonClassChange;
@@ -43,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        claim = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-
 
         if (!sharedPreferences.getBoolean("language", false)) {
             Intent languageIntent = new Intent(MainActivity.this, LanguageActivity.class);
@@ -124,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case (R.id.button_main_claim_status): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        Intent classchangeIntent = new Intent(MainActivity.this, StatusActivity.class);
-                        startActivity(classchangeIntent);
+                        Intent statusCheckIntent = new Intent(MainActivity.this, StatusActivity.class);
+                        startActivity(statusCheckIntent);
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
                         Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,

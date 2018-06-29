@@ -204,4 +204,26 @@
 
     <string name="internet_connection_error_message">Could not connect to internet. Please try again</string>
 
+
+
+    <!--CLAIM STATUS STRING RESOURCES-->
+    <string name="activity_claim_status_title">Claim Status</string>
+    <string name="activity_claim_status_application_head">Application Status</string>
+    <string name="activity_claim_status_application_status">Status</string>
+    <string name="activity_claim_status_application_progress">x/5</string>
+    <string name="activity_claim_status_pension_head">Pension Status</string>
+    <string name="activity_claim_status_pension_status">Status</string>
+    <string name="activity_claim_status_pension_progress">x/5</string>
+    <string name="activity_claim_status_claim_head">Pension Status</string>
+    <string name="activity_claim_status_claim_status">Status</string>
+    <string name="activity_claim_status_claim_progress">x/5</string>
+    <string name="StatusActivity_application_submitted">Application Submitted</string>
+    <string name="StatusActivity_cleared_by_clerk">Cleared By Clerk</string>
+    <string name="StatusActivity_cleared_accounting_officer">Cleared by Accounting Officer</string>
+    <string name="StatusActivity_cleared_by_higher_auth">Cleared By Higher Authority</string>
+    <string name="StatusActivity_waiting_for_dispersal">Waiting for Dispersal</string>
+    <string name="StatusActivity_accepted">Accepted</string>
+    <string name="StatusActivity_rejected">Rejected</string>
+    <string name="application">\@string/</string>
+
 </resources>

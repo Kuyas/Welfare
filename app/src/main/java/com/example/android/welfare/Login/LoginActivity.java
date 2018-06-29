@@ -101,10 +101,10 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(Call<AuthenticationData> call, Response<AuthenticationData> response) {
                                 int response_code = response.body().getResponseCode();
                                 if (response_code == 200) {
-                                    sharedPreferences.edit().putString("loggedInID", response.body().getId());
+                                    sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
                                     Toast.makeText(LoginActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
-                                    Intent mainactivity = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(mainactivity);
+                                    Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                                    startActivity(mainActivity);
                                 } else {
                                      Toast.makeText(LoginActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
                                 }

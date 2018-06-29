@@ -1,6 +1,7 @@
 package com.example.android.welfare.DatabaseConnection;
 
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 
 import retrofit2.Call;
@@ -54,9 +55,9 @@ public interface APIService {
                                          @Field("trading_license_authority") String trading_license_authority,
                                          @Field("trading_official_name") String trading_official_name);
 
-    @POST("app_status.php")
+
+
+    @POST("app_status_check.php")
     @FormUrlEncoded
-    Call<LoginPostData> checkStatus(@Field("user_id") String user_id);
-
-
+    Call<ClaimsData> checkStatus(@Field("user_id") String user_id);
 }
