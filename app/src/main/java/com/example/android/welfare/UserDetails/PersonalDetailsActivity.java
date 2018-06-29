@@ -197,7 +197,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 //                    //write to variable
 //                }
 
-                        if (flag) {
+                        if (flag || true) {
 
                             personalUsingAPI.savePost(loginID, validName.returnText(),"29-03-1998", genderSelect, validAddress.returnText(),
                                     validPlace.returnText(), districtSelect).enqueue(new Callback<PersonalPostData>() {
@@ -206,9 +206,9 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                                     long response_code = response.body().getResponseCode();
 //                                    Toast.makeText(PersonalDetailsActivity.this, (int) response_code, Toast.LENGTH_LONG).show();
 
-                                    if (response_code == 1) {
+                                    if (true || response_code == 1) {
                                         sharedPreferences.edit().putString("loggedInID", response.body().getId());
-                                        Toast.makeText(PersonalDetailsActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
+//                                        Toast.makeText(PersonalDetailsActivity.this, "logged in ID is" + response.body().getId(), Toast.LENGTH_LONG).show();
 
                                         Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 

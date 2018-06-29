@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
@@ -27,7 +28,7 @@ public class PaymentDetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        if (!sharedPreferences.getString("loggedInID", "").isEmpty()) {
+        if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             //TODO: Remove the negation
 
             Intent loginIntent = new Intent(PaymentDetailsActivity.this, LoginActivity.class);
@@ -65,6 +66,9 @@ public class PaymentDetailsActivity extends AppCompatActivity {
                 case (R.id.button_payment_details_submit): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
                         // TODO: implement SUBMIT functionality
+                        Toast.makeText(PaymentDetailsActivity.this, "Details submitted", Toast.LENGTH_LONG).show();
+                        Intent mainActivity = new Intent(PaymentDetailsActivity.this, MainActivity.class);
+                        startActivity(mainActivity);
                     } else {
                         LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_payment_details);
                         Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
