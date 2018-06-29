@@ -6,21 +6,34 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import com.example.android.welfare.FamilyAdapter;
+import com.example.android.welfare.FamilyMemberDialogFragment;
+import com.example.android.welfare.FamilyModel;
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FamilyDetailsActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
+
+    private RecyclerView recyclerView;
+    private FamilyAdapter familyAdapter;
+    private List<FamilyModel> familyModelList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,13 +46,6 @@ public class FamilyDetailsActivity extends AppCompatActivity {
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_family_details);
-
-            final Button buttonNext = findViewById(R.id.button_family_details_next);
-            final Button buttonHome = findViewById(R.id.activity_button_home);
-
-
-            buttonNext.setOnClickListener(onClickListener);
-            buttonHome.setOnClickListener(onClickListener);
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_family_details_heading));
@@ -55,6 +61,27 @@ public class FamilyDetailsActivity extends AppCompatActivity {
                     onBackPressed();
                 }
             });
+
+            int maxFamilyMembers = 10;
+
+            recyclerView = findViewById(R.id.family_details_recycler_view);
+            recyclerView.setLayoutManager(new LinearLayoutManager(FamilyDetailsActivity.this,
+                    LinearLayoutManager.VERTICAL, false));
+            recyclerView.setHasFixedSize(true);
+
+            familyModelList = new ArrayList<>();
+            familyAdapter = new FamilyAdapter(this, familyModelList);
+
+            recyclerView.setAdapter(familyAdapter);
+
+            final Button buttonNext = findViewById(R.id.button_family_details_next);
+            final Button buttonHome = findViewById(R.id.activity_button_home);
+            final Button buttonAddMember = findViewById(R.id.button_add_member);
+
+
+            buttonNext.setOnClickListener(onClickListener);
+            buttonHome.setOnClickListener(onClickListener);
+            buttonAddMember.setOnClickListener(onClickListener);
         }
     }
 
@@ -82,10 +109,26 @@ public class FamilyDetailsActivity extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
                     break;
                 }
+                case (R.id.button_add_member): {
+                    showEditDialogFragment();
+                    break;
+                }
                 default: {
                     break;
                 }
             }
         }
     };
+
+    private void showEditDialogFragment () {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FamilyMemberDialogFragment dialogFragment = FamilyMemberDialogFragment.newInstance(
+                getString(R.string.dialog_fragment_family_details_heading));
+
+        dialogFragment.show(fragmentManager, "Add Family Member");
+        //dialogFragment.getDialog().getWindow().setLayout(200, 200);
+
+    }
+
+
 }

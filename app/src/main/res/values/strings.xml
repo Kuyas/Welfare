@@ -73,13 +73,16 @@
 
 
     <string name="activity_family_details_heading">Family Details</string>
-    <string name="activity_family_details_add_row">Add Row</string>
-    <string name="activity_family_details_heading_srNo">Sr.No</string>
-    <string name="activity_family_details_heading_name">Name</string>
-    <string name="activity_family_details_heading_age">Age</string>
-    <string name="activity_family_details_heading_gender">Gender</string>
-    <string name="activity_family_details_heading_occupation">Occupation</string>
-    <string name="activity_family_details_heading_relationship">Relationship</string>
+    <string name="activity_family_details_add_member">Add Member</string>
+    <string name="activity_family_details_srNo">Sr.No</string>
+    <string name="activity_family_details_name">Name</string>
+    <string name="activity_family_details_age">Age</string>
+    <string name="activity_family_details_gender">Gender</string>
+    <string name="activity_family_details_occupation">Occupation</string>
+    <string name="activity_family_details_relationship">Relationship</string>
+    <string name="activity_family_details_button_add">Add</string>
+
+    <string name="dialog_fragment_family_details_heading">Fill Details</string>
 
 
     <string name="activity_trading_details_heading">Trading Details</string>
