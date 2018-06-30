@@ -31,6 +31,7 @@ import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
+import com.example.android.welfare.UserDetails.FamilyDetails.FamilyDetailsActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
