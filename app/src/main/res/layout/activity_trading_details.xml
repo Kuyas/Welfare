@@ -211,19 +211,28 @@
                 android:entries="@array/activity_trading_details_spinner_authority"
                 android:prompt="@string/activity_trading_details_spinner_authority_prompt" />
 
-
-            <Button
-                android:id="@+id/button_trading_details_next"
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/activity_trading_details_button_next"
-                android:textAlignment="center" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <CheckBox
+                    android:id="@+id/checkbox_trading_details_editable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editable"/>
+
+                <Button
+                    android:id="@+id/button_trading_details_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:text="NEXT"/>
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

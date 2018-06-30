@@ -26,12 +26,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textSize="@dimen/user_details_heading_height"-->
-                <!--android:text="@string/activity_personal_heading"/>-->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -97,7 +91,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_weight="1"
                 android:textAlignment="center">
 
@@ -110,7 +104,7 @@
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/edit_text_personal_address"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/activity_personal_address_hint"
                         android:textColor="@color/inputTextColor" />
                 </android.support.design.widget.TextInputLayout>
@@ -119,7 +113,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_weight="1"
                 android:textAlignment="center">
 
@@ -133,7 +127,7 @@
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/edit_text_personal_place"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/activity_personal_place_hint"
                         android:textColor="@color/inputTextColor" />
 
@@ -155,7 +149,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/checkbox_personal_details_editable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editable"/>
+
         <Button
             android:id="@+id/button_personal_details_next"
             android:layout_width="match_parent"

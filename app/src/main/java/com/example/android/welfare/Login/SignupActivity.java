@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
 import com.example.android.welfare.DatabaseConnection.DisplayErrorMessage;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.LoginPostData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
@@ -108,13 +108,15 @@ public class SignupActivity extends AppCompatActivity{
             case (otpAcitivyCode): {
                 if (resultCode == Activity.RESULT_OK) {
                     APIService registerUSerAPI = APIUtils.getAPIService();
-                    registerUSerAPI.registerUser(validMobile.returnText(), validPassword.returnText()).enqueue(new Callback<LoginPostData>() {
+                    registerUSerAPI.registerUser(validMobile.returnText(), validPassword.returnText()).enqueue(new Callback<AuthenticationData>() {
                         @Override
-                        public void onResponse(Call<LoginPostData> call, Response<LoginPostData> response) {
+                        public void onResponse(Call<AuthenticationData> call, Response<AuthenticationData> response) {
                             int response_code = response.body().getResponseCode();
                             if (response_code == 200) {
                                 Toast.makeText(SignupActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
                                 sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
+                                sharedPreferences.edit().putString("mobile_number", validMobile.returnText()).apply();
+                                sharedPreferences.edit().putString("password", validPassword.returnText()).apply();
                                 Intent mainActivityIntent = new Intent(SignupActivity.this, MainActivity.class);
                                 startActivity(mainActivityIntent);
                             } else {
@@ -123,7 +125,7 @@ public class SignupActivity extends AppCompatActivity{
                         }
 
                         @Override
-                        public void onFailure(Call<LoginPostData> call, Throwable t) {
+                        public void onFailure(Call<AuthenticationData> call, Throwable t) {
                             Toast.makeText(SignupActivity.this, "Could not make request", Toast.LENGTH_LONG).show();
                         }
                     });
