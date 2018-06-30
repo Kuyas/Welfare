@@ -5,6 +5,8 @@ import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalDa
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -60,7 +62,8 @@ public interface APIService {
 
     @POST("app_status_check.php")
     @FormUrlEncoded
-    Call<ClaimsData> checkStatus(@Field("user_id") String user_id);
+    Call<List<ClaimsData>> checkStatus(@Field("user_id") String user_id);
+
     @POST("get_personal_data.php")
     @FormUrlEncoded
     Call<PersonalData> getPersonalData(@Field("mobile_number") String mobile_number,

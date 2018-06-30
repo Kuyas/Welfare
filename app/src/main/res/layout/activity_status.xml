@@ -92,7 +92,7 @@
                         android:textSize="25sp" />
 
                     <TextView
-                        android:id="@+id/info_application_pension"
+                        android:id="@+id/info_pension_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activity_claim_status_pension_status"

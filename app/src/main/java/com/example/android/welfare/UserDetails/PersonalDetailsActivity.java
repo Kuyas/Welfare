@@ -268,7 +268,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     public void getCacheData() {
         APIService storePersonalData = APIUtils.getAPIService();
-        storePersonalData.getPersonalData("9830955456", "qwertyuiop").enqueue(new Callback<PersonalData>() {
+        storePersonalData.getPersonalData(sharedPreferences.getString("mobile_number",""), sharedPreferences.getString("password","")).enqueue(new Callback<PersonalData>() {
             @Override
             public void onResponse(Call<PersonalData> call, Response<PersonalData> response) {
                 try {

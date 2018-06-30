@@ -45,6 +45,7 @@
     <string name="activity_personal_place_hint">Place</string>
     <string name="activity_personal_district">District</string>
     <string name="activity_personal_district_hint">District</string>
+    <string name="activity_personal_next">Next</string>
     <string-array name="activity_personal_spinner_gender">
         <item>Choose Gender</item>
         <item>MALE</item>
@@ -207,16 +208,17 @@
 
 
     <!--CLAIM STATUS STRING RESOURCES-->
+    <string name="activity_status_heading">Status Details</string>
     <string name="activity_claim_status_title">Claim Status</string>
     <string name="activity_claim_status_application_head">Application Status</string>
-    <string name="activity_claim_status_application_status">Status</string>
-    <string name="activity_claim_status_application_progress">x/5</string>
+    <string name="activity_claim_status_application_status">No Application Submitted</string>
+    <string name="activity_claim_status_application_progress"> </string>
     <string name="activity_claim_status_pension_head">Pension Status</string>
-    <string name="activity_claim_status_pension_status">Status</string>
-    <string name="activity_claim_status_pension_progress">x/5</string>
-    <string name="activity_claim_status_claim_head">Pension Status</string>
-    <string name="activity_claim_status_claim_status">Status</string>
-    <string name="activity_claim_status_claim_progress">x/5</string>
+    <string name="activity_claim_status_pension_status">No Pension Claim Submitted</string>
+    <string name="activity_claim_status_pension_progress"> </string>
+    <string name="activity_claim_status_claim_head">Claim Status</string>
+    <string name="activity_claim_status_claim_status">No Claim Submitted</string>
+    <string name="activity_claim_status_claim_progress"> </string>
     <string name="StatusActivity_application_submitted">Application Submitted</string>
     <string name="StatusActivity_cleared_by_clerk">Cleared By Clerk</string>
     <string name="StatusActivity_cleared_accounting_officer">Cleared by Accounting Officer</string>

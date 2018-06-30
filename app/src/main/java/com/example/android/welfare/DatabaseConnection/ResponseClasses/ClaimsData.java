@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class ClaimsData {
 
-
     @SerializedName("response_code")
     @Expose
     private int responseCode;
@@ -59,6 +58,5 @@ public class ClaimsData {
     public void setStatus(String status) {
         this.status = status;
     }
-
 
 }
