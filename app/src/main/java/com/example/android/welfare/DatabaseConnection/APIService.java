@@ -56,6 +56,15 @@ public interface APIService {
                                          @Field("trading_license_authority") String trading_license_authority,
                                          @Field("trading_official_name") String trading_official_name);
 
+    @POST("banking_form.php")
+    @FormUrlEncoded
+    Call<ResponseData> saveBanking(@Field("user_id") String user_id,
+                                   @Field("bank_name") String bank_name,
+                                   @Field("bank_account_num") String bank_account_num,
+                                   @Field("account_holder_name") String account_holder_name,
+                                   @Field("branch_name") String branch_name,
+                                   @Field("bank_ifsc") String bank_ifsc);
+
     @POST("get_personal_data.php")
     @FormUrlEncoded
     Call<PersonalData> getPersonalData(@Field("mobile_number") String mobile_number,
