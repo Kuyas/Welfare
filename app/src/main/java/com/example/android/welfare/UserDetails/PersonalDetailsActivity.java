@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -61,6 +62,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
     private TextInputEditText place;
     private String[] arrayDistrict;
     private ArrayAdapter<CharSequence> genderAdapter;
+    private CheckBox editableCheck;
+    private Button buttonDob;
 
     private Spinner districtSpinner;
     private Spinner genderSpinner;
@@ -77,8 +80,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             setContentView(R.layout.activity_personal_details);
 
             //DATE PICKER
-            Button btn = findViewById(R.id.activity_personal_button_dob);
-            btn.setOnClickListener(new View.OnClickListener() {
+            buttonDob = findViewById(R.id.activity_personal_button_dob);
+            buttonDob.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     android.support.v4.app.DialogFragment datePicker = new DatePickerFragment();
@@ -146,85 +149,99 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             name = findViewById(R.id.edit_text_personal_name);
             address = findViewById(R.id.edit_text_personal_address);
             place = findViewById(R.id.edit_text_personal_place);
+            editableCheck = findViewById(R.id.checkbox_personal_details_editable);
 
             fillWithCache();
+            disableEdit();
+
+            editableCheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (editableCheck.isChecked()) {
+                        allowEdit();
+                    } else {
+                        disableEdit();
+                    }
+                }
+            });
 
             final Button buttonNext = findViewById(R.id.button_personal_details_next);
             buttonNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        boolean flag = true;
-                        TextValidator validName = new TextValidator(name);
-                        TextValidator validAddress = new TextValidator(address);
-                        TextValidator validPlace = new TextValidator(place);
+                    if (editableCheck.isChecked()) {
+                        if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+                            boolean flag = true;
+                            TextValidator validName = new TextValidator(name);
+                            TextValidator validAddress = new TextValidator(address);
+                            TextValidator validPlace = new TextValidator(place);
 
-                        if (validName.isValid()) {
-                            //write to variable
-                        } else {
-                            flag = false;
-                            name.setError("Please Enter a Valid Name");
-                        }
-                        if (validAddress.isValid()) {
-                            //write to variable
-                        } else {
-                            flag = false;
-                            address.setError("Please Enter a valid Address");
-                        }
-                        if (validPlace.isValid()) {
-                            //write to variable
-                        } else {
-                            place.setError("Please Enter a Valid Place");
-                        }
-                        if (genderSpinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
-                            flag = false;
-                            Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
-                        } else {
-                            genderSelect = genderSpinner.getSelectedItem().toString().trim();
-                        }
-                        if (districtSpinner.getSelectedItem().toString().trim().equals("Choose District")) {
-                            flag = false;
-                            Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
-                        }else {
-                            districtSelect = districtSpinner.getSelectedItem().toString().trim();
-                        }
-                        if (date_test == null) {
-                            flag = false;
-                            Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
-                        }
+                            if (validName.isValid()) {
+                                //write to variable
+                            } else {
+                                flag = false;
+                                name.setError("Please Enter a Valid Name");
+                            }
+                            if (validAddress.isValid()) {
+                                //write to variable
+                            } else {
+                                flag = false;
+                                address.setError("Please Enter a valid Address");
+                            }
+                            if (validPlace.isValid()) {
+                                //write to variable
+                            } else {
+                                place.setError("Please Enter a Valid Place");
+                            }
+                            if (genderSpinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
+                                flag = false;
+                                Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
+                            } else {
+                                genderSelect = genderSpinner.getSelectedItem().toString().trim();
+                            }
+                            if (districtSpinner.getSelectedItem().toString().trim().equals("Choose District")) {
+                                flag = false;
+                                Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
+                            }else {
+                                districtSelect = districtSpinner.getSelectedItem().toString().trim();
+                            }
+                            if (date_test == null) {
+                                flag = false;
+                                Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
+                            }
 
-                        if (flag) {
-                            personalUsingAPI.savePersonal(sharedPreferences.getString("loggedInID", ""), validName.returnText(),date_test,
-                                    genderSelect, validAddress.returnText(),
-                                    validPlace.returnText(), districtSelect).enqueue(new Callback<ResponseData>() {
-                                @Override
-                                public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
-                                    int response_code = response.body().getResponseCode();
-                                    if (response_code == 200) {
-                                        Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                            if (flag) {
+                                personalUsingAPI.savePersonal(sharedPreferences.getString("loggedInID", ""), validName.returnText(),date_test,
+                                        genderSelect, validAddress.returnText(),
+                                        validPlace.returnText(), districtSelect).enqueue(new Callback<ResponseData>() {
+                                    @Override
+                                    public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                        int response_code = response.body().getResponseCode();
+                                        if (response_code == 200) {
+                                            Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                                        Intent familyDetailsIntent = new Intent(PersonalDetailsActivity.this,
-                                                FamilyDetailsActivity.class);
-                                        startActivity(familyDetailsIntent);
-                                    } else {
-                                        Toast.makeText(PersonalDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                                            nextActivity();
+                                        } else {
+                                            Toast.makeText(PersonalDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                                        }
                                     }
-                                }
 
-                                @Override
-                                public void onFailure(Call<ResponseData> call, Throwable t) {
-                                    Toast.makeText(PersonalDetailsActivity.this, "Details failed", Toast.LENGTH_LONG).show();
-                                }
-                            });
+                                    @Override
+                                    public void onFailure(Call<ResponseData> call, Throwable t) {
+                                        Toast.makeText(PersonalDetailsActivity.this, "Details failed", Toast.LENGTH_LONG).show();
+                                    }
+                                });
 
+                            }
+                        } else {
+                            LinearLayout linearLayout = findViewById(R.id.layout_activity_personal_details);
+                            Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+                                    getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+                            noConnectionSnackbar.show();
                         }
                     } else {
-                        LinearLayout linearLayout = findViewById(R.id.layout_activity_personal_details);
-                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
-                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
-                        noConnectionSnackbar.show();
+                        nextActivity();
                     }
-
                 }
             });
 
@@ -251,6 +268,29 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         }
     }
 
+    public void nextActivity() {
+        Intent next = new Intent(PersonalDetailsActivity.this, FamilyDetailsActivity.class);
+        startActivity(next);
+    }
+
+    public void disableEdit() {
+        name.setFocusable(false);
+        place.setFocusable(false);
+        address.setFocusable(false);
+        genderSpinner.setFocusable(false);
+        districtSpinner.setFocusable(false);
+        buttonDob.setEnabled(false);
+    }
+
+    public void allowEdit() {
+        name.setFocusable(true);
+        place.setFocusable(true);
+        address.setFocusable(true);
+        genderSpinner.setFocusable(true);
+        districtSpinner.setFocusable(true);
+        buttonDob.setEnabled(true);
+    }
+
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -268,7 +308,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     public void getCacheData() {
         APIService storePersonalData = APIUtils.getAPIService();
-        storePersonalData.getPersonalData("9830955456", "qwertyuiop").enqueue(new Callback<PersonalData>() {
+        storePersonalData.getPersonalData(sharedPreferences.getString("mobile_number", ""), sharedPreferences.getString("password", "")).enqueue(new Callback<PersonalData>() {
             @Override
             public void onResponse(Call<PersonalData> call, Response<PersonalData> response) {
                 try {
@@ -336,7 +376,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
                     break;
                 }
-                default: {}
+                default:
+                    break;
             }
         }
     };

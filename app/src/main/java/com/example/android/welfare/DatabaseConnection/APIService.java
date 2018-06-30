@@ -3,6 +3,7 @@ package com.example.android.welfare.DatabaseConnection;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingData;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -59,4 +60,9 @@ public interface APIService {
     @FormUrlEncoded
     Call<PersonalData> getPersonalData(@Field("mobile_number") String mobile_number,
                                        @Field("password") String password);
+
+    @POST("get_trading_data.php")
+    @FormUrlEncoded
+    Call<TradingData> getTradingData(@Field("mobile_number") String mobile_number,
+                                     @Field("password") String password);
 }
