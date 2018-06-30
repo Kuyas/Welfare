@@ -4,6 +4,7 @@ import com.example.android.welfare.DatabaseConnection.ResponseClasses.Authentica
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingData;
 
 import java.util.List;
 
@@ -68,4 +69,9 @@ public interface APIService {
     @FormUrlEncoded
     Call<PersonalData> getPersonalData(@Field("mobile_number") String mobile_number,
                                        @Field("password") String password);
+
+    @POST("get_trading_data.php")
+    @FormUrlEncoded
+    Call<TradingData> getTradingData(@Field("mobile_number") String mobile_number,
+                                     @Field("password") String password);
 }
