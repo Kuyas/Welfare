@@ -243,6 +243,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     } else {
                         nextActivity();
                     }
+
                 }
             });
 

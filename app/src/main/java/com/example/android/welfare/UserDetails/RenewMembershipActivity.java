@@ -24,7 +24,7 @@ public class RenewMembershipActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        if (!sharedPreferences.getString("loggedInID", "").isEmpty()) {
+        if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             //TODO: Remove the negation
 
             Intent loginIntent = new Intent(RenewMembershipActivity.this, LoginActivity.class);
