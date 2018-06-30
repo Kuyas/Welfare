@@ -77,7 +77,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
             // SPINNER FOR GENDER SELECT
             final Spinner spinner = findViewById(R.id.activity_personal_details_gender_select);
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
 
@@ -170,7 +171,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                         }
                         if (spinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
                             flag = false;
-                            Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PersonalDetailsActivity.this,
+                                    "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
 
                         } else {
 

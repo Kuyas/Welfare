@@ -25,7 +25,6 @@ import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
-import com.example.android.welfare.UserDetails.FamilyDetails.FamilyDetailsActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -226,9 +225,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
                                     Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                                    Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
-                                            OtherDetailsActivity.class);
-                                    startActivity(otherDetailsIntent);
+//                                    Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
+//                                            OtherDetailsActivity.class);
+//                                    startActivity(otherDetailsIntent);
                                 }
 
                                 @Override
@@ -239,9 +238,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
                             Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
 
-                            Intent paymentDetailsIntent = new Intent(TradingDetailsActivity.this,
+                            Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
                                     OtherDetailsActivity.class);
-                            startActivity(paymentDetailsIntent);
+                            startActivity(otherDetailsIntent);
                         }
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);

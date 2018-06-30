@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
@@ -25,13 +27,16 @@ import com.example.android.welfare.UserDetails.TradingDetailsActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyDetailsActivity extends AppCompatActivity {
+public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMemberDialogFragment.AddButtonDialogListener {
 
     private SharedPreferences sharedPreferences;
 
     private RecyclerView recyclerView;
     private FamilyAdapter familyAdapter;
+
+    int maxFamilyMembers = 10;
     private List<FamilyModel> familyModelList;
+    private FamilyMemberDialogFragment dialogFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class FamilyDetailsActivity extends AppCompatActivity {
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_family_details);
+
+            familyModelList = new ArrayList<>();
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_family_details_heading));
@@ -60,7 +67,6 @@ public class FamilyDetailsActivity extends AppCompatActivity {
                 }
             });
 
-            int maxFamilyMembers = 10;
 
             recyclerView = findViewById(R.id.family_details_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(FamilyDetailsActivity.this,
@@ -120,13 +126,23 @@ public class FamilyDetailsActivity extends AppCompatActivity {
 
     private void showEditDialogFragment () {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FamilyMemberDialogFragment dialogFragment = FamilyMemberDialogFragment.newInstance(
+        dialogFragment = FamilyMemberDialogFragment.newInstance(
                 getString(R.string.dialog_fragment_family_details_heading));
+        dialogFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomDialog);
 
         dialogFragment.show(fragmentManager, "Add Family Member");
-        //dialogFragment.getDialog().getWindow().setLayout(200, 200);
-
     }
 
 
+    @Override
+    public void onFinishEditDialog(FamilyModel model) {
+        familyModelList.add(model);
+        Toast.makeText(FamilyDetailsActivity.this, getString(
+                R.string.activity_family_details_member_added), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }

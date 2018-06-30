@@ -35,7 +35,7 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyViewHolder> {
         FamilyModel familyModel = familyModels.get(position);
 
         holder.memberName.setText(familyModel.getMemberName());
-        holder.memberAge.setText(familyModel.getMemberAge());
+        holder.memberAge.setText(String.valueOf(familyModel.getMemberAge()));
         holder.memberGender.setText(familyModel.getMemberGender());
         holder.memberOccupation.setText(familyModel.getMemberOccupation());
         holder.memberRelationship.setText(familyModel.getMemberRelationship());

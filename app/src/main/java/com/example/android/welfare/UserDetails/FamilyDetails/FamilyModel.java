@@ -2,7 +2,7 @@ package com.example.android.welfare.UserDetails.FamilyDetails;
 
 public class FamilyModel {
 
-    private int serialNo;
+//    private int serialNo;
     private int memberAge;
     private String memberName;
     private String memberGender;
@@ -12,9 +12,8 @@ public class FamilyModel {
     public FamilyModel() {
     }
 
-    public FamilyModel(int serialNo, int memberAge, String memberName, String memberGender,
+    public FamilyModel(String memberName, int memberAge, String memberGender,
                        String memberOccupation, String memberRelationship) {
-        this.serialNo = serialNo;
         this.memberAge = memberAge;
         this.memberName = memberName;
         this.memberGender = memberGender;
@@ -22,13 +21,13 @@ public class FamilyModel {
         this.memberRelationship = memberRelationship;
     }
 
-    public int getSerialNo() {
-        return serialNo;
-    }
-
-    public void setSerialNo(int serialNo) {
-        this.serialNo = serialNo;
-    }
+//    public int getSerialNo() {
+//        return serialNo;
+//    }
+//
+//    public void setSerialNo(int serialNo) {
+//        this.serialNo = serialNo;
+//    }
 
     public int getMemberAge() {
         return memberAge;
