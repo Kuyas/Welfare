@@ -2,8 +2,11 @@ package com.example.android.welfare.DatabaseConnection;
 
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingData;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -55,6 +58,12 @@ public interface APIService {
                                          @Field("trading_mtp_license_num") String trading_license_num,
                                          @Field("trading_license_authority") String trading_license_authority,
                                          @Field("trading_official_name") String trading_official_name);
+
+
+
+    @POST("app_status_check.php")
+    @FormUrlEncoded
+    Call<List<ClaimsData>> checkStatus(@Field("user_id") String user_id);
 
     @POST("banking_form.php")
     @FormUrlEncoded

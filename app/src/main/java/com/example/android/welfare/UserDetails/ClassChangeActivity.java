@@ -21,7 +21,7 @@ public class ClassChangeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        if (!sharedPreferences.getString("loggedInID", "").isEmpty()){
+        if (sharedPreferences.getString("loggedInID", "").isEmpty()){
             //TODO: Remove the negation
 
             Intent loginIntent = new Intent(ClassChangeActivity.this, LoginActivity.class);
