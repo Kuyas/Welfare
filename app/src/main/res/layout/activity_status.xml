@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_shadow_end_color"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:backgroundTint="@color/colorAccent">
 
     <include layout="@layout/app_bar_main"/>
 
@@ -28,7 +29,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent">
 
                     <TextView
                         android:id="@+id/info_application"
@@ -57,7 +59,7 @@
                         android:layout_height="10dp"
                         android:layout_centerInParent="true"
                         android:layout_margin="10dp"
-                        android:progress="25" />
+                        android:progress="0" />
 
                     <TextView
                         android:id="@+id/info_application_progress"
@@ -80,7 +82,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent">
 
                     <TextView
                         android:id="@+id/info_pension"
@@ -109,7 +112,7 @@
                         android:layout_height="10dp"
                         android:layout_centerInParent="true"
                         android:layout_margin="10dp"
-                        android:progress="25" />
+                        android:progress="0" />
 
                     <TextView
                         android:id="@+id/info_pension_progress"
@@ -131,7 +134,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent">
 
                     <TextView
                         android:id="@+id/info_claim"
@@ -160,7 +164,7 @@
                         android:layout_height="10dp"
                         android:layout_centerInParent="true"
                         android:layout_margin="10dp"
-                        android:progress="25" />
+                        android:progress="0" />
 
                     <TextView
                         android:id="@+id/info_claim_progress"

@@ -10,9 +10,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Primary theme color of the app (sets background color of app bar) -->
-        <item name="colorPrimary">#0099FF</item>
+        <item name="colorPrimary">#311b92</item>
         <!-- Background color of buttons in the app -->
-        <item name="colorButtonNormal">#00CCFF  </item>
+        <item name="colorButtonNormal">#4527a0  </item>
 
         <!-- to use a toolbar instead of window action bar -->
         <item name="windowActionBar">false</item>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_activity_personal_details"
+    android:background="@color/colorAccent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -20,12 +21,20 @@
         android:fillViewport="true"
         android:padding="10dp">
 
+
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <CheckBox
+                android:id="@+id/checkbox_personal_details_editable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/user_details_text_size"
+                android:text="Editable"
+                android:layout_marginBottom="20dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -67,6 +76,7 @@
                 <Button
                     android:id="@+id/activity_personal_button_dob"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/colorAccent"
                     android:layout_height="wrap_content"
                     android:text="@string/activity_personal_dob"
                     android:layout_marginStart="50dp"
@@ -152,11 +162,11 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/checkbox_personal_details_editable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Editable"/>
+        <!--<CheckBox-->
+            <!--android:id="@+id/checkbox_personal_details_editable"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Editable"/>-->
 
         <Button
             android:id="@+id/button_personal_details_next"
@@ -164,7 +174,9 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textAlignment="center"
+            android:textColor="@color/colorAccent"
             android:gravity="center"
+            android:textSize="@dimen/user_details_text_size"
             android:text="@string/activity_personal_next"/>
     </LinearLayout>
 </LinearLayout>
