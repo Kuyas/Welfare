@@ -87,7 +87,7 @@
         <activity android:name=".Login.ForgotPasswordActivity"
             android:label="Change Password" />
 
-        <activity android:name=".StatusActivity"
+        <activity android:name=".UserDetails.StatusActivity"
             android:label="Check Status"/>
 
     </application>

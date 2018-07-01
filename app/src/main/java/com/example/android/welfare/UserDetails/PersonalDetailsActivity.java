@@ -277,6 +277,11 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     public void disableEdit() {
         name.setFocusable(false);
+        name.setEnabled(false);
+        name.setCursorVisible(false);
+        name.setKeyListener(null);
+
+
         place.setFocusable(false);
         address.setFocusable(false);
         genderSpinner.setFocusable(false);

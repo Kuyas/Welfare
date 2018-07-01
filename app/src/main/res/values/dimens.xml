@@ -13,6 +13,7 @@
     <dimen name="user_details_heading_height">36sp</dimen>
     <dimen name="user_details_text_size">22sp</dimen>
     <dimen name="user_details_left_padding">10dp</dimen>
+    <dimen name="user_details_button_text_size">22sp</dimen>
 
     <dimen name="activity_other_details_subheading_text_size">25sp</dimen>
     <dimen name="activity_payment_details_field_text_size">25sp</dimen>

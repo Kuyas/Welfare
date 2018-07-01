@@ -1,4 +1,4 @@
-package com.example.android.welfare;
+package com.example.android.welfare.UserDetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,8 +18,8 @@ import android.widget.Toast;
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
-import com.example.android.welfare.Login.LoginActivity;
-import com.example.android.welfare.UserDetails.PersonalDetailsActivity;
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.R;
 
 import java.util.List;
 

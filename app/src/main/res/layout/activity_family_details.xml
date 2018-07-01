@@ -150,14 +150,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/activity_family_details_add_member"
-            android:textSize="@dimen/user_details_text_size"/>
+            android:textSize="@dimen/user_details_button_text_size"/>
 
         <Button
             android:id="@+id/button_family_details_next"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/user_details_button_next"
-            android:textSize="@dimen/user_details_text_size"/>
+            android:textSize="@dimen/user_details_button_text_size"/>
 
     </LinearLayout>
 

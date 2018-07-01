@@ -112,6 +112,7 @@
                 android:id="@+id/text_view_family_member_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:textSize="@dimen/activity_family_details_rows_text_size"
                 android:textColor="@color/colorEditText"/>
 
