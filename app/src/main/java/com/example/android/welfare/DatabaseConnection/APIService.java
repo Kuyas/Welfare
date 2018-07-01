@@ -55,7 +55,7 @@ public interface APIService {
                                          @Field("trading_ownership_type") String trading_mtp_ownership_type,
                                          @Field("trading_capital_contribution") String trading_capital_contribution,
                                          @Field("trading_gstn_date") String trading_gstn_date,
-                                         @Field("trading_mtp_license_num") String trading_license_num,
+                                         @Field("trading_license_num") String trading_license_num,
                                          @Field("trading_license_authority") String trading_license_authority,
                                          @Field("trading_official_name") String trading_official_name);
 

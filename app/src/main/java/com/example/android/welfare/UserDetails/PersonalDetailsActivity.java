@@ -69,6 +69,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
     private Spinner genderSpinner;
 
     String date_test;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,7 +203,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                             if (districtSpinner.getSelectedItem().toString().trim().equals("Choose District")) {
                                 flag = false;
                                 Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 districtSelect = districtSpinner.getSelectedItem().toString().trim();
                             }
                             if (date_test == null) {
@@ -211,7 +212,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                             }
 
                             if (flag) {
-                                personalUsingAPI.savePersonal(sharedPreferences.getString("loggedInID", ""), validName.returnText(),date_test,
+                                personalUsingAPI.savePersonal(sharedPreferences.getString("loggedInID", ""), validName.returnText(), date_test,
                                         genderSelect, validAddress.returnText(),
                                         validPlace.returnText(), districtSelect).enqueue(new Callback<ResponseData>() {
                                     @Override
@@ -234,7 +235,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
                             }
                         } else {
-                            LinearLayout linearLayout = findViewById(R.id.layout_activity_personal_details);
+                            LinearLayout    linearLayout = findViewById(R.id.layout_activity_personal_details);
                             Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
                                     getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
                             noConnectionSnackbar.show();
@@ -297,8 +298,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
-        c.set(Calendar.MONTH,month);
-        c.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         String currentDateString = new SimpleDateFormat("dd-MM-yyyy", getResources().getConfiguration().locale).format(c.getTime());
         TextView textView = findViewById(R.id.activity_personal_textview_date);
@@ -314,7 +315,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             public void onResponse(Call<PersonalData> call, Response<PersonalData> response) {
                 try {
                     int response_code = response.body().getResponseCode();
-                    if (response_code== 200) {
+                    if (response_code == 200) {
                         File cache = new File(getCacheDir(), cacheDataFile);
                         ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
                         cacheWriter.writeObject(response.body());
@@ -323,7 +324,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     } else {
                         Toast.makeText(PersonalDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
                     }
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -362,8 +363,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             getCacheData();
         }
     }
-
-
 
 
     View.OnClickListener onClickListener = new View.OnClickListener() {

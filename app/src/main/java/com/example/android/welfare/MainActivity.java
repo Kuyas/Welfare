@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
             buttonEditProfile.setOnClickListener(onClickListener);
             buttonRenewMembership.setOnClickListener(onClickListener);
             buttonClassChange.setOnClickListener(onClickListener);
-            buttonApplicationStatus.setOnClickListener(onClickListener);
+           // buttonApplicationStatus.setOnClickListener(onClickListener);
             buttonClaimStatus.setOnClickListener(onClickListener);
-            buttonPensionStatus.setOnClickListener(onClickListener);
+            //buttonPensionStatus.setOnClickListener(onClickListener);
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_main_heading));
