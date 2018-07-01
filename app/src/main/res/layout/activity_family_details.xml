@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".UserDetails.FamilyDetailsActivity">
+    tools:context=".UserDetails.FamilyDetailsActivity"
+    android:background="@color/colorAccent">
 
     <include
         layout="@layout/app_bar_main"
@@ -144,12 +145,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/activity_family_details_add_row"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/user_details_text_size"/>
 
         <Button
             android:id="@+id/button_family_details_next"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:textColor="@color/colorAccent"
             android:text="@string/user_details_button_next"
             android:textSize="@dimen/user_details_text_size"/>
 

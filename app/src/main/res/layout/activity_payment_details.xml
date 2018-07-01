@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".UserDetails.PaymentDetailsActivity">
+    tools:context=".UserDetails.PaymentDetailsActivity"
+    android:background="@color/colorAccent">
 
     <include
         layout="@layout/app_bar_main"
@@ -177,6 +178,7 @@
                     android:layout_marginEnd="10dp"
                     android:textAlignment="center"
                     android:gravity="center"
+                    android:textColor="@color/colorAccent"
                     android:textSize="@dimen/user_details_text_size"
                     android:text="@string/user_details_submit"/>
 

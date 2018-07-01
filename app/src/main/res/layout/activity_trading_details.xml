@@ -8,7 +8,8 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:orientation="vertical"
-    tools:context=".UserDetails.TradingDetailsActivity">
+    tools:context=".UserDetails.TradingDetailsActivity"
+    android:background="@color/colorAccent">
 
     <include
         layout="@layout/app_bar_main"
@@ -18,7 +19,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
+        android:padding="10dp"
         android:stretchColumns="1">
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +31,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -46,7 +48,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -63,13 +66,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/activity_trading_details_subheading"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:paddingBottom="10dp"/>
 
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_branch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -85,7 +90,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_godown"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -101,10 +107,11 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_factory"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp">
 
 
-                <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputEditText
                     android:id="@+id/edit_text_trading_factory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -117,7 +124,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_others"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -136,6 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingBottom="10dp"
                 android:entries="@array/activity_trading_details_spinner_ownership"
                 android:prompt="@string/activity_trading_details_spinner_ownership_prompt" />
 
@@ -143,7 +152,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_capital"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -159,7 +169,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_gstn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -175,7 +186,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_license_number"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -191,7 +203,8 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_licensing_authority"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
 
 
                 <android.support.design.widget.TextInputEditText
@@ -209,13 +222,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/activity_trading_details_spinner_authority"
-                android:prompt="@string/activity_trading_details_spinner_authority_prompt" />
+                android:prompt="@string/activity_trading_details_spinner_authority_prompt"
+                android:paddingBottom="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:layout_marginTop="10dp">
 
                 <CheckBox
                     android:id="@+id/checkbox_trading_details_editable"
@@ -229,6 +245,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
                     android:gravity="center"
                     android:text="NEXT"/>
             </LinearLayout>

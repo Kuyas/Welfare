@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cardview_shadow_end_color"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:backgroundTint="@color/colorAccent">
 
     <include layout="@layout/app_bar_main"/>
 
@@ -28,7 +29,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent">
 
                     <TextView
                         android:id="@+id/info_application"
@@ -80,7 +82,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent">
 
                     <TextView
                         android:id="@+id/info_pension"
@@ -131,7 +134,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/colorAccent">
 
                     <TextView
                         android:id="@+id/info_claim"
