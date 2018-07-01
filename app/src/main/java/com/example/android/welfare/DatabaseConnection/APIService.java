@@ -5,6 +5,7 @@ import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalDa
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingData;
+import com.example.android.welfare.DatabaseConnection.ResponseClasses.TurnoverData;
 
 import java.util.List;
 
@@ -48,6 +49,7 @@ public interface APIService {
     Call<ResponseData> saveTrading(@Field("user_id") String user_id,
                                          @Field("trading_firm_name") String trading_firm_name,
                                          @Field("trading_firm_address") String trading_firm_address,
+                                         @Field("trading_firm_turnover") String trading_firm_turnover,
                                          @Field("trading_mtp_branch") String trading_mtp_branch,
                                          @Field("trading_mtp_godown") String trading_mtp_godown,
                                          @Field("trading_mtp_factory") String trading_mtp_factory,
@@ -83,4 +85,9 @@ public interface APIService {
     @FormUrlEncoded
     Call<TradingData> getTradingData(@Field("mobile_number") String mobile_number,
                                      @Field("password") String password);
+
+    @POST("class_change_form.php")
+    @FormUrlEncoded
+    Call<TurnoverData> getTurnoverData(@Field("user_id") String user_id);
+
 }

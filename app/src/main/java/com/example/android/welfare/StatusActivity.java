@@ -19,6 +19,7 @@ import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.DatabaseConnection.APIUtils;
 import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
 import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.UserDetails.BankingDetailsActivity;
 import com.example.android.welfare.UserDetails.PersonalDetailsActivity;
 
 import java.util.List;
@@ -290,6 +291,7 @@ public class StatusActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<ClaimsData>> call, Throwable t) {
+                Toast.makeText(StatusActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
 
             }
         });

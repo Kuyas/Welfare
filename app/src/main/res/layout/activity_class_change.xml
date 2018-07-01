@@ -33,35 +33,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/activity_classchange_old_income"
-                    android:textSize="25sp"/>
+                    android:textSize="22sp"/>
                 <TextView
+                    android:id="@+id/activity_classchange_old_turnover"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="From Database"
+                    android:text=""
                     android:textColor="#ff0000"
                     android:paddingLeft="15dp"
-                    android:textSize="25sp"/>
+                    android:textSize="22sp"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/activity_classchange_old_class"
                     android:textSize="25sp"/>
                 <TextView
+                    android:id="@+id/activity_classchange_old_class"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="From Database"
+                    android:text=""
                     android:textColor="#ff0000"
                     android:paddingLeft="15dp"
                     android:textSize="25sp"/>

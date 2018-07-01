@@ -68,6 +68,23 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_trading_turnover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
+
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/edit_text_trading_turnover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/activity_trading_details_turnover"
+                    android:textColor="@color/inputTextColor" />
+
+            </android.support.design.widget.TextInputLayout>
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -167,6 +184,7 @@
                     android:id="@+id/edit_text_trading_capital"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
                     android:hint="@string/activity_trading_details_capital"
                     android:textColor="@color/inputTextColor" />
 

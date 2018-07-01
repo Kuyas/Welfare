@@ -50,11 +50,13 @@ public class TradingDetailsActivity extends AppCompatActivity {
     private APIService tradingUsingAPI;
     private String ownershipSelect;
     private String officialSelect;
+    private String annualTurnover;
 
     private TextInputEditText firmName;
     private TextInputEditText firmAddress;
     private TextInputEditText branch;
     private TextInputEditText godown;
+    private TextInputEditText turnover;
     private TextInputEditText factory;
     private TextInputEditText others;
     private TextInputEditText capital;
@@ -140,6 +142,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
             licenseNumber = findViewById(R.id.edit_text_trading_license_number);
             licenseAuthority = findViewById(R.id.edit_text_trading_licensing_authority);
             editableCheck = findViewById(R.id.checkbox_trading_details_editable);
+            turnover = findViewById(R.id.edit_text_trading_turnover);
             loginID = sharedPreferences.getString("loggedInID", "");
 
             fillWithCache();
@@ -162,7 +165,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
                             TextValidator validGstn = new TextValidator(gstn);
                             TextValidator validLicenseNumber = new TextValidator(licenseNumber);
                             TextValidator validLicenseAuthority = new TextValidator(licenseAuthority);
+                            TextValidator validTurnover = new TextValidator(turnover);
 
+//TODO: MAKE STRINGS.XML for all the errorStrings
                             if (!validFirmName.isValid()) {
                                 flag = false;
                                 firmName.setError("Please enter a valid Firm Name");
@@ -170,6 +175,10 @@ public class TradingDetailsActivity extends AppCompatActivity {
                             if (!validFirmAddress.isValid()) {
                                 flag = false;
                                 firmAddress.setError("Please enter a valid Firm Address");
+                            }
+                            if (!validTurnover.isValid()) {
+                                flag = false;
+                                turnover.setError("Please enter a valid Annual Turnover");
                             }
                             if (!validBranch.isValid()) {
                                 flag = false;
@@ -216,9 +225,10 @@ public class TradingDetailsActivity extends AppCompatActivity {
                                 officialSelect = authoritySpinner.getSelectedItem().toString().trim();
                             }
 
+
                             if (flag || DEBUG) {
 
-                                tradingUsingAPI.saveTrading(loginID, validFirmName.returnText(), validFirmAddress.returnText(),
+                                    tradingUsingAPI.saveTrading(loginID, validFirmName.returnText(), validFirmAddress.returnText(), validTurnover.returnText(),
                                         validBranch.returnText(), validGodown.returnText(), validFactory.returnText(), validOthers.returnText(),
                                         ownershipSelect, validCapital.returnText(), validGstn.returnText(), validLicenseNumber.returnText(), validLicenseAuthority.returnText(),
                                         officialSelect).enqueue(new Callback<ResponseData>() {
