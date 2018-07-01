@@ -27,6 +27,13 @@
             android:orientation="vertical"
             android:textAlignment="center">
 
+            <CheckBox
+                android:id="@+id/checkbox_trading_details_editable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editable"
+                android:textSize="@dimen/user_details_text_size"
+                android:layout_marginBottom="20dp"/>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_name"
@@ -233,11 +240,6 @@
                 android:paddingBottom="10dp"
                 android:layout_marginTop="10dp">
 
-                <CheckBox
-                    android:id="@+id/checkbox_trading_details_editable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Editable"/>
 
                 <Button
                     android:id="@+id/button_trading_details_next"
@@ -247,6 +249,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/colorAccent"
                     android:gravity="center"
+                    android:textSize="@dimen/user_details_text_size"
                     android:text="NEXT"/>
             </LinearLayout>
 

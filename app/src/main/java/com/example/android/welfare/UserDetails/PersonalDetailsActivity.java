@@ -103,7 +103,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     Context context = getApplicationContext();
                     Object text = parent.getItemAtPosition(pos);
                     if (pos > 0) {
-                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -112,7 +112,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     //Another interface callback
                     Context context = getApplicationContext();
 //            Object text =  parent.getItemAtPosition(pos);
-                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -136,7 +136,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     Context context = getApplicationContext();
                     Object text = parent.getItemAtPosition(pos1);
                     if (pos1 > 0) {
-                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
                     }
                 }
 
