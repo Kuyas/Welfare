@@ -13,13 +13,18 @@
     <dimen name="user_details_heading_height">36sp</dimen>
     <dimen name="user_details_text_size">22sp</dimen>
     <dimen name="user_details_left_padding">10dp</dimen>
+    <dimen name="user_details_button_text_size">22sp</dimen>
 
     <dimen name="activity_other_details_subheading_text_size">25sp</dimen>
     <dimen name="activity_payment_details_field_text_size">25sp</dimen>
 
-    <dimen name="activity_family_details_row_height">30dp</dimen>
-    <dimen name="activity_family_details_rows_text_size">20sp</dimen>
-    <dimen name="activity_family_details_heading_text_size">12sp</dimen>
+    <dimen name="activity_family_details_card_view_height">230dp</dimen>
+    <dimen name="activity_family_details_rows_text_size">18sp</dimen>
+    <dimen name="dialog_fragment_add_family_member_text_size">15sp</dimen>
+    <dimen name="activity_family_details_text_view_height">35dp</dimen>
+
+    <dimen name="family_details_dialog_fragment_width">360dp</dimen>
+    <dimen name="family_details_dialog_fragment_height">380dp</dimen>
 
 
     <!-- TODO: add scrollview and weights to all layouts -->

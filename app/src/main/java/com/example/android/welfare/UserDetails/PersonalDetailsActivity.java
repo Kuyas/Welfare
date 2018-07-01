@@ -31,6 +31,7 @@ import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
+import com.example.android.welfare.UserDetails.FamilyDetails.FamilyDetailsActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -277,6 +278,11 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     public void disableEdit() {
         name.setFocusable(false);
+        name.setEnabled(false);
+        name.setCursorVisible(false);
+        name.setKeyListener(null);
+
+
         place.setFocusable(false);
         address.setFocusable(false);
         genderSpinner.setFocusable(false);

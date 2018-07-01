@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 
 import com.example.android.welfare.DatabaseConnection.APIService;
 import com.example.android.welfare.Login.LanguageActivity;
@@ -21,10 +20,7 @@ import com.example.android.welfare.Login.LoginActivity;
 import com.example.android.welfare.UserDetails.ClassChangeActivity;
 import com.example.android.welfare.UserDetails.PersonalDetailsActivity;
 import com.example.android.welfare.UserDetails.RenewMembershipActivity;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.android.welfare.UserDetails.StatusActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -55,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
             buttonEditProfile = findViewById(R.id.button_main_edit_profile);
             buttonRenewMembership = findViewById(R.id.button_main_renew_membership);
             buttonClassChange = findViewById(R.id.button_main_class_change);
-            buttonApplicationStatus = findViewById(R.id.button_main_application_status);
+//            buttonApplicationStatus = findViewById(R.id.button_main_application_status);
             buttonClaimStatus = findViewById(R.id.button_main_claim_status);
-            buttonPensionStatus = findViewById(R.id.button_main_pension_status);
+//            buttonPensionStatus = findViewById(R.id.button_main_pension_status);
 
             buttonEditProfile.setOnClickListener(onClickListener);
             buttonRenewMembership.setOnClickListener(onClickListener);
