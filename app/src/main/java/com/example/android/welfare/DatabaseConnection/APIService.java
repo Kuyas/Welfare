@@ -90,4 +90,19 @@ public interface APIService {
     @FormUrlEncoded
     Call<TurnoverData> getTurnoverData(@Field("user_id") String user_id);
 
+    @POST("other_details.php")
+    @FormUrlEncoded
+    Call<ResponseData> saveOther(@Field("user_id") String user_id,
+                                 @Field("emv_main_branch") String emv_main_branch,
+                                 @Field("emv_branch") String emv_branch,
+                                 @Field("emv_godown") String emv_godown,
+                                 @Field("emv_factory") String emv_factory,
+                                 @Field("emv_others") String emv_others,
+                                 @Field("ara_main_branch") String ara_main_branch,
+                                 @Field("ara_branch") String ara_branch,
+                                 @Field("ara_godown") String ara_godown,
+                                 @Field("ara_factory") String ara_factory,
+                                 @Field("ara_other") String ara_other,
+                                 @Field("organization_name") String organization_name);
+
 }
