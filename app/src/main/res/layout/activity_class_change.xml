@@ -4,7 +4,8 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
 
     <include
         layout="@layout/app_bar_main"
@@ -91,6 +92,7 @@
                 android:id="@+id/acitvity_classchange_button_submit"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
                 android:layout_width="120dp"
                 android:layout_height="60dp" />
 

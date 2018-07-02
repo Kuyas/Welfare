@@ -18,8 +18,8 @@
     <dimen name="activity_other_details_subheading_text_size">25sp</dimen>
     <dimen name="activity_payment_details_field_text_size">25sp</dimen>
 
-    <dimen name="activity_family_details_card_view_height">160dp</dimen>
-    <dimen name="activity_family_details_rows_text_size">18sp</dimen>
+    <dimen name="activity_family_details_card_view_height">156dp</dimen>
+    <dimen name="activity_family_details_rows_text_size">20sp</dimen>
     <dimen name="dialog_fragment_add_family_member_text_size">15sp</dimen>
     <dimen name="activity_family_details_text_view_height">35dp</dimen>
 

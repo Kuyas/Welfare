@@ -34,11 +34,11 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyViewHolder> {
     public void onBindViewHolder(@NonNull FamilyViewHolder holder, int position) {
         FamilyModel familyModel = familyModels.get(position);
 
-        holder.memberName.setText(familyModel.getMemberName());
-        holder.memberAge.setText(String.valueOf(familyModel.getMemberAge()));
-        holder.memberGender.setText(familyModel.getMemberGender());
-        holder.memberOccupation.setText(familyModel.getMemberOccupation());
-        holder.memberRelationship.setText(familyModel.getMemberRelationship());
+        holder.memberName.setText(holder.memberName.getText() + ": " + familyModel.getMemberName());
+        holder.memberAge.setText(holder.memberAge.getText() + ": " + String.valueOf(familyModel.getMemberAge()));
+        holder.memberGender.setText(holder.memberGender.getText() + ": " + familyModel.getMemberGender());
+        holder.memberOccupation.setText(holder.memberOccupation.getText() + ": " + familyModel.getMemberOccupation());
+        holder.memberRelationship.setText(holder.memberRelationship.getText() + ": " + familyModel.getMemberRelationship());
 
     }
 

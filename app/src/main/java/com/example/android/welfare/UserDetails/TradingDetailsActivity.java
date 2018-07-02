@@ -139,6 +139,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
             licenseNumber = findViewById(R.id.edit_text_trading_license_number);
             licenseAuthority = findViewById(R.id.edit_text_trading_licensing_authority);
             editableCheck = findViewById(R.id.checkbox_trading_details_editable);
+            loginID = sharedPreferences.getString("loggedInID", "");
 
             fillWithCache();
 
@@ -368,19 +369,19 @@ public class TradingDetailsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case (R.id.button_trading_details_next): {
-                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
-                                OtherDetailsActivity.class);
-                        startActivity(otherDetailsIntent);
-                    } else {
-                        LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);
-                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
-                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
-                        noConnectionSnackbar.show();
-                    }
-                    break;
-                }
+//                case (R.id.button_trading_details_next): {
+//                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
+//                        Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
+//                                OtherDetailsActivity.class);
+//                        startActivity(otherDetailsIntent);
+//                    } else {
+//                        LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);
+//                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
+//                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
+//                        noConnectionSnackbar.show();
+//                    }
+//                    break;
+//                }
                 case (R.id.activity_button_home): {
                     Intent homeIntent = new Intent(TradingDetailsActivity.this, MainActivity.class);
                     homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -55,7 +55,7 @@ public interface APIService {
                                          @Field("trading_ownership_type") String trading_mtp_ownership_type,
                                          @Field("trading_capital_contribution") String trading_capital_contribution,
                                          @Field("trading_gstn_date") String trading_gstn_date,
-                                         @Field("trading_mtp_license_num") String trading_license_num,
+                                         @Field("trading_license_num") String trading_license_num,
                                          @Field("trading_license_authority") String trading_license_authority,
                                          @Field("trading_official_name") String trading_official_name);
 
@@ -64,6 +64,17 @@ public interface APIService {
     @POST("app_status_check.php")
     @FormUrlEncoded
     Call<List<ClaimsData>> checkStatus(@Field("user_id") String user_id);
+
+
+    @POST("banking_form.php")
+    @FormUrlEncoded
+    Call<ResponseData> saveBanking(@Field("user_id") String user_id,
+                                   @Field("bank_name") String bank_name,
+                                   @Field("bank_account_num") String bank_account_num,
+                                   @Field("account_holder_name") String account_holder_name,
+                                   @Field("branch_name") String branch_name,
+                                   @Field("bank_ifsc") String bank_ifsc);
+
 
     @POST("get_personal_data.php")
     @FormUrlEncoded

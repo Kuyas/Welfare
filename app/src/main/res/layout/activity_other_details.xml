@@ -22,14 +22,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:paddingStart="@dimen/user_details_left_padding"-->
-                <!--android:textSize="@dimen/user_details_heading_height"-->
-                <!--android:text="@string/activity_other_details_heading"/>-->
+            android:orientation="vertical"
+            android:background="@color/colorAccent">
 
 
             <!-- sub point 1 -->
@@ -457,7 +451,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
+                    android:textColor="@color/colorAccent"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="15dp"
                     android:textAlignment="center"
                     android:gravity="center"
                     android:textSize="@dimen/user_details_text_size"

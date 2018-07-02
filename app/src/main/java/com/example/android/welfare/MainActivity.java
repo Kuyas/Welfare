@@ -3,6 +3,7 @@ package com.example.android.welfare;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -50,16 +51,12 @@ public class MainActivity extends AppCompatActivity {
             buttonEditProfile = findViewById(R.id.button_main_edit_profile);
             buttonRenewMembership = findViewById(R.id.button_main_renew_membership);
             buttonClassChange = findViewById(R.id.button_main_class_change);
-            buttonApplicationStatus = findViewById(R.id.button_main_application_status);
             buttonClaimStatus = findViewById(R.id.button_main_claim_status);
-            buttonPensionStatus = findViewById(R.id.button_main_pension_status);
 
             buttonEditProfile.setOnClickListener(onClickListener);
             buttonRenewMembership.setOnClickListener(onClickListener);
             buttonClassChange.setOnClickListener(onClickListener);
-            buttonApplicationStatus.setOnClickListener(onClickListener);
             buttonClaimStatus.setOnClickListener(onClickListener);
-            buttonPensionStatus.setOnClickListener(onClickListener);
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_main_heading));
@@ -171,4 +168,21 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+
+    public void openBrowser(View view){
+
+        //Get url from tag
+        String url = (String)view.getTag();
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.addCategory(Intent.CATEGORY_BROWSABLE);
+
+        //pass the url to intent data
+        intent.setData(Uri.parse(url));
+
+        startActivity(intent);
+    }
 }
+
+

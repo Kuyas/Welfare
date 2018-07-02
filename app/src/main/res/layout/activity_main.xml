@@ -6,12 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_activity_main"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,124 +29,114 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorAccent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-            <LinearLayout
+            android:layout_weight="0.8">
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent" />-->
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_main_button_size"
-                android:layout_marginTop="@dimen/activity_user_details_tabs_height"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-                    <Button
-                        android:id="@+id/button_main_edit_profile"
-                        android:layout_width="@dimen/activity_main_button_size"
-                        android:layout_height="match_parent"
-                        android:text="@string/activity_main_button_edit_profile"
-                        android:textSize="@dimen/activity_main_text_size" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <Button
-                        android:id="@+id/button_main_class_change"
-                        android:layout_width="@dimen/activity_main_button_size"
-                        android:layout_height="@dimen/activity_main_button_size"
-                        android:layout_gravity="center"
-                        android:text="@string/activity_main_button_class_change"
-                        android:textSize="@dimen/activity_main_text_size"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_main_button_size"
-                android:layout_marginTop="@dimen/activity_user_details_tabs_height"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-                    <Button
-                        android:id="@+id/button_main_application_status"
-                        android:layout_width="@dimen/activity_main_button_size"
-                        android:layout_height="@dimen/activity_main_button_size"
-                        android:text="@string/activity_main_button_application_status"
-                        android:textSize="@dimen/activity_main_text_size" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-                    <Button
-                        android:id="@+id/button_main_pension_status"
-                        android:layout_width="@dimen/activity_main_button_size"
-                        android:layout_height="@dimen/activity_main_button_size"
-                        android:layout_gravity="end"
-                        android:text="@string/activity_main_button_pension_status"
-                        android:textSize="@dimen/activity_main_text_size"/>
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_main_button_size"
-                android:layout_marginTop="@dimen/activity_user_details_tabs_height"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-                    <Button
-                        android:id="@+id/button_main_claim_status"
-                        android:layout_width="@dimen/activity_main_button_size"
-                        android:layout_height="@dimen/activity_main_button_size"
-                        android:text="@string/activity_main_button_claim_status"
-                        android:textSize="@dimen/activity_main_text_size" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <Button
-                        android:id="@+id/button_main_renew_membership"
-                        android:layout_width="@dimen/activity_main_button_size"
-                        android:layout_height="@dimen/activity_main_button_size"
-                        android:layout_gravity="end"
-                        android:text="@string/activity_main_button_renew_membership"
-                        android:textSize="@dimen/activity_main_text_size"/>
-
-                </LinearLayout>
-            </LinearLayout>
+                android:layout_height="match_parent"
+                android:src="@drawable/cdit"
+                android:tag="http://www.cdit.org/"
+                android:onClick="openBrowser"/>
         </LinearLayout>
-    </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/button_main_edit_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#b39ddb"
+                    android:text="@string/activity_main_button_edit_profile"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/activity_main_text_size" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_main_class_change"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#7e57c2"
+                android:text="@string/activity_main_button_class_change"
+                android:textColor="#fff"
+                android:textSize="@dimen/activity_main_text_size" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/button_main_claim_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#673ab7"
+                    android:text="@string/activity_main_button_claim_status"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/activity_main_text_size" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/button_main_renew_membership"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:background="#512da8"
+                android:text="@string/activity_main_button_renew_membership"
+                android:textColor="#fff"
+                android:textSize="@dimen/activity_main_text_size" />
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
 
 

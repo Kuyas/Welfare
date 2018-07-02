@@ -3,6 +3,7 @@ package com.example.android.welfare.userdetails.familydetails;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -13,8 +14,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.android.welfare.R;
+import com.example.android.welfare.userdetails.TextValidator;
 
 public class FamilyMemberDialogFragment extends DialogFragment implements View.OnClickListener {
 
@@ -23,6 +26,11 @@ public class FamilyMemberDialogFragment extends DialogFragment implements View.O
     private TextInputEditText memberOccupation;
     private TextInputEditText memberRelationship;
     private Spinner memberGender;
+
+    private TextValidator validateName;
+    private TextValidator validateAge;
+    private TextValidator validateOccupation;
+    private TextValidator validateRelationship;
 
     public FamilyMemberDialogFragment() {
     }
@@ -102,18 +110,60 @@ public class FamilyMemberDialogFragment extends DialogFragment implements View.O
 
     @Override
     public void onClick(View v) {
-        AddButtonDialogListener listener = (AddButtonDialogListener) getActivity();
+        switch (v.getId()) {
+            case (R.id.dialog_fragment_family_details_button_add): {
+                boolean flag = true;
 
-        String name = memberName.getText().toString();
-        int age = Integer.valueOf(memberAge.getText().toString());
-        String occupation = memberOccupation.getText().toString();
-        String relationship = memberRelationship.getText().toString();
+                validateName = new TextValidator(memberName);
+                validateAge = new TextValidator(memberAge);
+                validateOccupation = new TextValidator(memberOccupation);
+                validateRelationship = new TextValidator(memberRelationship);
 
-        String gender = memberGender.getSelectedItem().toString().trim();
+                if (!validateName.isValid()) {
+                    flag = false;
+                    memberName.setError(getString(R.string.dialog_fragment_family_details_name_error));
+                }
+                if (!validateAge.isValid()) {
+                    flag = false;
+                    memberAge.setError(getString(R.string.dialog_fragment_family_details_age_error));
+                }
+                if (memberGender.getSelectedItem().toString().trim().equals(getString
+                        (R.string.dialog_fragment_family_details_choose_gender))) {
+                    flag = false;
+                    Toast.makeText(getActivity(), getString(R.string.dialog_fragment_family_details_gender_error),
+                            Toast.LENGTH_SHORT).show();
+                }
+                if (!validateOccupation.isValid()) {
+                    flag = false;
+                    memberOccupation.setError(getString(R.string.dialog_fragment_family_details_occupation_error));
+                }
+                if (!validateRelationship.isValid()) {
+                    flag = false;
+                    memberRelationship.setError(getString(R.string.dialog_fragment_family_details_relationship_error));
+                }
 
-        FamilyModel model = new FamilyModel(name, age, gender, occupation, relationship);
-        listener.onFinishEditDialog(model);
+                if (flag) {
 
-        dismiss();
+                    AddButtonDialogListener listener = (AddButtonDialogListener) getActivity();
+
+                    String name = memberName.getText().toString();
+                    int age = Integer.valueOf(memberAge.getText().toString());
+                    String occupation = memberOccupation.getText().toString();
+                    String relationship = memberRelationship.getText().toString();
+
+                    String gender = memberGender.getSelectedItem().toString().trim();
+
+                    FamilyModel model = new FamilyModel(name, age, gender, occupation, relationship);
+                    listener.onFinishEditDialog(model);
+
+                    dismiss();
+                } else {
+                    Snackbar errorSnackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
+                            getString(R.string.dialog_fragment_family_details_invalid_data), Snackbar.LENGTH_SHORT);
+
+                    errorSnackbar.show();
+                }
+            }
+        }
     }
 }

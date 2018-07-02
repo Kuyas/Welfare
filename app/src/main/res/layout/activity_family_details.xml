@@ -13,155 +13,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:paddingTop="5dp"-->
-        <!--android:weightSum="@integer/user_details_weight_sum">-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="10"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/activity_family_details_heading_srNo"/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="25"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/activity_family_details_heading_name"/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="10"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/activity_family_details_heading_age"/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="15"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/activity_family_details_heading_gender"/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="20"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/activity_family_details_heading_occupation"/>-->
-
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_weight="20"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/activity_family_details_heading_relationship"/>-->
-
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_marginTop="4dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="2dp"-->
-        <!--android:background="@color/colorDividerLineThick" />-->
-
-
-    <!--<ScrollView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="380dp">-->
-
-        <!--<TableLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <!--<TableRow-->
-                <!--android:weightSum="@integer/user_details_weight_sum"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="@dimen/activity_family_details_row_height">-->
-
-                <!--<TextView-->
-                    <!--android:id="@+id/activity_family_details_text_view_srNo"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_weight="13"-->
-                    <!--android:text="1"-->
-                    <!--android:gravity="center"/>-->
-
-                <!--<EditText-->
-                    <!--android:id="@+id/activity_family_details_edit_text_name"-->
-                    <!--android:inputType="textCapCharacters"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_width="0dp"-->
-                    <!--android:layout_weight="31"-->
-                    <!--android:gravity="center"/>-->
-
-                <!--<EditText-->
-                    <!--android:id="@+id/activity_family_details_edit_text_age"-->
-                    <!--android:inputType="number"-->
-                    <!--android:layout_weight="6"-->
-                    <!--android:gravity="center"/>-->
-
-                <!--&lt;!&ndash;TODO: convert below EditText to Spinner&ndash;&gt;-->
-                <!--<EditText-->
-                    <!--android:id="@+id/activity_family_details_edit_text_gender"-->
-                    <!--android:inputType="text"-->
-                    <!--android:layout_weight="13"-->
-                    <!--android:gravity="center"/>-->
-
-                <!--<EditText-->
-                    <!--android:id="@+id/activity_family_details_edit_text_occupation"-->
-                    <!--android:inputType="text"-->
-                    <!--android:layout_weight="18"-->
-                    <!--android:gravity="center"/>-->
-
-                <!--<EditText-->
-                    <!--android:id="@+id/activity_family_details_edit_text_relationship"-->
-                    <!--android:inputType="text"-->
-                    <!--android:layout_weight="19"-->
-                    <!--/>-->
-
-            <!--</TableRow>-->
-
-        <!--</TableLayout>-->
-
-    <!--</ScrollView>-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/family_details_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="20"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
-        android:padding="5dp">
+        android:weightSum="@integer/user_details_weight_sum">
 
-        <Button
-            android:id="@+id/button_add_member"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/family_details_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/activity_family_details_add_member"
-            android:textSize="@dimen/user_details_button_text_size"/>
+            android:layout_height="0dp"
+            android:layout_weight="80"
+            android:scrollbars="vertical"/>
 
-        <Button
-            android:id="@+id/button_family_details_next"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/user_details_button_next"
-            android:textSize="@dimen/user_details_button_text_size"/>
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/button_add_member"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/activity_family_details_add_member"
+                android:textSize="@dimen/user_details_button_text_size"/>
+
+            <Button
+                android:id="@+id/button_family_details_next"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/user_details_button_next"
+                android:textSize="@dimen/user_details_button_text_size"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>
