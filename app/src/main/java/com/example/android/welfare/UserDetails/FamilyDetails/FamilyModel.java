@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails.FamilyDetails;
+package com.example.android.welfare.userdetails.familydetails;
 
 public class FamilyModel {
 

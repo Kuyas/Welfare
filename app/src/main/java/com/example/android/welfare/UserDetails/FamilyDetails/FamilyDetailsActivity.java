@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails.FamilyDetails;
+package com.example.android.welfare.userdetails.familydetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,11 +18,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
-import com.example.android.welfare.UserDetails.TradingDetailsActivity;
+import com.example.android.welfare.userdetails.TradingDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;

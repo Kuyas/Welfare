@@ -26,68 +26,68 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserDetails.PersonalDetailsActivity"
+            android:name=".userdetails.PersonalDetailsActivity"
             android:parentActivityName=".MainActivity"
             android:label="Personal Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".login.LoginActivity"
             android:label="@string/activity_login_title" />
         <activity
-            android:name=".Login.SignupActivity"
+            android:name=".login.SignupActivity"
             android:label="@string/activity_signup_title"/>
         <activity
-            android:name=".UserDetails.RenewMembershipActivity"
+            android:name=".userdetails.RenewMembershipActivity"
             android:parentActivityName=".MainActivity"
             android:label="@string/activity_renew_membership_title"/>
         <activity
-            android:name=".UserDetails.BankingDetailsActivity"
-            android:parentActivityName=".UserDetails.OtherDetailsActivity"
+            android:name=".userdetails.BankingDetailsActivity"
+            android:parentActivityName=".userdetails.OtherDetailsActivity"
             android:label="Banking Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".UserDetails.FamilyDetails.FamilyDetailsActivity"
-            android:parentActivityName=".UserDetails.PersonalDetailsActivity"
+            android:name=".userdetails.familydetails.FamilyDetailsActivity"
+            android:parentActivityName=".userdetails.PersonalDetailsActivity"
             android:label="Family Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".UserDetails.TradingDetailsActivity"
-            android:parentActivityName=".UserDetails.FamilyDetails.FamilyDetailsActivity"
+            android:name=".userdetails.TradingDetailsActivity"
+            android:parentActivityName=".userdetails.familydetails.FamilyDetailsActivity"
             android:label="Trading Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".UserDetails.OtherDetailsActivity"
-            android:parentActivityName=".UserDetails.TradingDetailsActivity"
+            android:name=".userdetails.OtherDetailsActivity"
+            android:parentActivityName=".userdetails.TradingDetailsActivity"
             android:label="Other Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
 
         <activity
-            android:name=".UserDetails.PaymentDetailsActivity"
-            android:parentActivityName=".UserDetails.BankingDetailsActivity"
+            android:name=".userdetails.PaymentDetailsActivity"
+            android:parentActivityName=".userdetails.BankingDetailsActivity"
             android:label="Payment Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
-            android:name=".UserDetails.ClassChangeActivity"
+            android:name=".userdetails.ClassChangeActivity"
             android:parentActivityName=".MainActivity"
             android:label="Class Change"/>
 
         <activity
-            android:name=".Login.OtpVerificationActivity"
+            android:name=".login.OtpVerificationActivity"
             android:label="Otp Verification" />
 
-        <activity android:name=".Login.LanguageActivity"
+        <activity android:name=".login.LanguageActivity"
             android:label="Choose Language" />
 
-        <activity android:name=".Login.ForgotPasswordActivity"
+        <activity android:name=".login.ForgotPasswordActivity"
             android:label="Change Password" />
 
-        <activity android:name=".UserDetails.StatusActivity"
+        <activity android:name=".userdetails.StatusActivity"
             android:label="Check Status"/>
 
     </application>

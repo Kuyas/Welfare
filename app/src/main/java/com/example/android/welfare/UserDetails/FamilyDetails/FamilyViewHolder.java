@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails.FamilyDetails;
+package com.example.android.welfare.userdetails.familydetails;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

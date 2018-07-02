@@ -13,13 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.example.android.welfare.DatabaseConnection.APIService;
-import com.example.android.welfare.Login.LanguageActivity;
-import com.example.android.welfare.Login.LoginActivity;
-import com.example.android.welfare.UserDetails.ClassChangeActivity;
-import com.example.android.welfare.UserDetails.PersonalDetailsActivity;
-import com.example.android.welfare.UserDetails.RenewMembershipActivity;
-import com.example.android.welfare.UserDetails.StatusActivity;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.login.LanguageActivity;
+import com.example.android.welfare.login.LoginActivity;
+import com.example.android.welfare.userdetails.ClassChangeActivity;
+import com.example.android.welfare.userdetails.PersonalDetailsActivity;
+import com.example.android.welfare.userdetails.RenewMembershipActivity;
+import com.example.android.welfare.userdetails.StatusActivity;
 
 
 public class MainActivity extends AppCompatActivity {

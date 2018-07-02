@@ -75,7 +75,6 @@
 
     <string name="activity_family_details_heading">Family Details</string>
     <string name="activity_family_details_add_member">Add Member</string>
-    <string name="activity_family_details_srNo">Sr.No</string>
     <string name="activity_family_details_name">Name</string>
     <string name="activity_family_details_age">Age</string>
     <string name="activity_family_details_gender">Gender</string>
