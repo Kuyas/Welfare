@@ -1,4 +1,4 @@
-package com.example.android.welfare.Login;
+package com.example.android.welfare.login;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,12 +14,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.android.welfare.DatabaseConnection.APIService;
-import com.example.android.welfare.DatabaseConnection.APIUtils;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.databaseconnection.APIUtils;
+import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.R;
-import com.example.android.welfare.UserDetails.TextValidator;
+import com.example.android.welfare.userdetails.TextValidator;
 
 import retrofit2.Call;
 import retrofit2.Callback;

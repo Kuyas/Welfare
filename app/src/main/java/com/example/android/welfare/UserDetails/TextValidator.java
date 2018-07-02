@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails;
+package com.example.android.welfare.userdetails;
 
 import android.support.design.widget.TextInputEditText;
 import android.text.TextUtils;

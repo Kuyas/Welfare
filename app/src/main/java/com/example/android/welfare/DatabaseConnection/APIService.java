@@ -1,10 +1,10 @@
-package com.example.android.welfare.DatabaseConnection;
+package com.example.android.welfare.databaseconnection;
 
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.AuthenticationData;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingData;
+import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
+import com.example.android.welfare.databaseconnection.responseclasses.PersonalData;
+import com.example.android.welfare.databaseconnection.responseclasses.ClaimsData;
+import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
+import com.example.android.welfare.databaseconnection.responseclasses.TradingData;
 
 import java.util.List;
 

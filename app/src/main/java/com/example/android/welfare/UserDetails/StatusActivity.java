@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails;
+package com.example.android.welfare.userdetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,9 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.welfare.DatabaseConnection.APIService;
-import com.example.android.welfare.DatabaseConnection.APIUtils;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.ClaimsData;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.databaseconnection.APIUtils;
+import com.example.android.welfare.databaseconnection.responseclasses.ClaimsData;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.R;
 

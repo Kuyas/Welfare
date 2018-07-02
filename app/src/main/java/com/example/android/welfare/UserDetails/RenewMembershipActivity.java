@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails;
+package com.example.android.welfare.userdetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.R;
 

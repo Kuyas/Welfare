@@ -1,4 +1,4 @@
-package com.example.android.welfare.Login;
+package com.example.android.welfare.login;
 
 import android.content.Context;
 import android.content.Intent;

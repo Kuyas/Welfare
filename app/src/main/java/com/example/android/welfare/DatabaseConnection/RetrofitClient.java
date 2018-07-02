@@ -1,4 +1,4 @@
-package com.example.android.welfare.DatabaseConnection;
+package com.example.android.welfare.databaseconnection;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

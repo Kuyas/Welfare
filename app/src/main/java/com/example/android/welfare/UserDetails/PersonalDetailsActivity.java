@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails;
+package com.example.android.welfare.userdetails;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
@@ -22,16 +22,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.welfare.DatabaseConnection.APIService;
-import com.example.android.welfare.DatabaseConnection.APIUtils;
-import com.example.android.welfare.DatabaseConnection.DisplayErrorMessage;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
-import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.databaseconnection.APIUtils;
+import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
+import com.example.android.welfare.databaseconnection.responseclasses.PersonalData;
+import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
+import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
-import com.example.android.welfare.UserDetails.FamilyDetails.FamilyDetailsActivity;
+import com.example.android.welfare.userdetails.familydetails.FamilyDetailsActivity;
 
 import java.io.File;
 import java.io.FileInputStream;

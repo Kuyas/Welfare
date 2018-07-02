@@ -1,4 +1,4 @@
-package com.example.android.welfare.DatabaseConnection;
+package com.example.android.welfare.databaseconnection;
 
 public class APIUtils {
     private APIUtils() {}

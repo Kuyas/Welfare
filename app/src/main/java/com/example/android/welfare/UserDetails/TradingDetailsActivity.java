@@ -1,4 +1,4 @@
-package com.example.android.welfare.UserDetails;
+package com.example.android.welfare.userdetails;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,13 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.android.welfare.DatabaseConnection.APIService;
-import com.example.android.welfare.DatabaseConnection.APIUtils;
-import com.example.android.welfare.DatabaseConnection.DisplayErrorMessage;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.PersonalData;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.ResponseData;
-import com.example.android.welfare.DatabaseConnection.ResponseClasses.TradingData;
-import com.example.android.welfare.Login.LoginActivity;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.databaseconnection.APIUtils;
+import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
+import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
+import com.example.android.welfare.databaseconnection.responseclasses.TradingData;
+import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;

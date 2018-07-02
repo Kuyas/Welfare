@@ -1,6 +1,4 @@
-package com.example.android.welfare.DatabaseConnection;
-
-import com.example.android.welfare.R;
+package com.example.android.welfare.databaseconnection;
 
 public class DisplayErrorMessage {
     public static String returnErrorMessage(int code) {

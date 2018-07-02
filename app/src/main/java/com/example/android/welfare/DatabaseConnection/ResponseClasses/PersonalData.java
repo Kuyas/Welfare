@@ -1,4 +1,4 @@
-package com.example.android.welfare.DatabaseConnection.ResponseClasses;
+package com.example.android.welfare.databaseconnection.responseclasses;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;
