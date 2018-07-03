@@ -75,7 +75,6 @@
 
     <string name="activity_family_details_heading">Family Details</string>
     <string name="activity_family_details_add_member">Add Member</string>
-    <string name="activity_family_details_srNo">Sr.No</string>
     <string name="activity_family_details_name">Name</string>
     <string name="activity_family_details_age">Age</string>
     <string name="activity_family_details_gender">Gender</string>
@@ -238,5 +237,14 @@
     <string name="StatusActivity_accepted">Accepted</string>
     <string name="StatusActivity_rejected">Rejected</string>
     <string name="application">\@string/</string>
+
+
+    <string name="dialog_fragment_family_details_choose_gender">Choose Gender</string>
+    <string name="dialog_fragment_family_details_invalid_data">Please enter valid data</string>
+    <string name="dialog_fragment_family_details_name_error">Please enter a valid name</string>
+    <string name="dialog_fragment_family_details_age_error">Please enter a valid age</string>
+    <string name="dialog_fragment_family_details_gender_error">Please enter a valid gender</string>
+    <string name="dialog_fragment_family_details_occupation_error">Please enter a valid occupation</string>
+    <string name="dialog_fragment_family_details_relationship_error">Please enter a valid relationship</string>
 
 </resources>

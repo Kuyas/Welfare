@@ -14,13 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.example.android.welfare.DatabaseConnection.APIService;
-import com.example.android.welfare.Login.LanguageActivity;
-import com.example.android.welfare.Login.LoginActivity;
-import com.example.android.welfare.UserDetails.ClassChangeActivity;
-import com.example.android.welfare.UserDetails.PersonalDetailsActivity;
-import com.example.android.welfare.UserDetails.RenewMembershipActivity;
-import com.example.android.welfare.UserDetails.StatusActivity;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.login.LanguageActivity;
+import com.example.android.welfare.login.LoginActivity;
+import com.example.android.welfare.userdetails.ClassChangeActivity;
+import com.example.android.welfare.userdetails.PersonalDetailsActivity;
+import com.example.android.welfare.userdetails.RenewMembershipActivity;
+import com.example.android.welfare.userdetails.StatusActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,16 +51,12 @@ public class MainActivity extends AppCompatActivity {
             buttonEditProfile = findViewById(R.id.button_main_edit_profile);
             buttonRenewMembership = findViewById(R.id.button_main_renew_membership);
             buttonClassChange = findViewById(R.id.button_main_class_change);
-//            buttonApplicationStatus = findViewById(R.id.button_main_application_status);
             buttonClaimStatus = findViewById(R.id.button_main_claim_status);
-//            buttonPensionStatus = findViewById(R.id.button_main_pension_status);
 
             buttonEditProfile.setOnClickListener(onClickListener);
             buttonRenewMembership.setOnClickListener(onClickListener);
             buttonClassChange.setOnClickListener(onClickListener);
-           // buttonApplicationStatus.setOnClickListener(onClickListener);
             buttonClaimStatus.setOnClickListener(onClickListener);
-            //buttonPensionStatus.setOnClickListener(onClickListener);
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_main_heading));
