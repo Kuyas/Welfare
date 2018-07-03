@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonEditProfile;
     private Button buttonRenewMembership;
     private Button buttonClassChange;
-    private Button buttonApplicationStatus;
     private Button buttonClaimStatus;
-    private Button buttonPensionStatus;
     private APIService statusUsingAPI;
 
     @Override
