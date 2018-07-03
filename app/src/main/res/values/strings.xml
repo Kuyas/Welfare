@@ -98,6 +98,7 @@
     <string name="activity_trading_details_name">Name of Trading Firm</string>
     <string name="activity_trading_details_name_hint">Name of Trading Firm</string>
     <string name="activity_trading_details_address">Address of Trading Firm</string>
+    <string name="activity_trading_details_turnover">Annual Turnover</string>
     <string name="activity_trading_details_subheading">Main Trading Place</string>
     <string name="activity_trading_details_address_branch">Branch</string>
     <string name="activity_trading_details_address_godown">Godown</string>
@@ -120,7 +121,7 @@
         <item>Type of Ownership</item>
         <item>Single owner</item>
         <item>Partnership</item>
-        <item>Self-help group</item>
+        <item>Self help group</item>
         <item>Other</item>
     </string-array>
     <string-array name="activity_trading_details_spinner_authority">
@@ -158,9 +159,9 @@
 
     <string name="activity_class_change_heading">Class Change</string>
     <string name="activity_classchange_title">Class Change</string>
-    <string name="activity_classchange_old_income">Current Income</string>
+    <string name="activity_classchange_old_income">Current Annual Turnover</string>
     <string name="activity_classchange_old_class">Current Class</string>
-    <string name="activity_classchange_name">New Income</string>
+    <string name="activity_classchange_name">New Annual Turnover</string>
     <string name="activity_classchange_submit">Submit</string>
     <string name="activity_classchange_class">New Class</string>
 

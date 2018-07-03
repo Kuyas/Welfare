@@ -5,6 +5,8 @@ import com.example.android.welfare.databaseconnection.responseclasses.PersonalDa
 import com.example.android.welfare.databaseconnection.responseclasses.ClaimsData;
 import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
 import com.example.android.welfare.databaseconnection.responseclasses.TradingData;
+import com.example.android.welfare.databaseconnection.responseclasses.TurnoverData;
+
 
 import java.util.List;
 
@@ -48,6 +50,7 @@ public interface APIService {
     Call<ResponseData> saveTrading(@Field("user_id") String user_id,
                                          @Field("trading_firm_name") String trading_firm_name,
                                          @Field("trading_firm_address") String trading_firm_address,
+                                         @Field("trading_firm_turnover") String trading_firm_turnover,
                                          @Field("trading_mtp_branch") String trading_mtp_branch,
                                          @Field("trading_mtp_godown") String trading_mtp_godown,
                                          @Field("trading_mtp_factory") String trading_mtp_factory,
@@ -85,4 +88,24 @@ public interface APIService {
     @FormUrlEncoded
     Call<TradingData> getTradingData(@Field("mobile_number") String mobile_number,
                                      @Field("password") String password);
+
+    @POST("class_change_form.php")
+    @FormUrlEncoded
+    Call<TurnoverData> getTurnoverData(@Field("user_id") String user_id);
+
+    @POST("other_details.php")
+    @FormUrlEncoded
+    Call<ResponseData> saveOther(@Field("user_id") String user_id,
+                                 @Field("emv_main_branch") String emv_main_branch,
+                                 @Field("emv_branch") String emv_branch,
+                                 @Field("emv_godown") String emv_godown,
+                                 @Field("emv_factory") String emv_factory,
+                                 @Field("emv_others") String emv_others,
+                                 @Field("ara_main_branch") String ara_main_branch,
+                                 @Field("ara_branch") String ara_branch,
+                                 @Field("ara_godown") String ara_godown,
+                                 @Field("ara_factory") String ara_factory,
+                                 @Field("ara_other") String ara_other,
+                                 @Field("organisation_name") String organisation_name);
+
 }

@@ -290,6 +290,7 @@ public class StatusActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<ClaimsData>> call, Throwable t) {
+                Toast.makeText(StatusActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
 
             }
         });
