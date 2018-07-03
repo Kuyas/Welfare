@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case (R.id.button_main_edit_profile): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        Intent editProfileIntent = new Intent(MainActivity.this, PersonalDetailsActivity.class);
+                        Intent editProfileIntent = new Intent(MainActivity.this,
+                                PersonalDetailsActivity.class);
                         startActivity(editProfileIntent);
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
@@ -88,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case (R.id.button_main_renew_membership): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        Intent renewMembershipIntent = new Intent(MainActivity.this, RenewMembershipActivity.class);
+                        Intent renewMembershipIntent = new Intent(MainActivity.this,
+                                RenewMembershipActivity.class);
                         startActivity(renewMembershipIntent);
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_main);

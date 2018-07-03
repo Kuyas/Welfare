@@ -37,18 +37,18 @@ public class OtherDetailsActivity extends AppCompatActivity {
     private TextInputEditText rentedOthers;
     private TextInputEditText tradersOrganisation;
 
-    private TextValidator validateOwnMainBranch;
-    private TextValidator validateOwnBranch;
-    private TextValidator validateOwnGodown;
-    private TextValidator validateOwnFactory;
-    private TextValidator validateOwnOthers;
-
-    private TextValidator validateRentedMainBranch;
-    private TextValidator validateRentedBranch;
-    private TextValidator validateRentedGodown;
-    private TextValidator validateRentedFactory;
-    private TextValidator validateRentedOthers;
-    private TextValidator validateTradersOrganisation;
+//    private TextValidator validateOwnMainBranch;
+//    private TextValidator validateOwnBranch;
+//    private TextValidator validateOwnGodown;
+//    private TextValidator validateOwnFactory;
+//    private TextValidator validateOwnOthers;
+//
+//    private TextValidator validateRentedMainBranch;
+//    private TextValidator validateRentedBranch;
+//    private TextValidator validateRentedGodown;
+//    private TextValidator validateRentedFactory;
+//    private TextValidator validateRentedOthers;
+//    private TextValidator validateTradersOrganisation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +57,8 @@ public class OtherDetailsActivity extends AppCompatActivity {
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             //TODO: Remove the negation
 
-            Intent loginIntent = new Intent(OtherDetailsActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(OtherDetailsActivity.this,
+                    LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_other_details);
@@ -81,18 +82,18 @@ public class OtherDetailsActivity extends AppCompatActivity {
         rentedOthers = findViewById(R.id.edit_text_rented_other);
         tradersOrganisation = findViewById(R.id.edit_text_traders_organisation);
 
-        validateOwnMainBranch = new TextValidator(ownMainBranch);
-        validateOwnBranch = new TextValidator(ownBranch);
-        validateOwnGodown = new TextValidator(ownGodown);
-        validateOwnFactory = new TextValidator(ownFactory);
-        validateOwnOthers = new TextValidator(ownOthers);
-
-        validateRentedMainBranch = new TextValidator(rentedMainBranch);
-        validateRentedBranch = new TextValidator(rentedBranch);
-        validateRentedGodown = new TextValidator(rentedGodown);
-        validateRentedFactory = new TextValidator(rentedFactory);
-        validateRentedOthers = new TextValidator(rentedOthers);
-        validateTradersOrganisation = new TextValidator(tradersOrganisation);
+//        validateOwnMainBranch = new TextValidator(ownMainBranch);
+//        validateOwnBranch = new TextValidator(ownBranch);
+//        validateOwnGodown = new TextValidator(ownGodown);
+//        validateOwnFactory = new TextValidator(ownFactory);
+//        validateOwnOthers = new TextValidator(ownOthers);
+//
+//        validateRentedMainBranch = new TextValidator(rentedMainBranch);
+//        validateRentedBranch = new TextValidator(rentedBranch);
+//        validateRentedGodown = new TextValidator(rentedGodown);
+//        validateRentedFactory = new TextValidator(rentedFactory);
+//        validateRentedOthers = new TextValidator(rentedOthers);
+//        validateTradersOrganisation = new TextValidator(tradersOrganisation);
 
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
@@ -130,7 +131,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
 //                    }
 
 
-                        if (flag || true) {
+                        if (flag) {
                             Intent otherDetailsIntent = new Intent(OtherDetailsActivity.this,
                                     BankingDetailsActivity.class);
                             startActivity(otherDetailsIntent);

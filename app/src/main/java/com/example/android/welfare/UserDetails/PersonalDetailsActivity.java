@@ -69,6 +69,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
     private Spinner districtSpinner;
     private Spinner genderSpinner;
 
+    AlterView alterView;
+
     String date_test;
 
     @Override
@@ -94,7 +96,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
             // SPINNER FOR GENDER SELECT
             genderSpinner = findViewById(R.id.activity_personal_details_gender_select);
-            genderAdapter = ArrayAdapter.createFromResource(this, R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
+            genderAdapter = ArrayAdapter.createFromResource(this,
+                    R.array.activity_personal_spinner_gender, android.R.layout.simple_spinner_item);
             genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             genderSpinner.setAdapter(genderAdapter);
 
@@ -120,13 +123,16 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             //SPINNER FOR DISTRICT SELECT
             districtSpinner = findViewById(R.id.activity_personal_details_district_select);
 
+            alterView = new AlterView();
+
             List<String> district;
             arrayDistrict = getResources().getStringArray(R.array.activity_personal_spinner_district);
             Arrays.sort(arrayDistrict);
             district = new ArrayList<>(Arrays.asList(arrayDistrict));
-            district.add(0, "Choose District");
+            district.add(0, getString(R.string.activity_personal_details_choose_district));
 
-            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, district);
+            ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, district);
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
             districtSpinner.setAdapter(spinnerArrayAdapter);
@@ -182,61 +188,78 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                                 //write to variable
                             } else {
                                 flag = false;
-                                name.setError("Please Enter a Valid Name");
+                                name.setError(getString(R.string.activity_personal_details_invalid_name));
                             }
                             if (validAddress.isValid()) {
                                 //write to variable
                             } else {
                                 flag = false;
-                                address.setError("Please Enter a valid Address");
+                                address.setError(getString(R.string.activity_personal_details_invalid_address));
                             }
                             if (validPlace.isValid()) {
                                 //write to variable
                             } else {
-                                place.setError("Please Enter a Valid Place");
+                                place.setError(getString(R.string.activity_personal_details_invalid_place));
                             }
-                            if (genderSpinner.getSelectedItem().toString().trim().equals("Choose Gender")) {
+                            if (genderSpinner.getSelectedItem().toString().trim().equals(
+                                    getString(R.string.activity_personal_details_choose_gender))) {
                                 flag = false;
-                                Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid gender", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PersonalDetailsActivity.this,
+                                        getString(R.string.activity_personal_details_invalid_gender),
+                                        Toast.LENGTH_SHORT).show();
                             } else {
                                 genderSelect = genderSpinner.getSelectedItem().toString().trim();
                             }
-                            if (districtSpinner.getSelectedItem().toString().trim().equals("Choose District")) {
+                            if (districtSpinner.getSelectedItem().toString().trim().equals(
+                                    getString(R.string.activity_personal_details_choose_district))) {
                                 flag = false;
-                                Toast.makeText(PersonalDetailsActivity.this, "Error. Please Select a Valid District", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PersonalDetailsActivity.this, getString(
+                                        R.string.activity_personal_details_invalid_district),
+                                        Toast.LENGTH_SHORT).show();
                             } else {
                                 districtSelect = districtSpinner.getSelectedItem().toString().trim();
                             }
                             if (date_test == null) {
                                 flag = false;
-                                Toast.makeText(PersonalDetailsActivity.this, "Choose Date", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PersonalDetailsActivity.this, getString(
+                                        R.string.activity_personal_details_invalid_dob),
+                                        Toast.LENGTH_SHORT).show();
                             }
 
                             if (flag) {
-                                personalUsingAPI.savePersonal(sharedPreferences.getString("loggedInID", ""), validName.returnText(), date_test,
-                                        genderSelect, validAddress.returnText(),
-                                        validPlace.returnText(), districtSelect).enqueue(new Callback<ResponseData>() {
+                                personalUsingAPI.savePersonal(sharedPreferences.getString(
+                                        "loggedInID", ""), validName.returnText(),
+                                        date_test, genderSelect, validAddress.returnText(),
+                                        validPlace.returnText(), districtSelect).enqueue(
+                                                new Callback<ResponseData>() {
                                     @Override
-                                    public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                    public void onResponse(Call<ResponseData> call,
+                                                           Response<ResponseData> response) {
                                         int response_code = response.body().getResponseCode();
                                         if (response_code == 200) {
-                                            Toast.makeText(PersonalDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(PersonalDetailsActivity.this,
+                                                    getString(R.string.details_saved_confirmation),
+                                                    Toast.LENGTH_LONG).show();
 
                                             nextActivity();
                                         } else {
-                                            Toast.makeText(PersonalDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(PersonalDetailsActivity.this,
+                                                    DisplayErrorMessage.returnErrorMessage(response_code),
+                                                    Toast.LENGTH_LONG).show();
                                         }
                                     }
 
                                     @Override
                                     public void onFailure(Call<ResponseData> call, Throwable t) {
-                                        Toast.makeText(PersonalDetailsActivity.this, "Details failed", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(PersonalDetailsActivity.this,
+                                                getString(R.string.details_saved_failed),
+                                                Toast.LENGTH_LONG).show();
                                     }
                                 });
 
                             }
                         } else {
-                            LinearLayout    linearLayout = findViewById(R.id.layout_activity_personal_details);
+                            LinearLayout linearLayout = findViewById(R.id.layout_activity_personal_details);
                             Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
                                     getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
                             noConnectionSnackbar.show();
@@ -277,26 +300,21 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
     }
 
     public void disableEdit() {
-        name.setFocusable(false);
-        name.setEnabled(false);
-        name.setCursorVisible(false);
-        name.setKeyListener(null);
+        alterView.disableTextInput(name);
+        alterView.disableTextInput(address);
+        alterView.disableTextInput(place);
 
+        alterView.disableButton(buttonDob);
 
-        place.setFocusable(false);
-        address.setFocusable(false);
-        genderSpinner.setFocusable(false);
-        districtSpinner.setFocusable(false);
-        buttonDob.setEnabled(false);
+        alterView.disableSpinner(genderSpinner);
+        alterView.disableSpinner(districtSpinner);
     }
 
     public void allowEdit() {
-        name.setFocusable(true);
-        place.setFocusable(true);
-        address.setFocusable(true);
-        genderSpinner.setFocusable(true);
-        districtSpinner.setFocusable(true);
-        buttonDob.setEnabled(true);
+        alterView.enableTextInput(place);
+        alterView.enableTextInput(address);
+
+        alterView.enableSpinner(districtSpinner);
     }
 
 
@@ -307,7 +325,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-        String currentDateString = new SimpleDateFormat("dd-MM-yyyy", getResources().getConfiguration().locale).format(c.getTime());
+        String currentDateString = new SimpleDateFormat("dd-MM-yyyy",
+                getResources().getConfiguration().locale).format(c.getTime());
         TextView textView = findViewById(R.id.activity_personal_textview_date);
         textView.setText(currentDateString);
         date_test = currentDateString;
@@ -316,7 +335,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     public void getCacheData() {
         APIService storePersonalData = APIUtils.getAPIService();
-        storePersonalData.getPersonalData(sharedPreferences.getString("mobile_number", ""), sharedPreferences.getString("password", "")).enqueue(new Callback<PersonalData>() {
+        storePersonalData.getPersonalData(sharedPreferences.getString("mobile_number", ""),
+                sharedPreferences.getString("password", "")).enqueue(new Callback<PersonalData>() {
             @Override
             public void onResponse(Call<PersonalData> call, Response<PersonalData> response) {
                 try {
@@ -328,7 +348,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                         cacheWriter.close();
                         fillWithCache();
                     } else {
-                        Toast.makeText(PersonalDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                        Toast.makeText(PersonalDetailsActivity.this,
+                                DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -345,7 +366,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     public void fillWithCache() {
         try {
-            ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(getCacheDir() + File.separator + cacheDataFile));
+            ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
+                    getCacheDir() + File.separator + cacheDataFile));
             PersonalData cached = (PersonalData) cacheReader.readObject();
             name.setText(cached.getName());
             address.setText(cached.getAddress());

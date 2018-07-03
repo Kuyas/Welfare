@@ -47,7 +47,8 @@ public class PersonalData implements Serializable
      * @param district
      * @param place
      */
-    public PersonalData(Integer responseCode, String name, String dob, String gender, String address, String place, String district) {
+    public PersonalData(Integer responseCode, String name, String dob, String gender,
+                        String address, String place, String district) {
         super();
         this.responseCode = responseCode;
         this.name = name;
@@ -117,7 +118,8 @@ public class PersonalData implements Serializable
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(responseCode).append(name).append(dob).append(gender).append(address).append(place).append(district).toString();
+        return stringBuilder.append(responseCode).append(name).append(dob).append(gender).
+                append(address).append(place).append(district).toString();
     }
 
 }
