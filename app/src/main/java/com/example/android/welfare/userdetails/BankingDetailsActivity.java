@@ -33,7 +33,7 @@ public class BankingDetailsActivity extends AppCompatActivity{
     private SharedPreferences sharedPreferences;
 
     private TextInputEditText bankName;
-    private TextInputEditText owner;
+    private TextInputEditText accountHolderName;
     private TextInputEditText accountNumber;
     private TextInputEditText branch;
     private TextInputEditText ifsc;
@@ -47,7 +47,8 @@ public class BankingDetailsActivity extends AppCompatActivity{
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             //TODO: Remove the negation
 
-            Intent loginIntent = new Intent(BankingDetailsActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(BankingDetailsActivity.this,
+                    LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_banking_details);
@@ -70,7 +71,7 @@ public class BankingDetailsActivity extends AppCompatActivity{
             });
 
             bankName = findViewById(R.id.activity_bank_details_edittext_name);
-            owner = findViewById(R.id.activity_bank_details_edittext_owner);
+            accountHolderName = findViewById(R.id.activity_bank_details_edittext_owner);
             accountNumber = findViewById(R.id.activity_bank_details_edittext_account);
             branch = findViewById(R.id.activity_bank_details_edittext_branch);
             ifsc = findViewById(R.id.activity_bank_details_edittext_ifsc);
@@ -83,59 +84,74 @@ public class BankingDetailsActivity extends AppCompatActivity{
                         boolean flag = true;
 
                         TextValidator validbankName = new TextValidator(bankName);
-                        TextValidator validOwner = new TextValidator(owner);
+                        TextValidator validAccountHolderName = new TextValidator(accountHolderName);
                         TextValidator validAccountNumber = new TextValidator(accountNumber);
                         TextValidator validBranch = new TextValidator(branch);
                         TextValidator validIfsc = new TextValidator(ifsc);
 
                         if (!validbankName.isValid()) {
                             flag = false;
-                            bankName.setError("Please enter a valid Bank name");
+                            bankName.setError(getString(
+                                    R.string.activity_banking_details_invalid_bank_name));
                         }
 
-                        if (!validOwner.isValid()) {
+                        if (!validAccountHolderName.isValid()) {
                             flag = false;
-                            owner.setError("Please enter a valid Account Holder name");
+                            accountHolderName.setError(getString(
+                                    R.string.activity_banking_details_invalid_account_holder_name));
                         }
 
                         if (!validAccountNumber.regexValidator(TextValidator.accountnumberregex)) {
                             flag = false;
-                            accountNumber.setError("Please enter an account number between 9-18 digits long");
+                            accountNumber.setError(getString(
+                                    R.string.activity_banking_details_invalid_acount_number));
                         }
 
                         if (!validBranch.isValid()) {
                             flag = false;
-                            branch.setError("Please enter a valid branch name");
+                            branch.setError(getString(
+                                    R.string.activity_banking_details_invalid_branch_name));
                         }
 
                         if (!validIfsc.regexValidator(TextValidator.ifscregex)) {
                             flag = false;
-                            ifsc.setError("IFSC code should have 4 alphabets and 7 digits");
+                            ifsc.setError(getString(
+                                    R.string.activity_banking_details_invalid_ifsc_code));
                         }
 
                         if (flag) {
                             bankingUsingAPI = APIUtils.getAPIService();
-                            bankingUsingAPI.saveBanking(sharedPreferences.getString("loggedInID", ""),
+                            bankingUsingAPI.saveBanking(sharedPreferences.
+                                            getString("loggedInID", ""),
                                     validbankName.returnText(), validAccountNumber.returnText(),
-                                    validOwner.returnText(), validBranch.returnText(), validIfsc.returnText()).enqueue(new Callback<ResponseData>() {
+                                    validAccountHolderName.returnText(), validBranch.returnText(),
+                                    validIfsc.returnText()).enqueue(new Callback<ResponseData>() {
                                 @Override
-                                public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                public void onResponse(Call<ResponseData> call,
+                                                       Response<ResponseData> response) {
                                     int response_code = response.body().getResponseCode();
                                     if (response_code == 200) {
-                                        Toast.makeText(BankingDetailsActivity.this, "Data saved", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(BankingDetailsActivity.this,
+                                                getString(R.string.details_saved_confirmation),
+                                                Toast.LENGTH_LONG).show();
                                         nextActivity();
                                     } else {
-                                        Toast.makeText(BankingDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(BankingDetailsActivity.this,
+                                                DisplayErrorMessage.returnErrorMessage(response_code),
+                                                Toast.LENGTH_LONG).show();
                                     }
                                 }
 
                                 @Override
                                 public void onFailure(Call<ResponseData> call, Throwable t) {
-                                    Toast.makeText(BankingDetailsActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(BankingDetailsActivity.this,
+                                            getString(R.string.request_not_sent),
+                                            Toast.LENGTH_LONG).show();
                                 }
                             });
                         } else {
-                            LinearLayout activityBankingDetailsLayout = findViewById(R.id.layout_activity_bank_details);
+                            LinearLayout activityBankingDetailsLayout = findViewById(
+                                    R.id.layout_activity_bank_details);
                             Snackbar validationSnackbar = Snackbar.make(activityBankingDetailsLayout,
                                     getString(R.string.user_details_validation_snackbar_message),
                                     Snackbar.LENGTH_LONG);

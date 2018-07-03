@@ -161,11 +161,8 @@ public class OtherDetailsActivity extends AppCompatActivity {
                             String rentO = rentedOthers.getText().toString();
                             String trOr = tradersOrganisation.getText().toString();
 
-                            otherUsingAPI.saveOther(loginID, ownMain, ownB, ownG,
-                                    ownF, ownO,
-                                    rentM, rentedBranch.getText().toString(),
-                                    rentedGodown.getText().toString(), rentedFactory.getText().toString(),
-                                    rentedOthers.getText().toString(), tradersOrganisation.getText().toString()).enqueue(new Callback<ResponseData>() {
+                            otherUsingAPI.saveOther(loginID, ownMain, ownB, ownG, ownF, ownO, rentM,
+                                    rentB, rentG, rentF, rentO, trOr).enqueue(new Callback<ResponseData>() {
                                 @Override
                                 public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                                     int response_code = response.body().getResponseCode();
@@ -175,7 +172,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
                                         startActivity(bankingDetailsActivity);
 
                                     } else {
-                                        Toast.makeText(OtherDetailsActivity.this, "Erronoeus  Response", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(OtherDetailsActivity.this, "incorrect  Response", Toast.LENGTH_LONG).show();
 //                                        Intent bankingDetailsActivity = new Intent(OtherDetailsActivity.this, BankingDetailsActivity.class);
 //                                        startActivity(bankingDetailsActivity);
                                     }

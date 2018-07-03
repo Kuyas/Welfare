@@ -66,12 +66,15 @@ public class PaymentDetailsActivity extends AppCompatActivity {
                 case (R.id.button_payment_details_submit): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
                         // TODO: implement SUBMIT functionality
-                        Toast.makeText(PaymentDetailsActivity.this, "Details submitted", Toast.LENGTH_LONG).show();
-                        Intent homeIntent = new Intent(PaymentDetailsActivity.this, MainActivity.class);
+                        Toast.makeText(PaymentDetailsActivity.this, getString(
+                                R.string.details_submitted_confirmation), Toast.LENGTH_LONG).show();
+                        Intent homeIntent = new Intent(PaymentDetailsActivity.this,
+                                MainActivity.class);
                         homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(homeIntent);
                     } else {
-                        LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_payment_details);
+                        LinearLayout activityOtherDetailsLayout = findViewById(
+                                R.id.layout_activity_payment_details);
                         Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
                                 getString(R.string.user_details_validation_snackbar_message),
                                 Snackbar.LENGTH_LONG);

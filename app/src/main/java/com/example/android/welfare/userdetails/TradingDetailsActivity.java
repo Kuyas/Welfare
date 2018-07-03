@@ -43,6 +43,7 @@ import retrofit2.Response;
 public class TradingDetailsActivity extends AppCompatActivity {
     private static final boolean DEBUG = true;
     private static final String cacheDataFile = "tradingdatacache.data";
+    private AlterView alterView;
 
     private SharedPreferences sharedPreferences;
     private String loginID;
@@ -81,7 +82,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
             //Spinner for Type of Ownership
             ownershipSpinner = findViewById(R.id.spinner_layout_trading_details_ownership);
-            ownershipAdapter = ArrayAdapter.createFromResource(this, R.array.activity_trading_details_spinner_ownership, android.R.layout.simple_spinner_item);
+            ownershipAdapter = ArrayAdapter.createFromResource(this,
+                    R.array.activity_trading_details_spinner_ownership,
+                    android.R.layout.simple_spinner_item);
             ownershipAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             ownershipSpinner.setAdapter(ownershipAdapter);
 
@@ -106,7 +109,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
             //Spinner for Type of Authority
             authoritySpinner = findViewById(R.id.spinner_layout_trading_details_authority);
-            authorityAdapter = ArrayAdapter.createFromResource(this, R.array.activity_trading_details_spinner_authority, android.R.layout.simple_spinner_item);
+            authorityAdapter = ArrayAdapter.createFromResource(this,
+                    R.array.activity_trading_details_spinner_authority,
+                    android.R.layout.simple_spinner_item);
             authorityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             authoritySpinner.setAdapter(authorityAdapter);
 
@@ -120,14 +125,15 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     }
                 }
 
+
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
                     Context context = getApplicationContext();
-                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+
                 }
             });
 
-
+            alterView = new AlterView();
 
             tradingUsingAPI = APIUtils.getAPIService();
             firmName = findViewById(R.id.edit_text_trading_name);
@@ -141,7 +147,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
             licenseNumber = findViewById(R.id.edit_text_trading_license_number);
             licenseAuthority = findViewById(R.id.edit_text_trading_licensing_authority);
             editableCheck = findViewById(R.id.checkbox_trading_details_editable);
-            turnover = findViewById(R.id.edit_text_trading_turnover);
             loginID = sharedPreferences.getString("loggedInID", "");
 
             fillWithCache();
@@ -169,11 +174,13 @@ public class TradingDetailsActivity extends AppCompatActivity {
 //TODO: MAKE STRINGS.XML for all the errorStrings
                             if (!validFirmName.isValid()) {
                                 flag = false;
-                                firmName.setError("Please enter a valid Firm Name");
+                                firmName.setError(getString(
+                                        R.string.activity_trading_details_invalid_firm_name));
                             }
                             if (!validFirmAddress.isValid()) {
                                 flag = false;
-                                firmAddress.setError("Please enter a valid Firm Address");
+                                firmAddress.setError(getString(
+                                        R.string.activity_trading_details_invalid_firm_address));
                             }
                             if (!validTurnover.isValid()) {
                                 flag = false;
@@ -181,45 +188,58 @@ public class TradingDetailsActivity extends AppCompatActivity {
                             }
                             if (!validBranch.isValid()) {
                                 flag = false;
-                                branch.setError("Please enter a valid Branch Address");
+                                branch.setError(getString(
+                                        R.string.activity_trading_details_invalid_branch_address));
                             }
                             if (!validGodown.isValid()) {
                                 flag = false;
-                                godown.setError("Please enter a valid Godown Address");
+                                godown.setError(getString(
+                                        R.string.activity_trading_details_invalid_godown_address));
                             }
                             if (!validFactory.isValid()) {
                                 flag = false;
-                                factory.setError("Please enter a valid Factory Address");
+                                factory.setError(getString(
+                                        R.string.activity_trading_details_invalid_factory_address));
                             }
-                            if (!validOthers.isValid()) {
-                                flag = false;
-                                firmName.setError("Please enter a valid address for any other subsidiaries");
-                            }
+//                            if (!validOthers.isValid()) {
+//                                flag = false;
+//                                firmName.setError("Please enter a valid address for any other subsidiaries");
+//                            }
                             if (!validCapital.isValid()) {
                                 flag = false;
-                                capital.setError("Please enter a valid Capital");
+                                capital.setError(getString(
+                                        R.string.activity_trading_details_invalid_capital_contribution));
                             }
                             if (!validGstn.isValid()) {
                                 flag = false;
-                                gstn.setError("Please enter a valid GSTN and Date");
+                                gstn.setError(getString(
+                                        R.string.activity_trading_details_invalid_gstn_date));
                             }
                             if (!validLicenseNumber.isValid()) {
                                 flag = false;
-                                licenseNumber.setError("Please enter a valid License Number");
+                                licenseNumber.setError(getString(
+                                        R.string.activity_trading_details_invalid_license_number));
                             }
                             if (!validLicenseAuthority.isValid()) {
                                 flag = false;
-                                licenseAuthority.setError("Please enter a valid License Authority");
+                                licenseAuthority.setError(getString(
+                                        R.string.activity_trading_details_invalid_license_authority));
                             }
-                            if (ownershipSpinner.getSelectedItem().toString().trim().equals("Type of Ownership")) {
+                            if (ownershipSpinner.getSelectedItem().toString().trim().equals(
+                                    getString(R.string.activity_trading_details_ownership_type))) {
                                 flag = false;
-                                Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Type of Ownership", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TradingDetailsActivity.this, getString(
+                                        R.string.activity_trading_details_invalid_ownership_type),
+                                        Toast.LENGTH_SHORT).show();
                             }else {
                                 ownershipSelect = ownershipSpinner.getSelectedItem().toString().trim();
                             }
-                            if (authoritySpinner.getSelectedItem().toString().trim().equals("Name of Official Authority")) {
+                            if (authoritySpinner.getSelectedItem().toString().trim().equals(
+                                    getString(R.string.activity_trading_details_official_authority))) {
                                 flag = false;
-                                Toast.makeText(TradingDetailsActivity.this, "Error. Please Select a Valid Official Authority", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(TradingDetailsActivity.this, getString(
+                                        R.string.activity_trading_details_invalid_official_authority),
+                                        Toast.LENGTH_SHORT).show();
                             }else{
                                 officialSelect = authoritySpinner.getSelectedItem().toString().trim();
                             }
@@ -227,25 +247,34 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
                             if (flag || DEBUG) {
 
-                                    tradingUsingAPI.saveTrading(loginID, validFirmName.returnText(), validFirmAddress.returnText(), validTurnover.returnText(),
-                                        validBranch.returnText(), validGodown.returnText(), validFactory.returnText(), validOthers.returnText(),
-                                        ownershipSelect, validCapital.returnText(), validGstn.returnText(), validLicenseNumber.returnText(), validLicenseAuthority.returnText(),
+                                tradingUsingAPI.saveTrading(loginID, validFirmName.returnText(),
+                                        validFirmAddress.returnText(), validTurnover.returnText(),
+                                        validBranch.returnText(), validGodown.returnText(),
+                                        validFactory.returnText(), validOthers.returnText(),
+                                        ownershipSelect, validCapital.returnText(),
+                                        validGstn.returnText(), validLicenseNumber.returnText(),
+                                        validLicenseAuthority.returnText(),
                                         officialSelect).enqueue(new Callback<ResponseData>() {
                                     @Override
-                                    public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                    public void onResponse(Call<ResponseData> call,
+                                                           Response<ResponseData> response) {
                                         int response_code = response.body().getResponseCode();
                                         if (response_code == 200) {
-                                            Toast.makeText(TradingDetailsActivity.this, "Details Saved", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(TradingDetailsActivity.this,
+                                                    getString(R.string.details_saved_confirmation),
+                                                    Toast.LENGTH_LONG).show();
                                             nextActivity();
                                         } else {
-                                            Toast.makeText(TradingDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code),
+                                            Toast.makeText(TradingDetailsActivity.this,
+                                                    DisplayErrorMessage.returnErrorMessage(response_code),
                                                     Toast.LENGTH_LONG).show();
                                         }
                                     }
 
                                     @Override
                                     public void onFailure(Call<ResponseData> call, Throwable t) {
-                                        Toast.makeText(TradingDetailsActivity.this, "Request not sent",
+                                        Toast.makeText(TradingDetailsActivity.this,
+                                                getString(R.string.request_not_sent),
                                                 Toast.LENGTH_LONG).show();
                                     }
                                 });
@@ -313,7 +342,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
     public void getCacheData() {
         APIService storeTradingData = APIUtils.getAPIService();
-        storeTradingData.getTradingData(sharedPreferences.getString("mobile_number", ""), sharedPreferences.getString("password", "")).enqueue(new Callback<TradingData>() {
+        storeTradingData.getTradingData(sharedPreferences.getString("mobile_number", ""),
+                sharedPreferences.getString("password", "")).
+                enqueue(new Callback<TradingData>() {
             @Override
             public void onResponse(Call<TradingData> call, Response<TradingData> response) {
                 try {
@@ -325,7 +356,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
                         cacheWriter.close();
                         fillWithCache();
                     } else {
-                        Toast.makeText(TradingDetailsActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                        Toast.makeText(TradingDetailsActivity.this,
+                                DisplayErrorMessage.returnErrorMessage(response_code),
+                                Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e){
                     e.printStackTrace();
@@ -341,7 +374,8 @@ public class TradingDetailsActivity extends AppCompatActivity {
 
     public void fillWithCache() {
         try {
-            ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(getCacheDir() + File.separator + cacheDataFile));
+            ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
+                    getCacheDir() + File.separator + cacheDataFile));
             TradingData cached = (TradingData) cacheReader.readObject();
             firmName.setText(cached.getFirmName());
             firmAddress.setText(cached.getFirmAddress());
@@ -393,7 +427,8 @@ public class TradingDetailsActivity extends AppCompatActivity {
 //                    break;
 //                }
                 case (R.id.activity_button_home): {
-                    Intent homeIntent = new Intent(TradingDetailsActivity.this, MainActivity.class);
+                    Intent homeIntent = new Intent(TradingDetailsActivity.this,
+                            MainActivity.class);
                     homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(homeIntent);
                     overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);

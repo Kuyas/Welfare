@@ -2,7 +2,7 @@
     <string name="app_name">Welfare</string>
 
     <string name="activity_main_heading">Traders Welfare Board, Kerala</string>
-    <string name="activity_main_button_edit_profile">Edit Profile</string>
+    <string name="activity_main_button_edit_profile">Registration</string>
     <string name="activity_main_button_class_change">Apply for Class Change</string>
     <string name="activity_main_button_application_status">Application Status</string>
     <string name="activity_main_button_pension_status">Pension Status</string>
@@ -46,6 +46,9 @@
     <string name="activity_personal_district">District</string>
     <string name="activity_personal_district_hint">District</string>
     <string name="activity_personal_next">Next</string>
+    <string name="activity_personal_details_choose_district">Choose District</string>
+    <string name="activity_personal_details_choose_gender">Choose Gender</string>
+
     <string-array name="activity_personal_spinner_gender">
         <item>Choose Gender</item>
         <item>MALE</item>
@@ -80,7 +83,6 @@
     <string name="activity_family_details_gender">Gender</string>
     <string name="activity_family_details_occupation">Occupation</string>
     <string name="activity_family_details_relationship">Relationship</string>
-    <string name="activity_family_details_button_add">Add</string>
     <string name="activity_family_details_member_added">Member Added</string>
 
     <string name="dialog_fragment_family_details_heading">Fill Details</string>
@@ -110,8 +112,11 @@
     <string name="activity_trading_details_licensing_authority">Licensing Authority</string>
     <string name="activity_trading_details_auth_name">Name of Authority</string>
     <string name="activity_trading_details_button_next">Next</string>
+    <string name="activity_trading_details_official_authority">Name of Official Authority</string>
     <string name="activity_trading_details_spinner_ownership_prompt">Nature of Ownership</string>
     <string name="activity_trading_details_spinner_authority_prompt">Authority</string>
+    <string name="activity_trading_details_ownership_type">Type of Ownership</string>
+
     <string-array name="activity_trading_details_spinner_ownership">
         <item>Type of Ownership</item>
         <item>Single owner</item>
@@ -238,13 +243,46 @@
     <string name="StatusActivity_rejected">Rejected</string>
     <string name="application">\@string/</string>
 
+    <string name="details_saved_confirmation">Details Saved</string>
+    <string name="details_submitted_confirmation">Details Submitted</string>
+    <string name="details_saved_failed">Details Failed</string>
+    <string name="request_not_sent">Request Not Sent</string>
+
+    <string name="dialog_fragment_family_details_button_add">Add</string>
+    <string name="dialog_fragment_family_details_button_cancel">Cancel</string>
+
+    <string name="activity_personal_details_invalid_name">Please Enter a Valid Name</string>
+    <string name="activity_personal_details_invalid_dob">Please Select a Valid Date</string>
+    <string name="activity_personal_details_invalid_gender">Please Select a Valid gender</string>
+    <string name="activity_personal_details_invalid_address">Please Enter a Valid Address</string>
+    <string name="activity_personal_details_invalid_place">Please Enter a Valid Place</string>
+    <string name="activity_personal_details_invalid_district">Please Select a Valid District</string>
 
     <string name="dialog_fragment_family_details_choose_gender">Choose Gender</string>
-    <string name="dialog_fragment_family_details_invalid_data">Please enter valid data</string>
-    <string name="dialog_fragment_family_details_name_error">Please enter a valid name</string>
-    <string name="dialog_fragment_family_details_age_error">Please enter a valid age</string>
-    <string name="dialog_fragment_family_details_gender_error">Please enter a valid gender</string>
-    <string name="dialog_fragment_family_details_occupation_error">Please enter a valid occupation</string>
-    <string name="dialog_fragment_family_details_relationship_error">Please enter a valid relationship</string>
+    <string name="dialog_fragment_family_details_invalid_data">Please Enter Valid Data</string>
+    <string name="dialog_fragment_family_details_name_error">Please Enter a Valid Name</string>
+    <string name="dialog_fragment_family_details_age_error">Please Enter a Valid Age</string>
+    <string name="dialog_fragment_family_details_gender_error">Please Enter a Valid Gender</string>
+    <string name="dialog_fragment_family_details_occupation_error">Please Enter a Valid Occupation</string>
+    <string name="dialog_fragment_family_details_relationship_error">Please Enter a Valid Relationship</string>
+
+    <string name="activity_trading_details_invalid_firm_name">Please Enter a Valid Firm Name</string>
+    <string name="activity_trading_details_invalid_firm_address">Please Enter a Valid Firm Address</string>
+    <string name="activity_trading_details_invalid_branch_address">Please Enter a Valid Branch Address</string>
+    <string name="activity_trading_details_invalid_godown_address">Please Enter a Valid Godown Address</string>
+    <string name="activity_trading_details_invalid_factory_address">Please Enter a Valid Factory Address</string>
+    <string name="activity_trading_details_invalid_capital_contribution">Please Enter a Valid Capital Contribution</string>
+    <string name="activity_trading_details_invalid_gstn_date">Please Enter a Valid GSTN and Date</string>
+    <string name="activity_trading_details_invalid_license_number">Please Enter a Valid License Number</string>
+    <string name="activity_trading_details_invalid_license_authority">Please Enter a Valid License Authority</string>
+    <string name="activity_trading_details_invalid_ownership_type">Please Select a Valid Ownership Type</string>
+    <string name="activity_trading_details_invalid_official_authority">Please Select a Valid Official Authority</string>
+
+    <string name="activity_banking_details_invalid_bank_name">Please Enter a Valid Bank name</string>
+    <string name="activity_banking_details_invalid_account_holder_name">Please Enter a Valid Account Holder Name</string>
+    <string name="activity_banking_details_invalid_acount_number">Please Enter a Valid Account Number</string>
+    <string name="activity_banking_details_invalid_branch_name">Please Enter a Valid Branch Name</string>
+    <string name="activity_banking_details_invalid_ifsc_code">IFSC code should have 4 alphabets and 7 digits</string>
+
 
 </resources>
