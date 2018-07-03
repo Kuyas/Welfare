@@ -9,7 +9,8 @@
     android:paddingTop="10dp"
     android:paddingStart="10dp"
     android:paddingEnd="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -101,10 +102,12 @@
         <Button
             android:id="@+id/dialog_fragment_family_details_button_add"
             android:layout_width="0dp"
+            style=""
             android:layout_weight="50"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="5dp"
+            android:textColor="@color/colorAccent"
             android:text="@string/dialog_fragment_family_details_button_add"
             android:textSize="@dimen/user_details_text_size"/>
 
@@ -114,6 +117,7 @@
             android:layout_weight="50"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:textColor="@color/colorAccent"
             android:layout_marginBottom="5dp"
             android:text="@string/dialog_fragment_family_details_button_cancel"
             android:textSize="@dimen/user_details_text_size"/>
