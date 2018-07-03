@@ -9,7 +9,14 @@
     android:paddingTop="10dp"
     android:paddingStart="10dp"
     android:paddingEnd="10dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="@integer/user_details_weight_sum">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="72"
+        android:orientation="vertical">
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -91,12 +98,15 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="28"
         android:orientation="horizontal"
-        android:padding="10dp"
         android:weightSum="@integer/user_details_weight_sum">
+
 
         <Button
             android:id="@+id/dialog_fragment_family_details_button_add"
