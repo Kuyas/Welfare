@@ -103,7 +103,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     //Another interface callback
                     Context context = getApplicationContext();
 //            Object text =  parent.getItemAtPosition(pos);
-                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
                 }
             });
 
