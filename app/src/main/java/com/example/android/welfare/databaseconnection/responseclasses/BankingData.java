@@ -12,19 +12,19 @@ public class BankingData implements Serializable {
     private Integer responseCode;
     @SerializedName("bank_name")
     @Expose
-    private Integer bankName;
+    private String bankName;
     @SerializedName("account_number")
     @Expose
-    private Integer accountNumber;
+    private String accountNumber;
     @SerializedName("account_holder_name")
     @Expose
-    private Integer accountHolderName;
+    private String accountHolderName;
     @SerializedName("bank_branch")
     @Expose
-    private Integer bankBranch;
+    private String bankBranch;
     @SerializedName("ifsc_code")
     @Expose
-    private Integer ifscCode;
+    private String ifscCode;
 
     public BankingData () {
 
@@ -39,8 +39,8 @@ public class BankingData implements Serializable {
      */
     }
 
-    public BankingData(Integer responseCode, Integer bankName, Integer accountNumber,
-                       Integer accountHolderName, Integer bankBranch, Integer ifscCode) {
+    public BankingData(Integer responseCode, String bankName, String accountNumber,
+                       String accountHolderName, String bankBranch, String ifscCode) {
         this.responseCode = responseCode;
         this.bankName = bankName;
         this.accountNumber = accountNumber;
@@ -57,43 +57,43 @@ public class BankingData implements Serializable {
         this.responseCode = responseCode;
     }
 
-    public Integer getBankName() {
+    public String getBankName() {
         return bankName;
     }
 
-    public void setBankName(Integer bankName) {
+    public void setBankName(String bankName) {
         this.bankName = bankName;
     }
 
-    public Integer getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(Integer accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
-    public Integer getAccountHolderName() {
+    public String getAccountHolderName() {
         return accountHolderName;
     }
 
-    public void setAccountHolderName(Integer accountHolderName) {
+    public void setAccountHolderName(String accountHolderName) {
         this.accountHolderName = accountHolderName;
     }
 
-    public Integer getBankBranch() {
+    public String getBankBranch() {
         return bankBranch;
     }
 
-    public void setBankBranch(Integer bankBranch) {
+    public void setBankBranch(String bankBranch) {
         this.bankBranch = bankBranch;
     }
 
-    public Integer getIfscCode() {
+    public String getIfscCode() {
         return ifscCode;
     }
 
-    public void setIfscCode(Integer ifscCode) {
+    public void setIfscCode(String ifscCode) {
         this.ifscCode = ifscCode;
     }
 

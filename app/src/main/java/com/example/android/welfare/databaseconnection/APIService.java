@@ -2,6 +2,7 @@ package com.example.android.welfare.databaseconnection;
 
 import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
 import com.example.android.welfare.databaseconnection.responseclasses.BankingData;
+import com.example.android.welfare.databaseconnection.responseclasses.FamilyData;
 import com.example.android.welfare.databaseconnection.responseclasses.OtherData;
 import com.example.android.welfare.databaseconnection.responseclasses.PersonalData;
 import com.example.android.welfare.databaseconnection.responseclasses.ClaimsData;
@@ -104,6 +105,11 @@ public interface APIService {
     @FormUrlEncoded
     Call<PersonalData> getPersonalData(@Field("mobile_number") String mobile_number,
                                        @Field("password") String password);
+
+    @POST("get_family_data.php")
+    @FormUrlEncoded
+    Call<FamilyData> getFamilyData(@Field("mobile_number") String mobile_number,
+                                     @Field("password") String password);
 
     @POST("get_trading_data.php")
     @FormUrlEncoded

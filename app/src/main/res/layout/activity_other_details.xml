@@ -25,6 +25,14 @@
             android:orientation="vertical"
             android:background="@color/colorAccent">
 
+            <CheckBox
+                android:id="@+id/checkbox_other_details_editable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/editbale_checkbox_text"
+                android:textSize="@dimen/user_details_text_size"
+                android:layout_marginBottom="20dp"/>
+
 
             <!-- sub point 1 -->
 
