@@ -7,7 +7,7 @@
     <string name="activity_main_button_application_status">Application Status</string>
     <string name="activity_main_button_pension_status">Pension Status</string>
     <string name="activity_main_button_renew_membership">Renewal of Membership</string>
-    <string name="activity_main_button_claim_status">Claim Status</string>
+    <string name="activity_main_button_claim_status">Status</string>
 
     <string name="language_choice">Choose your Language</string>
     <string name="language_english">English</string>
@@ -224,7 +224,7 @@
 
     <!--CLAIM STATUS STRING RESOURCES-->
     <string name="activity_status_heading">Status Details</string>
-    <string name="activity_claim_status_title">Claim Status</string>
+    <string name="activity_claim_status_title">Status</string>
     <string name="activity_claim_status_application_head">Application Status</string>
     <string name="activity_claim_status_application_status">No Application Submitted</string>
     <string name="activity_claim_status_application_progress"> </string>

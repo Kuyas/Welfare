@@ -95,6 +95,7 @@
                     android:id="@+id/activity_personal_details_gender_select"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:popupBackground="@color/colorAccent"
                     android:layout_weight="1" />
             </LinearLayout>
 
@@ -154,6 +155,7 @@
             android:id="@+id/activity_personal_details_district_select"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:popupBackground="@color/colorAccent"
             android:layout_weight="1" />
     </LinearLayout>
     <LinearLayout

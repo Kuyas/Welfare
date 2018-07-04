@@ -56,6 +56,7 @@
             android:id="@+id/spinner_family_details_gender_select"
             android:layout_width="0dp"
             android:layout_weight="6"
+            android:popupBackground="@color/colorAccent"
             android:layout_height="match_parent" />
 
     </LinearLayout>
