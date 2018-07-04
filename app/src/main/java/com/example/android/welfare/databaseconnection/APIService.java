@@ -108,7 +108,7 @@ public interface APIService {
 
     @POST("get_family_data.php")
     @FormUrlEncoded
-    Call<FamilyData> getFamilyData(@Field("mobile_number") String mobile_number,
+    Call<List<FamilyData>> getFamilyData(@Field("mobile_number") String mobile_number,
                                      @Field("password") String password);
 
     @POST("get_trading_data.php")
