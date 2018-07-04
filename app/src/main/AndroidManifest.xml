@@ -59,6 +59,10 @@
             android:label="Trading Details"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
 
+        <activity android:name=".userdetails.OtherDetailsActivity"
+            android:parentActivityName=".userdetails.TradingDetailsActivity"
+            android:label="Other Details"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
 
         <activity
             android:name=".userdetails.PaymentDetailsActivity"

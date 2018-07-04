@@ -47,7 +47,7 @@ public class TradingData implements Serializable
     @SerializedName("official_name")
     @Expose
     private String officialName;
-    private final static long serialVersionUID = 2448122971875805156L;
+//    private final static long serialVersionUID = 2448122971875805156L;
 
     /**
      * No args constructor for use in serialization
@@ -72,7 +72,10 @@ public class TradingData implements Serializable
      * @param officialName
      * @param mtpOthers
      */
-    public TradingData(Integer responseCode, String firmName, String firmAddress, String mtpBranch, String mtpGodown, String mtpFactory, String mtpOthers, String ownershipType, String capitalContribution, String gstnDate, String licenseNum, String licenseAuth, String officialName) {
+    public TradingData(Integer responseCode, String firmName, String firmAddress, String mtpBranch,
+                       String mtpGodown, String mtpFactory, String mtpOthers, String ownershipType,
+                       String capitalContribution, String gstnDate, String licenseNum,
+                       String licenseAuth, String officialName) {
         super();
         this.responseCode = responseCode;
         this.firmName = firmName;
@@ -196,7 +199,10 @@ public class TradingData implements Serializable
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(responseCode).append(firmName).append(firmAddress).append(mtpBranch).append(mtpGodown).append(mtpFactory).append(mtpOthers).append(ownershipType).append(capitalContribution).append(gstnDate).append(licenseNum).append(licenseAuth).append(officialName).toString();
+        return stringBuilder.append(responseCode).append(firmName).append(firmAddress).
+                append(mtpBranch).append(mtpGodown).append(mtpFactory).append(mtpOthers).
+                append(ownershipType).append(capitalContribution).append(gstnDate).
+                append(licenseNum).append(licenseAuth).append(officialName).toString();
     }
 
 }

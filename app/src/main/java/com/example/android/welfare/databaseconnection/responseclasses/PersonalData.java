@@ -28,7 +28,7 @@ public class PersonalData implements Serializable
     @SerializedName("district")
     @Expose
     private String district;
-    private final static long serialVersionUID = -1713650480136730661L;
+//    private final static long serialVersionUID = -1713650480136730661L;
 
     /**
      * No args constructor for use in serialization

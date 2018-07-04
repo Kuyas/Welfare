@@ -44,9 +44,9 @@
     <style name="CustomDialog" parent="@style/Theme.AppCompat.Light.Dialog">
 
         <!-- Primary theme color of the dialog fragment (sets background color of app bar) -->
-        <item name="colorPrimary">#0099FF</item>
+        <item name="colorPrimary">#311b92</item>
         <!-- Background color of buttons in the dialog fragment -->
-        <item name="colorButtonNormal">#00CCFF  </item>
+        <item name="colorButtonNormal">#4527a0  </item>
 
         <item name="android:windowNoTitle">false</item>
     </style>

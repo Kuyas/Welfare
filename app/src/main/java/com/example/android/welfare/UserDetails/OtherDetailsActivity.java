@@ -133,7 +133,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
             switch (v.getId()) {
                 case (R.id.button_other_details_next): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        boolean flag = true;
+                        final boolean flag = true;
 
                         // TODO: check which fields in OtherDetails are to be compulsory
 //                    if (validateOwnMainBranch.isValid()) {
@@ -166,13 +166,13 @@ public class OtherDetailsActivity extends AppCompatActivity {
                                 @Override
                                 public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                                     int response_code = response.body().getResponseCode();
-                                    if (response_code == 200) {
-                                        Toast.makeText(OtherDetailsActivity.this, "Data saved", Toast.LENGTH_LONG).show();
+                                    if (flag || response_code == 200) {
+                                        Toast.makeText(OtherDetailsActivity.this, "Data Saved", Toast.LENGTH_LONG).show();
                                         Intent bankingDetailsActivity = new Intent(OtherDetailsActivity.this, BankingDetailsActivity.class);
                                         startActivity(bankingDetailsActivity);
 
                                     } else {
-                                        Toast.makeText(OtherDetailsActivity.this, "incorrect  Response", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(OtherDetailsActivity.this, "Incorrect  Response", Toast.LENGTH_LONG).show();
 //                                        Intent bankingDetailsActivity = new Intent(OtherDetailsActivity.this, BankingDetailsActivity.class);
 //                                        startActivity(bankingDetailsActivity);
                                     }
@@ -180,7 +180,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onFailure(Call<ResponseData> call, Throwable t) {
-                                    Toast.makeText(OtherDetailsActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(OtherDetailsActivity.this, "Failed to Send Request", Toast.LENGTH_LONG).show();
 
 
                                 }

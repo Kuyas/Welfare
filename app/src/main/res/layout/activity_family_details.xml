@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="@integer/user_details_weight_sum">
+        android:weightSum="@integer/user_details_weight_sum"
+        android:background="@color/colorAccent">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/family_details_recycler_view"
@@ -39,12 +40,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/activity_family_details_add_member"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/user_details_button_text_size"/>
 
             <Button
                 android:id="@+id/button_family_details_next"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:textColor="@color/colorAccent"
                 android:text="@string/user_details_button_next"
                 android:textSize="@dimen/user_details_button_text_size"/>
 

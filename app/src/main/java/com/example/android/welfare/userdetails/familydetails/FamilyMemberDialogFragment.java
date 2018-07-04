@@ -163,9 +163,14 @@ public class FamilyMemberDialogFragment extends DialogFragment implements View.O
 
                     errorSnackbar.show();
                 }
+                break;
             }
             case (R.id.dialog_fragment_family_details_button_cancel): {
                 dismiss();
+                break;
+            }
+            default: {
+                break;
             }
         }
     }
