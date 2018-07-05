@@ -19,8 +19,7 @@
         android:orientation="vertical"
         android:padding="4dp"
         android:paddingStart="3dp"
-        android:paddingEnd="3dp"
-        android:background="@color/colorAccent">
+        android:paddingEnd="3dp">
 
         <TextView
             android:id="@+id/text_view_family_member_name"

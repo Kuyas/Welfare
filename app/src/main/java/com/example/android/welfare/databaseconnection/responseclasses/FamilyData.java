@@ -1,4 +1,8 @@
 package com.example.android.welfare.databaseconnection.responseclasses;
 
-public class FamilyData {
+import java.io.Serializable;
+
+public class FamilyData implements Serializable {
+
+
 }

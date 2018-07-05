@@ -96,7 +96,10 @@ public class FamilyMemberDialogFragment extends DialogFragment implements View.O
 
 
         final Button addMember = view.findViewById(R.id.dialog_fragment_family_details_button_add);
+        final Button cancel = view.findViewById(R.id.dialog_fragment_family_details_button_cancel);
+
         addMember.setOnClickListener(this);
+        cancel.setOnClickListener(this);
 
     }
 
