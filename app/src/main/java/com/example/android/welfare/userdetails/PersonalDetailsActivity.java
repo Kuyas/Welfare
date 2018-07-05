@@ -349,7 +349,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                         fillWithCache();
                     } else {
                         Toast.makeText(PersonalDetailsActivity.this,
-                                DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                                DisplayErrorMessage.returnErrorMessage(response_code),
+                                Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -359,7 +360,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
             @Override
             public void onFailure(Call<PersonalData> call, Throwable t) {
-                System.out.println("Request failed");
+                System.out.println(getString(R.string.request_failed));
             }
         });
     }

@@ -136,7 +136,7 @@
     <string name="activity_bank_details_bankname">Bank Name</string>
     <string name="activity_bank_details_account">Account Number</string>
     <string name="activity_bank_details_owner">Name of a/c holder</string>
-    <string name="activity_bank_details_branch">Branch</string>
+    <string name="activity_bank_details_branch">Bank Branch</string>
     <string name="activity_bank_details_ifsc">IFSC Code</string>
     <string name="activity_bank_details_save">Save</string>
     <string name="activity_bank_details_change">Change</string>
@@ -219,7 +219,7 @@
     <string name="activity_otp_verification_textview_otp_verified">OTP verification successful!</string>
 
     <string name="internet_connection_error_message">Could not connect to internet. Please try again</string>
-
+    <string name="editbale_checkbox_text">Editable</string>
 
 
     <!--CLAIM STATUS STRING RESOURCES-->
@@ -247,6 +247,7 @@
     <string name="details_submitted_confirmation">Details Submitted</string>
     <string name="details_saved_failed">Details Failed</string>
     <string name="request_not_sent">Request Not Sent</string>
+    <string name="request_failed">Request Failed</string>
 
     <string name="dialog_fragment_family_details_button_add">Add</string>
     <string name="dialog_fragment_family_details_button_cancel">Cancel</string>
@@ -268,6 +269,7 @@
 
     <string name="activity_trading_details_invalid_firm_name">Please Enter a Valid Firm Name</string>
     <string name="activity_trading_details_invalid_firm_address">Please Enter a Valid Firm Address</string>
+    <string name="activity_trading_details_invalid_annual_turnover">Please Enter a Valid Annual Turnover</string>
     <string name="activity_trading_details_invalid_branch_address">Please Enter a Valid Branch Address</string>
     <string name="activity_trading_details_invalid_godown_address">Please Enter a Valid Godown Address</string>
     <string name="activity_trading_details_invalid_factory_address">Please Enter a Valid Factory Address</string>

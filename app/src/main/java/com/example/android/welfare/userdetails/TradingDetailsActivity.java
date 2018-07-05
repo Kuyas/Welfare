@@ -50,7 +50,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
     private APIService tradingUsingAPI;
     private String ownershipSelect;
     private String officialSelect;
-    private String annualTurnover;
 
     private TextInputEditText firmName;
     private TextInputEditText firmAddress;
@@ -138,6 +137,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
             tradingUsingAPI = APIUtils.getAPIService();
             firmName = findViewById(R.id.edit_text_trading_name);
             firmAddress = findViewById(R.id.edit_text_trading_address);
+            turnover = findViewById(R.id.edit_text_trading_turnover);
             branch = findViewById(R.id.edit_text_trading_branch);
             godown = findViewById(R.id.edit_text_trading_godown);
             factory = findViewById(R.id.edit_text_trading_factory);
@@ -150,6 +150,19 @@ public class TradingDetailsActivity extends AppCompatActivity {
             loginID = sharedPreferences.getString("loggedInID", "");
 
             fillWithCache();
+            disableEdit();
+
+            editableCheck.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                if (editableCheck.isChecked()) {
+                    allowEdit();
+                } else {
+                    disableEdit();
+                }
+                }
+            });
+
 
             final Button buttonNext = findViewById(R.id.button_trading_details_next);
             buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -171,7 +184,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
                             TextValidator validLicenseAuthority = new TextValidator(licenseAuthority);
                             TextValidator validTurnover = new TextValidator(turnover);
 
-//TODO: MAKE STRINGS.XML for all the errorStrings
+
                             if (!validFirmName.isValid()) {
                                 flag = false;
                                 firmName.setError(getString(
@@ -184,7 +197,8 @@ public class TradingDetailsActivity extends AppCompatActivity {
                             }
                             if (!validTurnover.isValid()) {
                                 flag = false;
-                                turnover.setError("Please enter a valid Annual Turnover");
+                                turnover.setError(getString(
+                                        R.string.activity_trading_details_invalid_annual_turnover));
                             }
                             if (!validBranch.isValid()) {
                                 flag = false;
@@ -290,17 +304,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     }
                 }
             });
-
-            editableCheck.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (editableCheck.isChecked()) {
-                        allowEdit();
-                    } else {
-                        disableEdit();
-                    }
-                }
-            });
         }
 
 
@@ -332,11 +335,41 @@ public class TradingDetailsActivity extends AppCompatActivity {
     }
 
     public void disableEdit() {
+        alterView.disableTextInput(firmName);
+        alterView.disableTextInput(firmAddress);
+        alterView.disableTextInput(turnover);
+        alterView.disableTextInput(branch);
+        alterView.disableTextInput(godown);
+        alterView.disableTextInput(factory);
+        alterView.disableTextInput(others);
 
+        alterView.disableSpinner(ownershipSpinner);
+
+        alterView.disableTextInput(capital);
+        alterView.disableTextInput(gstn);
+        alterView.disableTextInput(licenseNumber);
+        alterView.disableTextInput(licenseAuthority);
+
+        alterView.disableSpinner(authoritySpinner);
     }
 
     public void allowEdit() {
+        alterView.enableTextInput(firmName);
+        alterView.enableTextInput(firmAddress);
+        alterView.enableTextInput(turnover);
+        alterView.enableTextInput(branch);
+        alterView.enableTextInput(godown);
+        alterView.enableTextInput(factory);
+        alterView.enableTextInput(others);
 
+        alterView.enableSpinner(ownershipSpinner);
+
+        alterView.enableTextInput(capital);
+        alterView.enableTextInput(gstn);
+        alterView.enableTextInput(licenseNumber);
+        alterView.enableTextInput(licenseAuthority);
+
+        alterView.enableSpinner(authoritySpinner);
     }
 
 

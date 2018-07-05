@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:src="@drawable/scales"
+                android:src="@drawable/scales1"
                 android:tag="https://kerala.gov.in/welfare-fund-boards"
                 android:onClick="openBrowser" />
         </LinearLayout>
