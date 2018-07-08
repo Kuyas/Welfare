@@ -139,8 +139,10 @@ public class FamilyMemberDialogFragment extends DialogFragment implements View.O
                     listener = (AddButtonDialogListener) getActivity();
 
                     APIService familyAPI = APIUtils.getAPIService();
-                    sharedPreferences = this.getActivity().getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-                    familyAPI.saveFamily(sharedPreferences.getString("loggedInID", ""), validateName.returnText(),
+                    sharedPreferences = this.getActivity().getSharedPreferences("com.welfare.app",
+                            Context.MODE_PRIVATE);
+                    familyAPI.saveFamily(sharedPreferences.getString("loggedInID", ""),
+                            validateName.returnText(),
                             validateAge.returnText(),
                             memberGender.getSelectedItem().toString().trim(),
                             validateOccupation.returnText(),

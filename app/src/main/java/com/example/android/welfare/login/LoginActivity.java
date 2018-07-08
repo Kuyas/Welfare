@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        final TextInputEditText mobile,password;
+        final TextInputEditText mobile, password;
         Button login;
 
         mobile = findViewById(R.id.activity_login_edittext_mobile);
@@ -85,33 +85,41 @@ public class LoginActivity extends AppCompatActivity {
                     passwordValidator = new TextValidator(password);
                     if (!mobileValidator.regexValidator(TextValidator.mobilenumberregex)) {
                         entry_flag = false;
-                        mobile.setError("Please enter valid 10 digit mobile number");
+                        mobile.setError(getString(R.string.invalid_mobile_number));
                     } else if (!passwordValidator.regexValidator(TextValidator.passwordregex)) {
                         entry_flag = false;
-                        password.setError("Please enter a valid password between 8-16 characters");
+                        password.setError(getString(R.string.activity_forgot_password_invalid_password));
                     } else {
                         mobileString = mobileValidator.returnText();
                         passwordString = passwordValidator.returnText();
                     }
                     if (entry_flag) {
-                        loginUsingApi.loginUser(mobileValidator.returnText(), passwordValidator.returnText()).enqueue(new Callback<AuthenticationData>() {
+                        loginUsingApi.loginUser(mobileValidator.returnText(), passwordValidator.
+                                returnText()).enqueue(new Callback<AuthenticationData>() {
                             @Override
-                            public void onResponse(Call<AuthenticationData> call, Response<AuthenticationData> response) {
+                            public void onResponse(Call<AuthenticationData> call,
+                                                   Response<AuthenticationData> response) {
                                 int response_code = response.body().getResponseCode();
                                 if (response_code == 200) {
-                                    sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
-                                    sharedPreferences.edit().putString("mobile_number", mobileValidator.returnText()).apply();
-                                    sharedPreferences.edit().putString("password", passwordValidator.returnText()).apply();
-                                    Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                                    sharedPreferences.edit().putString("loggedInID",
+                                            response.body().getId()).apply();
+                                    sharedPreferences.edit().putString("mobile_number",
+                                            mobileValidator.returnText()).apply();
+                                    sharedPreferences.edit().putString("password",
+                                            passwordValidator.returnText()).apply();
+                                    Intent mainActivity = new Intent(LoginActivity.this,
+                                            MainActivity.class);
                                     startActivity(mainActivity);
                                 } else {
-                                     Toast.makeText(LoginActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity.this,
+                                            getString(R.string.request_error), Toast.LENGTH_LONG).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<AuthenticationData> call, Throwable t) {
-                                Toast.makeText(LoginActivity.this, "Failed to make request", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this,
+                                        getString(R.string.request_failed), Toast.LENGTH_LONG).show();
                             }
                         });
                     }
@@ -128,7 +136,8 @@ public class LoginActivity extends AppCompatActivity {
         forgotpassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent forgotpasswordActivity = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                Intent forgotpasswordActivity = new Intent(LoginActivity.this,
+                        ForgotPasswordActivity.class);
                 startActivity(forgotpasswordActivity);
             }
         });

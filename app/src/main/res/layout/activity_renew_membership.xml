@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:background="@color/colorAccent">
 
-    <include layout="@layout/app_bar_main"></include>
+    <include layout="@layout/app_bar_main"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:textColor="#ff0000"
                 android:paddingLeft="20dp"
                 android:textSize="25sp"
-                android:text="From Database"
+                android:text="@string/activity_renew_membership_from_database"
                 android:gravity="end" />
 
         </LinearLayout>
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:paddingTop="15dp"
                 android:layout_height="wrap_content"
-                android:text="From Database"
+                android:text="@string/activity_renew_membership_from_database"
                 android:textColor="#ff0000"
                 android:textSize="25sp"
                 android:gravity="end" />
@@ -83,7 +83,7 @@
                 android:paddingTop="15dp"
                 android:textColor="#ff0000"
                 android:textSize="25sp"
-                android:text="From Database"
+                android:text="@string/activity_renew_membership_from_database"
                 android:gravity="end" />
 
         </LinearLayout>
@@ -92,6 +92,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:textSize="@dimen/user_details_text_size"
         android:textColor="@color/colorAccent"
         android:text="@string/activity_renew_membership_pay" />
 

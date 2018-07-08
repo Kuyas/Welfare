@@ -84,7 +84,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
             rentedFactory = findViewById(R.id.edit_text_rented_factory);
             rentedOthers = findViewById(R.id.edit_text_rented_other);
             tradersOrganisation = findViewById(R.id.edit_text_traders_organisation);
-            loginID = sharedPreferences.getString("loggedInID", "");
 
             alterView = new AlterView();
             editableCheck = findViewById(R.id.checkbox_other_details_editable);

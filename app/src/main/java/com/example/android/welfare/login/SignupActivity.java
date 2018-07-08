@@ -75,16 +75,16 @@ public class SignupActivity extends AppCompatActivity{
                     boolean flag = true;
                     if (!validMobile.regexValidator(TextValidator.mobilenumberregex)) {
                         flag = false;
-                        mobile.setError("Please enter valid 10 digit mobile number");
+                        mobile.setError(getString(R.string.invalid_mobile_number));
                     } else if (!validPassword.regexValidator(TextValidator.passwordregex)) {
                         flag = false;
-                        password.setError("Please enter a valid password between 8-16 characters");
+                        password.setError(getString(R.string.activity_forgot_password_invalid_password));
                     } else if (!validRetypePassword.regexValidator(TextValidator.passwordregex)) {
                         flag = false;
-                        retypePassword.setError("Please enter a valid password between 8-16 characters");
+                        retypePassword.setError(getString(R.string.activity_forgot_password_invalid_password));
                     } else if (!validPassword.returnText().equals(validRetypePassword.returnText())) {
                         flag = false;
-                        retypePassword.setError("Password and retyped password are not same");
+                        retypePassword.setError(getString(R.string.activity_forgot_password_retype_invalid));
                     } else {
                         //
                         String phoneNumber = validMobile.returnText();
@@ -108,25 +108,34 @@ public class SignupActivity extends AppCompatActivity{
             case (otpAcitivyCode): {
                 if (resultCode == Activity.RESULT_OK) {
                     APIService registerUSerAPI = APIUtils.getAPIService();
-                    registerUSerAPI.registerUser(validMobile.returnText(), validPassword.returnText()).enqueue(new Callback<AuthenticationData>() {
+                    registerUSerAPI.registerUser(validMobile.returnText(), validPassword.
+                            returnText()).enqueue(new Callback<AuthenticationData>() {
                         @Override
-                        public void onResponse(Call<AuthenticationData> call, Response<AuthenticationData> response) {
+                        public void onResponse(Call<AuthenticationData> call,
+                                               Response<AuthenticationData> response) {
                             int response_code = response.body().getResponseCode();
                             if (response_code == 200) {
-                                Toast.makeText(SignupActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
-                                sharedPreferences.edit().putString("loggedInID", response.body().getId()).apply();
-                                sharedPreferences.edit().putString("mobile_number", validMobile.returnText()).apply();
-                                sharedPreferences.edit().putString("password", validPassword.returnText()).apply();
-                                Intent mainActivityIntent = new Intent(SignupActivity.this, MainActivity.class);
+                                Toast.makeText(SignupActivity.this, DisplayErrorMessage.
+                                        returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                                sharedPreferences.edit().putString("loggedInID", response.body().
+                                        getId()).apply();
+                                sharedPreferences.edit().putString("mobile_number",
+                                        validMobile.returnText()).apply();
+                                sharedPreferences.edit().putString("password", validPassword.
+                                        returnText()).apply();
+                                Intent mainActivityIntent = new Intent(SignupActivity.this,
+                                        MainActivity.class);
                                 startActivity(mainActivityIntent);
                             } else {
-                                Toast.makeText(SignupActivity.this, DisplayErrorMessage.returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
+                                Toast.makeText(SignupActivity.this, DisplayErrorMessage.
+                                        returnErrorMessage(response_code), Toast.LENGTH_LONG).show();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<AuthenticationData> call, Throwable t) {
-                            Toast.makeText(SignupActivity.this, "Could not make request", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignupActivity.this, getString(R.string.request_failed),
+                                    Toast.LENGTH_LONG).show();
                         }
                     });
                     break;

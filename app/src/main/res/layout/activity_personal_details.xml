@@ -150,17 +150,17 @@
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:textAlignment="center">
-                <Spinner
-                    android:id="@+id/activity_personal_details_district_select"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/activity_personal_details_district_select"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
                 <!--<CheckBox-->
                 <!--android:id="@+id/checkbox_personal_details_editable"-->

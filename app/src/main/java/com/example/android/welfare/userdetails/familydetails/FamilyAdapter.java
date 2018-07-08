@@ -33,11 +33,16 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull FamilyViewHolder holder, int position) {
         FamilyModel familyModel = familyModels.get(position);
-        holder.memberName.setText(String.format(context.getString(R.string.activity_family_details_name), familyModel.getMemberName()));
-        holder.memberAge.setText(String.format(context.getString(R.string.activity_family_details_age), familyModel.getMemberAge()));
-        holder.memberGender.setText(String.format(context.getString(R.string.activity_family_details_gender), familyModel.getMemberGender()));
-        holder.memberOccupation.setText(String.format(context.getString(R.string.activity_family_details_occupation), familyModel.getMemberOccupation()));
-        holder.memberRelationship.setText(String.format(context.getString(R.string.activity_family_details_relationship), familyModel.getMemberRelationship()));
+        holder.memberName.setText(String.format(context.getString(
+                R.string.activity_family_details_name_value), familyModel.getMemberName()));
+        holder.memberAge.setText(String.format(context.getString(
+                R.string.activity_family_details_age_value), familyModel.getMemberAge()));
+        holder.memberGender.setText(String.format(context.getString(
+                R.string.activity_family_details_gender_value), familyModel.getMemberGender()));
+        holder.memberOccupation.setText(String.format(context.getString(
+                R.string.activity_family_details_occupation_value), familyModel.getMemberOccupation()));
+        holder.memberRelationship.setText(String.format(context.getString(
+                R.string.activity_family_details_relationship_value), familyModel.getMemberRelationship()));
     }
 
     @Override

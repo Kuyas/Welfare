@@ -112,7 +112,7 @@ public class StatusActivity extends AppCompatActivity {
                                     application.setProgress(20);
                                     application.setScaleY(2f);
                                     status_view_application.setText(R.string.StatusActivity_cleared_by_clerk);
-                                    progress_view_application.setText("0/5");
+                                    progress_view_application.setText("1/5");
                                 }
                                 if (status.equals("2")) {
                                     application = findViewById(R.id.progress_bar_application);

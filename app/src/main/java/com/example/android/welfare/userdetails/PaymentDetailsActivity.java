@@ -31,7 +31,8 @@ public class PaymentDetailsActivity extends AppCompatActivity {
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             //TODO: Remove the negation
 
-            Intent loginIntent = new Intent(PaymentDetailsActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(PaymentDetailsActivity.this,
+                    LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_payment_details);
@@ -67,7 +68,8 @@ public class PaymentDetailsActivity extends AppCompatActivity {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
                         // TODO: implement SUBMIT functionality
                         Toast.makeText(PaymentDetailsActivity.this, getString(
-                                R.string.details_submitted_confirmation), Toast.LENGTH_LONG).show();
+                                R.string.details_submitted_confirmation),
+                                Toast.LENGTH_LONG).show();
                         Intent homeIntent = new Intent(PaymentDetailsActivity.this,
                                 MainActivity.class);
                         homeIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

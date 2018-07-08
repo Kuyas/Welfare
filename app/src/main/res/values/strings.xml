@@ -7,7 +7,7 @@
     <string name="activity_main_button_application_status">Application Status</string>
     <string name="activity_main_button_pension_status">Pension Status</string>
     <string name="activity_main_button_renew_membership">Renewal of Membership</string>
-    <string name="activity_main_button_claim_status">Claim Status</string>
+    <string name="activity_main_button_claim_status">Status</string>
 
     <string name="language_choice">Choose your Language</string>
     <string name="language_english">English</string>
@@ -78,12 +78,18 @@
 
     <string name="activity_family_details_heading">Family Details</string>
     <string name="activity_family_details_add_member">Add Member</string>
-    <string name="activity_family_details_name">Name: %1$s</string>
-    <string name="activity_family_details_age">Age: %1$d</string>
-    <string name="activity_family_details_gender">Gender: %1$s</string>
-    <string name="activity_family_details_occupation">Occupation: %1$s</string>
-    <string name="activity_family_details_relationship">Relationship: %1$s</string>
+    <string name="activity_family_details_name">Name: </string>
+    <string name="activity_family_details_age">Age: </string>
+    <string name="activity_family_details_gender">Gender: </string>
+    <string name="activity_family_details_occupation">Occupation: </string>
+    <string name="activity_family_details_relationship">Relationship: </string>
     <string name="activity_family_details_member_added">Member Added</string>
+
+    <string name="activity_family_details_name_value">Name: %1$s</string>
+    <string name="activity_family_details_age_value">Age: %1$d</string>
+    <string name="activity_family_details_gender_value">Gender: %1$s</string>
+    <string name="activity_family_details_occupation_value">Occupation: %1$s</string>
+    <string name="activity_family_details_relationship_value">Relationship: %1$s</string>
 
     <string name="dialog_fragment_family_details_heading">Fill Details</string>
     <string-array name="dialog_fragment_family_spinner_gender">
@@ -146,6 +152,7 @@
     <string name="activity_renew_membership_class">Class Fees</string>
     <string name="activity_renew_membership_total">Total</string>
     <string name="activity_renew_membership_pay">Pay using Netbanking</string>
+    <string name="activity_renew_membership_from_database">From Database</string>
 
     <string name="activity_forgot_password_title">Forgot Password</string>
     <string name="activity_forgot_password_mobile_field">Mobile</string>
@@ -164,6 +171,8 @@
     <string name="activity_classchange_name">New Annual Turnover</string>
     <string name="activity_classchange_submit">Submit</string>
     <string name="activity_classchange_class">New Class</string>
+    <string name="activity_class_change_null_turnover">No Turnover data</string>
+    <string name="activity_class_change_null_class">Cannot be determined</string>
 
     <string name="activity_other_details_location">Location</string>
     <string name="activity_other_details_rupees">Rs.</string>
@@ -224,7 +233,7 @@
 
     <!--CLAIM STATUS STRING RESOURCES-->
     <string name="activity_status_heading">Status Details</string>
-    <string name="activity_claim_status_title">Claim Status</string>
+    <string name="activity_claim_status_title">Status</string>
     <string name="activity_claim_status_application_head">Application Status</string>
     <string name="activity_claim_status_application_status">No Application Submitted</string>
     <string name="activity_claim_status_application_progress"> </string>
@@ -243,11 +252,14 @@
     <string name="StatusActivity_rejected">Rejected</string>
     <string name="application">\@string/</string>
 
+    <string name="invalid_mobile_number">Please Enter a Valid 10 Digit Mobile Number</string>
+
     <string name="details_saved_confirmation">Details Saved</string>
     <string name="details_submitted_confirmation">Details Submitted</string>
     <string name="details_saved_failed">Details Failed</string>
     <string name="request_not_sent">Request Not Sent</string>
     <string name="request_failed">Request Failed</string>
+    <string name="request_error">Request Returned Erroneous Response</string>
 
     <string name="dialog_fragment_family_details_button_add">Add</string>
     <string name="dialog_fragment_family_details_button_cancel">Cancel</string>
@@ -285,6 +297,11 @@
     <string name="activity_banking_details_invalid_acount_number">Please Enter a Valid Account Number</string>
     <string name="activity_banking_details_invalid_branch_name">Please Enter a Valid Branch Name</string>
     <string name="activity_banking_details_invalid_ifsc_code">IFSC code should have 4 alphabets and 7 digits</string>
+
+    <string name="activity_forgot_password_mobile_number_not_exist">Please Check Your Mobile Number</string>
+    <string name="activity_forgot_password_mobile_not_correct">Please Verify Your Mobile Number</string>
+    <string name="activity_forgot_password_invalid_password">Please Enter a Password Between 8 &amp; 16 Characters</string>
+    <string name="activity_forgot_password_retype_invalid">Password and Retyped Password are not Same</string>
 
 
 </resources>
