@@ -79,22 +79,26 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 validMobile = new TextValidator(mobile);
                 if (DEBUG || validMobile.regexValidator(TextValidator.mobilenumberregex)) {
                     checkMobileIdAPI = APIUtils.getAPIService();
-                    checkMobileIdAPI.checkMobile(validMobile.returnText()).enqueue(new Callback<AuthenticationData>() {
+                    checkMobileIdAPI.checkMobile(validMobile.returnText()).enqueue(
+                            new Callback<AuthenticationData>() {
                         @Override
-                        public void onResponse(Call<AuthenticationData> call, Response<AuthenticationData> response) {
+                        public void onResponse(Call<AuthenticationData> call,
+                                               Response<AuthenticationData> response) {
                             int response_code = response.body().getResponseCode();
                             if (response_code == 200) {
-                                Intent otpVerification = new Intent(getApplicationContext(), OtpVerificationActivity.class);
+                                Intent otpVerification = new Intent(getApplicationContext(),
+                                        OtpVerificationActivity.class);
                                 otpVerification.putExtra("phonenumber", validMobile.returnText());
                                 startActivityForResult(otpVerification, otpAcitivyCode);
                             } else {
-                                mobile.setError("This mobile number does not exist in database");
+                                mobile.setError(getString(
+                                        R.string.activity_forgot_password_mobile_number_not_exist));
                             }
                         }
 
                         @Override
                         public void onFailure(Call<AuthenticationData> call, Throwable t) {
-                            mobile.setError("Failed to send request");
+                            mobile.setError(getString(R.string.request_failed));
                         }
                     });
                 }
@@ -107,7 +111,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!verified) {
-                    Toast.makeText(ForgotPasswordActivity.this, "Please verify your mobile number", Toast.LENGTH_LONG);
+                    Toast.makeText(ForgotPasswordActivity.this,
+                            getString(R.string.activity_forgot_password_mobile_not_correct), Toast.LENGTH_LONG);
                 } else {
                     validPassword = new TextValidator(password);
                     validRetypePassword = new TextValidator(retypepassword);
@@ -115,34 +120,41 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     boolean flag = true;
                     if (!validPassword.regexValidator(TextValidator.passwordregex)) {
                         flag = false;
-                        password.setError("Please enter a valid password between 8-16 characters");
+                        password.setError(getString(R.string.activity_forgot_password_invalid_password));
                     } else if (!validRetypePassword.regexValidator(TextValidator.passwordregex)) {
                         flag = false;
-                        retypepassword.setError("Please enter a valid password between 8-16 characters");
+                        retypepassword.setError(getString(R.string.activity_forgot_password_invalid_password));
                     } else if (!validPassword.returnText().equals(validRetypePassword.returnText())) {
                         flag = false;
-                        retypepassword.setError("Password and retyped password are not same");
+                        retypepassword.setError(getString(R.string.activity_forgot_password_retype_invalid));
                     } else {
                         changePasswordAPI = APIUtils.getAPIService();
-                        changePasswordAPI.changePassword(validMobile.returnText(), validPassword.returnText()).enqueue(new Callback<AuthenticationData>() {
+                        changePasswordAPI.changePassword(validMobile.returnText(),
+                                validPassword.returnText()).enqueue(new Callback<AuthenticationData>() {
                             @Override
-                            public void onResponse(Call<AuthenticationData> call, Response<AuthenticationData> response) {
+                            public void onResponse(Call<AuthenticationData> call,
+                                                   Response<AuthenticationData> response) {
                                 int response_code = response.body().getResponseCode();
                                 if (response_code==200) {
-                                    if (DEBUG) Toast.makeText(ForgotPasswordActivity.this, "changed password ", Toast.LENGTH_LONG).show();
                                     sharedPreferences.edit().putString("loggedInID", loggedInID).apply();
-                                    sharedPreferences.edit().putString("mobile_number", validMobile.returnText()).apply();
-                                    sharedPreferences.edit().putString("password", validPassword.returnText()).apply();
+                                    sharedPreferences.edit().putString("mobile_number", validMobile.
+                                            returnText()).apply();
+                                    sharedPreferences.edit().putString("password", validPassword.
+                                            returnText()).apply();
                                     Intent mainactivity = new Intent(currentContext, MainActivity.class);
                                     startActivity(mainactivity);
                                 } else {
-                                    Toast.makeText(ForgotPasswordActivity.this, "Request gave erroneous response", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(ForgotPasswordActivity.this,
+                                            getText(R.string.request_failed),
+                                            Toast.LENGTH_LONG).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<AuthenticationData> call, Throwable t) {
-                                Toast.makeText(ForgotPasswordActivity.this, "Request not completed please try again", Toast.LENGTH_LONG).show();
+                                Toast.makeText(ForgotPasswordActivity.this,
+                                        getString(R.string.request_failed),
+                                        Toast.LENGTH_LONG).show();
                             }
                         });
                     }
