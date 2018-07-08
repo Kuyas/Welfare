@@ -98,9 +98,6 @@ public class StatusActivity extends AppCompatActivity {
                             String application_type = c.getApplicationType();
                             String status = c.getStatus();
 
-
-                            Toast.makeText(StatusActivity.this, "Request gave response", Toast.LENGTH_LONG).show();
-
                             if (application_type.equals("application")) {
                                 if (status.equals("0")) {
                                     application = findViewById(R.id.progress_bar_application);
@@ -289,10 +286,7 @@ public class StatusActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<ClaimsData>> call, Throwable t) {
-                Toast.makeText(StatusActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
-
-            }
+            public void onFailure(Call<List<ClaimsData>> call, Throwable t) {}
         });
 
 

@@ -83,25 +83,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
             ownershipAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             ownershipSpinner.setAdapter(ownershipAdapter);
 
-            ownershipSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                    Context context = getApplicationContext();
-                    Object text = parent.getItemAtPosition(pos);
-                    if (pos > 0) {
-                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    //Another interface callback
-                    Context context = getApplicationContext();
-//            Object text =  parent.getItemAtPosition(pos);
-//                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
-                }
-            });
-
             //Spinner for Type of Authority
             authoritySpinner = findViewById(R.id.spinner_layout_trading_details_authority);
             authorityAdapter = ArrayAdapter.createFromResource(this,
@@ -109,24 +90,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     android.R.layout.simple_spinner_item);
             authorityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             authoritySpinner.setAdapter(authorityAdapter);
-
-            authoritySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                    Context context = getApplicationContext();
-                    Object text = parent.getItemAtPosition(pos);
-                    if (pos > 0) {
-                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    Context context = getApplicationContext();
-
-                }
-            });
 
             alterView = new AlterView();
 
