@@ -37,32 +37,23 @@ public class ClassChangeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()){
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(ClassChangeActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_class_change);
-
-
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_class_change_heading));
             setSupportActionBar(toolbar);
 
-
-
-
             ActionBar actionBar = getSupportActionBar();
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(getDrawable(R.drawable.ic_arrow_back_black_24dp));
-
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onBackPressed();
                 }
             });
-
 
             final Button homeButton = findViewById(R.id.activity_button_home);
             homeButton.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +71,6 @@ public class ClassChangeActivity extends AppCompatActivity {
             loginID = sharedPreferences.getString("loggedInID", "");
             oldClass = findViewById(R.id.activity_classchange_old_class);
             oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
-            oldTurnover.setText("");
-
 
             turnoverUsingAPI.getTurnoverData(loginID).enqueue(new Callback<TurnoverData>() {
                 @Override
@@ -91,7 +80,6 @@ public class ClassChangeActivity extends AppCompatActivity {
                              turnoverText = response.body().getTurnover();
                              s = turnoverText;
                             oldTurnover.setText(turnoverText);
-
                         }
                 }
 
@@ -101,8 +89,6 @@ public class ClassChangeActivity extends AppCompatActivity {
 
                 }
             });
-
-
 
 //            oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
 //            String s = oldTurnover.getText().toString();
@@ -118,8 +104,6 @@ public class ClassChangeActivity extends AppCompatActivity {
 //            }else{
 //                oldClass.setText("A");
 //            }
-
-
         }
     }
 }

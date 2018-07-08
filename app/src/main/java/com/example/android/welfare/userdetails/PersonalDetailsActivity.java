@@ -311,10 +311,12 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
     }
 
     public void allowEdit() {
+        alterView.enableTextInput(name);
         alterView.enableTextInput(place);
         alterView.enableTextInput(address);
-
+        alterView.enableButton(buttonDob);
         alterView.enableSpinner(districtSpinner);
+        alterView.enableSpinner(genderSpinner);
     }
 
 
@@ -392,7 +394,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             getCacheData();
         }
     }
-
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override

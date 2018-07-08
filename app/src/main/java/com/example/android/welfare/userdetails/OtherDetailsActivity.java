@@ -56,19 +56,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
     private TextInputEditText rentedOthers;
     private TextInputEditText tradersOrganisation;
 
-//    private TextValidator validateOwnMainBranch;
-//    private TextValidator validateOwnBranch;
-//    private TextValidator validateOwnGodown;
-//    private TextValidator validateOwnFactory;
-//    private TextValidator validateOwnOthers;
-//
-//    private TextValidator validateRentedMainBranch;
-//    private TextValidator validateRentedBranch;
-//    private TextValidator validateRentedGodown;
-//    private TextValidator validateRentedFactory;
-//    private TextValidator validateRentedOthers;
-//    private TextValidator validateTradersOrganisation;
-
     private AlterView alterView;
     private CheckBox editableCheck;
     private APIService otherUsingAPI;
@@ -79,8 +66,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(OtherDetailsActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
@@ -123,20 +108,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
                     }
                 }
             });
-
-//        validateOwnMainBranch = new TextValidator(ownMainBranch);
-//        validateOwnBranch = new TextValidator(ownBranch);
-//        validateOwnGodown = new TextValidator(ownGodown);
-//        validateOwnFactory = new TextValidator(ownFactory);
-//        validateOwnOthers = new TextValidator(ownOthers);
-//
-//        validateRentedMainBranch = new TextValidator(rentedMainBranch);
-//        validateRentedBranch = new TextValidator(rentedBranch);
-//        validateRentedGodown = new TextValidator(rentedGodown);
-//        validateRentedFactory = new TextValidator(rentedFactory);
-//        validateRentedOthers = new TextValidator(rentedOthers);
-//        validateTradersOrganisation = new TextValidator(tradersOrganisation);
-
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_other_details_heading));
