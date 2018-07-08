@@ -14,35 +14,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.android.welfare.databaseconnection.APIService;
-import com.example.android.welfare.databaseconnection.APIUtils;
-import com.example.android.welfare.databaseconnection.responseclasses.FamilyData;
-import com.example.android.welfare.databaseconnection.responseclasses.PersonalData;
-import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.OnStartCacheRetrieval;
 import com.example.android.welfare.R;
+import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.userdetails.TradingDetailsActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMemberDialogFragment.AddButtonDialogListener {
-    private final String cacheDataFile = "familydatacache.data";
     private SharedPreferences sharedPreferences;
 
     private RecyclerView recyclerView;
@@ -61,8 +50,6 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         } else {
             setContentView(R.layout.activity_family_details);
 
-            familyModelList = new ArrayList<>();
-
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_family_details_heading));
             setSupportActionBar(toolbar);
@@ -78,7 +65,7 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
                 }
             });
 
-            getCacheData();
+            fillWithCache();
             recyclerView = findViewById(R.id.family_details_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(FamilyDetailsActivity.this,
                     LinearLayoutManager.VERTICAL, false));
@@ -134,7 +121,7 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         }
     };
 
-    private void showEditDialogFragment () {
+    private void showEditDialogFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         dialogFragment = FamilyMemberDialogFragment.newInstance(
                 getString(R.string.dialog_fragment_family_details_heading));
@@ -156,50 +143,13 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         super.onResume();
     }
 
-    public void getCacheData() {
-        APIService storeFamilyData = APIUtils.getAPIService();
-        storeFamilyData.getFamilyData(sharedPreferences.getString("mobile_number", ""),
-                sharedPreferences.getString("password", "")).enqueue(new Callback<List<FamilyData>>() {
-            @Override
-            public void onResponse(Call<List<FamilyData>> call, Response<List<FamilyData>> response) {
-                FamilyData resp = response.body().get(0);
-                ArrayList<FamilyModel> familycache = new ArrayList<>();
-                if (resp.getResponseCode()==200) {
-                    for (int i = 1; i < response.body().size(); i++) {
-                        resp = response.body().get(i);
-                        familycache.add(new FamilyModel(resp.getName(), Integer.parseInt(resp.getAge()),
-                                resp.getGender(), resp.getOccupation(), resp.getRelationship()));
-                    }
-                    try {
-                        File cache = new File(getCacheDir(), cacheDataFile);
-                        ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
-                        cacheWriter.writeObject(familycache);
-                        cacheWriter.close();
-                        fillWithCache();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<FamilyData>> call, Throwable t) {}
-        });
-    }
-
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    new File(getCacheDir(), cacheDataFile)));
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.familycachefile));
             familyModelList = (ArrayList<FamilyModel>) cacheReader.readObject();
-            recyclerView = findViewById(R.id.family_details_recycler_view);
-            recyclerView.setLayoutManager(new LinearLayoutManager(FamilyDetailsActivity.this,
-                    LinearLayoutManager.VERTICAL, false));
-            recyclerView.setHasFixedSize(true);
-
-            familyAdapter = new FamilyAdapter(this, familyModelList);
-
-            recyclerView.setAdapter(familyAdapter);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            familyModelList = new ArrayList<>();
+        }
     }
 }

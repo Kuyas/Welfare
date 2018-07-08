@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.OnStartCacheRetrieval;
 import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
@@ -28,20 +29,14 @@ import com.example.android.welfare.login.LoginActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OtherDetailsActivity extends AppCompatActivity {
-
-
     private SharedPreferences sharedPreferences;
-    private static final String cacheDataFile = "otherdatacache.data";
 
     private TextInputEditText ownMainBranch;
     private TextInputEditText ownBranch;
@@ -233,39 +228,10 @@ public class OtherDetailsActivity extends AppCompatActivity {
         alterView.enableTextInput(tradersOrganisation);
     }
 
-    public void getCacheData() {
-        APIService storeOtherData = APIUtils.getAPIService();
-        storeOtherData.getOtherData(sharedPreferences.getString("mobile_number", ""),
-                sharedPreferences.getString("password", "")).
-                enqueue(new Callback<OtherData>() {
-                    @Override
-                    public void onResponse(Call<OtherData> call, Response<OtherData> response) {
-                        try {
-                            int response_code = response.body().getResponseCode();
-                            if (response_code == 200) {
-                                File cache = new File(getCacheDir(), cacheDataFile);
-                                ObjectOutputStream cacheWriter = new ObjectOutputStream(new
-                                        FileOutputStream(cache));
-                                cacheWriter.writeObject(response.body());
-                                cacheWriter.close();
-                                fillWithCache();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<OtherData> call, Throwable t) {
-                    }
-                });
-    }
-
-
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + cacheDataFile));
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.othercachefile));
             OtherData cached = (OtherData) cacheReader.readObject();
 
             ownMainBranch.setText(cached.getOwnMainBranch());
@@ -281,8 +247,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
             rentedOthers.setText(cached.getRentedOther());
 
             tradersOrganisation.setText(cached.getTradersOrganisationName());
-        } catch (IOException | ClassNotFoundException e) {
-            getCacheData();
+        } catch (Exception e) {
         }
     }
 }

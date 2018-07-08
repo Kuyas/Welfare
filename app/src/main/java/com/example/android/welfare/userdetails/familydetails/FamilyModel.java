@@ -2,9 +2,9 @@ package com.example.android.welfare.userdetails.familydetails;
 
 import java.io.Serializable;
 
-public class FamilyModel implements Serializable{
+public class FamilyModel implements Serializable {
 
-//    private int serialNo;
+    //    private int serialNo;
     private int memberAge;
     private String memberName;
     private String memberGender;
@@ -22,14 +22,6 @@ public class FamilyModel implements Serializable{
         this.memberOccupation = memberOccupation;
         this.memberRelationship = memberRelationship;
     }
-
-//    public int getSerialNo() {
-//        return serialNo;
-//    }
-//
-//    public void setSerialNo(int serialNo) {
-//        this.serialNo = serialNo;
-//    }
 
     public int getMemberAge() {
         return memberAge;

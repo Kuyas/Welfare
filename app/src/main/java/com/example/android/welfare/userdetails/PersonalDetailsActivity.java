@@ -12,7 +12,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,23 +21,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.OnStartCacheRetrieval;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
 import com.example.android.welfare.databaseconnection.responseclasses.PersonalData;
 import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
 import com.example.android.welfare.login.LoginActivity;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.NetworkStatus;
-import com.example.android.welfare.R;
 import com.example.android.welfare.userdetails.familydetails.FamilyDetailsActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,7 +48,6 @@ import retrofit2.Response;
 
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
-    private static final String cacheDataFile = "personaldatacache.data";
 
     private SharedPreferences sharedPreferences;
     private APIService personalUsingAPI;
@@ -196,31 +192,31 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                                         "loggedInID", ""), validName.returnText(),
                                         date_test, genderSelect, validAddress.returnText(),
                                         validPlace.returnText(), districtSelect).enqueue(
-                                                new Callback<ResponseData>() {
-                                    @Override
-                                    public void onResponse(Call<ResponseData> call,
-                                                           Response<ResponseData> response) {
-                                        int response_code = response.body().getResponseCode();
-                                        if (response_code == 200) {
-                                            Toast.makeText(PersonalDetailsActivity.this,
-                                                    getString(R.string.details_saved_confirmation),
-                                                    Toast.LENGTH_LONG).show();
+                                        new Callback<ResponseData>() {
+                                            @Override
+                                            public void onResponse(Call<ResponseData> call,
+                                                                   Response<ResponseData> response) {
+                                                int response_code = response.body().getResponseCode();
+                                                if (response_code == 200) {
+                                                    Toast.makeText(PersonalDetailsActivity.this,
+                                                            getString(R.string.details_saved_confirmation),
+                                                            Toast.LENGTH_LONG).show();
 
-                                            nextActivity();
-                                        } else {
-                                            Toast.makeText(PersonalDetailsActivity.this,
-                                                    DisplayErrorMessage.returnErrorMessage(response_code),
-                                                    Toast.LENGTH_LONG).show();
-                                        }
-                                    }
+                                                    nextActivity();
+                                                } else {
+                                                    Toast.makeText(PersonalDetailsActivity.this,
+                                                            DisplayErrorMessage.returnErrorMessage(response_code),
+                                                            Toast.LENGTH_LONG).show();
+                                                }
+                                            }
 
-                                    @Override
-                                    public void onFailure(Call<ResponseData> call, Throwable t) {
-                                        Toast.makeText(PersonalDetailsActivity.this,
-                                                getString(R.string.details_saved_failed),
-                                                Toast.LENGTH_LONG).show();
-                                    }
-                                });
+                                            @Override
+                                            public void onFailure(Call<ResponseData> call, Throwable t) {
+                                                Toast.makeText(PersonalDetailsActivity.this,
+                                                        getString(R.string.details_saved_failed),
+                                                        Toast.LENGTH_LONG).show();
+                                            }
+                                        });
 
                             }
                         } else {
@@ -300,35 +296,10 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
     }
 
-    public void getCacheData() {
-        APIService storePersonalData = APIUtils.getAPIService();
-        storePersonalData.getPersonalData(sharedPreferences.getString("mobile_number", ""),
-                sharedPreferences.getString("password", "")).enqueue(new Callback<PersonalData>() {
-            @Override
-            public void onResponse(Call<PersonalData> call, Response<PersonalData> response) {
-                try {
-                    int response_code = response.body().getResponseCode();
-                    if (response_code == 200) {
-                        File cache = new File(getCacheDir(), cacheDataFile);
-                        ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
-                        cacheWriter.writeObject(response.body());
-                        cacheWriter.close();
-                        fillWithCache();
-                    }
-                } catch (Exception e) {}
-            }
-
-            @Override
-            public void onFailure(Call<PersonalData> call, Throwable t) {
-                System.out.println(getString(R.string.request_failed));
-            }
-        });
-    }
-
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + cacheDataFile));
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.personalcachefile));
             PersonalData cached = (PersonalData) cacheReader.readObject();
             name.setText(cached.getName());
             address.setText(cached.getAddress());
@@ -346,10 +317,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     break;
                 }
             }
-
-            // TODO: fill date picker fragment with previously selected value
-        } catch (IOException | ClassNotFoundException e) {
-            getCacheData();
+        } catch (Exception e) {
         }
     }
 
