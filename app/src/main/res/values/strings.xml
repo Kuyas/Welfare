@@ -78,11 +78,11 @@
 
     <string name="activity_family_details_heading">Family Details</string>
     <string name="activity_family_details_add_member">Add Member</string>
-    <string name="activity_family_details_name">Name</string>
-    <string name="activity_family_details_age">Age</string>
-    <string name="activity_family_details_gender">Gender</string>
-    <string name="activity_family_details_occupation">Occupation</string>
-    <string name="activity_family_details_relationship">Relationship</string>
+    <string name="activity_family_details_name">Name: %1$s</string>
+    <string name="activity_family_details_age">Age: %1$d</string>
+    <string name="activity_family_details_gender">Gender: %1$s</string>
+    <string name="activity_family_details_occupation">Occupation: %1$s</string>
+    <string name="activity_family_details_relationship">Relationship: %1$s</string>
     <string name="activity_family_details_member_added">Member Added</string>
 
     <string name="dialog_fragment_family_details_heading">Fill Details</string>

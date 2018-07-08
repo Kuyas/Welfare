@@ -1,5 +1,9 @@
 package com.example.android.welfare;
 
+import android.app.Application;
+import android.content.Intent;
+import android.content.SharedPreferences;
+
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.responseclasses.BankingData;
@@ -19,14 +23,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OnStartCacheRetrieval {
+public class OnStartCacheRetrieval extends Application {
     public static final String personalcachefile = "personaldatacache.data";
     public static final String familycachefile = "familydatacache.data";
     public static final String tradingcachefile = "tradingdatacache.data";
     public static final String othercachefile = "otherdatacache.data";
     public static final String bankingcachefile = "bankingdatacache.data";
 
-    public static void cachePersonalData(String mobile, String password,final String cachedir) {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        SharedPreferences sharedPreferences = getSharedPreferences("com.welfare.app", MODE_PRIVATE);
+        if (!sharedPreferences.getString("loggedInID", "").isEmpty()) {
+            fillCache(sharedPreferences.getString("mobile_number", ""), sharedPreferences.getString("password", ""), getCacheDir().toString());
+        }
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    public static void fillCache(String mobile, String password, String cachedir) {
+        cachePersonalData(mobile, password, cachedir);
+        cacheFamilyData(mobile, password, cachedir);
+        cacheTradingData(mobile, password, cachedir);
+        cacheOtherData(mobile, password, cachedir);
+        cacheBankingData(mobile, password, cachedir);
+    }
+
+    public static void cachePersonalData(String mobile, String password, final String cachedir) {
         APIService storePersonalData = APIUtils.getAPIService();
         storePersonalData.getPersonalData(mobile, password).enqueue(new Callback<PersonalData>() {
             @Override
@@ -49,7 +71,7 @@ public class OnStartCacheRetrieval {
         });
     }
 
-    public static void cacheFamilyData(String mobile, String password,final String cachedir) {
+    public static void cacheFamilyData(String mobile, String password, final String cachedir) {
         APIService storeFamilyData = APIUtils.getAPIService();
         storeFamilyData.getFamilyData(mobile, password).enqueue(new Callback<List<FamilyData>>() {
             @Override
@@ -125,7 +147,8 @@ public class OnStartCacheRetrieval {
                     }
 
                     @Override
-                    public void onFailure(Call<OtherData> call, Throwable t) {}
+                    public void onFailure(Call<OtherData> call, Throwable t) {
+                    }
                 });
     }
 

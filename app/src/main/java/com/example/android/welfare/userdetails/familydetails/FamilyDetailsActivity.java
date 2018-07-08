@@ -65,6 +65,8 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
                 }
             });
 
+            familyModelList = new ArrayList<>();
+
             fillWithCache();
             recyclerView = findViewById(R.id.family_details_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(FamilyDetailsActivity.this,

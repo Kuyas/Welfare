@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
             Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
+            OnStartCacheRetrieval.fillCache(sharedPreferences.getString("mobile_number", ""),
+                    sharedPreferences.getString("password", ""), getCacheDir().toString());
             setContentView(R.layout.activity_main);
 
             buttonEditProfile = findViewById(R.id.button_main_edit_profile);
