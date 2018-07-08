@@ -14,30 +14,29 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.OnStartCacheRetrieval;
 import com.example.android.welfare.R;
+import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.userdetails.TradingDetailsActivity;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyDetailsActivity extends AppCompatActivity implements
-        FamilyMemberDialogFragment.AddButtonDialogListener {
-
+public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMemberDialogFragment.AddButtonDialogListener {
     private SharedPreferences sharedPreferences;
 
     private RecyclerView recyclerView;
     private FamilyAdapter familyAdapter;
 
-    int maxFamilyMembers = 10;
     private List<FamilyModel> familyModelList;
     private FamilyMemberDialogFragment dialogFragment;
 
@@ -46,15 +45,10 @@ public class FamilyDetailsActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
-            Intent loginIntent = new Intent(FamilyDetailsActivity.this,
-                    LoginActivity.class);
+            Intent loginIntent = new Intent(FamilyDetailsActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_family_details);
-
-            familyModelList = new ArrayList<>();
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_family_details_heading));
@@ -71,13 +65,14 @@ public class FamilyDetailsActivity extends AppCompatActivity implements
                 }
             });
 
+            familyModelList = new ArrayList<>();
 
+            fillWithCache();
             recyclerView = findViewById(R.id.family_details_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(FamilyDetailsActivity.this,
                     LinearLayoutManager.VERTICAL, false));
             recyclerView.setHasFixedSize(true);
 
-            familyModelList = new ArrayList<>();
             familyAdapter = new FamilyAdapter(this, familyModelList);
 
             recyclerView.setAdapter(familyAdapter);
@@ -143,5 +138,20 @@ public class FamilyDetailsActivity extends AppCompatActivity implements
         familyModelList.add(model);
         Toast.makeText(FamilyDetailsActivity.this, getString(
                 R.string.activity_family_details_member_added), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    public void fillWithCache() {
+        try {
+            ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.familycachefile));
+            familyModelList = (ArrayList<FamilyModel>) cacheReader.readObject();
+        } catch (Exception e) {
+            familyModelList = new ArrayList<>();
+        }
     }
 }
