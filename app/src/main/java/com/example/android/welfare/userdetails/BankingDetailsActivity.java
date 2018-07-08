@@ -249,21 +249,14 @@ public class BankingDetailsActivity extends AppCompatActivity{
                         cacheWriter.writeObject(response.body());
                         cacheWriter.close();
                         fillWithCache();
-                    } else {
-                        Toast.makeText(BankingDetailsActivity.this,
-                                DisplayErrorMessage.returnErrorMessage(response_code),
-                                Toast.LENGTH_LONG).show();
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
 
             @Override
-            public void onFailure(Call<BankingData> call, Throwable t) {
-                System.out.println(getString(R.string.request_failed));
-            }
+            public void onFailure(Call<BankingData> call, Throwable t) {}
         });
     }
 

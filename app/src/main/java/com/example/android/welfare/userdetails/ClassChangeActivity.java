@@ -80,6 +80,16 @@ public class ClassChangeActivity extends AppCompatActivity {
                              turnoverText = response.body().getTurnover();
                              s = turnoverText;
                             oldTurnover.setText(turnoverText);
+                            Float f = Float.parseFloat(turnoverText);
+                            if(f <= 1000000.00){
+                                oldClass.setText("D");
+                            }else if( f > 1000000.00 && f <= 2500000.00){
+                                oldClass.setText("C");
+                            }else if( f > 2500000.00 && f <= 5000000.00){
+                                oldClass.setText("B");
+                            }else{
+                                oldClass.setText("A");
+                            }
                         }
                 }
 
@@ -89,21 +99,6 @@ public class ClassChangeActivity extends AppCompatActivity {
 
                 }
             });
-
-//            oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
-//            String s = oldTurnover.getText().toString();
-//            Float f = Float.parseFloat(s);
-            Toast.makeText(ClassChangeActivity.this, s, Toast.LENGTH_LONG).show();
-//            if(f <= 1000000.00){
-//                oldClass.setText("D");
-//
-//            }else if( f > 1000000.00 && f <= 2500000.00){
-//                oldClass.setText("C");
-//            }else if( f > 2500000.00 && f <= 5000000.00){
-//                oldClass.setText("B");
-//            }else{
-//                oldClass.setText("A");
-//            }
         }
     }
 }

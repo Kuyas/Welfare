@@ -16,15 +16,15 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
 import com.example.android.welfare.databaseconnection.responseclasses.OtherData;
 import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
 import com.example.android.welfare.login.LoginActivity;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.NetworkStatus;
-import com.example.android.welfare.R;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -135,61 +135,45 @@ public class OtherDetailsActivity extends AppCompatActivity {
                 case (R.id.button_other_details_next): {
                     if (editableCheck.isChecked()) {
                         if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                            final boolean flag = true;
 
-                            if (flag || true) {
-//                            Intent otherDetailsIntent = new Intent(OtherDetailsActivity.this,
-//                                    BankingDetailsActivity.class);
-//                            startActivity(otherDetailsIntent);
-                                otherUsingAPI = APIUtils.getAPIService();
-                                String ownMain = ownMainBranch.getText().toString();
-                                String ownB = ownBranch.getText().toString();
-                                String ownG = ownGodown.getText().toString();
-                                String ownF = ownFactory.getText().toString();
-                                String ownO = ownOthers.getText().toString();
-                                String rentM = rentedMainBranch.getText().toString();
-                                String rentB = rentedBranch.getText().toString();
-                                String rentG = rentedGodown.getText().toString();
-                                String rentF = rentedFactory.getText().toString();
-                                String rentO = rentedOthers.getText().toString();
-                                String trOr = tradersOrganisation.getText().toString();
+                            otherUsingAPI = APIUtils.getAPIService();
+                            String ownMain = ownMainBranch.getText().toString();
+                            String ownB = ownBranch.getText().toString();
+                            String ownG = ownGodown.getText().toString();
+                            String ownF = ownFactory.getText().toString();
+                            String ownO = ownOthers.getText().toString();
+                            String rentM = rentedMainBranch.getText().toString();
+                            String rentB = rentedBranch.getText().toString();
+                            String rentG = rentedGodown.getText().toString();
+                            String rentF = rentedFactory.getText().toString();
+                            String rentO = rentedOthers.getText().toString();
+                            String trOr = tradersOrganisation.getText().toString();
 
-                                otherUsingAPI.saveOther(loginID, ownMain, ownB, ownG, ownF, ownO, rentM,
-                                        rentB, rentG, rentF, rentO, trOr).enqueue(new Callback<ResponseData>() {
-                                    @Override
-                                    public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
-                                        int response_code = response.body().getResponseCode();
-                                        if (flag || response_code == 200) {
-                                            Toast.makeText(OtherDetailsActivity.this,
-                                                    getString(R.string.details_saved_confirmation),
-                                                    Toast.LENGTH_LONG).show();
-                                            nextActivity();
-
-                                        } else {
-                                            Toast.makeText(OtherDetailsActivity.this,
-                                                    DisplayErrorMessage.returnErrorMessage(response_code),
-                                                    Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<ResponseData> call, Throwable t) {
+                            otherUsingAPI.saveOther(loginID, ownMain, ownB, ownG, ownF, ownO, rentM,
+                                    rentB, rentG, rentF, rentO, trOr).enqueue(new Callback<ResponseData>() {
+                                @Override
+                                public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                    int response_code = response.body().getResponseCode();
+                                    if (response_code == 200) {
                                         Toast.makeText(OtherDetailsActivity.this,
-                                                getString(R.string.request_not_sent),
+                                                getString(R.string.details_saved_confirmation),
                                                 Toast.LENGTH_LONG).show();
+                                        nextActivity();
 
-
+                                    } else {
+                                        Toast.makeText(OtherDetailsActivity.this,
+                                                DisplayErrorMessage.returnErrorMessage(response_code),
+                                                Toast.LENGTH_LONG).show();
                                     }
-                                });
+                                }
 
-                            } else {
-                                LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_other_details);
-                                Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
-                                        getString(R.string.user_details_validation_snackbar_message),
-                                        Snackbar.LENGTH_LONG);
-
-                                validationSnackbar.show();
-                            }
+                                @Override
+                                public void onFailure(Call<ResponseData> call, Throwable t) {
+                                    Toast.makeText(OtherDetailsActivity.this,
+                                            getString(R.string.request_not_sent),
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            });
                         } else {
                             LinearLayout linearLayout = findViewById(R.id.layout_activity_other_details);
                             Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
@@ -211,19 +195,17 @@ public class OtherDetailsActivity extends AppCompatActivity {
                 default: {
                     break;
                 }
-
-
             }
         }
     };
 
-    public void nextActivity () {
+    public void nextActivity() {
         Intent bankingDetailsActivity = new Intent(OtherDetailsActivity.this,
                 BankingDetailsActivity.class);
         startActivity(bankingDetailsActivity);
     }
 
-    public void disableEdit () {
+    public void disableEdit() {
         alterView.disableTextInput(ownMainBranch);
         alterView.disableTextInput(ownBranch);
         alterView.disableTextInput(ownGodown);
@@ -237,7 +219,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
         alterView.disableTextInput(tradersOrganisation);
     }
 
-    public void allowEdit () {
+    public void allowEdit() {
         alterView.enableTextInput(ownMainBranch);
         alterView.enableTextInput(ownBranch);
         alterView.enableTextInput(ownGodown);
@@ -267,10 +249,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
                                 cacheWriter.writeObject(response.body());
                                 cacheWriter.close();
                                 fillWithCache();
-                            } else {
-                                Toast.makeText(OtherDetailsActivity.this,
-                                        DisplayErrorMessage.returnErrorMessage(response_code),
-                                        Toast.LENGTH_LONG).show();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -279,7 +257,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<OtherData> call, Throwable t) {
-                        System.out.println(getString(R.string.request_failed));
                     }
                 });
     }
@@ -304,8 +281,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
             rentedOthers.setText(cached.getRentedOther());
 
             tradersOrganisation.setText(cached.getTradersOrganisationName());
-
-
         } catch (IOException | ClassNotFoundException e) {
             getCacheData();
         }

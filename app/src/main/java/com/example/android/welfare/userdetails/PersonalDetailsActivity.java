@@ -349,15 +349,8 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                         cacheWriter.writeObject(response.body());
                         cacheWriter.close();
                         fillWithCache();
-                    } else {
-                        Toast.makeText(PersonalDetailsActivity.this,
-                                DisplayErrorMessage.returnErrorMessage(response_code),
-                                Toast.LENGTH_LONG).show();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+                } catch (Exception e) {}
             }
 
             @Override

@@ -388,10 +388,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
                         cacheWriter.writeObject(response.body());
                         cacheWriter.close();
                         fillWithCache();
-                    } else {
-                        Toast.makeText(TradingDetailsActivity.this,
-                                DisplayErrorMessage.returnErrorMessage(response_code),
-                                Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e){
                     e.printStackTrace();
@@ -399,9 +395,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<TradingData> call, Throwable t) {
-                System.out.println("Request Failed");
-            }
+            public void onFailure(Call<TradingData> call, Throwable t) {}
         });
     }
 
