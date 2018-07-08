@@ -1,8 +1,10 @@
 package com.example.android.welfare.userdetails.familydetails;
 
-public class FamilyModel {
+import java.io.Serializable;
 
-//    private int serialNo;
+public class FamilyModel implements Serializable {
+
+    //    private int serialNo;
     private int memberAge;
     private String memberName;
     private String memberGender;
@@ -20,14 +22,6 @@ public class FamilyModel {
         this.memberOccupation = memberOccupation;
         this.memberRelationship = memberRelationship;
     }
-
-//    public int getSerialNo() {
-//        return serialNo;
-//    }
-//
-//    public void setSerialNo(int serialNo) {
-//        this.serialNo = serialNo;
-//    }
 
     public int getMemberAge() {
         return memberAge;

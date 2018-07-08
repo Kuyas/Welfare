@@ -18,23 +18,25 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.OnStartCacheRetrieval;
 import com.example.android.welfare.R;
+import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.userdetails.TradingDetailsActivity;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMemberDialogFragment.AddButtonDialogListener {
-
     private SharedPreferences sharedPreferences;
 
     private RecyclerView recyclerView;
     private FamilyAdapter familyAdapter;
 
-    int maxFamilyMembers = 10;
     private List<FamilyModel> familyModelList;
     private FamilyMemberDialogFragment dialogFragment;
 
@@ -43,14 +45,10 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(FamilyDetailsActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_family_details);
-
-            familyModelList = new ArrayList<>();
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_family_details_heading));
@@ -67,13 +65,14 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
                 }
             });
 
+            familyModelList = new ArrayList<>();
 
+            fillWithCache();
             recyclerView = findViewById(R.id.family_details_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(FamilyDetailsActivity.this,
                     LinearLayoutManager.VERTICAL, false));
             recyclerView.setHasFixedSize(true);
 
-            familyModelList = new ArrayList<>();
             familyAdapter = new FamilyAdapter(this, familyModelList);
 
             recyclerView.setAdapter(familyAdapter);
@@ -124,7 +123,7 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         }
     };
 
-    private void showEditDialogFragment () {
+    private void showEditDialogFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         dialogFragment = FamilyMemberDialogFragment.newInstance(
                 getString(R.string.dialog_fragment_family_details_heading));
@@ -144,5 +143,15 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    public void fillWithCache() {
+        try {
+            ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.familycachefile));
+            familyModelList = (ArrayList<FamilyModel>) cacheReader.readObject();
+        } catch (Exception e) {
+            familyModelList = new ArrayList<>();
+        }
     }
 }

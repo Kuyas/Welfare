@@ -16,32 +16,27 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.OnStartCacheRetrieval;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
 import com.example.android.welfare.databaseconnection.responseclasses.OtherData;
 import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
 import com.example.android.welfare.login.LoginActivity;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.NetworkStatus;
-import com.example.android.welfare.R;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OtherDetailsActivity extends AppCompatActivity {
-
-
     private SharedPreferences sharedPreferences;
-    private static final String cacheDataFile = "otherdatacache.data";
 
     private TextInputEditText ownMainBranch;
     private TextInputEditText ownBranch;
@@ -56,19 +51,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
     private TextInputEditText rentedOthers;
     private TextInputEditText tradersOrganisation;
 
-//    private TextValidator validateOwnMainBranch;
-//    private TextValidator validateOwnBranch;
-//    private TextValidator validateOwnGodown;
-//    private TextValidator validateOwnFactory;
-//    private TextValidator validateOwnOthers;
-//
-//    private TextValidator validateRentedMainBranch;
-//    private TextValidator validateRentedBranch;
-//    private TextValidator validateRentedGodown;
-//    private TextValidator validateRentedFactory;
-//    private TextValidator validateRentedOthers;
-//    private TextValidator validateTradersOrganisation;
-
     private AlterView alterView;
     private CheckBox editableCheck;
     private APIService otherUsingAPI;
@@ -79,8 +61,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(OtherDetailsActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
@@ -124,20 +104,6 @@ public class OtherDetailsActivity extends AppCompatActivity {
                 }
             });
 
-//        validateOwnMainBranch = new TextValidator(ownMainBranch);
-//        validateOwnBranch = new TextValidator(ownBranch);
-//        validateOwnGodown = new TextValidator(ownGodown);
-//        validateOwnFactory = new TextValidator(ownFactory);
-//        validateOwnOthers = new TextValidator(ownOthers);
-//
-//        validateRentedMainBranch = new TextValidator(rentedMainBranch);
-//        validateRentedBranch = new TextValidator(rentedBranch);
-//        validateRentedGodown = new TextValidator(rentedGodown);
-//        validateRentedFactory = new TextValidator(rentedFactory);
-//        validateRentedOthers = new TextValidator(rentedOthers);
-//        validateTradersOrganisation = new TextValidator(tradersOrganisation);
-
-
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_other_details_heading));
             setSupportActionBar(toolbar);
@@ -164,61 +130,45 @@ public class OtherDetailsActivity extends AppCompatActivity {
                 case (R.id.button_other_details_next): {
                     if (editableCheck.isChecked()) {
                         if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                            final boolean flag = true;
 
-                            if (flag || true) {
-//                            Intent otherDetailsIntent = new Intent(OtherDetailsActivity.this,
-//                                    BankingDetailsActivity.class);
-//                            startActivity(otherDetailsIntent);
-                                otherUsingAPI = APIUtils.getAPIService();
-                                String ownMain = ownMainBranch.getText().toString();
-                                String ownB = ownBranch.getText().toString();
-                                String ownG = ownGodown.getText().toString();
-                                String ownF = ownFactory.getText().toString();
-                                String ownO = ownOthers.getText().toString();
-                                String rentM = rentedMainBranch.getText().toString();
-                                String rentB = rentedBranch.getText().toString();
-                                String rentG = rentedGodown.getText().toString();
-                                String rentF = rentedFactory.getText().toString();
-                                String rentO = rentedOthers.getText().toString();
-                                String trOr = tradersOrganisation.getText().toString();
+                            otherUsingAPI = APIUtils.getAPIService();
+                            String ownMain = ownMainBranch.getText().toString();
+                            String ownB = ownBranch.getText().toString();
+                            String ownG = ownGodown.getText().toString();
+                            String ownF = ownFactory.getText().toString();
+                            String ownO = ownOthers.getText().toString();
+                            String rentM = rentedMainBranch.getText().toString();
+                            String rentB = rentedBranch.getText().toString();
+                            String rentG = rentedGodown.getText().toString();
+                            String rentF = rentedFactory.getText().toString();
+                            String rentO = rentedOthers.getText().toString();
+                            String trOr = tradersOrganisation.getText().toString();
 
-                                otherUsingAPI.saveOther(loginID, ownMain, ownB, ownG, ownF, ownO, rentM,
-                                        rentB, rentG, rentF, rentO, trOr).enqueue(new Callback<ResponseData>() {
-                                    @Override
-                                    public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
-                                        int response_code = response.body().getResponseCode();
-                                        if (flag || response_code == 200) {
-                                            Toast.makeText(OtherDetailsActivity.this,
-                                                    getString(R.string.details_saved_confirmation),
-                                                    Toast.LENGTH_LONG).show();
-                                            nextActivity();
-
-                                        } else {
-                                            Toast.makeText(OtherDetailsActivity.this,
-                                                    DisplayErrorMessage.returnErrorMessage(response_code),
-                                                    Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<ResponseData> call, Throwable t) {
+                            otherUsingAPI.saveOther(loginID, ownMain, ownB, ownG, ownF, ownO, rentM,
+                                    rentB, rentG, rentF, rentO, trOr).enqueue(new Callback<ResponseData>() {
+                                @Override
+                                public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                                    int response_code = response.body().getResponseCode();
+                                    if (response_code == 200) {
                                         Toast.makeText(OtherDetailsActivity.this,
-                                                getString(R.string.request_not_sent),
+                                                getString(R.string.details_saved_confirmation),
                                                 Toast.LENGTH_LONG).show();
+                                        nextActivity();
 
-
+                                    } else {
+                                        Toast.makeText(OtherDetailsActivity.this,
+                                                DisplayErrorMessage.returnErrorMessage(response_code),
+                                                Toast.LENGTH_LONG).show();
                                     }
-                                });
+                                }
 
-                            } else {
-                                LinearLayout activityOtherDetailsLayout = findViewById(R.id.layout_activity_other_details);
-                                Snackbar validationSnackbar = Snackbar.make(activityOtherDetailsLayout,
-                                        getString(R.string.user_details_validation_snackbar_message),
-                                        Snackbar.LENGTH_LONG);
-
-                                validationSnackbar.show();
-                            }
+                                @Override
+                                public void onFailure(Call<ResponseData> call, Throwable t) {
+                                    Toast.makeText(OtherDetailsActivity.this,
+                                            getString(R.string.request_not_sent),
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            });
                         } else {
                             LinearLayout linearLayout = findViewById(R.id.layout_activity_other_details);
                             Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
@@ -240,19 +190,17 @@ public class OtherDetailsActivity extends AppCompatActivity {
                 default: {
                     break;
                 }
-
-
             }
         }
     };
 
-    public void nextActivity () {
+    public void nextActivity() {
         Intent bankingDetailsActivity = new Intent(OtherDetailsActivity.this,
                 BankingDetailsActivity.class);
         startActivity(bankingDetailsActivity);
     }
 
-    public void disableEdit () {
+    public void disableEdit() {
         alterView.disableTextInput(ownMainBranch);
         alterView.disableTextInput(ownBranch);
         alterView.disableTextInput(ownGodown);
@@ -266,7 +214,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
         alterView.disableTextInput(tradersOrganisation);
     }
 
-    public void allowEdit () {
+    public void allowEdit() {
         alterView.enableTextInput(ownMainBranch);
         alterView.enableTextInput(ownBranch);
         alterView.enableTextInput(ownGodown);
@@ -280,44 +228,10 @@ public class OtherDetailsActivity extends AppCompatActivity {
         alterView.enableTextInput(tradersOrganisation);
     }
 
-    public void getCacheData() {
-        APIService storeOtherData = APIUtils.getAPIService();
-        storeOtherData.getOtherData(sharedPreferences.getString("mobile_number", ""),
-                sharedPreferences.getString("password", "")).
-                enqueue(new Callback<OtherData>() {
-                    @Override
-                    public void onResponse(Call<OtherData> call, Response<OtherData> response) {
-                        try {
-                            int response_code = response.body().getResponseCode();
-                            if (response_code == 200) {
-                                File cache = new File(getCacheDir(), cacheDataFile);
-                                ObjectOutputStream cacheWriter = new ObjectOutputStream(new
-                                        FileOutputStream(cache));
-                                cacheWriter.writeObject(response.body());
-                                cacheWriter.close();
-                                fillWithCache();
-                            } else {
-                                Toast.makeText(OtherDetailsActivity.this,
-                                        DisplayErrorMessage.returnErrorMessage(response_code),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<OtherData> call, Throwable t) {
-                        System.out.println(getString(R.string.request_failed));
-                    }
-                });
-    }
-
-
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + cacheDataFile));
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.othercachefile));
             OtherData cached = (OtherData) cacheReader.readObject();
 
             ownMainBranch.setText(cached.getOwnMainBranch());
@@ -333,10 +247,7 @@ public class OtherDetailsActivity extends AppCompatActivity {
             rentedOthers.setText(cached.getRentedOther());
 
             tradersOrganisation.setText(cached.getTradersOrganisationName());
-
-
-        } catch (IOException | ClassNotFoundException e) {
-            getCacheData();
+        } catch (Exception e) {
         }
     }
 }

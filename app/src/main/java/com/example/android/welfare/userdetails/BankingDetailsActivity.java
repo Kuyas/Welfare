@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.android.welfare.OnStartCacheRetrieval;
 import com.example.android.welfare.databaseconnection.responseclasses.BankingData;
 import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.databaseconnection.APIService;
@@ -39,8 +40,6 @@ import retrofit2.Response;
 
 public class BankingDetailsActivity extends AppCompatActivity{
 
-    private static final String cacheDataFile = "bankingdatacache.data";
-
     private SharedPreferences sharedPreferences;
 
     private TextInputEditText bankName;
@@ -58,8 +57,6 @@ public class BankingDetailsActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(BankingDetailsActivity.this,
                     LoginActivity.class);
             startActivity(loginIntent);
@@ -235,53 +232,16 @@ public class BankingDetailsActivity extends AppCompatActivity{
         alterView.enableTextInput(ifscCode);
     }
 
-    public void getCacheData () {
-        APIService storeBankingData = APIUtils.getAPIService();
-        storeBankingData.getBankingData(sharedPreferences.getString("mobile_number", ""),
-                sharedPreferences.getString("password", "")).enqueue(new Callback<BankingData>() {
-            @Override
-            public void onResponse(Call<BankingData> call, Response<BankingData> response) {
-                try {
-                    int response_code = response.body().getResponseCode();
-                    if (response_code == 200) {
-                        File cache = new File(getCacheDir(), cacheDataFile);
-                        ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
-                        cacheWriter.writeObject(response.body());
-                        cacheWriter.close();
-                        fillWithCache();
-                    } else {
-                        Toast.makeText(BankingDetailsActivity.this,
-                                DisplayErrorMessage.returnErrorMessage(response_code),
-                                Toast.LENGTH_LONG).show();
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BankingData> call, Throwable t) {
-                System.out.println(getString(R.string.request_failed));
-            }
-        });
-    }
-
     public void fillWithCache () {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + cacheDataFile));
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.bankingcachefile));
             BankingData cached = (BankingData) cacheReader.readObject();
-
             bankName.setText(cached.getBankName());
             accountNumber.setText(cached.getAccountNumber());
             accountHolderName.setText(cached.getAccountHolderName());
             bankBranch.setText(cached.getBankBranch());
             ifscCode.setText(cached.getIfscCode());
-
-
-        } catch (IOException | ClassNotFoundException e) {
-            getCacheData();
-        }
+        } catch (Exception e) {}
     }
 }

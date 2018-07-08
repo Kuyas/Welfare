@@ -19,30 +19,26 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.OnStartCacheRetrieval;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
 import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
 import com.example.android.welfare.databaseconnection.responseclasses.TradingData;
 import com.example.android.welfare.login.LoginActivity;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.NetworkStatus;
-import com.example.android.welfare.R;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TradingDetailsActivity extends AppCompatActivity {
-    private static final boolean DEBUG = true;
-    private static final String cacheDataFile = "tradingdatacache.data";
     private AlterView alterView;
 
     private SharedPreferences sharedPreferences;
@@ -73,7 +69,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        if (sharedPreferences.getString("loggedInID", "").isEmpty()){
+        if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             Intent loginIntent = new Intent(TradingDetailsActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
@@ -155,11 +151,11 @@ public class TradingDetailsActivity extends AppCompatActivity {
             editableCheck.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                if (editableCheck.isChecked()) {
-                    allowEdit();
-                } else {
-                    disableEdit();
-                }
+                    if (editableCheck.isChecked()) {
+                        allowEdit();
+                    } else {
+                        disableEdit();
+                    }
                 }
             });
 
@@ -245,7 +241,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
                                 Toast.makeText(TradingDetailsActivity.this, getString(
                                         R.string.activity_trading_details_invalid_ownership_type),
                                         Toast.LENGTH_SHORT).show();
-                            }else {
+                            } else {
                                 ownershipSelect = ownershipSpinner.getSelectedItem().toString().trim();
                             }
                             if (authoritySpinner.getSelectedItem().toString().trim().equals(
@@ -254,12 +250,12 @@ public class TradingDetailsActivity extends AppCompatActivity {
                                 Toast.makeText(TradingDetailsActivity.this, getString(
                                         R.string.activity_trading_details_invalid_official_authority),
                                         Toast.LENGTH_SHORT).show();
-                            }else{
+                            } else {
                                 officialSelect = authoritySpinner.getSelectedItem().toString().trim();
                             }
 
 
-                            if (flag || DEBUG) {
+                            if (flag) {
 
                                 tradingUsingAPI.saveTrading(loginID, validFirmName.returnText(),
                                         validFirmAddress.returnText(), validTurnover.returnText(),
@@ -305,7 +301,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
                 }
             });
         }
-
 
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
@@ -372,43 +367,10 @@ public class TradingDetailsActivity extends AppCompatActivity {
         alterView.enableSpinner(authoritySpinner);
     }
 
-
-    public void getCacheData() {
-        APIService storeTradingData = APIUtils.getAPIService();
-        storeTradingData.getTradingData(sharedPreferences.getString("mobile_number", ""),
-                sharedPreferences.getString("password", "")).
-                enqueue(new Callback<TradingData>() {
-            @Override
-            public void onResponse(Call<TradingData> call, Response<TradingData> response) {
-                try {
-                    int response_code = response.body().getResponseCode();
-                    if (response_code== 200) {
-                        File cache = new File(getCacheDir(), cacheDataFile);
-                        ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
-                        cacheWriter.writeObject(response.body());
-                        cacheWriter.close();
-                        fillWithCache();
-                    } else {
-                        Toast.makeText(TradingDetailsActivity.this,
-                                DisplayErrorMessage.returnErrorMessage(response_code),
-                                Toast.LENGTH_LONG).show();
-                    }
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<TradingData> call, Throwable t) {
-                System.out.println("Request Failed");
-            }
-        });
-    }
-
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + cacheDataFile));
+                    getCacheDir() + File.separator + OnStartCacheRetrieval.tradingcachefile));
             TradingData cached = (TradingData) cacheReader.readObject();
             firmName.setText(cached.getFirmName());
             firmAddress.setText(cached.getFirmAddress());
@@ -424,7 +386,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     break;
                 }
             }
-            
+
             capital.setText(cached.getCapitalContribution());
             gstn.setText(cached.getGstnDate());
             licenseNumber.setText(cached.getLicenseNum());
@@ -436,8 +398,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
                     break;
                 }
             }
-        } catch (IOException | ClassNotFoundException e) {
-            getCacheData();
+        } catch (Exception e) {
         }
     }
 
@@ -446,19 +407,6 @@ public class TradingDetailsActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-//                case (R.id.button_trading_details_next): {
-//                    if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-//                        Intent otherDetailsIntent = new Intent(TradingDetailsActivity.this,
-//                                OtherDetailsActivity.class);
-//                        startActivity(otherDetailsIntent);
-//                    } else {
-//                        LinearLayout linearLayout = findViewById(R.id.layout_activity_trading_details);
-//                        Snackbar noConnectionSnackbar = Snackbar.make(linearLayout,
-//                                getString(R.string.internet_connection_error_message), Snackbar.LENGTH_LONG);
-//                        noConnectionSnackbar.show();
-//                    }
-//                    break;
-//                }
                 case (R.id.activity_button_home): {
                     Intent homeIntent = new Intent(TradingDetailsActivity.this,
                             MainActivity.class);
