@@ -14,6 +14,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -27,7 +29,8 @@ import com.example.android.welfare.userdetails.TradingDetailsActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMemberDialogFragment.AddButtonDialogListener {
+public class FamilyDetailsActivity extends AppCompatActivity implements
+        FamilyMemberDialogFragment.AddButtonDialogListener {
 
     private SharedPreferences sharedPreferences;
 
@@ -45,7 +48,8 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             //TODO: Remove the negation
 
-            Intent loginIntent = new Intent(FamilyDetailsActivity.this, LoginActivity.class);
+            Intent loginIntent = new Intent(FamilyDetailsActivity.this,
+                    LoginActivity.class);
             startActivity(loginIntent);
         } else {
             setContentView(R.layout.activity_family_details);
@@ -124,7 +128,7 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         }
     };
 
-    private void showEditDialogFragment () {
+    private void showEditDialogFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         dialogFragment = FamilyMemberDialogFragment.newInstance(
                 getString(R.string.dialog_fragment_family_details_heading));
@@ -139,10 +143,5 @@ public class FamilyDetailsActivity extends AppCompatActivity implements FamilyMe
         familyModelList.add(model);
         Toast.makeText(FamilyDetailsActivity.this, getString(
                 R.string.activity_family_details_member_added), Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 }

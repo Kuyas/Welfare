@@ -23,5 +23,6 @@ public class FamilyViewHolder extends RecyclerView.ViewHolder {
         memberGender = itemView.findViewById(R.id.text_view_family_member_gender);
         memberOccupation = itemView.findViewById(R.id.text_view_family_member_occupation);
         memberRelationship = itemView.findViewById(R.id.text_view_family_member_relationship);
+
     }
 }

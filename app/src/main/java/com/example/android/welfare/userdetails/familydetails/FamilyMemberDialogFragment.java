@@ -160,6 +160,7 @@ public class FamilyMemberDialogFragment extends DialogFragment implements View.O
                     listener.onFinishEditDialog(model);
 
                     dismiss();
+
                 } else {
                     Snackbar errorSnackbar = Snackbar.make(getActivity().findViewById(android.R.id.content),
                             getString(R.string.dialog_fragment_family_details_invalid_data), Snackbar.LENGTH_SHORT);

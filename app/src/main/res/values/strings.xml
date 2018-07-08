@@ -287,4 +287,6 @@
     <string name="activity_banking_details_invalid_ifsc_code">IFSC code should have 4 alphabets and 7 digits</string>
 
 
+
+
 </resources>

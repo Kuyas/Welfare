@@ -39,15 +39,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/activity_classchange_old_income"
-                    android:textSize="22sp"/>
+                    android:textSize="25sp"/>
                 <TextView
                     android:id="@+id/activity_classchange_old_turnover"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
                     android:textColor="#ff0000"
                     android:paddingLeft="15dp"
-                    android:textSize="22sp"/>
+                    android:textSize="25sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -99,24 +98,24 @@
                 android:layout_width="120dp"
                 android:layout_height="60dp" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New Class"
-                    android:textSize="25sp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Depends on New Income"
-                    android:textColor="#ff0000"
-                    android:paddingLeft="15dp"
-                    android:textSize="25sp"/>
-            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:layout_marginTop="10dp">-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="New Class"-->
+                    <!--android:textSize="25sp"/>-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Depends on New Income"-->
+                    <!--android:textColor="#ff0000"-->
+                    <!--android:paddingLeft="15dp"-->
+                    <!--android:textSize="25sp"/>-->
+            <!--</LinearLayout>-->
 
         </LinearLayout>
 

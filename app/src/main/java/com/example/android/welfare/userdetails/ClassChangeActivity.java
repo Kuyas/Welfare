@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,9 +29,9 @@ public class ClassChangeActivity extends AppCompatActivity {
     private APIService turnoverUsingAPI;
     private String loginID;
     private String turnoverText;
-    TextView oldTurnover;
-    String s;
-    TextView oldClass;
+    private TextView oldTurnover;
+    private String s;
+    private TextView oldClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +81,8 @@ public class ClassChangeActivity extends AppCompatActivity {
             loginID = sharedPreferences.getString("loggedInID", "");
             oldClass = findViewById(R.id.activity_classchange_old_class);
             oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
-            oldTurnover.setText("");
+            //oldTurnover.setText("");
+
 
 
             turnoverUsingAPI.getTurnoverData(loginID).enqueue(new Callback<TurnoverData>() {
@@ -88,8 +90,8 @@ public class ClassChangeActivity extends AppCompatActivity {
                 public void onResponse(Call<TurnoverData> call, Response<TurnoverData> response) {
                         int response_code = response.body().getResponseCode();
                         if(response_code == 200){
-                             turnoverText = response.body().getTurnover();
-                             s = turnoverText;
+                            turnoverText = response.body().getTurnover();
+                            s = turnoverText;
                             oldTurnover.setText(turnoverText);
 
                         }
@@ -102,22 +104,25 @@ public class ClassChangeActivity extends AppCompatActivity {
                 }
             });
 
+            // TODO: fix the class
+//            TextInputEditText turnoverEditText = findViewById(R.id.edit_text_trading_turnover);
+//            final String s = turnoverEditText.getText().toString();
 
-
-//            oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
-//            String s = oldTurnover.getText().toString();
-//            Float f = Float.parseFloat(s);
+            //oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
+            //String s = oldTurnover.getText().toString();
+            s = "12345678";
+            Float f = Float.parseFloat(s);
             Toast.makeText(ClassChangeActivity.this, s, Toast.LENGTH_LONG).show();
-//            if(f <= 1000000.00){
-//                oldClass.setText("D");
-//
-//            }else if( f > 1000000.00 && f <= 2500000.00){
-//                oldClass.setText("C");
-//            }else if( f > 2500000.00 && f <= 5000000.00){
-//                oldClass.setText("B");
-//            }else{
-//                oldClass.setText("A");
-//            }
+            if(f <= 1000000.00){
+                oldClass.setText("D");
+
+            }else if( f > 1000000.00 && f <= 2500000.00){
+                oldClass.setText("C");
+            }else if( f > 2500000.00 && f <= 5000000.00){
+                oldClass.setText("B");
+            }else{
+                oldClass.setText("A");
+            }
 
 
         }
