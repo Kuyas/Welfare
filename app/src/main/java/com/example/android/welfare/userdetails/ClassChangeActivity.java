@@ -90,7 +90,7 @@ public class ClassChangeActivity extends AppCompatActivity {
                         if(response_code == 200){
                              turnoverText = response.body().getTurnover();
                              s = turnoverText;
-                            oldTurnover.setText(turnoverText);
+                            oldTurnover.setText("50000000.00");
 
                         }
                 }
