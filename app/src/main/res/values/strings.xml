@@ -164,6 +164,8 @@
     <string name="activity_classchange_name">New Annual Turnover</string>
     <string name="activity_classchange_submit">Submit</string>
     <string name="activity_classchange_class">New Class</string>
+    <string name="activity_class_change_null_turnover">No Turnover data</string>
+    <string name="activity_class_change_null_class">Cannot be determined</string>
 
     <string name="activity_other_details_location">Location</string>
     <string name="activity_other_details_rupees">Rs.</string>

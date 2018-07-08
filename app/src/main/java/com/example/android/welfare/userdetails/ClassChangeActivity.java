@@ -72,33 +72,46 @@ public class ClassChangeActivity extends AppCompatActivity {
             oldClass = findViewById(R.id.activity_classchange_old_class);
             oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
 
-            turnoverUsingAPI.getTurnoverData(loginID).enqueue(new Callback<TurnoverData>() {
-                @Override
-                public void onResponse(Call<TurnoverData> call, Response<TurnoverData> response) {
+
+
+
+                turnoverUsingAPI.getTurnoverData(loginID).enqueue(new Callback<TurnoverData>() {
+                    @Override
+                    public void onResponse(Call<TurnoverData> call, Response<TurnoverData> response) {
                         int response_code = response.body().getResponseCode();
-                        if(response_code == 200){
-                             turnoverText = response.body().getTurnover();
-                             s = turnoverText;
-                            oldTurnover.setText(turnoverText);
-                            Float f = Float.parseFloat(turnoverText);
-                            if(f <= 1000000.00){
-                                oldClass.setText("D");
-                            }else if( f > 1000000.00 && f <= 2500000.00){
-                                oldClass.setText("C");
-                            }else if( f > 2500000.00 && f <= 5000000.00){
-                                oldClass.setText("B");
-                            }else{
-                                oldClass.setText("A");
+                        if (response_code == 200) {
+                            turnoverText = response.body().getTurnover();
+                            s = turnoverText;
+
+                            if(turnoverText == null){
+//                                Toast.makeText(ClassChangeActivity.this, "Turnover is Null", Toast.LENGTH_SHORT).show();
+                                oldTurnover.setText(getString(R.string.activity_class_change_null_turnover));
+                                oldClass.setText(getString(R.string.activity_class_change_null_class));
+
+                            }else {
+                                oldTurnover.setText(turnoverText);
+                                Float f = Float.parseFloat(turnoverText);
+
+                                if (f <= 1000000.00) {
+                                    oldClass.setText("D");
+                                } else if (f > 1000000.00 && f <= 2500000.00) {
+                                    oldClass.setText("C");
+                                } else if (f > 2500000.00 && f <= 5000000.00) {
+                                    oldClass.setText("B");
+                                } else {
+                                    oldClass.setText("A");
+                                }
                             }
                         }
-                }
+                    }
 
-                @Override
-                public void onFailure(Call<TurnoverData> call, Throwable t) {
-                    Toast.makeText(ClassChangeActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
+                    @Override
+                    public void onFailure(Call<TurnoverData> call, Throwable t) {
+//                        Toast.makeText(ClassChangeActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
 
-                }
-            });
+                    }
+                });
+
         }
     }
 }
