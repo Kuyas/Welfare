@@ -94,8 +94,7 @@
         android:layout_height="70dp"
         android:textSize="@dimen/user_details_text_size"
         android:textColor="@color/colorAccent"
-        android:text="@string/activity_renew_membership_pay"
-        android:textSize="@dimen/user_details_text_size"/>
+        android:text="@string/activity_renew_membership_pay" />
 
 </LinearLayout>
 
