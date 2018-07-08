@@ -47,6 +47,14 @@ public interface APIService {
                                     @Field("personal_address") String personal_address,
                                     @Field("personal_place") String personal_place,
                                     @Field("personal_district") String personal_district);
+    @POST("family_form.php")
+    @FormUrlEncoded
+    Call<ResponseData> saveFamily(@Field("user_id") String user_id,
+                                  @Field("family_name") String family_name,
+                                  @Field("family_age") String family_age,
+                                  @Field("family_gender") String family_gender,
+                                  @Field("family_occupation") String family_occupation,
+                                  @Field("family_relationship") String family_relationship);
 
     @POST("trading_form.php")
     @FormUrlEncoded

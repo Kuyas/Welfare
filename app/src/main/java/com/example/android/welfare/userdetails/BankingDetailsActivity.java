@@ -271,8 +271,6 @@ public class BankingDetailsActivity extends AppCompatActivity{
             accountHolderName.setText(cached.getAccountHolderName());
             bankBranch.setText(cached.getBankBranch());
             ifscCode.setText(cached.getIfscCode());
-
-
         } catch (IOException | ClassNotFoundException e) {
             getCacheData();
         }

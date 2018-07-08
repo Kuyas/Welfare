@@ -88,9 +88,9 @@
     <string name="dialog_fragment_family_details_heading">Fill Details</string>
     <string-array name="dialog_fragment_family_spinner_gender">
         <item>Choose Gender</item>
-        <item>Male</item>
-        <item>Female</item>
-        <item>Other</item>
+        <item>MALE</item>
+        <item>FEMALE</item>
+        <item>OTHER</item>
     </string-array>
 
 

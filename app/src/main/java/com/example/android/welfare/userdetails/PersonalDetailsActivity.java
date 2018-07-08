@@ -101,25 +101,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             genderSpinner.setAdapter(genderAdapter);
 
-            genderSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                    Context context = getApplicationContext();
-                    Object text = parent.getItemAtPosition(pos);
-                    if (pos > 0) {
-//                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    //Another interface callback
-                    Context context = getApplicationContext();
-//            Object text =  parent.getItemAtPosition(pos);
-//                    Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
-                }
-            });
-
             //SPINNER FOR DISTRICT SELECT
             districtSpinner = findViewById(R.id.activity_personal_details_district_select);
 
@@ -136,22 +117,6 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
             districtSpinner.setAdapter(spinnerArrayAdapter);
-
-            districtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int pos1, long id) {
-                    Context context = getApplicationContext();
-                    Object text = parent.getItemAtPosition(pos1);
-                    if (pos1 > 0) {
-//                        Toast.makeText(context, (CharSequence) text, Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    //Another interface callback
-                }
-            });
 
             personalUsingAPI = APIUtils.getAPIService();
             name = findViewById(R.id.edit_text_personal_name);

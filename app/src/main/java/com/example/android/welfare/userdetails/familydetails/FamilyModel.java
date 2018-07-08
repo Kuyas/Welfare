@@ -1,6 +1,8 @@
 package com.example.android.welfare.userdetails.familydetails;
 
-public class FamilyModel {
+import java.io.Serializable;
+
+public class FamilyModel implements Serializable{
 
 //    private int serialNo;
     private int memberAge;
