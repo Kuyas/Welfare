@@ -107,7 +107,6 @@ public class ClassChangeActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<TurnoverData> call, Throwable t) {
-//                        Toast.makeText(ClassChangeActivity.this, "Request failed to send", Toast.LENGTH_LONG).show();
 
                     }
                 });
