@@ -16,21 +16,20 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.OnStartCacheRetrieval;
-import com.example.android.welfare.databaseconnection.responseclasses.BankingData;
-import com.example.android.welfare.login.LoginActivity;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
+import com.example.android.welfare.databaseconnection.responseclasses.BankingData;
 import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.NetworkStatus;
-import com.example.android.welfare.R;
+import com.example.android.welfare.login.LoginActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
@@ -38,7 +37,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BankingDetailsActivity extends AppCompatActivity{
+import static com.example.android.welfare.OnStartCacheRetrieval.bankingcachefile;
+import static com.example.android.welfare.OnStartCacheRetrieval.personalcachefile;
+
+public class BankingDetailsActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
 
@@ -52,6 +54,14 @@ public class BankingDetailsActivity extends AppCompatActivity{
     private AlterView alterView;
     private APIService bankingUsingAPI;
 
+    private BankingData cached;
+
+    private TextValidator validbankName;
+    private TextValidator validAccountHolderName;
+    private TextValidator validAccountNumber;
+    private TextValidator validBranch;
+    private TextValidator validifscCode;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +73,7 @@ public class BankingDetailsActivity extends AppCompatActivity{
         } else {
             setContentView(R.layout.activity_banking_details);
 
-            Button submitButton = findViewById(R.id.activity_bank_details_button_submit);
+            final Button submitButton = findViewById(R.id.activity_bank_details_button_submit);
 
             final Toolbar toolbar = findViewById(R.id.activity_toolbar);
             toolbar.setTitle(getString(R.string.activity_bank_details_heading));
@@ -111,11 +121,11 @@ public class BankingDetailsActivity extends AppCompatActivity{
                         if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
                             boolean flag = true;
 
-                            TextValidator validbankName = new TextValidator(bankName);
-                            TextValidator validAccountHolderName = new TextValidator(accountHolderName);
-                            TextValidator validAccountNumber = new TextValidator(accountNumber);
-                            TextValidator validBranch = new TextValidator(bankBranch);
-                            TextValidator validifscCode = new TextValidator(ifscCode);
+                            validbankName = new TextValidator(bankName);
+                            validAccountHolderName = new TextValidator(accountHolderName);
+                            validAccountNumber = new TextValidator(accountNumber);
+                            validBranch = new TextValidator(bankBranch);
+                            validifscCode = new TextValidator(ifscCode);
 
                             if (!validbankName.isValid()) {
                                 flag = false;
@@ -161,6 +171,9 @@ public class BankingDetailsActivity extends AppCompatActivity{
                                             Toast.makeText(BankingDetailsActivity.this,
                                                     getString(R.string.details_saved_confirmation),
                                                     Toast.LENGTH_LONG).show();
+                                            editableCheck.setChecked(false);
+                                            disableEdit();
+                                            changeCache();
                                             nextActivity();
                                         } else {
                                             Toast.makeText(BankingDetailsActivity.this,
@@ -224,7 +237,7 @@ public class BankingDetailsActivity extends AppCompatActivity{
         alterView.disableTextInput(ifscCode);
     }
 
-    public void enableEdit () {
+    public void enableEdit() {
         alterView.enableTextInput(bankName);
         alterView.enableTextInput(accountNumber);
         alterView.enableTextInput(accountHolderName);
@@ -232,16 +245,33 @@ public class BankingDetailsActivity extends AppCompatActivity{
         alterView.enableTextInput(ifscCode);
     }
 
-    public void fillWithCache () {
+    public void changeCache() {
+        cached.setAccountHolderName(validAccountHolderName.returnText());
+        cached.setAccountNumber(validAccountNumber.returnText());
+        cached.setBankName(validbankName.returnText());
+        cached.setBankBranch(validBranch.returnText());
+        cached.setIfscCode(validifscCode.returnText());
+        try {
+            File cache = new File(getCacheDir(), bankingcachefile);
+            ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
+            cacheWriter.writeObject(cached);
+            cacheWriter.close();
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.activity_forms_cached_save_failed, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + OnStartCacheRetrieval.bankingcachefile));
-            BankingData cached = (BankingData) cacheReader.readObject();
+                    getCacheDir() + File.separator + bankingcachefile));
+            cached = (BankingData) cacheReader.readObject();
             bankName.setText(cached.getBankName());
             accountNumber.setText(cached.getAccountNumber());
             accountHolderName.setText(cached.getAccountHolderName());
             bankBranch.setText(cached.getBankBranch());
             ifscCode.setText(cached.getIfscCode());
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
     }
 }

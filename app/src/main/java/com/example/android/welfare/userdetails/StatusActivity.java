@@ -13,13 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.responseclasses.ClaimsData;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.R;
 
 import java.util.List;
 
@@ -56,11 +55,11 @@ public class StatusActivity extends AppCompatActivity {
         checkStatusUsingAPI = APIUtils.getAPIService();
         loginID = sharedPreferences.getString("loggedInID", "");
         status_view_application = findViewById(R.id.info_application_status);
-         progress_view_application = findViewById(R.id.info_application_progress);
-         status_view_claim = findViewById(R.id.info_claim_status);
-         progress_view_claim = findViewById(R.id.info_claim_progress);
-         status_view_pension = findViewById(R.id.info_pension_status);
-         progress_view_pension = findViewById(R.id.info_pension_progress);
+        progress_view_application = findViewById(R.id.info_application_progress);
+        status_view_claim = findViewById(R.id.info_claim_status);
+        progress_view_claim = findViewById(R.id.info_claim_progress);
+        status_view_pension = findViewById(R.id.info_pension_status);
+        progress_view_pension = findViewById(R.id.info_pension_progress);
 
 
         final Toolbar toolbar = findViewById(R.id.activity_toolbar);
@@ -80,15 +79,15 @@ public class StatusActivity extends AppCompatActivity {
 
 
         final Button homeButton = findViewById(R.id.activity_button_home);
-          homeButton.setOnClickListener(onClickListener);
+        homeButton.setOnClickListener(onClickListener);
 
 
         checkStatusUsingAPI.checkStatus(loginID).enqueue(new Callback<List<ClaimsData>>() {
             @Override
             public void onResponse(Call<List<ClaimsData>> call, Response<List<ClaimsData>> response) {
 
-                if(response.isSuccessful()) {
-                    int i =0;
+                if (response.isSuccessful()) {
+                    int i = 0;
                     List<ClaimsData> response_body = response.body();
                     for (ClaimsData c : response_body) {
                         if (i == 0) {
@@ -230,28 +229,32 @@ public class StatusActivity extends AppCompatActivity {
                                     status_view_pension.setText(R.string.StatusActivity_cleared_by_clerk);
                                     progress_view_pension.setText("0/5");
 
-                                } if (status.equals("1")) {
+                                }
+                                if (status.equals("1")) {
                                     pension = findViewById(R.id.progress_bar_pension);
                                     pension.setProgress(20);
                                     pension.setScaleY(2f);
                                     status_view_pension.setText(R.string.StatusActivity_cleared_by_clerk);
                                     progress_view_pension.setText("1/5");
 
-                                } if (status.equals("2")) {
+                                }
+                                if (status.equals("2")) {
                                     pension = findViewById(R.id.progress_bar_pension);
                                     pension.setProgress(40);
                                     pension.setScaleY(2f);
                                     status_view_pension.setText(R.string.StatusActivity_cleared_by_clerk);
                                     progress_view_pension.setText("2/5");
 
-                                } if (status.equals("3")) {
+                                }
+                                if (status.equals("3")) {
                                     pension = findViewById(R.id.progress_bar_pension);
                                     pension.setProgress(60);
                                     pension.setScaleY(2f);
                                     status_view_pension.setText(R.string.StatusActivity_cleared_by_clerk);
                                     progress_view_pension.setText("3/5");
 
-                                } if (status.equals("4")) {
+                                }
+                                if (status.equals("4")) {
                                     pension = findViewById(R.id.progress_bar_pension);
                                     pension.setProgress(80);
                                     pension.setScaleY(2f);
@@ -286,9 +289,9 @@ public class StatusActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<ClaimsData>> call, Throwable t) {}
+            public void onFailure(Call<List<ClaimsData>> call, Throwable t) {
+            }
         });
-
 
 
     }
@@ -304,7 +307,8 @@ public class StatusActivity extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_left_to_right, R.anim.slide_right_to_left);
                     break;
                 }
-                default: {}
+                default: {
+                }
             }
         }
     };

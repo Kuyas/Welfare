@@ -1,12 +1,11 @@
 package com.example.android.welfare.databaseconnection.responseclasses;
 
-import java.io.Serializable;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class TradingData implements Serializable
-{
+import java.io.Serializable;
+
+public class TradingData implements Serializable {
 
     @SerializedName("response_code")
     @Expose
@@ -17,6 +16,9 @@ public class TradingData implements Serializable
     @SerializedName("firm_address")
     @Expose
     private String firmAddress;
+    @SerializedName("annual_turnover")
+    @Expose
+    private String annualTurnover;
     @SerializedName("mtp_branch")
     @Expose
     private String mtpBranch;
@@ -29,67 +31,63 @@ public class TradingData implements Serializable
     @SerializedName("mtp_others")
     @Expose
     private String mtpOthers;
-    @SerializedName("ownership_type")
+    @SerializedName("ownership")
     @Expose
-    private String ownershipType;
-    @SerializedName("capital_contribution")
+    private String ownership;
+    @SerializedName("capital")
     @Expose
-    private String capitalContribution;
-    @SerializedName("gstn_date")
+    private String capital;
+    @SerializedName("gstn")
     @Expose
-    private String gstnDate;
+    private String gstn;
     @SerializedName("license_num")
     @Expose
     private String licenseNum;
     @SerializedName("license_auth")
     @Expose
     private String licenseAuth;
-    @SerializedName("official_name")
+    @SerializedName("official")
     @Expose
-    private String officialName;
-//    private final static long serialVersionUID = 2448122971875805156L;
+    private String official;
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public TradingData() {
     }
 
     /**
-     *
-     * @param ownershipType
-     * @param gstnDate
      * @param licenseNum
      * @param responseCode
      * @param mtpGodown
-     * @param capitalContribution
      * @param firmName
      * @param mtpBranch
+     * @param annualTurnover
+     * @param capital
      * @param licenseAuth
      * @param firmAddress
+     * @param ownership
+     * @param official
      * @param mtpFactory
-     * @param officialName
+     * @param gstn
      * @param mtpOthers
      */
-    public TradingData(Integer responseCode, String firmName, String firmAddress, String mtpBranch,
-                       String mtpGodown, String mtpFactory, String mtpOthers, String ownershipType,
-                       String capitalContribution, String gstnDate, String licenseNum,
-                       String licenseAuth, String officialName) {
+    public TradingData(Integer responseCode, String firmName, String firmAddress, String annualTurnover, String mtpBranch, String mtpGodown, String mtpFactory, String mtpOthers, String ownership, String capital, String gstn, String licenseNum, String licenseAuth, String official) {
         super();
         this.responseCode = responseCode;
         this.firmName = firmName;
         this.firmAddress = firmAddress;
+        this.annualTurnover = annualTurnover;
         this.mtpBranch = mtpBranch;
         this.mtpGodown = mtpGodown;
         this.mtpFactory = mtpFactory;
         this.mtpOthers = mtpOthers;
-        this.ownershipType = ownershipType;
-        this.capitalContribution = capitalContribution;
-        this.gstnDate = gstnDate;
+        this.ownership = ownership;
+        this.capital = capital;
+        this.gstn = gstn;
         this.licenseNum = licenseNum;
         this.licenseAuth = licenseAuth;
-        this.officialName = officialName;
+        this.official = official;
     }
 
     public Integer getResponseCode() {
@@ -114,6 +112,14 @@ public class TradingData implements Serializable
 
     public void setFirmAddress(String firmAddress) {
         this.firmAddress = firmAddress;
+    }
+
+    public String getAnnualTurnover() {
+        return annualTurnover;
+    }
+
+    public void setAnnualTurnover(String annualTurnover) {
+        this.annualTurnover = annualTurnover;
     }
 
     public String getMtpBranch() {
@@ -148,28 +154,28 @@ public class TradingData implements Serializable
         this.mtpOthers = mtpOthers;
     }
 
-    public String getOwnershipType() {
-        return ownershipType;
+    public String getOwnership() {
+        return ownership;
     }
 
-    public void setOwnershipType(String ownershipType) {
-        this.ownershipType = ownershipType;
+    public void setOwnership(String ownership) {
+        this.ownership = ownership;
     }
 
-    public String getCapitalContribution() {
-        return capitalContribution;
+    public String getCapital() {
+        return capital;
     }
 
-    public void setCapitalContribution(String capitalContribution) {
-        this.capitalContribution = capitalContribution;
+    public void setCapital(String capital) {
+        this.capital = capital;
     }
 
-    public String getGstnDate() {
-        return gstnDate;
+    public String getGstn() {
+        return gstn;
     }
 
-    public void setGstnDate(String gstnDate) {
-        this.gstnDate = gstnDate;
+    public void setGstn(String gstn) {
+        this.gstn = gstn;
     }
 
     public String getLicenseNum() {
@@ -188,21 +194,12 @@ public class TradingData implements Serializable
         this.licenseAuth = licenseAuth;
     }
 
-    public String getOfficialName() {
-        return officialName;
+    public String getOfficial() {
+        return official;
     }
 
-    public void setOfficialName(String officialName) {
-        this.officialName = officialName;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(responseCode).append(firmName).append(firmAddress).
-                append(mtpBranch).append(mtpGodown).append(mtpFactory).append(mtpOthers).
-                append(ownershipType).append(capitalContribution).append(gstnDate).
-                append(licenseNum).append(licenseAuth).append(officialName).toString();
+    public void setOfficial(String official) {
+        this.official = official;
     }
 
 }

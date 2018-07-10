@@ -29,11 +29,16 @@ import com.example.android.welfare.login.LoginActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.android.welfare.OnStartCacheRetrieval.othercachefile;
+import static com.example.android.welfare.OnStartCacheRetrieval.personalcachefile;
 
 public class OtherDetailsActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
@@ -55,6 +60,8 @@ public class OtherDetailsActivity extends AppCompatActivity {
     private CheckBox editableCheck;
     private APIService otherUsingAPI;
     private String loginID;
+
+    private OtherData cached;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -152,6 +159,9 @@ public class OtherDetailsActivity extends AppCompatActivity {
                                         Toast.makeText(OtherDetailsActivity.this,
                                                 getString(R.string.details_saved_confirmation),
                                                 Toast.LENGTH_LONG).show();
+                                        editableCheck.setChecked(false);
+                                        disableEdit();
+                                        changeCache();
                                         nextActivity();
 
                                     } else {
@@ -227,26 +237,49 @@ public class OtherDetailsActivity extends AppCompatActivity {
         alterView.enableTextInput(tradersOrganisation);
     }
 
+    public void changeCache() {
+        cached.setEmvMainBranch(ownMainBranch.getText().toString());
+        cached.setEmvBranch(ownBranch.getText().toString());
+        cached.setEmvFactory(ownFactory.getText().toString());
+        cached.setEmvGodown(ownGodown.getText().toString());
+        cached.setEmvOthers(ownOthers.getText().toString());
+        cached.setAraBranch(rentedBranch.getText().toString());
+        cached.setAraFactory(rentedFactory.getText().toString());
+        cached.setAraGodown(rentedGodown.getText().toString());
+        cached.setAraBranch(rentedMainBranch.getText().toString());
+        cached.setAraMain(rentedMainBranch.getText().toString());
+        cached.setAraOther(rentedOthers.getText().toString());
+        try {
+            File cache = new File(getCacheDir(), othercachefile);
+            ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
+            cacheWriter.writeObject(cached);
+            cacheWriter.close();
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.activity_forms_cached_save_failed, Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + OnStartCacheRetrieval.othercachefile));
-            OtherData cached = (OtherData) cacheReader.readObject();
+                    getCacheDir() + File.separator + othercachefile));
+            cached = (OtherData) cacheReader.readObject();
 
-            ownMainBranch.setText(cached.getOwnMainBranch());
-            ownBranch.setText(cached.getOwnBranch());
-            ownGodown.setText(cached.getOwnGodown());
-            ownFactory.setText(cached.getOwnFactory());
-            ownOthers.setText(cached.getOwnOther());
+            ownMainBranch.setText(cached.getEmvMainBranch());
+            ownBranch.setText(cached.getEmvBranch());
+            ownGodown.setText(cached.getEmvGodown());
+            ownFactory.setText(cached.getEmvFactory());
+            ownOthers.setText(cached.getEmvOthers());
 
-            rentedMainBranch.setText(cached.getRentedMainBranch());
-            rentedBranch.setText(cached.getRentedBranch());
-            rentedGodown.setText(cached.getRentedGodown());
-            rentedFactory.setText(cached.getRentedFactory());
-            rentedOthers.setText(cached.getRentedOther());
+            rentedMainBranch.setText(cached.getAraBranch());
+            rentedBranch.setText(cached.getAraBranch());
+            rentedGodown.setText(cached.getAraGodown());
+            rentedFactory.setText(cached.getAraFactory());
+            rentedOthers.setText(cached.getAraOther());
 
-            tradersOrganisation.setText(cached.getTradersOrganisationName());
+            tradersOrganisation.setText(cached.getOrganisation());
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

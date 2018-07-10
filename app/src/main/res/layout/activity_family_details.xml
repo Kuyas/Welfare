@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_activity_family_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="80"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +40,7 @@
                 android:layout_height="50dp"
                 android:text="@string/activity_family_details_add_member"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/user_details_button_text_size"/>
+                android:textSize="@dimen/user_details_button_text_size" />
 
             <Button
                 android:id="@+id/button_family_details_next"
@@ -49,7 +48,7 @@
                 android:layout_height="50dp"
                 android:textColor="@color/colorAccent"
                 android:text="@string/user_details_button_next"
-                android:textSize="@dimen/user_details_button_text_size"/>
+                android:textSize="@dimen/user_details_button_text_size" />
 
         </LinearLayout>
 

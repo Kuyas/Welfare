@@ -11,7 +11,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -32,11 +31,16 @@ import com.example.android.welfare.login.LoginActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.android.welfare.OnStartCacheRetrieval.othercachefile;
+import static com.example.android.welfare.OnStartCacheRetrieval.tradingcachefile;
 
 public class TradingDetailsActivity extends AppCompatActivity {
     private AlterView alterView;
@@ -64,6 +68,19 @@ public class TradingDetailsActivity extends AppCompatActivity {
     private ArrayAdapter<CharSequence> ownershipAdapter;
     private CheckBox editableCheck;
 
+    private TradingData cached;
+
+    private TextValidator validFirmName;
+    private TextValidator validFirmAddress;
+    private TextValidator validBranch;
+    private TextValidator validGodown;
+    private TextValidator validFactory;
+    private TextValidator validOthers;
+    private TextValidator validCapital;
+    private TextValidator validGstn;
+    private TextValidator validLicenseNumber;
+    private TextValidator validLicenseAuthority;
+    private TextValidator validTurnover;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,17 +148,17 @@ public class TradingDetailsActivity extends AppCompatActivity {
                         if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
                             boolean flag = true;
 
-                            TextValidator validFirmName = new TextValidator(firmName);
-                            TextValidator validFirmAddress = new TextValidator(firmAddress);
-                            TextValidator validBranch = new TextValidator(branch);
-                            TextValidator validGodown = new TextValidator(godown);
-                            TextValidator validFactory = new TextValidator(factory);
-                            TextValidator validOthers = new TextValidator(others);
-                            TextValidator validCapital = new TextValidator(capital);
-                            TextValidator validGstn = new TextValidator(gstn);
-                            TextValidator validLicenseNumber = new TextValidator(licenseNumber);
-                            TextValidator validLicenseAuthority = new TextValidator(licenseAuthority);
-                            TextValidator validTurnover = new TextValidator(turnover);
+                            validFirmName = new TextValidator(firmName);
+                            validFirmAddress = new TextValidator(firmAddress);
+                            validBranch = new TextValidator(branch);
+                            validGodown = new TextValidator(godown);
+                            validFactory = new TextValidator(factory);
+                            validOthers = new TextValidator(others);
+                            validCapital = new TextValidator(capital);
+                            validGstn = new TextValidator(gstn);
+                            validLicenseNumber = new TextValidator(licenseNumber);
+                            validLicenseAuthority = new TextValidator(licenseAuthority);
+                            validTurnover = new TextValidator(turnover);
 
 
                             if (!validFirmName.isValid()) {
@@ -236,6 +253,9 @@ public class TradingDetailsActivity extends AppCompatActivity {
                                             Toast.makeText(TradingDetailsActivity.this,
                                                     getString(R.string.details_saved_confirmation),
                                                     Toast.LENGTH_LONG).show();
+                                            editableCheck.setChecked(false);
+                                            disableEdit();
+                                            changeCache();
                                             nextActivity();
                                         } else {
                                             Toast.makeText(TradingDetailsActivity.this,
@@ -330,11 +350,35 @@ public class TradingDetailsActivity extends AppCompatActivity {
         alterView.enableSpinner(authoritySpinner);
     }
 
+    public void changeCache() {
+        cached.setAnnualTurnover(validTurnover.returnText());
+        cached.setMtpBranch(validBranch.returnText());
+        cached.setCapital(validCapital.returnText());
+        cached.setMtpFactory(validFactory.returnText());
+        cached.setFirmAddress(validFirmAddress.returnText());
+        cached.setFirmName(validFirmName.returnText());
+        cached.setGstn(validGstn.returnText());
+        cached.setMtpGodown(validGodown.returnText());
+        cached.setLicenseAuth(validLicenseAuthority.returnText());
+        cached.setLicenseNum(validLicenseNumber.returnText());
+        cached.setMtpOthers(validOthers.returnText());
+        cached.setOwnership(ownershipSelect);
+        cached.setOfficial(officialSelect);
+        try {
+            File cache = new File(getCacheDir(), tradingcachefile);
+            ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
+            cacheWriter.writeObject(cached);
+            cacheWriter.close();
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.activity_forms_cached_save_failed, Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
                     getCacheDir() + File.separator + OnStartCacheRetrieval.tradingcachefile));
-            TradingData cached = (TradingData) cacheReader.readObject();
+            cached = (TradingData) cacheReader.readObject();
             firmName.setText(cached.getFirmName());
             firmAddress.setText(cached.getFirmAddress());
             branch.setText(cached.getMtpBranch());
@@ -342,16 +386,17 @@ public class TradingDetailsActivity extends AppCompatActivity {
             godown.setText(cached.getMtpGodown());
             others.setText(cached.getMtpOthers());
             others.setText(cached.getMtpOthers());
+            turnover.setText(cached.getAnnualTurnover());
 
             for (int i = 0; i < ownershipAdapter.getCount(); i++) {
-                if (ownershipAdapter.getItem(i).equals(cached.getOwnershipType())) {
+                if (ownershipAdapter.getItem(i).equals(cached.getOwnership())) {
                     ownershipSpinner.setSelection(i);
                     break;
                 }
             }
 
-            capital.setText(cached.getCapitalContribution());
-            gstn.setText(cached.getGstnDate());
+            capital.setText(cached.getCapital());
+            gstn.setText(cached.getGstn());
             licenseNumber.setText(cached.getLicenseNum());
             licenseAuthority.setText(cached.getLicenseAuth());
 
@@ -362,6 +407,7 @@ public class TradingDetailsActivity extends AppCompatActivity {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

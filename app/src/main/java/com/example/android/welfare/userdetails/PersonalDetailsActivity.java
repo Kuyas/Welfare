@@ -35,16 +35,21 @@ import com.example.android.welfare.userdetails.familydetails.FamilyDetailsActivi
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.android.welfare.OnStartCacheRetrieval.personalcachefile;
 
 
 public class PersonalDetailsActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -61,13 +66,19 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
     private ArrayAdapter<CharSequence> genderAdapter;
     private CheckBox editableCheck;
     private Button buttonDob;
+    private TextView dateTextView;
 
     private Spinner districtSpinner;
     private Spinner genderSpinner;
 
+    private PersonalData cached;
+
     AlterView alterView;
 
-    String date_test;
+    TextValidator validName;
+    TextValidator validAddress;
+    TextValidator validPlace;
+    TextValidator validDate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,7 +113,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
             alterView = new AlterView();
 
-            List<String> district;
+            final List<String> district;
             arrayDistrict = getResources().getStringArray(R.array.activity_personal_spinner_district);
             Arrays.sort(arrayDistrict);
             district = new ArrayList<>(Arrays.asList(arrayDistrict));
@@ -119,6 +130,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
             address = findViewById(R.id.edit_text_personal_address);
             place = findViewById(R.id.edit_text_personal_place);
             editableCheck = findViewById(R.id.checkbox_personal_details_editable);
+            dateTextView = findViewById(R.id.activity_personal_textview_date);
 
             fillWithCache();
             disableEdit();
@@ -141,9 +153,10 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                     if (editableCheck.isChecked()) {
                         if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
                             boolean flag = true;
-                            TextValidator validName = new TextValidator(name);
-                            TextValidator validAddress = new TextValidator(address);
-                            TextValidator validPlace = new TextValidator(place);
+                            validName = new TextValidator(name);
+                            validAddress = new TextValidator(address);
+                            validPlace = new TextValidator(place);
+                            validDate = new TextValidator(dateTextView);
 
                             if (validName.isValid()) {
                                 //write to variable
@@ -180,7 +193,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                             } else {
                                 districtSelect = districtSpinner.getSelectedItem().toString().trim();
                             }
-                            if (date_test == null) {
+                            if (validDate.regexValidator(TextValidator.dateregex)) {
                                 flag = false;
                                 Toast.makeText(PersonalDetailsActivity.this, getString(
                                         R.string.activity_personal_details_invalid_dob),
@@ -190,7 +203,7 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                             if (flag) {
                                 personalUsingAPI.savePersonal(sharedPreferences.getString(
                                         "loggedInID", ""), validName.returnText(),
-                                        date_test, genderSelect, validAddress.returnText(),
+                                        validDate.returnText(), genderSelect, validAddress.returnText(),
                                         validPlace.returnText(), districtSelect).enqueue(
                                         new Callback<ResponseData>() {
                                             @Override
@@ -201,7 +214,9 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
                                                     Toast.makeText(PersonalDetailsActivity.this,
                                                             getString(R.string.details_saved_confirmation),
                                                             Toast.LENGTH_LONG).show();
-
+                                                    editableCheck.setChecked(false);
+                                                    disableEdit();
+                                                    changeCache();
                                                     nextActivity();
                                                 } else {
                                                     Toast.makeText(PersonalDetailsActivity.this,
@@ -290,20 +305,35 @@ public class PersonalDetailsActivity extends AppCompatActivity implements DatePi
 
         String currentDateString = new SimpleDateFormat("dd-MM-yyyy",
                 getResources().getConfiguration().locale).format(c.getTime());
-        TextView textView = findViewById(R.id.activity_personal_textview_date);
-        textView.setText(currentDateString);
-        date_test = currentDateString;
+        dateTextView.setText(currentDateString);
+    }
 
+    public void changeCache() {
+        cached.setAddress(validAddress.returnText());
+        cached.setName(validAddress.returnText());
+        cached.setDob(validDate.returnText());
+        cached.setPlace(validPlace.returnText());
+        cached.setDistrict(districtSelect);
+        cached.setGender(genderSelect);
+        try {
+            File cache = new File(getCacheDir(), personalcachefile);
+            ObjectOutputStream cacheWriter = new ObjectOutputStream(new FileOutputStream(cache));
+            cacheWriter.writeObject(cached);
+            cacheWriter.close();
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.activity_forms_cached_save_failed, Toast.LENGTH_LONG).show();
+        }
     }
 
     public void fillWithCache() {
         try {
             ObjectInputStream cacheReader = new ObjectInputStream(new FileInputStream(
-                    getCacheDir() + File.separator + OnStartCacheRetrieval.personalcachefile));
-            PersonalData cached = (PersonalData) cacheReader.readObject();
+                    getCacheDir() + File.separator + personalcachefile));
+            cached = (PersonalData) cacheReader.readObject();
             name.setText(cached.getName());
             address.setText(cached.getAddress());
             place.setText(cached.getPlace());
+            dateTextView.setText(cached.getDob());
             for (int i = 0; i < arrayDistrict.length; i++) {
                 if (arrayDistrict[i].equals(cached.getDistrict())) {
                     districtSpinner.setSelection(i);

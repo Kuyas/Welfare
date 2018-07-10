@@ -1,11 +1,11 @@
 package com.example.android.welfare.databaseconnection.responseclasses;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PersonalData implements Serializable
-{
+import java.io.Serializable;
+
+public class PersonalData implements Serializable {
 
     @SerializedName("response_code")
     @Expose
@@ -32,13 +32,11 @@ public class PersonalData implements Serializable
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public PersonalData() {
     }
 
     /**
-     *
      * @param responseCode
      * @param address
      * @param dob

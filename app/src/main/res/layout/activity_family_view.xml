@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/family_details_card_view"
     android:layout_width="match_parent"
@@ -30,10 +29,9 @@
             android:layout_margin="3dp"
             android:text="@string/activity_family_details_name"
             android:textSize="@dimen/activity_family_details_rows_text_size"
-            android:textColor="@color/colorEditText"/>
+            android:textColor="@color/colorEditText" />
 
-        <View
-            style="@style/HorizontalDividerLineThin" />
+        <View style="@style/HorizontalDividerLineThin" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,8 +63,7 @@
 
         </LinearLayout>
 
-        <View
-            style="@style/HorizontalDividerLineThin" />
+        <View style="@style/HorizontalDividerLineThin" />
 
         <TextView
             android:id="@+id/text_view_family_member_occupation"
@@ -76,10 +73,9 @@
             android:gravity="center_vertical"
             android:text="@string/activity_family_details_occupation"
             android:textSize="@dimen/activity_family_details_rows_text_size"
-            android:textColor="@color/colorEditText"/>
+            android:textColor="@color/colorEditText" />
 
-        <View
-            style="@style/HorizontalDividerLineThin" />
+        <View style="@style/HorizontalDividerLineThin" />
 
         <TextView
             android:id="@+id/text_view_family_member_relationship"
@@ -89,10 +85,9 @@
             android:gravity="center_vertical"
             android:text="@string/activity_family_details_relationship"
             android:textSize="@dimen/activity_family_details_rows_text_size"
-            android:textColor="@color/colorEditText"/>
+            android:textColor="@color/colorEditText" />
 
-        <View
-            style="@style/HorizontalDividerLineThin" />
+        <View style="@style/HorizontalDividerLineThin" />
 
     </LinearLayout>
 

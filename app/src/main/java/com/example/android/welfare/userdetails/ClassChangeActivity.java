@@ -10,14 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.android.welfare.login.LoginActivity;
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.responseclasses.TurnoverData;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.R;
+import com.example.android.welfare.login.LoginActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,7 +35,7 @@ public class ClassChangeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
-        if (sharedPreferences.getString("loggedInID", "").isEmpty()){
+        if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             Intent loginIntent = new Intent(ClassChangeActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
@@ -73,43 +72,41 @@ public class ClassChangeActivity extends AppCompatActivity {
             oldTurnover = findViewById(R.id.activity_classchange_old_turnover);
 
 
+            turnoverUsingAPI.getTurnoverData(loginID).enqueue(new Callback<TurnoverData>() {
+                @Override
+                public void onResponse(Call<TurnoverData> call, Response<TurnoverData> response) {
+                    int response_code = response.body().getResponseCode();
+                    if (response_code == 200) {
+                        turnoverText = response.body().getTurnover();
+                        s = turnoverText;
 
-
-                turnoverUsingAPI.getTurnoverData(loginID).enqueue(new Callback<TurnoverData>() {
-                    @Override
-                    public void onResponse(Call<TurnoverData> call, Response<TurnoverData> response) {
-                        int response_code = response.body().getResponseCode();
-                        if (response_code == 200) {
-                            turnoverText = response.body().getTurnover();
-                            s = turnoverText;
-
-                            if(turnoverText == null){
+                        if (turnoverText == null) {
 //                                Toast.makeText(ClassChangeActivity.this, "Turnover is Null", Toast.LENGTH_SHORT).show();
-                                oldTurnover.setText(getString(R.string.activity_class_change_null_turnover));
-                                oldClass.setText(getString(R.string.activity_class_change_null_class));
+                            oldTurnover.setText(getString(R.string.activity_class_change_null_turnover));
+                            oldClass.setText(getString(R.string.activity_class_change_null_class));
 
-                            }else {
-                                oldTurnover.setText(turnoverText);
-                                Float f = Float.parseFloat(turnoverText);
+                        } else {
+                            oldTurnover.setText(turnoverText);
+                            Float f = Float.parseFloat(turnoverText);
 
-                                if (f <= 1000000.00) {
-                                    oldClass.setText("D");
-                                } else if (f > 1000000.00 && f <= 2500000.00) {
-                                    oldClass.setText("C");
-                                } else if (f > 2500000.00 && f <= 5000000.00) {
-                                    oldClass.setText("B");
-                                } else {
-                                    oldClass.setText("A");
-                                }
+                            if (f <= 1000000.00) {
+                                oldClass.setText("D");
+                            } else if (f > 1000000.00 && f <= 2500000.00) {
+                                oldClass.setText("C");
+                            } else if (f > 2500000.00 && f <= 5000000.00) {
+                                oldClass.setText("B");
+                            } else {
+                                oldClass.setText("A");
                             }
                         }
                     }
+                }
 
-                    @Override
-                    public void onFailure(Call<TurnoverData> call, Throwable t) {
+                @Override
+                public void onFailure(Call<TurnoverData> call, Throwable t) {
 
-                    }
-                });
+                }
+            });
 
         }
     }

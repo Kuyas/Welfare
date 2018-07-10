@@ -10,9 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.R;
+import com.example.android.welfare.login.LoginActivity;
 
 public class RenewMembershipActivity extends AppCompatActivity {
 
@@ -25,8 +25,6 @@ public class RenewMembershipActivity extends AppCompatActivity {
 
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(RenewMembershipActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {

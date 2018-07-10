@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         if (!sharedPreferences.getBoolean("language", false)) {
             Intent languageIntent = new Intent(MainActivity.this, LanguageActivity.class);
             startActivity(languageIntent);
-        } else if (sharedPreferences.getString("loggedInID", "").isEmpty()){
+        } else if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
             Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(loginIntent);
         } else {
@@ -64,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-
 
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -171,10 +169,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void openBrowser(View view){
+    public void openBrowser(View view) {
 
         //Get url from tag
-        String url = (String)view.getTag();
+        String url = (String) view.getTag();
 
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);

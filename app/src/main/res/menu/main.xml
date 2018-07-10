@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-    android:id="@+id/button_menu_change_language"
-    android:title="Change Language" />
+        android:id="@+id/button_menu_change_language"
+        android:title="Change Language" />
 
     <item
         android:id="@+id/button_menu_logout"
-        android:title="Logout"/>
+        android:title="Logout" />
 
 </menu>
 

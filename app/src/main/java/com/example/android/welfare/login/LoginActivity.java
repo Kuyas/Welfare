@@ -14,12 +14,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.android.welfare.databaseconnection.APIService;
-import com.example.android.welfare.databaseconnection.APIUtils;
-import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.databaseconnection.APIUtils;
+import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
 import com.example.android.welfare.userdetails.TextValidator;
 
 import retrofit2.Call;

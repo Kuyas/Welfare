@@ -14,10 +14,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.android.welfare.login.LoginActivity;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
+import com.example.android.welfare.login.LoginActivity;
 
 public class PaymentDetailsActivity extends AppCompatActivity {
 
@@ -29,8 +29,6 @@ public class PaymentDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = this.getSharedPreferences("com.welfare.app", Context.MODE_PRIVATE);
         if (sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            //TODO: Remove the negation
-
             Intent loginIntent = new Intent(PaymentDetailsActivity.this,
                     LoginActivity.class);
             startActivity(loginIntent);

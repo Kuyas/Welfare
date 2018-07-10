@@ -26,7 +26,7 @@ import com.msg91.sendotp.library.VerificationListener;
 
 import static android.content.ContentValues.TAG;
 
-public class OtpVerificationActivity extends AppCompatActivity implements VerificationListener{
+public class OtpVerificationActivity extends AppCompatActivity implements VerificationListener {
     private final int REQUEST_CODE_ASK_PERMISSIONS = 123;
     private Verification mobileVerification;
     private TextView message;
@@ -40,7 +40,7 @@ public class OtpVerificationActivity extends AppCompatActivity implements Verifi
         Button resendButton = (Button) findViewById(R.id.activity_otp_verification_button_resend);
         TextInputEditText otpText = (TextInputEditText) findViewById(R.id.activity_otp_verification_edittext_otp);
 
-        if (getIntent().getExtras()!=null) {
+        if (getIntent().getExtras() != null) {
             mobileVerification = SendOtpVerification.createSmsVerification(
                     SendOtpVerification
                             .config("+91" + getIntent().getExtras().getString("phonenumber"))
@@ -82,7 +82,7 @@ public class OtpVerificationActivity extends AppCompatActivity implements Verifi
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.toString().length()==4) {
+                if (s.toString().length() == 4) {
                     mobileVerification.verify(s.toString());
                 }
             }
@@ -97,9 +97,9 @@ public class OtpVerificationActivity extends AppCompatActivity implements Verifi
     }
 
     public void sendForOTP() {
-        if(Build.VERSION.SDK_INT < 23){
+        if (Build.VERSION.SDK_INT < 23) {
             mobileVerification.initiate();
-        }else {
+        } else {
             requestSMSPermission();
         }
     }
@@ -107,8 +107,8 @@ public class OtpVerificationActivity extends AppCompatActivity implements Verifi
     private void requestSMSPermission() {
         int hasContactPermission = ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
 
-        if(hasContactPermission != PackageManager.PERMISSION_GRANTED ) {
-            ActivityCompat.requestPermissions(this , new String[] {Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
+        if (hasContactPermission != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS}, REQUEST_CODE_ASK_PERMISSIONS);
         } else {
             mobileVerification.initiate();
         }

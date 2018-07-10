@@ -15,20 +15,20 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.NetworkStatus;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.DisplayErrorMessage;
 import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.NetworkStatus;
-import com.example.android.welfare.R;
 import com.example.android.welfare.userdetails.TextValidator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SignupActivity extends AppCompatActivity{
+public class SignupActivity extends AppCompatActivity {
     private static final int otpAcitivyCode = 1;
 
     private TextValidator validMobile;

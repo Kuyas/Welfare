@@ -26,17 +26,17 @@ public class BankingData implements Serializable {
     @Expose
     private String ifscCode;
 
-    public BankingData () {
+    public BankingData() {
 
-    /**
-     *
-     * @param responseCode
-     * @param bankName
-     * @param accountNumber
-     * @param accountHolderName
-     * @param bankBranch
-     * @param ifscCode
-     */
+        /**
+         *
+         * @param responseCode
+         * @param bankName
+         * @param accountNumber
+         * @param accountHolderName
+         * @param bankBranch
+         * @param ifscCode
+         */
     }
 
     public BankingData(Integer responseCode, String bankName, String accountNumber,

@@ -303,5 +303,6 @@
     <string name="activity_forgot_password_invalid_password">Please Enter a Password Between 8 &amp; 16 Characters</string>
     <string name="activity_forgot_password_retype_invalid">Password and Retyped Password are not Same</string>
 
+    <string name="activity_forms_cached_save_failed">Please restart app to view changes</string>
 
 </resources>

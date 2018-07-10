@@ -2,14 +2,13 @@ package com.example.android.welfare.databaseconnection;
 
 import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
 import com.example.android.welfare.databaseconnection.responseclasses.BankingData;
+import com.example.android.welfare.databaseconnection.responseclasses.ClaimsData;
 import com.example.android.welfare.databaseconnection.responseclasses.FamilyData;
 import com.example.android.welfare.databaseconnection.responseclasses.OtherData;
 import com.example.android.welfare.databaseconnection.responseclasses.PersonalData;
-import com.example.android.welfare.databaseconnection.responseclasses.ClaimsData;
 import com.example.android.welfare.databaseconnection.responseclasses.ResponseData;
 import com.example.android.welfare.databaseconnection.responseclasses.TradingData;
 import com.example.android.welfare.databaseconnection.responseclasses.TurnoverData;
-
 
 import java.util.List;
 
@@ -38,6 +37,7 @@ public interface APIService {
     @FormUrlEncoded
     Call<AuthenticationData> changePassword(@Field("mobile_number") String user_id,
                                             @Field("password") String password);
+
     @POST("personal_form.php")
     @FormUrlEncoded
     Call<ResponseData> savePersonal(@Field("user_id") String user_id,
@@ -47,6 +47,7 @@ public interface APIService {
                                     @Field("personal_address") String personal_address,
                                     @Field("personal_place") String personal_place,
                                     @Field("personal_district") String personal_district);
+
     @POST("family_form.php")
     @FormUrlEncoded
     Call<ResponseData> saveFamily(@Field("user_id") String user_id,
@@ -59,20 +60,19 @@ public interface APIService {
     @POST("trading_form.php")
     @FormUrlEncoded
     Call<ResponseData> saveTrading(@Field("user_id") String user_id,
-                                         @Field("trading_firm_name") String trading_firm_name,
-                                         @Field("trading_firm_address") String trading_firm_address,
-                                         @Field("trading_firm_turnover") String trading_firm_turnover,
-                                         @Field("trading_mtp_branch") String trading_mtp_branch,
-                                         @Field("trading_mtp_godown") String trading_mtp_godown,
-                                         @Field("trading_mtp_factory") String trading_mtp_factory,
-                                         @Field("trading_mtp_others") String trading_mtp_others,
-                                         @Field("trading_ownership_type") String trading_mtp_ownership_type,
-                                         @Field("trading_capital_contribution") String trading_capital_contribution,
-                                         @Field("trading_gstn_date") String trading_gstn_date,
-                                         @Field("trading_license_num") String trading_license_num,
-                                         @Field("trading_license_authority") String trading_license_authority,
-                                         @Field("trading_official_name") String trading_official_name);
-
+                                   @Field("trading_firm_name") String trading_firm_name,
+                                   @Field("trading_firm_address") String trading_firm_address,
+                                   @Field("trading_firm_turnover") String trading_firm_turnover,
+                                   @Field("trading_mtp_branch") String trading_mtp_branch,
+                                   @Field("trading_mtp_godown") String trading_mtp_godown,
+                                   @Field("trading_mtp_factory") String trading_mtp_factory,
+                                   @Field("trading_mtp_others") String trading_mtp_others,
+                                   @Field("trading_ownership_type") String trading_mtp_ownership_type,
+                                   @Field("trading_capital_contribution") String trading_capital_contribution,
+                                   @Field("trading_gstn_date") String trading_gstn_date,
+                                   @Field("trading_license_num") String trading_license_num,
+                                   @Field("trading_license_authority") String trading_license_authority,
+                                   @Field("trading_official_name") String trading_official_name);
 
 
     @POST("app_status_check.php")
@@ -117,15 +117,15 @@ public interface APIService {
     @POST("get_family_data.php")
     @FormUrlEncoded
     Call<List<FamilyData>> getFamilyData(@Field("mobile_number") String mobile_number,
-                                     @Field("password") String password);
+                                         @Field("password") String password);
 
-    @POST("get_trading_data.php")
+    @POST("get_trading_details.php")
     @FormUrlEncoded
     Call<TradingData> getTradingData(@Field("mobile_number") String mobile_number,
                                      @Field("password") String password);
 
 
-    @POST("get_other_data.php")
+    @POST("get_other_details.php")
     @FormUrlEncoded
     Call<OtherData> getOtherData(@Field("mobile_number") String mobile_number,
                                  @Field("password") String password);

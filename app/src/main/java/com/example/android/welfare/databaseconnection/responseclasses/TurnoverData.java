@@ -15,13 +15,11 @@ public class TurnoverData {
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public TurnoverData() {
     }
 
     /**
-     *
      * @param responseCode
      * @param turnover
      */
