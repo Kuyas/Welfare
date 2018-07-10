@@ -2,9 +2,9 @@
 # Welfare App
 This android application has been made by students of [BITS Pilani](http://www.bits-pilani.ac.in/) as their Internship (Practise School) project under Centre of Development for Imaging Technology ([CDIT](http://cdit.org))
 The application has been made for [Kerala Traders Welfare Board](https://kerala.gov.in/welfare-fund-boards) to allow remote registration of traders. It also allows the traders to pay annual fee, check application status and make changes to details.
-The developers are:
-Ishan Bhanuka ([twitu](https://github.com/twitu))
-Omkar Kanade ([omkar-decode](https://github.com/omkar-decode))
+The developers are:  
+Ishan Bhanuka ([twitu](https://github.com/twitu))  
+Omkar Kanade ([omkar-decode](https://github.com/omkar-decode))  
 Shreyas Sunil Kulkarni ([Kuyas](https://github.com/Kuyas))
 
 ## Note
