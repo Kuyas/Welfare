@@ -33,10 +33,10 @@ There are many features left to implement before the app is completely functiona
 3. Malayalam Translation of all strings
 4. Yearly notification to remind users to make annual payment
 5. Engage OTP service
-6. A number of security considerations
-6.1 Delete cache files on logout
-6.2 Remove the need for cache files by maintaining sessions
-6.3 Make sign up more secure by implementing some form of otp in the server
+6. A number of security considerations  
+6.1 Delete cache files on logout  
+6.2 Remove the need for cache files by maintaining sessions  
+6.3 Make sign up more secure by implementing some form of otp in the server  
 7. Give user more informative prompts in case of errors or mistakes
 8. Make user experience more smooth by showing loading bars for network requests
 9. Mark compulsory fields to make UX more intuitive
