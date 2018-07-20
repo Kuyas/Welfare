@@ -35,7 +35,8 @@ public class OnStartCacheRetrieval extends Application {
         super.onCreate();
         SharedPreferences sharedPreferences = getSharedPreferences("com.welfare.app", MODE_PRIVATE);
         if (!sharedPreferences.getString("loggedInID", "").isEmpty()) {
-            fillCache(sharedPreferences.getString("mobile_number", ""), sharedPreferences.getString("password", ""), getCacheDir().toString());
+            fillCache(sharedPreferences.getString("mobile_number", ""),
+                    sharedPreferences.getString("password", ""), getCacheDir().toString());
         }
         startActivity(new Intent(this, MainActivity.class));
     }

@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 case (R.id.button_main_class_change): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        Intent classchangeIntent = new Intent(MainActivity.this, ClassChangeActivity.class);
+                        Intent classchangeIntent = new Intent(MainActivity.this,
+                                ClassChangeActivity.class);
                         startActivity(classchangeIntent);
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
@@ -115,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case (R.id.button_main_claim_status): {
                     if (NetworkStatus.getInstance(getApplicationContext()).isOnline()) {
-                        Intent statusCheckIntent = new Intent(MainActivity.this, StatusActivity.class);
+                        Intent statusCheckIntent = new Intent(MainActivity.this,
+                                StatusActivity.class);
                         startActivity(statusCheckIntent);
                     } else {
                         LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
@@ -148,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case (R.id.button_menu_logout): {
                 LinearLayout linearLayout = findViewById(R.id.layout_activity_main);
-                Snackbar snackbar = Snackbar.make(linearLayout, "You have successfully logged out", Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(linearLayout, "You have successfully logged out",
+                        Snackbar.LENGTH_LONG);
                 snackbar.show();
                 sharedPreferences.edit().remove("loggedInID").apply();
                 sharedPreferences.edit().remove("mobile_number").apply();
@@ -159,7 +162,8 @@ public class MainActivity extends AppCompatActivity {
                 break;
             }
             case (R.id.button_menu_change_language): {
-                Intent langActivityIntent = new Intent(MainActivity.this, LanguageActivity.class);
+                Intent langActivityIntent = new Intent(MainActivity.this,
+                        LanguageActivity.class);
                 startActivity(langActivityIntent);
                 break;
             }
