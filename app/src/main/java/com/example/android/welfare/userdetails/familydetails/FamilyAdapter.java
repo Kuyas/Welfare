@@ -16,7 +16,7 @@ public class FamilyAdapter extends RecyclerView.Adapter<FamilyViewHolder> {
     private Context context;
     private List<FamilyModel> familyModels;
 
-    public FamilyAdapter (Context context, List<FamilyModel> familyModels) {
+    public FamilyAdapter(Context context, List<FamilyModel> familyModels) {
         this.context = context;
         this.familyModels = familyModels;
     }

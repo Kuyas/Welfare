@@ -1,7 +1,8 @@
 package com.example.android.welfare.databaseconnection;
 
 public class APIUtils {
-    private APIUtils() {}
+    private APIUtils() {
+    }
 
     public static final String BASE_URL = "https://welfare-app.000webhostapp.com/";
 

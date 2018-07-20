@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_activity_other_details"
     android:layout_width="match_parent"
@@ -9,12 +8,12 @@
     android:orientation="vertical"
     tools:context=".userdetails.OtherDetailsActivity">
 
-    <include layout="@layout/app_bar_main"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_height="wrap_content"
         android:layout_width="match_parent" />
 
-    <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/editbale_checkbox_text"
                 android:textSize="@dimen/user_details_text_size"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp" />
 
 
             <!-- sub point 1 -->
@@ -49,10 +48,9 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/user_details_left_padding"
                     android:text="@string/activity_other_details_own_building"
-                    android:textSize="@dimen/activity_other_details_subheading_text_size"/>
+                    android:textSize="@dimen/activity_other_details_subheading_text_size" />
 
-                <View
-                    style="@style/HorizontalDividerLineThick" />
+                <View style="@style/HorizontalDividerLineThick" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,7 +72,7 @@
                             android:text="@string/activity_other_details_location"
                             android:textSize="@dimen/user_details_text_size"
                             android:textColor="@color/colorOtherDetailsColumnHeading"
-                            android:layout_gravity="center_horizontal"/>
+                            android:layout_gravity="center_horizontal" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -82,7 +80,7 @@
                             android:text="@string/activity_other_details_own_building_main_branch"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="20dp"/>
+                            android:layout_marginTop="20dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -90,7 +88,7 @@
                             android:text="@string/activity_other_details_own_building_branch"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="26dp"/>
+                            android:layout_marginTop="26dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -98,7 +96,7 @@
                             android:text="@string/activity_other_details_own_building_godown"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="27dp"/>
+                            android:layout_marginTop="27dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -106,7 +104,7 @@
                             android:text="@string/activity_other_details_own_building_factory"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="27dp"/>
+                            android:layout_marginTop="27dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -114,14 +112,14 @@
                             android:text="@string/activity_other_details_own_building_others"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="25dp"/>
+                            android:layout_marginTop="25dp" />
 
 
                     </LinearLayout>
 
                     <View
                         style="@style/VerticalDividerLineThin"
-                        android:layout_marginEnd="12dp"/>
+                        android:layout_marginEnd="12dp" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -136,7 +134,7 @@
                             android:text="@string/activity_other_details_market_value"
                             android:textSize="@dimen/user_details_text_size"
                             android:textColor="@color/colorOtherDetailsColumnHeading"
-                            android:layout_gravity="center_horizontal"/>
+                            android:layout_gravity="center_horizontal" />
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/text_input_own_main_branch"
@@ -223,7 +221,7 @@
 
             <View
                 style="@style/HorizontalDividerLineThick"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp" />
 
             <!-- sub point 2 -->
 
@@ -239,10 +237,9 @@
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/user_details_left_padding"
                     android:text="@string/activity_other_details_rented_building"
-                    android:textSize="@dimen/activity_other_details_subheading_text_size"/>
+                    android:textSize="@dimen/activity_other_details_subheading_text_size" />
 
-                <View
-                    style="@style/HorizontalDividerLineThick" />
+                <View style="@style/HorizontalDividerLineThick" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -264,7 +261,7 @@
                             android:text="@string/activity_other_details_location"
                             android:textSize="@dimen/user_details_text_size"
                             android:textColor="@color/colorOtherDetailsColumnHeading"
-                            android:layout_gravity="center_horizontal"/>
+                            android:layout_gravity="center_horizontal" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -272,7 +269,7 @@
                             android:text="@string/activity_other_details_own_building_main_branch"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="20dp"/>
+                            android:layout_marginTop="20dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -280,7 +277,7 @@
                             android:text="@string/activity_other_details_own_building_branch"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="26dp"/>
+                            android:layout_marginTop="26dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -288,7 +285,7 @@
                             android:text="@string/activity_other_details_own_building_godown"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="27dp"/>
+                            android:layout_marginTop="27dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -296,7 +293,7 @@
                             android:text="@string/activity_other_details_own_building_factory"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="27dp"/>
+                            android:layout_marginTop="27dp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -304,14 +301,14 @@
                             android:text="@string/activity_other_details_own_building_others"
                             android:textSize="@dimen/user_details_text_size"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="25dp"/>
+                            android:layout_marginTop="25dp" />
 
 
                     </LinearLayout>
 
                     <View
                         style="@style/VerticalDividerLineThin"
-                        android:layout_marginEnd="12dp"/>
+                        android:layout_marginEnd="12dp" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -326,7 +323,7 @@
                             android:text="@string/activity_other_details_rent_amount"
                             android:textSize="@dimen/user_details_text_size"
                             android:textColor="@color/colorOtherDetailsColumnHeading"
-                            android:layout_gravity="center_horizontal"/>
+                            android:layout_gravity="center_horizontal" />
 
                         <android.support.design.widget.TextInputLayout
                             android:id="@+id/text_input_rented_main_branch"
@@ -413,7 +410,7 @@
 
             <View
                 style="@style/HorizontalDividerLineThick"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp" />
 
             <!-- sub point 3 -->
 
@@ -428,7 +425,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/user_details_left_padding"
                 android:text="@string/activity_other_details_organization"
-                android:textSize="@dimen/user_details_text_size"/>
+                android:textSize="@dimen/user_details_text_size" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_organisation"
@@ -465,7 +462,7 @@
                     android:textAlignment="center"
                     android:gravity="center"
                     android:textSize="@dimen/user_details_text_size"
-                    android:text="@string/user_details_button_next"/>
+                    android:text="@string/user_details_button_next" />
 
             </LinearLayout>
 

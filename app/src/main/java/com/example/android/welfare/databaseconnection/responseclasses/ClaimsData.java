@@ -17,13 +17,11 @@ public class ClaimsData {
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public ClaimsData() {
     }
 
     /**
-     *
      * @param responseCode
      * @param status
      * @param applicationType

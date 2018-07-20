@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_activity_trading_details"
     android:layout_width="match_parent"
@@ -14,7 +13,7 @@
     <include
         layout="@layout/app_bar_main"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/editbale_checkbox_text"
                 android:textSize="@dimen/user_details_text_size"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_trading_name"
@@ -92,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/activity_trading_details_subheading"
                 android:textSize="30sp"
-                android:paddingBottom="10dp"/>
+                android:paddingBottom="10dp" />
 
 
             <android.support.design.widget.TextInputLayout
@@ -136,7 +135,7 @@
                 android:paddingBottom="5dp">
 
 
-            <android.support.design.widget.TextInputEditText
+                <android.support.design.widget.TextInputEditText
                     android:id="@+id/edit_text_trading_factory"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -161,7 +160,6 @@
                     android:textColor="@color/inputTextColor" />
 
             </android.support.design.widget.TextInputLayout>
-
 
 
             <Spinner
@@ -249,7 +247,7 @@
                 android:layout_height="wrap_content"
                 android:entries="@array/activity_trading_details_spinner_authority"
                 android:prompt="@string/activity_trading_details_spinner_authority_prompt"
-                android:paddingBottom="10dp"/>
+                android:paddingBottom="10dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -269,7 +267,7 @@
                     android:textColor="@color/colorAccent"
                     android:gravity="center"
                     android:textSize="@dimen/user_details_text_size"
-                    android:text="NEXT"/>
+                    android:text="NEXT" />
             </LinearLayout>
 
         </LinearLayout>

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorAccent">
 
-    <android.support.design.widget.AppBarLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,20 +25,23 @@
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
                 android:text="@string/activity_lang_textview_language_choice"
                 android:textAlignment="center"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/button_lang_english"
@@ -51,7 +52,7 @@
                 android:layout_marginTop="100dp"
                 android:padding="25dp"
                 android:textColor="@color/colorAccent"
-                android:text="@string/activity_lang_button_language_english"/>
+                android:text="@string/activity_lang_button_language_english" />
 
             <Button
                 android:id="@+id/button_lang_malayalam"
@@ -62,7 +63,7 @@
                 android:layout_marginTop="50dp"
                 android:textColor="@color/colorAccent"
                 android:padding="25dp"
-                android:text="@string/activity_lang_button_language_malayalam"/>
+                android:text="@string/activity_lang_button_language_malayalam" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

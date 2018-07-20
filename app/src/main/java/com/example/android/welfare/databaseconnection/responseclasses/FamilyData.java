@@ -1,19 +1,18 @@
 package com.example.android.welfare.databaseconnection.responseclasses;
 
-import java.io.Serializable;
-import java.util.List;
-
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FamilyData implements Serializable
-{
+public class FamilyData implements Serializable {
 
     @SerializedName("response_code")
     @Expose
@@ -37,13 +36,11 @@ public class FamilyData implements Serializable
 
     /**
      * No args constructor for use in serialization
-     *
      */
     public FamilyData() {
     }
 
     /**
-     *
      * @param relationship
      * @param responseCode
      * @param occupation
@@ -113,25 +110,5 @@ public class FamilyData implements Serializable
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         return stringBuilder.append(responseCode).append(name).append(age).append(gender).append(occupation).append(relationship).toString();
-    }
-
-    public static void main(String args[]) {
-        APIService apiService = APIUtils.getAPIService();
-        apiService.getFamilyData("9830955456", "qwertyuiop").enqueue(new Callback<List<FamilyData>>() {
-            @Override
-            public void onResponse(Call<List<FamilyData>> call, Response<List<FamilyData>> response) {
-                FamilyData resp = response.body().get(0);
-                if (resp.getResponseCode()==200) {
-                    for (int i = 1; i < response.body().size(); i++) {
-                        System.out.println(response.body().get(i));
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<FamilyData>> call, Throwable t) {
-
-            }
-        });
     }
 }

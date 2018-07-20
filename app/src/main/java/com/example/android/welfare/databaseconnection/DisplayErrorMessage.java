@@ -14,8 +14,8 @@ public class DisplayErrorMessage {
                 return "SQL query error";
             case 403:
                 return "No matching values in DB";
-                default:
-                    return "Unknown error";
+            default:
+                return "Unknown error";
         }
     }
 
@@ -35,8 +35,8 @@ public class DisplayErrorMessage {
                 return "Form fields are blank";
             case 22:
                 return "Form fields have incorrect values";
-                default:
-                    return "Unknown error";
+            default:
+                return "Unknown error";
         }
     }
 }

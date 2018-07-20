@@ -14,11 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.android.welfare.MainActivity;
+import com.example.android.welfare.R;
 import com.example.android.welfare.databaseconnection.APIService;
 import com.example.android.welfare.databaseconnection.APIUtils;
 import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
-import com.example.android.welfare.MainActivity;
-import com.example.android.welfare.R;
 import com.example.android.welfare.userdetails.TextValidator;
 
 import retrofit2.Call;
@@ -81,26 +81,26 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     checkMobileIdAPI = APIUtils.getAPIService();
                     checkMobileIdAPI.checkMobile(validMobile.returnText()).enqueue(
                             new Callback<AuthenticationData>() {
-                        @Override
-                        public void onResponse(Call<AuthenticationData> call,
-                                               Response<AuthenticationData> response) {
-                            int response_code = response.body().getResponseCode();
-                            if (response_code == 200) {
-                                Intent otpVerification = new Intent(getApplicationContext(),
-                                        OtpVerificationActivity.class);
-                                otpVerification.putExtra("phonenumber", validMobile.returnText());
-                                startActivityForResult(otpVerification, otpAcitivyCode);
-                            } else {
-                                mobile.setError(getString(
-                                        R.string.activity_forgot_password_mobile_number_not_exist));
-                            }
-                        }
+                                @Override
+                                public void onResponse(Call<AuthenticationData> call,
+                                                       Response<AuthenticationData> response) {
+                                    int response_code = response.body().getResponseCode();
+                                    if (response_code == 200) {
+                                        Intent otpVerification = new Intent(getApplicationContext(),
+                                                OtpVerificationActivity.class);
+                                        otpVerification.putExtra("phonenumber", validMobile.returnText());
+                                        startActivityForResult(otpVerification, otpAcitivyCode);
+                                    } else {
+                                        mobile.setError(getString(
+                                                R.string.activity_forgot_password_mobile_number_not_exist));
+                                    }
+                                }
 
-                        @Override
-                        public void onFailure(Call<AuthenticationData> call, Throwable t) {
-                            mobile.setError(getString(R.string.request_failed));
-                        }
-                    });
+                                @Override
+                                public void onFailure(Call<AuthenticationData> call, Throwable t) {
+                                    mobile.setError(getString(R.string.request_failed));
+                                }
+                            });
                 }
             }
         });
@@ -135,7 +135,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             public void onResponse(Call<AuthenticationData> call,
                                                    Response<AuthenticationData> response) {
                                 int response_code = response.body().getResponseCode();
-                                if (response_code==200) {
+                                if (response_code == 200) {
                                     sharedPreferences.edit().putString("loggedInID", loggedInID).apply();
                                     sharedPreferences.edit().putString("mobile_number", validMobile.
                                             returnText()).apply();

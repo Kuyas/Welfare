@@ -43,8 +43,8 @@
             android:layout_weight="4">
 
             <!--<TextView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent" />-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -61,17 +61,15 @@
             android:orientation="horizontal">
 
 
-
-                <Button
-                    android:id="@+id/button_main_edit_profile"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#b39ddb"
-                    android:text="@string/activity_main_button_edit_profile"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/activity_main_text_size" />
-            </LinearLayout>
-
+            <Button
+                android:id="@+id/button_main_edit_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#b39ddb"
+                android:text="@string/activity_main_button_edit_profile"
+                android:textColor="#fff"
+                android:textSize="@dimen/activity_main_text_size" />
+        </LinearLayout>
 
 
         <LinearLayout
@@ -100,16 +98,15 @@
             android:orientation="horizontal">
 
 
-                <Button
-                    android:id="@+id/button_main_claim_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#673ab7"
-                    android:text="@string/activity_main_button_claim_status"
-                    android:textColor="#fff"
-                    android:textSize="@dimen/activity_main_text_size" />
-            </LinearLayout>
-
+            <Button
+                android:id="@+id/button_main_claim_status"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#673ab7"
+                android:text="@string/activity_main_button_claim_status"
+                android:textColor="#fff"
+                android:textSize="@dimen/activity_main_text_size" />
+        </LinearLayout>
 
 
         <LinearLayout

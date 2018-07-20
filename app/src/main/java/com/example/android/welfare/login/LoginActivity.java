@@ -14,12 +14,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.android.welfare.databaseconnection.APIService;
-import com.example.android.welfare.databaseconnection.APIUtils;
-import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
 import com.example.android.welfare.MainActivity;
 import com.example.android.welfare.NetworkStatus;
 import com.example.android.welfare.R;
+import com.example.android.welfare.databaseconnection.APIService;
+import com.example.android.welfare.databaseconnection.APIUtils;
+import com.example.android.welfare.databaseconnection.responseclasses.AuthenticationData;
 import com.example.android.welfare.userdetails.TextValidator;
 
 import retrofit2.Call;
@@ -27,7 +27,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    private static final boolean DEBUG = true;
     private SharedPreferences sharedPreferences;
     private String mobileString, passwordString;
     private TextValidator mobileValidator, passwordValidator;
@@ -94,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                         mobileString = mobileValidator.returnText();
                         passwordString = passwordValidator.returnText();
                     }
-                    if (entry_flag || DEBUG) {
+                    if (entry_flag) {
                         loginUsingApi.loginUser(mobileValidator.returnText(), passwordValidator.
                                 returnText()).enqueue(new Callback<AuthenticationData>() {
                             @Override
@@ -108,9 +107,6 @@ public class LoginActivity extends AppCompatActivity {
                                             mobileValidator.returnText()).apply();
                                     sharedPreferences.edit().putString("password",
                                             passwordValidator.returnText()).apply();
-                                    Toast.makeText(LoginActivity.this,
-                                            "logged in ID is" + response.body().getId(),
-                                            Toast.LENGTH_LONG).show();
                                     Intent mainActivity = new Intent(LoginActivity.this,
                                             MainActivity.class);
                                     startActivity(mainActivity);

@@ -1,18 +1,18 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
-        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
-        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-        <!--<item name="colorAccent">@color/colorAccent</item>-->
+    <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+    <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--<item name="colorAccent">@color/colorAccent</item>-->
     <!--</style>-->
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Primary theme color of the app (sets background color of app bar) -->
         <item name="colorPrimary">#311b92</item>
         <!-- Background color of buttons in the app -->
-        <item name="colorButtonNormal">#4527a0  </item>
+        <item name="colorButtonNormal">#4527a0</item>
 
         <!-- to use a toolbar instead of window action bar -->
         <item name="windowActionBar">false</item>
@@ -21,6 +21,7 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="HorizontalDividerLineThin">
@@ -46,7 +47,7 @@
         <!-- Primary theme color of the dialog fragment (sets background color of app bar) -->
         <item name="colorPrimary">#311b92</item>
         <!-- Background color of buttons in the dialog fragment -->
-        <item name="colorButtonNormal">#4527a0  </item>
+        <item name="colorButtonNormal">#4527a0</item>
 
         <item name="android:windowNoTitle">false</item>
     </style>

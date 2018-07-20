@@ -30,64 +30,68 @@
             android:name=".userdetails.PersonalDetailsActivity"
             android:parentActivityName=".MainActivity"
             android:label="Personal Details"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/activity_login_title" />
         <activity
             android:name=".login.SignupActivity"
-            android:label="@string/activity_signup_title"/>
+            android:label="@string/activity_signup_title" />
         <activity
             android:name=".userdetails.RenewMembershipActivity"
             android:parentActivityName=".MainActivity"
-            android:label="@string/activity_renew_membership_title"/>
+            android:label="@string/activity_renew_membership_title" />
         <activity
             android:name=".userdetails.BankingDetailsActivity"
             android:parentActivityName=".userdetails.OtherDetailsActivity"
             android:label="Banking Details"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
             android:name=".userdetails.familydetails.FamilyDetailsActivity"
             android:parentActivityName=".userdetails.PersonalDetailsActivity"
             android:label="Family Details"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
             android:name=".userdetails.TradingDetailsActivity"
             android:parentActivityName=".userdetails.familydetails.FamilyDetailsActivity"
             android:label="Trading Details"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
-        <activity android:name=".userdetails.OtherDetailsActivity"
+        <activity
+            android:name=".userdetails.OtherDetailsActivity"
             android:parentActivityName=".userdetails.TradingDetailsActivity"
             android:label="Other Details"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
             android:name=".userdetails.PaymentDetailsActivity"
             android:parentActivityName=".userdetails.BankingDetailsActivity"
             android:label="Payment Details"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
             android:name=".userdetails.ClassChangeActivity"
             android:parentActivityName=".MainActivity"
-            android:label="Class Change"/>
+            android:label="Class Change" />
 
         <activity
             android:name=".login.OtpVerificationActivity"
             android:label="Otp Verification" />
 
-        <activity android:name=".login.LanguageActivity"
+        <activity
+            android:name=".login.LanguageActivity"
             android:label="Choose Language" />
 
-        <activity android:name=".login.ForgotPasswordActivity"
+        <activity
+            android:name=".login.ForgotPasswordActivity"
             android:label="Change Password" />
 
-        <activity android:name=".userdetails.StatusActivity"
-            android:label="Check Status"/>
+        <activity
+            android:name=".userdetails.StatusActivity"
+            android:label="Check Status" />
 
     </application>
 

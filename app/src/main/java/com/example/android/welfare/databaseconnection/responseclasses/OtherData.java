@@ -1,84 +1,86 @@
 package com.example.android.welfare.databaseconnection.responseclasses;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class OtherData implements Serializable {
+public class OtherData implements Serializable
+{
 
     @SerializedName("response_code")
     @Expose
     private Integer responseCode;
-    @SerializedName("own_main_branch")
+    @SerializedName("emv_main_branch")
     @Expose
-    private Integer ownMainBranch;
-    @SerializedName("own_branch")
+    private String emvMainBranch;
+    @SerializedName("emv_branch")
     @Expose
-    private Integer ownBranch;
-    @SerializedName("own_godown")
+    private String emvBranch;
+    @SerializedName("emv_godown")
     @Expose
-    private Integer ownGodown;
-    @SerializedName("own_factory")
+    private String emvGodown;
+    @SerializedName("emv_factory")
     @Expose
-    private Integer ownFactory;
-    @SerializedName("own_other")
+    private String emvFactory;
+    @SerializedName("emv_others")
     @Expose
-    private Integer ownOther;
-    @SerializedName("rented_main_branch")
+    private String emvOthers;
+    @SerializedName("ara_main")
     @Expose
-    private Integer rentedMainBranch;
-    @SerializedName("rented_branch")
+    private String araMain;
+    @SerializedName("ara_branch")
     @Expose
-    private Integer rentedBranch;
-    @SerializedName("rented_godown")
+    private String araBranch;
+    @SerializedName("ara_godown")
     @Expose
-    private Integer rentedGodown;
-    @SerializedName("rented_factory")
+    private String araGodown;
+    @SerializedName("ara_factory")
     @Expose
-    private Integer rentedFactory;
-    @SerializedName("rented_other")
+    private String araFactory;
+    @SerializedName("ara_other")
     @Expose
-    private Integer rentedOther;
-    @SerializedName("traders_organisation_name")
+    private String araOther;
+    @SerializedName("organisation")
     @Expose
-    private Integer tradersOrganisationName;
+    private String organisation;
+    private final static long serialVersionUID = 4180715748552753809L;
 
-
+    /**
+     * No args constructor for use in serialization
+     *
+     */
     public OtherData() {
-        /**
-         *
-         * @param responseCode
-         * @param ownMainBranch
-         * @param ownBranch
-         * @param ownGodown
-         * @param ownFactory
-         * @param ownOther
-         * @param rentedMainBranch
-         * @param rentedBranch
-         * @param rentedGodown
-         * @param rentedFactory
-         * @param rentedOther
-         * @param tradersOrganisationName
-         */
     }
 
-    public OtherData(Integer responseCode, Integer ownMainBranch, Integer ownBranch,
-                     Integer ownGodown, Integer ownFactory, Integer ownOther,
-                     Integer rentedMainBranch, Integer rentedBranch, Integer rentedGodown,
-                     Integer rentedFactory, Integer rentedOther, Integer tradersOrganisationName) {
+    /**
+     *
+     * @param araGodown
+     * @param responseCode
+     * @param araMain
+     * @param emvGodown
+     * @param emvBranch
+     * @param organisation
+     * @param emvOthers
+     * @param emvFactory
+     * @param araFactory
+     * @param araBranch
+     * @param emvMainBranch
+     * @param araOther
+     */
+    public OtherData(Integer responseCode, String emvMainBranch, String emvBranch, String emvGodown, String emvFactory, String emvOthers, String araMain, String araBranch, String araGodown, String araFactory, String araOther, String organisation) {
+        super();
         this.responseCode = responseCode;
-        this.ownMainBranch = ownMainBranch;
-        this.ownBranch = ownBranch;
-        this.ownGodown = ownGodown;
-        this.ownFactory = ownFactory;
-        this.ownOther = ownOther;
-        this.rentedMainBranch = rentedMainBranch;
-        this.rentedBranch = rentedBranch;
-        this.rentedGodown = rentedGodown;
-        this.rentedFactory = rentedFactory;
-        this.rentedOther = rentedOther;
-        this.tradersOrganisationName = tradersOrganisationName;
+        this.emvMainBranch = emvMainBranch;
+        this.emvBranch = emvBranch;
+        this.emvGodown = emvGodown;
+        this.emvFactory = emvFactory;
+        this.emvOthers = emvOthers;
+        this.araMain = araMain;
+        this.araBranch = araBranch;
+        this.araGodown = araGodown;
+        this.araFactory = araFactory;
+        this.araOther = araOther;
+        this.organisation = organisation;
     }
 
     public Integer getResponseCode() {
@@ -89,103 +91,92 @@ public class OtherData implements Serializable {
         this.responseCode = responseCode;
     }
 
-    public Integer getOwnMainBranch() {
-        return ownMainBranch;
+    public String getEmvMainBranch() {
+        return emvMainBranch;
     }
 
-    public void setOwnMainBranch(Integer ownMainBranch) {
-        this.ownMainBranch = ownMainBranch;
+    public void setEmvMainBranch(String emvMainBranch) {
+        this.emvMainBranch = emvMainBranch;
     }
 
-    public Integer getOwnBranch() {
-        return ownBranch;
+    public String getEmvBranch() {
+        return emvBranch;
     }
 
-    public void setOwnBranch(Integer ownBranch) {
-        this.ownBranch = ownBranch;
+    public void setEmvBranch(String emvBranch) {
+        this.emvBranch = emvBranch;
     }
 
-    public Integer getOwnGodown() {
-        return ownGodown;
+    public String getEmvGodown() {
+        return emvGodown;
     }
 
-    public void setOwnGodown(Integer ownGodown) {
-        this.ownGodown = ownGodown;
+    public void setEmvGodown(String emvGodown) {
+        this.emvGodown = emvGodown;
     }
 
-    public Integer getOwnFactory() {
-        return ownFactory;
+    public String getEmvFactory() {
+        return emvFactory;
     }
 
-    public void setOwnFactory(Integer ownFactory) {
-        this.ownFactory = ownFactory;
+    public void setEmvFactory(String emvFactory) {
+        this.emvFactory = emvFactory;
     }
 
-    public Integer getOwnOther() {
-        return ownOther;
+    public String getEmvOthers() {
+        return emvOthers;
     }
 
-    public void setOwnOther(Integer ownOther) {
-        this.ownOther = ownOther;
+    public void setEmvOthers(String emvOthers) {
+        this.emvOthers = emvOthers;
     }
 
-    public Integer getRentedMainBranch() {
-        return rentedMainBranch;
+    public String getAraMain() {
+        return araMain;
     }
 
-    public void setRentedMainBranch(Integer rentedMainBranch) {
-        this.rentedMainBranch = rentedMainBranch;
+    public void setAraMain(String araMain) {
+        this.araMain = araMain;
     }
 
-    public Integer getRentedBranch() {
-        return rentedBranch;
+    public String getAraBranch() {
+        return araBranch;
     }
 
-    public void setRentedBranch(Integer rentedBranch) {
-        this.rentedBranch = rentedBranch;
+    public void setAraBranch(String araBranch) {
+        this.araBranch = araBranch;
     }
 
-    public Integer getRentedGodown() {
-        return rentedGodown;
+    public String getAraGodown() {
+        return araGodown;
     }
 
-    public void setRentedGodown(Integer rentedGodown) {
-        this.rentedGodown = rentedGodown;
+    public void setAraGodown(String araGodown) {
+        this.araGodown = araGodown;
     }
 
-    public Integer getRentedFactory() {
-        return rentedFactory;
+    public String getAraFactory() {
+        return araFactory;
     }
 
-    public void setRentedFactory(Integer rentedFactory) {
-        this.rentedFactory = rentedFactory;
+    public void setAraFactory(String araFactory) {
+        this.araFactory = araFactory;
     }
 
-    public Integer getRentedOther() {
-        return rentedOther;
+    public String getAraOther() {
+        return araOther;
     }
 
-    public void setRentedOther(Integer rentedOther) {
-        this.rentedOther = rentedOther;
+    public void setAraOther(String araOther) {
+        this.araOther = araOther;
     }
 
-    public Integer getTradersOrganisationName() {
-        return tradersOrganisationName;
+    public String getOrganisation() {
+        return organisation;
     }
 
-    public void setTradersOrganisationName(Integer tradersOrganisationName) {
-        this.tradersOrganisationName = tradersOrganisationName;
+    public void setOrganisation(String organisation) {
+        this.organisation = organisation;
     }
 
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(responseCode).append(ownMainBranch).append(ownBranch).append(ownGodown).
-                append(ownFactory).append(ownOther).append(rentedMainBranch).append(rentedBranch).
-                append(rentedGodown).append(rentedFactory).append(rentedOther).
-                append(tradersOrganisationName);
-
-        return stringBuilder.toString();
-    }
 }
